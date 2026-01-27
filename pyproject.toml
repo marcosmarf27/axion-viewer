@@ -2,7 +2,6 @@
 name = "axion-viewer"
 version = "1.0.0"
 description = "API Flask para conversão de documentos Markdown em relatórios HTML e PDF formatados"
-readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Marcos", email = "marcos@example.com" }]
