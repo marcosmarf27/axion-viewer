@@ -362,6 +362,17 @@ cd frontend && pnpm lint && pnpm format:check && pnpm test --run
 - **Sempre testar em producao**: Nao usar dev server local para verificacao visual. Fazer deploy e testar diretamente na URL de producao (`https://axion-viewer-production.up.railway.app`).
 - Fluxo: build/lint/tests local → commit → push → verificar em producao.
 
+## Contas de Acesso
+
+**URL de Producao**: `https://axion-viewer-production.up.railway.app`
+
+| Conta | Email | Senha | Role | Descricao |
+|-------|-------|-------|------|-----------|
+| **Admin** | `admin@axion.com` | `Admin@123` | admin | Acesso completo (CRUD, conversao, temas, contas, compartilhamento) |
+| **Cliente** | `cliente@teste.com` | `Teste@123` | client | Area do cliente read-only (dashboard, carteiras, casos, processos) |
+
+> **Nota**: A conta cliente (Maria Silva) tem acesso a 2 carteiras de teste: "Creditos Bancarios" e "Recuperacao Judicial", com 5 casos e 8 processos vinculados.
+
 ## Supabase
 
 O projeto usa MCP Supabase conectado via plugin do Claude Code para consultas, migracoes e debugging.

@@ -291,9 +291,9 @@ export default function ClientProcessoDetail() {
                 {documentos.map(doc => (
                   <tr key={doc.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm font-medium text-slate-900">
-                      {doc.nome || doc.filename}
+                      {doc.title || doc.filename}
                     </td>
-                    <td className="px-4 py-3 text-sm text-slate-600">{doc.tipo || '-'}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">{doc.file_type || '-'}</td>
                     <td className="px-4 py-3 text-sm text-slate-600">
                       {formatDate(doc.created_at)}
                     </td>

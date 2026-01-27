@@ -73,6 +73,13 @@ def list_documentos():
                 },
             }
 
+        # Gerar signed_url para cada documento que tenha storage_path
+        data_list = result.get("data") if isinstance(result, dict) else None
+        if data_list:
+            for doc in data_list:
+                if doc.get("storage_path"):
+                    doc["signed_url"] = supa_service.get_signed_url(doc["storage_path"])
+
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500

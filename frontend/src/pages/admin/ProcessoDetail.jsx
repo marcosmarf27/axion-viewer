@@ -122,10 +122,10 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
               >
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-slate-900">
-                    {doc.nome || doc.filename}
+                    {doc.title || doc.filename}
                   </p>
                   <p className="text-xs text-slate-500">
-                    {doc.tipo || 'Documento'} — {formatDate(doc.created_at)}
+                    {doc.file_type || 'Documento'} — {formatDate(doc.created_at)}
                   </p>
                 </div>
                 <button
@@ -384,9 +384,9 @@ export default function ProcessoDetail() {
                 {documentos.map(doc => (
                   <tr key={doc.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm font-medium text-slate-900">
-                      {doc.nome || doc.filename}
+                      {doc.title || doc.filename}
                     </td>
-                    <td className="px-4 py-3 text-sm text-slate-600">{doc.tipo || '-'}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">{doc.file_type || '-'}</td>
                     <td className="px-4 py-3 text-sm text-slate-600">
                       {formatDate(doc.created_at)}
                     </td>
