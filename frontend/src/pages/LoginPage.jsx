@@ -3,6 +3,67 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import TypewriterASCII from '@/components/TypewriterASCII';
 
+/* ── Geometric Axion Logo ── */
+function AxionMark({ size = 40 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Outer hexagonal frame */}
+      <path
+        d="M20 2L36.5 11V29L20 38L3.5 29V11L20 2Z"
+        stroke="url(#axion-grad)"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      {/* Inner A letterform — constructed geometrically */}
+      <path
+        d="M20 10L28 28H24.5L22.8 24H17.2L15.5 28H12L20 10Z"
+        fill="url(#axion-grad)"
+      />
+      <rect x="17.8" y="20" width="4.4" height="1.5" rx="0.5" fill="#0a0a0b" />
+      <defs>
+        <linearGradient id="axion-grad" x1="10" y1="2" x2="32" y2="38" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#6ee7b7" />
+          <stop offset="1" stopColor="#34d399" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+/* ── Status Indicator (top-right of terminal panel) ── */
+function StatusDot() {
+  return (
+    <div className="flex items-center gap-2" style={{ animation: 'fadeIn 1.5s ease-out 0.6s both' }}>
+      <span
+        className="block h-1.5 w-1.5 rounded-full"
+        style={{
+          backgroundColor: '#34d399',
+          boxShadow: '0 0 6px rgba(52, 211, 153, 0.6)',
+          animation: 'pulseGlow 3s ease-in-out infinite',
+        }}
+      />
+      <span
+        style={{
+          fontFamily: '"JetBrains Mono", monospace',
+          fontSize: '10px',
+          fontWeight: 400,
+          letterSpacing: '0.08em',
+          color: '#475569',
+          textTransform: 'uppercase',
+        }}
+      >
+        Sistema ativo
+      </span>
+    </div>
+  );
+}
+
 export default function LoginPage() {
   const { user, loading, signIn } = useAuth();
   const [email, setEmail] = useState('');
@@ -27,52 +88,99 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Left Panel — Login Form */}
-      <div className="flex w-full flex-col items-center justify-center bg-white px-6 lg:w-1/2">
-        <div className="w-full max-w-sm">
-          {/* Logo mark */}
-          <div className="mb-10 text-center">
-            <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600 shadow-md shadow-indigo-200">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="h-6 w-6 text-white"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
+    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0b' }}>
+      {/* ━━━ Left Panel — Login Form ━━━ */}
+      <div className="flex w-full flex-col items-center justify-center px-6 lg:w-[44%]"
+        style={{
+          background: 'linear-gradient(145deg, #0f0f11 0%, #0a0a0b 50%, #0d0f12 100%)',
+        }}
+      >
+        <div className="w-full max-w-[380px]">
+          {/* Brand */}
+          <div className="mb-12 login-fade-up-1">
+            <AxionMark size={44} />
+            <div className="mt-5 flex items-baseline gap-1.5">
+              <h1
+                style={{
+                  fontFamily: '"JetBrains Mono", monospace',
+                  fontSize: '22px',
+                  fontWeight: 500,
+                  letterSpacing: '0.12em',
+                  color: '#e2e8f0',
+                  textTransform: 'uppercase',
+                }}
               >
-                <path d="M3 6l9-3 9 3M3 6v2l9 3 9-3V6" />
-                <path d="M3 8v6c0 1 1.5 3 9 3s9-2 9-3V8" />
-                <line x1="12" y1="11" x2="12" y2="21" />
-              </svg>
+                Axion
+              </h1>
+              <span
+                style={{
+                  fontFamily: '"JetBrains Mono", monospace',
+                  fontSize: '22px',
+                  fontWeight: 300,
+                  letterSpacing: '0.12em',
+                  color: '#475569',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Viewer
+              </span>
             </div>
-            <h1 className="bg-gradient-to-r from-slate-900 to-indigo-600 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
-              Acesse sua conta
-            </h1>
-            <p className="mt-2 text-sm text-slate-500">Gerencie documentos e processos juridicos</p>
+            <p
+              style={{
+                marginTop: '8px',
+                fontFamily: '"DM Sans", sans-serif',
+                fontSize: '13.5px',
+                fontWeight: 400,
+                color: '#475569',
+                letterSpacing: '0.01em',
+              }}
+            >
+              Plataforma de Gestao Juridica
+            </p>
           </div>
 
+          {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="space-y-5 rounded-xl border border-slate-100 bg-white p-6 shadow-md"
+            className="glass-card rounded-2xl p-7 login-fade-up-2"
           >
             {error && (
-              <div className="flex items-start gap-2.5 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-                <svg className="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+              <div
+                className="mb-5 flex items-center gap-2.5 rounded-lg px-4 py-3"
+                style={{
+                  background: 'rgba(239, 68, 68, 0.08)',
+                  border: '1px solid rgba(239, 68, 68, 0.15)',
+                }}
+              >
+                <svg
+                  className="h-4 w-4 shrink-0"
+                  viewBox="0 0 20 20"
+                  fill="#f87171"
+                >
                   <path
                     fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
                     clipRule="evenodd"
                   />
                 </svg>
-                <span>{error}</span>
+                <span style={{ fontSize: '13px', color: '#fca5a5' }}>{error}</span>
               </div>
             )}
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700">
+            <div className="mb-5">
+              <label
+                htmlFor="email"
+                style={{
+                  display: 'block',
+                  marginBottom: '6px',
+                  fontFamily: '"DM Sans", sans-serif',
+                  fontSize: '12.5px',
+                  fontWeight: 500,
+                  color: '#94a3b8',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                }}
+              >
                 Email
               </label>
               <input
@@ -81,13 +189,26 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="mt-1.5 block w-full rounded-lg border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 transition-colors focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="login-input block w-full rounded-xl px-4 py-3"
+                style={{ fontSize: '14px' }}
                 placeholder="seu@email.com"
               />
             </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700">
+            <div className="mb-7">
+              <label
+                htmlFor="password"
+                style={{
+                  display: 'block',
+                  marginBottom: '6px',
+                  fontFamily: '"DM Sans", sans-serif',
+                  fontSize: '12.5px',
+                  fontWeight: 500,
+                  color: '#94a3b8',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                }}
+              >
                 Senha
               </label>
               <input
@@ -96,7 +217,8 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                className="mt-1.5 block w-full rounded-lg border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 transition-colors focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="login-input block w-full rounded-xl px-4 py-3"
+                style={{ fontSize: '14px' }}
                 placeholder="Sua senha"
               />
             </div>
@@ -104,149 +226,132 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
+              className="login-button w-full rounded-xl px-4 py-3 text-sm font-semibold text-white"
+              style={{
+                fontFamily: '"DM Sans", sans-serif',
+                letterSpacing: '0.03em',
+              }}
             >
-              {submitting ? 'Entrando...' : 'Entrar'}
+              {submitting ? 'Autenticando...' : 'Acessar plataforma'}
             </button>
           </form>
 
-          <p className="mt-8 text-center text-xs text-slate-400">
-            Axion Viewer &mdash; Plataforma de Gestao Juridica
-          </p>
+          {/* Footer */}
+          <div className="mt-10 login-fade-up-3" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.05)' }} />
+            <span
+              style={{
+                fontFamily: '"JetBrains Mono", monospace',
+                fontSize: '10px',
+                fontWeight: 400,
+                color: '#334155',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Axion v2.0
+            </span>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.05)' }} />
+          </div>
         </div>
       </div>
 
-      {/* Right Panel — Corporate Branding */}
-      <div className="relative hidden overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 lg:flex lg:w-1/2 lg:items-center lg:justify-center">
-        {/* Typewriter ASCII background */}
-        <TypewriterASCII className="absolute inset-0 z-0" />
+      {/* ━━━ Right Panel — Terminal Branding ━━━ */}
+      <div
+        className="relative hidden overflow-hidden lg:flex lg:w-[56%] lg:flex-col terminal-scanline"
+        style={{
+          background: 'linear-gradient(160deg, #060808 0%, #0a0c0b 40%, #080a09 100%)',
+        }}
+      >
+        {/* Grid background */}
+        <div className="terminal-grid absolute inset-0" />
 
-        {/* Subtle radial glow */}
-        <div className="absolute left-1/2 top-1/2 z-[1] h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-3xl" />
+        {/* Ambient glow — emerald */}
+        <div
+          className="absolute"
+          style={{
+            left: '50%',
+            top: '45%',
+            width: '700px',
+            height: '700px',
+            transform: 'translate(-50%, -50%)',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+            animation: 'pulseGlow 6s ease-in-out infinite',
+          }}
+        />
 
-        {/* Content */}
-        <div className="relative z-10 max-w-md px-10 text-center">
-          {/* Scale of Justice icon */}
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className="h-8 w-8 text-indigo-300"
-              stroke="currentColor"
-              strokeWidth={1.2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {/* Secondary glow — top corner */}
+        <div
+          className="absolute"
+          style={{
+            right: '-100px',
+            top: '-100px',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+        />
+
+        {/* Top bar — simulated terminal chrome */}
+        <div
+          className="relative z-10 flex items-center justify-between px-7 pt-6 pb-2 login-fade-in"
+        >
+          <div className="flex items-center gap-2">
+            <span className="block h-2.5 w-2.5 rounded-full" style={{ background: '#1e293b' }} />
+            <span className="block h-2.5 w-2.5 rounded-full" style={{ background: '#1e293b' }} />
+            <span className="block h-2.5 w-2.5 rounded-full" style={{ background: '#1e293b' }} />
+            <span
+              style={{
+                marginLeft: '12px',
+                fontFamily: '"JetBrains Mono", monospace',
+                fontSize: '11px',
+                fontWeight: 400,
+                color: '#334155',
+                letterSpacing: '0.04em',
+              }}
             >
-              <path d="M12 3v18" />
-              <path d="M5 7l7-4 7 4" />
-              <path d="M5 7l-1 5c0 1.5 1 2 2.5 2S9 13.5 9 12L8 7" />
-              <path d="M19 7l-1 5c0 1.5 1 2 2.5 2S23 13.5 23 12l-1-5" />
-              <path d="M9 21h6" />
-            </svg>
+              axion-terminal
+            </span>
           </div>
+          <StatusDot />
+        </div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-white">Axion Viewer</h2>
-          <p className="mt-2 text-base text-slate-400">Plataforma de Gestao Juridica</p>
+        {/* Divider line */}
+        <div className="relative z-10 mx-7" style={{ height: '1px', background: 'rgba(255,255,255,0.04)' }} />
 
-          {/* Separator */}
-          <div className="mx-auto my-8 h-px w-16 bg-indigo-500/40" />
+        {/* ASCII typewriter — fills remaining space */}
+        <TypewriterASCII className="relative z-[3] flex-1" />
 
-          {/* Feature grid */}
-          <div className="grid grid-cols-2 gap-5 text-left">
-            {/* Feature 1: Document Management */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-              <div className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/10">
-                <svg
-                  className="h-4.5 w-4.5 text-indigo-400"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <line x1="10" y1="9" x2="8" y2="9" />
-                </svg>
-              </div>
-              <h3 className="text-sm font-semibold text-slate-200">Gestao de Documentos</h3>
-              <p className="mt-1 text-xs leading-relaxed text-slate-500">
-                Controle completo de processos e casos
-              </p>
-            </div>
-
-            {/* Feature 2: Auto Conversion */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-              <div className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/10">
-                <svg
-                  className="h-4.5 w-4.5 text-indigo-400"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="17 1 21 5 17 9" />
-                  <path d="M3 11V9a4 4 0 014-4h14" />
-                  <polyline points="7 23 3 19 7 15" />
-                  <path d="M21 13v2a4 4 0 01-4 4H3" />
-                </svg>
-              </div>
-              <h3 className="text-sm font-semibold text-slate-200">Conversao Automatica</h3>
-              <p className="mt-1 text-xs leading-relaxed text-slate-500">
-                Markdown para HTML e PDF
-              </p>
-            </div>
-
-            {/* Feature 3: Access Control */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-              <div className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/10">
-                <svg
-                  className="h-4.5 w-4.5 text-indigo-400"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-sm font-semibold text-slate-200">Controle de Acesso</h3>
-              <p className="mt-1 text-xs leading-relaxed text-slate-500">
-                Permissoes granulares por carteira
-              </p>
-            </div>
-
-            {/* Feature 4: Professional Reports */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.03] p-4">
-              <div className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/10">
-                <svg
-                  className="h-4.5 w-4.5 text-indigo-400"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 20V10" />
-                  <path d="M12 20V4" />
-                  <path d="M6 20v-6" />
-                </svg>
-              </div>
-              <h3 className="text-sm font-semibold text-slate-200">Relatorios Profissionais</h3>
-              <p className="mt-1 text-xs leading-relaxed text-slate-500">
-                Documentos formatados com temas
-              </p>
-            </div>
-          </div>
+        {/* Bottom bar */}
+        <div
+          className="relative z-10 flex items-center justify-between px-7 pb-6 pt-2 login-fade-in"
+        >
+          <span
+            style={{
+              fontFamily: '"JetBrains Mono", monospace',
+              fontSize: '10px',
+              fontWeight: 300,
+              color: '#1e293b',
+              letterSpacing: '0.06em',
+            }}
+          >
+            SUPABASE / ES256 / JWKS
+          </span>
+          <span
+            style={{
+              fontFamily: '"JetBrains Mono", monospace',
+              fontSize: '10px',
+              fontWeight: 300,
+              color: '#1e293b',
+              letterSpacing: '0.06em',
+            }}
+          >
+            SHA-256 ENCRYPTED
+          </span>
         </div>
       </div>
     </div>

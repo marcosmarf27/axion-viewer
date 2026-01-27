@@ -1,15 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&display=swap');
 @import 'tailwindcss';
 
+/* ── Keyframes ── */
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
     opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+}
+
+/* ── Base ── */
 html,
 body,
 #root {
@@ -19,12 +59,120 @@ body,
 
 body {
   margin: 0;
-  font-family:
-    'Inter',
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f8fafc;
+  background-color: #0a0a0b;
+}
+
+/* ── Login page utilities ── */
+.login-fade-in {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+.login-fade-up-1 {
+  animation: fadeInUp 0.7s ease-out 0.1s both;
+}
+
+.login-fade-up-2 {
+  animation: fadeInUp 0.7s ease-out 0.25s both;
+}
+
+.login-fade-up-3 {
+  animation: fadeInUp 0.7s ease-out 0.4s both;
+}
+
+.login-slide-in {
+  animation: slideInLeft 0.8s ease-out 0.2s both;
+}
+
+/* Scanline overlay for terminal panel */
+.terminal-scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(16, 185, 129, 0.008) 2px,
+    rgba(16, 185, 129, 0.008) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Animated grid background */
+.terminal-grid {
+  background-image:
+    linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+
+/* Glass form card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  transition: border-color 0.3s ease;
+}
+
+.glass-card:focus-within {
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Input styling for dark theme */
+.login-input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  transition: all 0.25s ease;
+}
+
+.login-input::placeholder {
+  color: rgba(148, 163, 184, 0.5);
+}
+
+.login-input:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
+  outline: none;
+}
+
+/* Submit button */
+.login-button {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.login-button:hover::before {
+  opacity: 1;
+}
+
+.login-button:hover {
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+  transform: translateY(-1px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+.login-button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
