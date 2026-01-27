@@ -60,7 +60,7 @@ export default function SharingPage() {
       .get('/accounts')
       .then(res => {
         const allProfiles = res.data.data || res.data || [];
-        setProfiles(allProfiles.filter(p => p.role === 'client'));
+        setProfiles(allProfiles.filter(p => p.user_metadata?.role === 'client'));
       })
       .catch(() => setProfiles([]))
       .finally(() => setLoadingProfiles(false));
@@ -229,10 +229,10 @@ export default function SharingPage() {
                     {acessos.map(acesso => (
                       <tr key={acesso.profile_id} className="hover:bg-gray-50">
                         <td className="px-4 py-3 text-sm text-gray-900">
-                          {acesso.email || '-'}
+                          {acesso.profiles?.email || '-'}
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-600">
-                          {acesso.nome || '-'}
+                          {acesso.profiles?.full_name || '-'}
                         </td>
                         <td className="px-4 py-3 text-sm text-gray-600">
                           {acesso.granted_by_nome || acesso.granted_by_email || '-'}
@@ -281,7 +281,7 @@ export default function SharingPage() {
                       {profiles.map(p => (
                         <option key={p.id} value={p.id}>
                           {p.email}
-                          {p.nome ? ` - ${p.nome}` : ''}
+                          {p.user_metadata?.full_name ? ` - ${p.user_metadata.full_name}` : ''}
                         </option>
                       ))}
                     </select>
@@ -303,7 +303,7 @@ export default function SharingPage() {
       <ConfirmDialog
         open={!!revokeConfirm}
         title="Revogar Acesso"
-        message={`Deseja revogar o acesso de "${revokeConfirm?.email || revokeConfirm?.nome || ''}" a esta carteira?`}
+        message={`Deseja revogar o acesso de "${revokeConfirm?.profiles?.email || revokeConfirm?.profiles?.full_name || ''}" a esta carteira?`}
         onConfirm={handleRevoke}
         onCancel={() => setRevokeConfirm(null)}
       />

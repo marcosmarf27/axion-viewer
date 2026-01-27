@@ -91,27 +91,10 @@ def admin_required(f):
     """Decorator que exige autenticacao + role admin."""
 
     @wraps(f)
+    @auth_required
     def decorated(*args, **kwargs):
-        auth_header = request.headers.get("Authorization")
-        if not auth_header or not auth_header.startswith("Bearer "):
-            return jsonify({"error": "Token ausente"}), 401
-
-        token = auth_header.split(" ", 1)[1]
-        payload = verify_supabase_token(token)
-        if not payload:
-            return jsonify({"error": "Token invalido ou expirado"}), 401
-
-        user_id = payload.get("sub")
-        profile = get_user_profile(user_id)
-        if not profile:
-            return jsonify({"error": "Profile nao encontrado"}), 401
-
-        if profile.get("role") != "admin":
+        if g.user.get("role") != "admin":
             return jsonify({"error": "Acesso restrito a administradores"}), 403
-
-        g.user = profile
-        g.user_id = user_id
-        g.token = token
         return f(*args, **kwargs)
 
     return decorated

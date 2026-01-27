@@ -60,9 +60,7 @@ export default function ConvertPage() {
   const fetchProcessos = async () => {
     try {
       const response = await api.get('/processos?per_page=100');
-      if (response.data.processos) {
-        setProcessos(response.data.processos);
-      }
+      setProcessos(response.data.data || []);
     } catch (error) {
       console.error('Erro ao carregar processos:', error);
     }

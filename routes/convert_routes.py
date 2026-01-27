@@ -1,5 +1,6 @@
 """Blueprint de conversao MD->HTML/PDF com Storage + registro DB."""
 
+import logging
 import os
 from datetime import datetime
 
@@ -12,6 +13,8 @@ from utils.markdown_converter import MarkdownConverter
 from utils.pdf_converter import PDFConverter
 from utils.supabase_client import supa_service
 from utils.theme_manager import ThemeManager
+
+logger = logging.getLogger(__name__)
 
 convert_bp = Blueprint("convert", __name__)
 
@@ -156,7 +159,10 @@ def convert_file():
 
         filename = generate_filename()
 
-        os.remove(upload_path)
+        try:
+            os.remove(upload_path)
+        except OSError:
+            logger.warning("Falha ao remover arquivo temporario: %s", upload_path)
 
         # Upload para Supabase Storage + registro no banco
         storage_path = supa_service.upload_file(rendered_html.encode("utf-8"), "html")
@@ -254,7 +260,10 @@ def convert_markdown_to_pdf():
         with open(pdf_path, "rb") as f:
             pdf_content = f.read()
 
-        os.remove(pdf_path)
+        try:
+            os.remove(pdf_path)
+        except OSError:
+            logger.warning("Falha ao remover PDF temporario: %s", pdf_path)
 
         # Upload HTML para Storage
         html_storage_path = supa_service.upload_file(
@@ -389,8 +398,11 @@ def convert_file_to_pdf():
         with open(pdf_path, "rb") as f:
             pdf_content = f.read()
 
-        os.remove(pdf_path)
-        os.remove(upload_path)
+        for path in (pdf_path, upload_path):
+            try:
+                os.remove(path)
+            except OSError:
+                logger.warning("Falha ao remover arquivo temporario: %s", path)
 
         # Upload HTML e PDF para Storage
         html_storage_path = supa_service.upload_file(

@@ -88,7 +88,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
           <div>
             <label className="block text-sm font-medium text-gray-700">Email *</label>
             <input
-              type="text"
+              type="email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
@@ -99,7 +99,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
           <div>
             <label className="block text-sm font-medium text-gray-700">Senha *</label>
             <input
-              type="text"
+              type="password"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
@@ -193,7 +193,7 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
           <div>
             <label className="block text-sm font-medium text-gray-700">Nova senha *</label>
             <input
-              type="text"
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
@@ -350,17 +350,17 @@ export default function AccountsPage() {
                     {account.email}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">
-                    {account.full_name || '-'}
+                    {account.user_metadata?.full_name || '-'}
                   </td>
                   <td className="px-4 py-3">
                     <span
                       className={
-                        account.role === 'admin'
+                        account.user_metadata?.role === 'admin'
                           ? 'inline-flex rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-700'
                           : 'inline-flex rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700'
                       }
                     >
-                      {account.role}
+                      {account.user_metadata?.role || '-'}
                     </span>
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-600">

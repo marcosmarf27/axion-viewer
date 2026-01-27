@@ -1,15 +1,19 @@
 """Blueprint de download e preview via Supabase Storage."""
 
+import logging
 import os
+import urllib.request
 from datetime import datetime
 
-from flask import Blueprint, jsonify, redirect, request
+from flask import Blueprint, g, jsonify, redirect, request
 
 from config import Config
 from utils.auth import admin_required, auth_required
 from utils.markdown_converter import MarkdownConverter
 from utils.pdf_converter import PDFConverter
 from utils.supabase_client import supa_service
+
+logger = logging.getLogger(__name__)
 
 files_bp = Blueprint("files", __name__)
 
@@ -71,8 +75,6 @@ def generate_pdf_from_document(document_id):
             return jsonify({"error": "Erro ao acessar documento"}), 500
 
         # Baixar conteudo HTML
-        import urllib.request
-
         with urllib.request.urlopen(signed_url) as response:
             html_content = response.read().decode("utf-8")
 
@@ -88,7 +90,10 @@ def generate_pdf_from_document(document_id):
         with open(pdf_path, "rb") as f:
             pdf_content = f.read()
 
-        os.remove(pdf_path)
+        try:
+            os.remove(pdf_path)
+        except OSError:
+            logger.warning("Falha ao remover PDF temporario: %s", pdf_path)
 
         # Upload PDF para Storage
         pdf_storage_path = supa_service.upload_file(pdf_content, "pdf")
@@ -103,7 +108,7 @@ def generate_pdf_from_document(document_id):
                     "file_size": len(pdf_content),
                     "title": doc.get("title", ""),
                     "theme": doc.get("theme", ""),
-                    "created_by": doc.get("created_by"),
+                    "created_by": doc.get("created_by") or g.user_id,
                 }
             )
         except Exception:

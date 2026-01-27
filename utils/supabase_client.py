@@ -8,6 +8,26 @@ from config import Config
 logger = logging.getLogger(__name__)
 
 
+ALLOWED_SORT_FIELDS = {
+    "created_at",
+    "updated_at",
+    "nome",
+    "email",
+    "documento",
+    "descricao",
+    "numero_cnj",
+    "polo_ativo",
+    "polo_passivo",
+    "comarca",
+    "filename",
+    "title",
+    "original_name",
+    "file_type",
+    "credor_principal",
+    "devedor_principal",
+}
+
+
 class SupabaseService:
     """Servico centralizado para operacoes no Supabase (Storage, DB, Auth)."""
 
@@ -58,7 +78,7 @@ class SupabaseService:
         result = self.client.storage.from_("documents").create_signed_url(
             storage_path, expires_in
         )
-        return result.get("signedURL") or result.get("signedUrl")
+        return result.get("signedUrl") or result.get("signedURL")
 
     # ========== CRUD GENERICO ==========
 
@@ -86,6 +106,8 @@ class SupabaseService:
             conditions = ",".join(f"{f}.ilike.%{search}%" for f in search_fields)
             query = query.or_(conditions)
 
+        if sort_field not in ALLOWED_SORT_FIELDS:
+            sort_field = "created_at"
         desc = sort_order == "desc"
         query = query.order(sort_field, desc=desc)
 
@@ -263,6 +285,15 @@ class SupabaseService:
 
     def grant_carteira_access(self, profile_id, carteira_id, granted_by):
         """Concede acesso de um profile a uma carteira."""
+        existing = (
+            self.client.table("cliente_carteira_access")
+            .select("id")
+            .eq("profile_id", profile_id)
+            .eq("carteira_id", carteira_id)
+            .execute()
+        )
+        if existing.data:
+            return existing
         return self._create(
             "cliente_carteira_access",
             {
@@ -345,37 +376,34 @@ class SupabaseService:
         carteiras = self.get_client_carteiras(profile_id)
         carteira_ids = [c["id"] for c in carteiras]
 
-        total_casos = 0
+        if not carteira_ids:
+            return {
+                "total_carteiras": 0,
+                "total_casos": 0,
+                "total_processos": 0,
+                "carteiras": [],
+            }
+
+        # Buscar total de casos de todas as carteiras em uma unica query
+        casos_result = (
+            self.client.table("casos")
+            .select("id", count="exact")
+            .in_("carteira_id", carteira_ids)
+            .execute()
+        )
+        total_casos = casos_result.count or 0
+
+        # Buscar processos vinculados aos casos encontrados
         total_processos = 0
-        for cid in carteira_ids:
-            casos = (
-                self.client.table("casos")
+        caso_ids = [c["id"] for c in casos_result.data] if casos_result.data else []
+        if caso_ids:
+            processos_result = (
+                self.client.table("processos")
                 .select("id", count="exact")
-                .eq("carteira_id", cid)
+                .in_("caso_id", caso_ids)
                 .execute()
             )
-            total_casos += casos.count or 0
-            processos = (
-                (
-                    self.client.table("processos")
-                    .select("id", count="exact")
-                    .in_(
-                        "caso_id",
-                        [
-                            c["id"]
-                            for c in self.client.table("casos")
-                            .select("id")
-                            .eq("carteira_id", cid)
-                            .execute()
-                            .data
-                        ],
-                    )
-                    .execute()
-                )
-                if casos.data
-                else type("R", (), {"count": 0})()
-            )
-            total_processos += processos.count or 0
+            total_processos = processos_result.count or 0
 
         return {
             "total_carteiras": len(carteiras),
