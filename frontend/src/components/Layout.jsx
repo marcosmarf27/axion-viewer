@@ -332,7 +332,7 @@ export default function Layout() {
         </div>
 
         {/* Navigation groups */}
-        <nav className="flex-1 overflow-y-auto px-3 py-4">
+        <nav className="flex-1 overflow-y-auto px-3 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {navGroups.map((group, gi) => (
             <div key={group.label} className={cn(gi > 0 && 'mt-6')}>
               <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
