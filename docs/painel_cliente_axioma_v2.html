@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axioma Intelligence | Painel do Cliente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f5f6f8;
+            --color-bg-elevated: #ffffff;
+            --color-bg-card: #ffffff;
+            --color-bg-hover: #f0f1f3;
+            --color-border: #dfe1e5;
+            --color-border-subtle: #e8eaed;
+            --color-text: #1a1d21;
+            --color-text-muted: #5f6368;
+            --color-text-subtle: #80868b;
+            --color-accent: #1a365d;
+            --color-accent-hover: #234578;
+            --color-accent-subtle: rgba(26, 54, 93, 0.06);
+            --color-accent-gold: #8b6914;
+            --color-accent-gold-subtle: rgba(139, 105, 20, 0.08);
+            --color-success: #137333;
+            --color-success-bg: rgba(19, 115, 51, 0.08);
+            --color-warning: #b06000;
+            --color-warning-bg: rgba(176, 96, 0, 0.08);
+            --color-danger: #c5221f;
+            --color-danger-bg: rgba(197, 34, 31, 0.08);
+            --color-info: #1967d2;
+            --color-info-bg: rgba(25, 103, 210, 0.08);
+            --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.08);
+            --transition: 0.15s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            font-size: 13px;
+            line-height: 1.5;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout */
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--color-bg-elevated);
+            border-right: 1px solid var(--color-border-subtle);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
+
+        .logo {
+            padding: 20px;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .logo h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-accent);
+            letter-spacing: -0.02em;
+        }
+
+        .logo h1 span {
+            color: var(--color-accent-gold);
+        }
+
+        .logo p {
+            font-size: 10px;
+            color: var(--color-text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        /* Carteira Selector */
+        .carteira-selector {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--color-border-subtle);
+            background: var(--color-bg);
+        }
+
+        .carteira-selector label {
+            display: block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-subtle);
+            margin-bottom: 8px;
+        }
+
+        .carteira-select {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            transition: var(--transition);
+        }
+
+        .carteira-select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px var(--color-accent-subtle);
+        }
+
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-subtle);
+            margin-bottom: 12px;
+        }
+
+        .filter-group {
+            margin-bottom: 14px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 11px;
+            color: var(--color-text-muted);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 8px 10px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 12px;
+            transition: var(--transition);
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 2px var(--color-accent-subtle);
+        }
+
+        .filter-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-bg-hover);
+            color: var(--color-text);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--color-border-subtle);
+            background: var(--color-bg);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 11px;
+        }
+
+        .user-details h4 {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .user-details p {
+            font-size: 10px;
+            color: var(--color-text-muted);
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            margin-left: 260px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 16px 28px;
+            background: var(--color-bg-elevated);
+            border-bottom: 1px solid var(--color-border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-left h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: -0.01em;
+        }
+
+        .header-left p {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            margin-top: 1px;
+        }
+
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 14px 8px 36px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 12px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: var(--color-bg-elevated);
+        }
+
+        .search-box input::placeholder {
+            color: var(--color-text-subtle);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-subtle);
+            width: 14px;
+            height: 14px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 24px 28px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 16px 18px;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            border-color: var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card.highlight {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #234578 100%);
+            border-color: transparent;
+        }
+
+        .stat-card.highlight h4,
+        .stat-card.highlight .value {
+            color: #ffffff;
+        }
+
+        .stat-card.highlight h4 {
+            opacity: 0.8;
+        }
+
+        .stat-card h4 {
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-text-muted);
+            margin-bottom: 6px;
+        }
+
+        .stat-card .value {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: -0.02em;
+        }
+
+        /* Cases Table */
+        .cases-section {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .cases-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .cases-header h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .cases-tabs {
+            display: flex;
+            gap: 2px;
+        }
+
+        .tab {
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab:hover {
+            color: var(--color-text);
+            background: var(--color-bg-hover);
+        }
+
+        .tab.active {
+            color: var(--color-accent);
+            background: var(--color-accent-subtle);
+        }
+
+        .cases-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cases-table th {
+            padding: 10px 18px;
+            text-align: left;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-text-subtle);
+            background: var(--color-bg);
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .cases-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-border-subtle);
+            vertical-align: middle;
+        }
+
+        .cases-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cases-table tr:hover td {
+            background: var(--color-bg-hover);
+        }
+
+        .case-name {
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 1px;
+            font-size: 13px;
+        }
+
+        .case-devedor {
+            font-size: 11px;
+            color: var(--color-text-muted);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 500;
+            border-radius: 100px;
+            letter-spacing: 0.02em;
+        }
+
+        .badge-alta {
+            background: var(--color-success-bg);
+            color: var(--color-success);
+        }
+
+        .badge-potencial {
+            background: var(--color-warning-bg);
+            color: var(--color-warning);
+        }
+
+        .badge-critica {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .badge-indefinida {
+            background: rgba(95, 99, 104, 0.08);
+            color: #5f6368;
+        }
+
+        .badge-nenhuma {
+            background: var(--color-danger-bg);
+            color: var(--color-danger);
+        }
+
+        .badge-tese {
+            background: var(--color-info-bg);
+            color: var(--color-info);
+        }
+
+        .valor {
+            font-family: var(--font-mono);
+            font-weight: 500;
+            color: var(--color-text);
+            font-size: 12px;
+        }
+
+        .processos-count {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--color-text-muted);
+            font-size: 12px;
+        }
+
+        .processos-count svg {
+            color: var(--color-text-subtle);
+            width: 13px;
+            height: 13px;
+        }
+
+        .data {
+            color: var(--color-text-muted);
+            font-size: 12px;
+            font-family: var(--font-mono);
+        }
+
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-icon:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #ffffff;
+        }
+
+        .btn-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Case Report Section */
+        .case-report-section {
+            background: var(--color-accent-gold-subtle);
+            border: 1px solid rgba(139, 105, 20, 0.25);
+            border-radius: var(--radius-md);
+            padding: 16px 18px;
+            margin-bottom: 24px;
+        }
+
+        .case-report-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .case-report-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .case-report-info svg {
+            color: var(--color-accent-gold);
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+        }
+
+        .case-report-info h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1px;
+        }
+
+        .case-report-info p {
+            font-size: 11px;
+            color: var(--color-text-muted);
+        }
+
+        .case-report-downloads {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .btn-download-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 14px;
+            background: var(--color-accent-gold);
+            border: none;
+            border-radius: var(--radius-sm);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-download-primary:hover {
+            background: #6d5410;
+        }
+
+        .btn-download-primary svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 860px;
+            max-height: 85vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(20px);
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--color-border-subtle);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            background: var(--color-bg);
+        }
+
+        .modal-header h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 2px;
+        }
+
+        .modal-header p {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .modal-close {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--color-bg-hover);
+            color: var(--color-text);
+        }
+
+        .modal-close svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .case-details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .detail-item label {
+            display: block;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-text-subtle);
+            margin-bottom: 3px;
+        }
+
+        .detail-item span {
+            font-size: 13px;
+            color: var(--color-text);
+        }
+
+        .processos-list h4 {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-text-muted);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .processo-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .processo-card:hover {
+            border-color: var(--color-border);
+        }
+
+        .processo-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .processo-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .processo-cnj {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--color-accent);
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+
+        .processo-tipo {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .processo-incidental {
+            font-size: 9px;
+            padding: 2px 7px;
+            background: var(--color-bg-hover);
+            color: var(--color-text-subtle);
+            border-radius: 100px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .processo-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .processo-info-item {
+            font-size: 11px;
+        }
+
+        .processo-info-item label {
+            display: block;
+            color: var(--color-text-subtle);
+            margin-bottom: 1px;
+            font-size: 10px;
+        }
+
+        .processo-info-item span {
+            color: var(--color-text);
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            color: var(--color-text-muted);
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #ffffff;
+        }
+
+        .btn-download svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-text-subtle);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .case-details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .processo-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .main {
+                margin-left: 0;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .search-box {
+                width: 100%;
+            }
+            .header {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Axioma<span>.</span></h1>
+                <p>Intelligence</p>
+            </div>
+
+            <!-- Carteira Selector -->
+            <div class="carteira-selector">
+                <label>Carteira</label>
+                <select class="carteira-select" id="carteiraSelect">
+                    <option value="sicood">Sicood Credicitrus</option>
+                    <option value="npl-btg">NPL BTG Q4/2025</option>
+                    <option value="enforce">Enforce Lote 47</option>
+                </select>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3>Filtros</h3>
+                    
+                    <div class="filter-group">
+                        <label>Tese</label>
+                        <select>
+                            <option value="">Todas as teses</option>
+                            <option value="npl">NPL</option>
+                            <option value="rj">Recuperação Judicial</option>
+                            <option value="divida">Dívida Ativa</option>
+                            <option value="litigation">Litigation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Recuperabilidade</label>
+                        <select>
+                            <option value="">Todas</option>
+                            <option value="alta">Alta</option>
+                            <option value="potencial">Potencial</option>
+                            <option value="critica">Crítica</option>
+                            <option value="indefinida">Indefinida</option>
+                            <option value="nenhuma">Nenhuma</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>UF</label>
+                        <select>
+                            <option value="">Todos os estados</option>
+                            <option value="sp">São Paulo</option>
+                            <option value="rj">Rio de Janeiro</option>
+                            <option value="mg">Minas Gerais</option>
+                            <option value="pr">Paraná</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Período da Análise</label>
+                        <input type="date">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary btn-block">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                    </svg>
+                    Aplicar Filtros
+                </button>
+                
+                <button class="btn btn-secondary btn-block" style="margin-top: 6px;">
+                    Limpar Filtros
+                </button>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">BT</div>
+                    <div class="user-details">
+                        <h4>BTG Pactual</h4>
+                        <p>Gestor de Carteira</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <header class="header">
+                <div class="header-left">
+                    <h2>Meus Relatórios</h2>
+                    <p>Acesse e baixe os relatórios da sua carteira</p>
+                </div>
+                
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <input type="text" placeholder="Buscar por CNJ, devedor ou credor...">
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card highlight">
+                        <h4>Carteira</h4>
+                        <div class="value" id="carteiraNome">Sicood Credicitrus</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total de Casos</h4>
+                        <div class="value">47</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Processos Analisados</h4>
+                        <div class="value">156</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Valor Total</h4>
+                        <div class="value">R$ 89,4M</div>
+                    </div>
+                </div>
+
+                <!-- Cases Table -->
+                <div class="cases-section">
+                    <div class="cases-header">
+                        <h3>Casos</h3>
+                        <div class="cases-tabs">
+                            <button class="tab active">Todos</button>
+                            <button class="tab">NPL</button>
+                            <button class="tab">RJ</button>
+                            <button class="tab">Dívida Ativa</button>
+                        </div>
+                    </div>
+                    
+                    <table class="cases-table">
+                        <thead>
+                            <tr>
+                                <th>Caso / Devedor</th>
+                                <th>Tese</th>
+                                <th>Recuperab.</th>
+                                <th>Valor</th>
+                                <th>Processos</th>
+                                <th>Análise</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr onclick="openModal('case1')">
+                                <td>
+                                    <div class="case-name">Caso Indústrias ABC</div>
+                                    <div class="case-devedor">Indústrias ABC Ltda · 12.345.678/0001-90</div>
+                                </td>
+                                <td><span class="badge badge-tese">NPL</span></td>
+                                <td><span class="badge badge-alta">Alta</span></td>
+                                <td><span class="valor">R$ 4.520.000</span></td>
+                                <td>
+                                    <span class="processos-count">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                        4
+                                    </span>
+                                </td>
+                                <td><span class="data">22/01/26</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Baixar relatório" onclick="event.stopPropagation()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                <polyline points="7 10 12 15 17 10"/>
+                                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn-icon" title="Ver detalhes">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                <circle cx="12" cy="12" r="3"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr onclick="openModal('case2')">
+                                <td>
+                                    <div class="case-name">Caso Comercial XYZ</div>
+                                    <div class="case-devedor">Comercial XYZ S.A. · 98.765.432/0001-10</div>
+                                </td>
+                                <td><span class="badge badge-tese">NPL</span></td>
+                                <td><span class="badge badge-potencial">Potencial</span></td>
+                                <td><span class="valor">R$ 8.750.000</span></td>
+                                <td>
+                                    <span class="processos-count">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                        7
+                                    </span>
+                                </td>
+                                <td><span class="data">21/01/26</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Baixar relatório" onclick="event.stopPropagation()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                <polyline points="7 10 12 15 17 10"/>
+                                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn-icon" title="Ver detalhes">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                <circle cx="12" cy="12" r="3"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr onclick="openModal('case3')">
+                                <td>
+                                    <div class="case-name">Caso Transportes Beta</div>
+                                    <div class="case-devedor">Transportes Beta Ltda · 11.222.333/0001-44</div>
+                                </td>
+                                <td><span class="badge badge-tese">RJ</span></td>
+                                <td><span class="badge badge-critica">Crítica</span></td>
+                                <td><span class="valor">R$ 2.180.000</span></td>
+                                <td>
+                                    <span class="processos-count">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                        2
+                                    </span>
+                                </td>
+                                <td><span class="data">20/01/26</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Baixar relatório" onclick="event.stopPropagation()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                <polyline points="7 10 12 15 17 10"/>
+                                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn-icon" title="Ver detalhes">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                <circle cx="12" cy="12" r="3"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr onclick="openModal('case4')">
+                                <td>
+                                    <div class="case-name">Caso Construtora Delta</div>
+                                    <div class="case-devedor">Construtora Delta S.A. · 55.666.777/0001-88</div>
+                                </td>
+                                <td><span class="badge badge-tese">Dívida Ativa</span></td>
+                                <td><span class="badge badge-nenhuma">Nenhuma</span></td>
+                                <td><span class="valor">R$ 15.320.000</span></td>
+                                <td>
+                                    <span class="processos-count">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                        12
+                                    </span>
+                                </td>
+                                <td><span class="data">19/01/26</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Baixar relatório" onclick="event.stopPropagation()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                <polyline points="7 10 12 15 17 10"/>
+                                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn-icon" title="Ver detalhes">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                <circle cx="12" cy="12" r="3"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr onclick="openModal('case5')">
+                                <td>
+                                    <div class="case-name">Caso Metalúrgica Omega</div>
+                                    <div class="case-devedor">Metalúrgica Omega Ltda · 33.444.555/0001-22</div>
+                                </td>
+                                <td><span class="badge badge-tese">NPL</span></td>
+                                <td><span class="badge badge-alta">Alta</span></td>
+                                <td><span class="valor">R$ 6.890.000</span></td>
+                                <td>
+                                    <span class="processos-count">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                            <polyline points="14 2 14 8 20 8"/>
+                                        </svg>
+                                        5
+                                    </span>
+                                </td>
+                                <td><span class="data">18/01/26</span></td>
+                                <td>
+                                    <div class="actions">
+                                        <button class="btn-icon" title="Baixar relatório" onclick="event.stopPropagation()">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                <polyline points="7 10 12 15 17 10"/>
+                                                <line x1="12" y1="15" x2="12" y2="3"/>
+                                            </svg>
+                                        </button>
+                                        <button class="btn-icon" title="Ver detalhes">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                                <circle cx="12" cy="12" r="3"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modalTitle">Caso Indústrias ABC</h3>
+                    <p id="modalSubtitle">Indústrias ABC Ltda · 12.345.678/0001-90</p>
+                </div>
+                <button class="modal-close" onclick="closeModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="case-details-grid">
+                    <div class="detail-item">
+                        <label>Credor Principal</label>
+                        <span>Banco Creditor S.A.</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Tese</label>
+                        <span><span class="badge badge-tese">NPL</span></span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Recuperabilidade</label>
+                        <span><span class="badge badge-alta">Alta</span></span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Valor Total</label>
+                        <span class="valor">R$ 4.520.000,00</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>UF Principal</label>
+                        <span>São Paulo</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Data da Análise</label>
+                        <span>22/01/2026</span>
+                    </div>
+                </div>
+
+                <!-- Relatório Consolidado do Caso -->
+                <div class="case-report-section">
+                    <div class="case-report-header">
+                        <div class="case-report-info">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                            <div>
+                                <h4>Relatório Consolidado do Caso</h4>
+                                <p>Análise completa com todos os processos e recomendação estratégica</p>
+                            </div>
+                        </div>
+                        <div class="case-report-downloads">
+                            <a href="#" class="btn-download-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                HTML
+                            </a>
+                            <a href="#" class="btn-download-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="processos-list">
+                    <h4>Relatórios por Processo (4)</h4>
+                    
+                    <!-- Processo Principal -->
+                    <div class="processo-card">
+                        <div class="processo-header">
+                            <div>
+                                <div class="processo-cnj">1234567-89.2023.8.26.0100</div>
+                                <div class="processo-tipo">Execução de Título Extrajudicial</div>
+                            </div>
+                            <span class="badge badge-alta">Alta</span>
+                        </div>
+                        <div class="processo-info">
+                            <div class="processo-info-item">
+                                <label>Polo Ativo</label>
+                                <span>Banco Creditor S.A.</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Polo Passivo</label>
+                                <span>Indústrias ABC Ltda</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Valor Atualizado</label>
+                                <span>R$ 3.250.000,00</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Tribunal / Vara</label>
+                                <span>TJSP · 2ª Vara Cível</span>
+                            </div>
+                        </div>
+                        <div class="download-buttons">
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                HTML
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                MD
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                JSON
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                TXT
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Processo Incidental 1 -->
+                    <div class="processo-card">
+                        <div class="processo-header">
+                            <div>
+                                <div class="processo-cnj">1234568-89.2023.8.26.0100</div>
+                                <div class="processo-tipo">Embargos à Execução</div>
+                            </div>
+                            <span class="processo-incidental">Incidental</span>
+                        </div>
+                        <div class="processo-info">
+                            <div class="processo-info-item">
+                                <label>Polo Ativo</label>
+                                <span>Indústrias ABC Ltda</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Polo Passivo</label>
+                                <span>Banco Creditor S.A.</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Valor da Causa</label>
+                                <span>R$ 3.250.000,00</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Tribunal / Vara</label>
+                                <span>TJSP · 2ª Vara Cível</span>
+                            </div>
+                        </div>
+                        <div class="download-buttons">
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                HTML
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                MD
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                JSON
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                TXT
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Processo Incidental 2 -->
+                    <div class="processo-card">
+                        <div class="processo-header">
+                            <div>
+                                <div class="processo-cnj">2234567-89.2024.8.26.0000</div>
+                                <div class="processo-tipo">Agravo de Instrumento</div>
+                            </div>
+                            <span class="processo-incidental">Incidental</span>
+                        </div>
+                        <div class="processo-info">
+                            <div class="processo-info-item">
+                                <label>Polo Ativo</label>
+                                <span>Banco Creditor S.A.</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Polo Passivo</label>
+                                <span>Indústrias ABC Ltda</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Valor da Causa</label>
+                                <span>—</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Tribunal / Vara</label>
+                                <span>TJSP · 15ª Câmara</span>
+                            </div>
+                        </div>
+                        <div class="download-buttons">
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                HTML
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                MD
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                JSON
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                TXT
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Outro Processo -->
+                    <div class="processo-card">
+                        <div class="processo-header">
+                            <div>
+                                <div class="processo-cnj">9876543-21.2022.8.26.0114</div>
+                                <div class="processo-tipo">Execução de Título Extrajudicial</div>
+                            </div>
+                            <span class="badge badge-potencial">Potencial</span>
+                        </div>
+                        <div class="processo-info">
+                            <div class="processo-info-item">
+                                <label>Polo Ativo</label>
+                                <span>Fornecedor Beta Ltda</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Polo Passivo</label>
+                                <span>Indústrias ABC Ltda</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Valor Atualizado</label>
+                                <span>R$ 1.270.000,00</span>
+                            </div>
+                            <div class="processo-info-item">
+                                <label>Tribunal / Vara</label>
+                                <span>TJSP · 1ª Vara Campinas</span>
+                            </div>
+                        </div>
+                        <div class="download-buttons">
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                HTML
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                MD
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                JSON
+                            </a>
+                            <a href="#" class="btn-download">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                TXT
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carteira selector
+        const carteiraSelect = document.getElementById('carteiraSelect');
+        const carteiraNome = document.getElementById('carteiraNome');
+        
+        const carteiras = {
+            'sicood': 'Sicood Credicitrus',
+            'npl-btg': 'NPL BTG Q4/2025',
+            'enforce': 'Enforce Lote 47'
+        };
+        
+        carteiraSelect.addEventListener('change', function() {
+            carteiraNome.textContent = carteiras[this.value];
+        });
+
+        function openModal(caseId) {
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        document.querySelectorAll('.cases-table tbody tr').forEach(row => {
+            row.style.cursor = 'pointer';
+        });
+    </script>
+</body>
+</html>
