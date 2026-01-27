@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import TypewriterASCII from '@/components/TypewriterASCII';
 
 export default function LoginPage() {
   const { user, loading, signIn } = useAuth();
@@ -117,21 +118,11 @@ export default function LoginPage() {
 
       {/* Right Panel — Corporate Branding */}
       <div className="relative hidden overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 lg:flex lg:w-1/2 lg:items-center lg:justify-center">
-        {/* Grid pattern overlay */}
-        <svg
-          className="absolute inset-0 h-full w-full opacity-[0.04]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+        {/* Typewriter ASCII background */}
+        <TypewriterASCII className="absolute inset-0 z-0" />
 
         {/* Subtle radial glow */}
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 z-[1] h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/10 blur-3xl" />
 
         {/* Content */}
         <div className="relative z-10 max-w-md px-10 text-center">
