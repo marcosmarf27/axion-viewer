@@ -16,6 +16,7 @@ import ConvertPage from '@/pages/admin/ConvertPage';
 import ThemesPage from '@/pages/admin/ThemesPage';
 import AccountsPage from '@/pages/admin/AccountsPage';
 import SharingPage from '@/pages/admin/SharingPage';
+import DocsPage from '@/pages/admin/DocsPage';
 
 // Client pages
 import ClientCarteirasPage from '@/pages/client/ClientCarteirasPage';
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="admin/themes" element={<ThemesPage />} />
             <Route path="admin/accounts" element={<AccountsPage />} />
             <Route path="admin/sharing" element={<SharingPage />} />
+            <Route path="admin/docs" element={<DocsPage />} />
           </Route>
 
           {/* Client routes */}
