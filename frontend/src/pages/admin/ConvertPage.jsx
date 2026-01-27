@@ -177,10 +177,10 @@ export default function ConvertPage() {
             <select
               id="theme-select"
               value={selectedTheme}
-              onChange={(e) => setSelectedTheme(e.target.value)}
+              onChange={e => setSelectedTheme(e.target.value)}
               className={INPUT_CLASS}
             >
-              {themes.map((theme) => (
+              {themes.map(theme => (
                 <option key={theme.name} value={theme.name}>
                   {theme.name} - {theme.description}
                 </option>
@@ -196,11 +196,11 @@ export default function ConvertPage() {
             <select
               id="processo-select"
               value={processoId}
-              onChange={(e) => setProcessoId(e.target.value)}
+              onChange={e => setProcessoId(e.target.value)}
               className={INPUT_CLASS}
             >
               <option value="">Nenhum - documento avulso</option>
-              {processos.map((proc) => (
+              {processos.map(proc => (
                 <option key={proc.id} value={proc.id}>
                   {proc.numero_cnj}
                 </option>
@@ -217,7 +217,7 @@ export default function ConvertPage() {
               id="title-input"
               type="text"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
               placeholder="Titulo do documento (opcional)"
               className={INPUT_CLASS}
             />
@@ -233,7 +233,7 @@ export default function ConvertPage() {
                   type="file"
                   accept=".md"
                   className="hidden"
-                  onChange={(e) => handleFileUpload(e, 'html')}
+                  onChange={e => handleFileUpload(e, 'html')}
                   disabled={loading}
                 />
               </label>
@@ -243,7 +243,7 @@ export default function ConvertPage() {
                   type="file"
                   accept=".md"
                   className="hidden"
-                  onChange={(e) => handleFileUpload(e, 'pdf')}
+                  onChange={e => handleFileUpload(e, 'pdf')}
                   disabled={loading}
                 />
               </label>
@@ -283,7 +283,7 @@ export default function ConvertPage() {
           </div>
           <textarea
             value={markdown}
-            onChange={(e) => setMarkdown(e.target.value)}
+            onChange={e => setMarkdown(e.target.value)}
             placeholder="Digite seu markdown aqui..."
             className="flex-1 resize-none p-4 font-mono text-sm focus:outline-none"
             style={{ minHeight: '400px' }}

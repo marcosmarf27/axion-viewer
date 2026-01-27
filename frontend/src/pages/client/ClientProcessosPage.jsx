@@ -96,7 +96,13 @@ export default function ClientProcessosPage() {
     setLoading(true);
     setError(null);
     try {
-      const params = { page, per_page: 20, caso_id: casoId, sort_field: sortField, sort_order: sortOrder };
+      const params = {
+        page,
+        per_page: 20,
+        caso_id: casoId,
+        sort_field: sortField,
+        sort_order: sortOrder,
+      };
       if (search) params.search = search;
       if (filterTipoTese) params.tipo_tese = filterTipoTese;
       if (filterRecuperabilidade) params.recuperabilidade = filterRecuperabilidade;
@@ -425,9 +431,7 @@ export default function ClientProcessosPage() {
         )}
       </div>
 
-      {error && (
-        <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-      )}
+      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />

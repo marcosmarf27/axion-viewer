@@ -176,7 +176,10 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
   const set = (field, value) => setForm(prev => ({ ...prev, [field]: value }));
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={onClose}
+    >
       <div
         className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
@@ -185,9 +188,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
           {editing ? 'Editar Processo' : 'Novo Processo'}
         </h2>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-        )}
+        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -451,7 +452,9 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* data_ultima_movimentacao */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Data Ultima Movimentacao</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Data Ultima Movimentacao
+              </label>
               <input
                 type="date"
                 value={form.data_ultima_movimentacao}
@@ -620,7 +623,13 @@ export default function ProcessosPage() {
           className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           <span className="flex items-center gap-2">
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -768,9 +777,7 @@ export default function ProcessosPage() {
         )}
       </div>
 
-      {error && (
-        <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-      )}
+      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -859,9 +866,7 @@ export default function ProcessosPage() {
                         <span className="text-sm text-gray-400">-</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
-                      {processo.uf || '-'}
-                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{processo.uf || '-'}</td>
                     <td className="px-4 py-3">
                       <span
                         className={cn(

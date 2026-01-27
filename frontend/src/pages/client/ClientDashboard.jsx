@@ -127,9 +127,7 @@ export default function ClientDashboard() {
                     </span>
                   </div>
                   {carteira.descricao && (
-                    <p className="mb-3 line-clamp-2 text-sm text-gray-500">
-                      {carteira.descricao}
-                    </p>
+                    <p className="mb-3 line-clamp-2 text-sm text-gray-500">{carteira.descricao}</p>
                   )}
                   <div className="flex gap-4 text-sm text-gray-600">
                     <span>

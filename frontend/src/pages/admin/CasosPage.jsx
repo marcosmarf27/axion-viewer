@@ -133,7 +133,10 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={onClose}
+    >
       <div
         className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
@@ -142,9 +145,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
           {editing ? 'Editar Caso' : 'Novo Caso'}
         </h2>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-        )}
+        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -520,18 +521,24 @@ export default function CasosPage() {
         </div>
       </div>
 
-      {error && (
-        <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-      )}
+      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
       ) : casos.length === 0 ? (
         <EmptyState
           title="Nenhum caso"
-          description={search || filterCarteira || filterTese || filterRecuperabilidade || filterStatus ? 'Nenhum resultado para os filtros aplicados' : 'Comece criando um novo caso'}
+          description={
+            search || filterCarteira || filterTese || filterRecuperabilidade || filterStatus
+              ? 'Nenhum resultado para os filtros aplicados'
+              : 'Comece criando um novo caso'
+          }
           action={
-            !search && !filterCarteira && !filterTese && !filterRecuperabilidade && !filterStatus && (
+            !search &&
+            !filterCarteira &&
+            !filterTese &&
+            !filterRecuperabilidade &&
+            !filterStatus && (
               <button
                 onClick={openCreate}
                 className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"

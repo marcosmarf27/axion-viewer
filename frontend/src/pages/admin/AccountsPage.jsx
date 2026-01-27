@@ -46,7 +46,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
 
   if (!open) return null;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!form.email.trim()) {
       setError('Email e obrigatorio');
@@ -73,16 +73,17 @@ function CreateAccountModal({ open, onSave, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={onClose}
+    >
       <div
         className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
         <h2 className="mb-4 text-lg font-semibold text-gray-900">Nova Conta</h2>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-        )}
+        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -90,7 +91,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
             <input
               type="email"
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={e => setForm({ ...form, email: e.target.value })}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               required
             />
@@ -101,7 +102,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
             <input
               type="password"
               value={form.password}
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
+              onChange={e => setForm({ ...form, password: e.target.value })}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               required
             />
@@ -112,7 +113,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
             <input
               type="text"
               value={form.full_name}
-              onChange={(e) => setForm({ ...form, full_name: e.target.value })}
+              onChange={e => setForm({ ...form, full_name: e.target.value })}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
@@ -154,7 +155,7 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
 
   if (!open) return null;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!password || password.length < 6) {
       setError('Senha deve ter no minimo 6 caracteres');
@@ -173,21 +174,20 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={onClose}
+    >
       <div
         className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">
-          Resetar Senha
-        </h2>
+        <h2 className="mb-4 text-lg font-semibold text-gray-900">Resetar Senha</h2>
         <p className="mb-4 text-sm text-gray-600">
           Definir nova senha para <strong>{account?.email}</strong>
         </p>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-        )}
+        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -195,7 +195,7 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               required
             />
@@ -252,7 +252,7 @@ export default function AccountsPage() {
     fetchAccounts();
   }, [fetchAccounts]);
 
-  const handleCreate = async (formData) => {
+  const handleCreate = async formData => {
     await api.post('/accounts', formData);
     setFeedback({ message: 'Conta criada com sucesso', type: 'success' });
     fetchAccounts();
@@ -279,7 +279,7 @@ export default function AccountsPage() {
     }
   };
 
-  const formatDate = (dateStr) => {
+  const formatDate = dateStr => {
     if (!dateStr) return '-';
     return new Date(dateStr).toLocaleDateString('pt-BR', {
       day: '2-digit',
@@ -344,11 +344,9 @@ export default function AccountsPage() {
               </tr>
             </thead>
             <tbody className="divide-y">
-              {accounts.map((account) => (
+              {accounts.map(account => (
                 <tr key={account.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-sm font-medium text-gray-900">
-                    {account.email}
-                  </td>
+                  <td className="px-4 py-3 text-sm font-medium text-gray-900">{account.email}</td>
                   <td className="px-4 py-3 text-sm text-gray-600">
                     {account.user_metadata?.full_name || '-'}
                   </td>

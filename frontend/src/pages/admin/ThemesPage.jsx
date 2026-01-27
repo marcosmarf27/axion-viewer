@@ -57,9 +57,7 @@ export default function ThemesPage() {
         setThemes(response.data.themes);
         if (response.data.themes.length > 0) {
           if (preserveThemeName) {
-            const preservedTheme = response.data.themes.find(
-              (t) => t.name === preserveThemeName,
-            );
+            const preservedTheme = response.data.themes.find(t => t.name === preserveThemeName);
             if (preservedTheme) {
               setSelectedTheme(preservedTheme);
               return;
@@ -67,9 +65,7 @@ export default function ThemesPage() {
           }
           const savedDefault = localStorage.getItem('defaultTheme');
           if (savedDefault) {
-            const defaultThemeObj = response.data.themes.find(
-              (t) => t.name === savedDefault,
-            );
+            const defaultThemeObj = response.data.themes.find(t => t.name === savedDefault);
             if (defaultThemeObj) {
               setSelectedTheme(defaultThemeObj);
               return;
@@ -88,7 +84,7 @@ export default function ThemesPage() {
   };
 
   const handleColorChange = (colorKey, value) => {
-    setEditedTheme((prev) => ({
+    setEditedTheme(prev => ({
       ...prev,
       colors: {
         ...prev.colors,
@@ -98,7 +94,7 @@ export default function ThemesPage() {
   };
 
   const handleBorderChange = (borderKey, value) => {
-    setEditedTheme((prev) => ({
+    setEditedTheme(prev => ({
       ...prev,
       styling: {
         ...prev.styling,
@@ -111,7 +107,7 @@ export default function ThemesPage() {
   };
 
   const handleGradientChange = (gradientKey, value) => {
-    setEditedTheme((prev) => ({
+    setEditedTheme(prev => ({
       ...prev,
       styling: {
         ...prev.styling,
@@ -163,10 +159,7 @@ export default function ThemesPage() {
     setCreating(true);
     setSaveMessage(null);
     try {
-      const themeName = newTheme.name
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, '-');
+      const themeName = newTheme.name.trim().toLowerCase().replace(/\s+/g, '-');
       const response = await api.post('/themes', {
         name: themeName,
         description: newTheme.description || `Tema ${newTheme.name}`,
@@ -217,18 +210,12 @@ export default function ThemesPage() {
     }
   };
 
-  const getDerivedColors = (primaryColor) => {
+  const getDerivedColors = primaryColor => {
     const darken = (hex, factor) => {
       const color = hex.replace('#', '');
-      const r = Math.floor(
-        parseInt(color.substr(0, 2), 16) * (1 - factor),
-      );
-      const g = Math.floor(
-        parseInt(color.substr(2, 2), 16) * (1 - factor),
-      );
-      const b = Math.floor(
-        parseInt(color.substr(4, 2), 16) * (1 - factor),
-      );
+      const r = Math.floor(parseInt(color.substr(0, 2), 16) * (1 - factor));
+      const g = Math.floor(parseInt(color.substr(2, 2), 16) * (1 - factor));
+      const b = Math.floor(parseInt(color.substr(4, 2), 16) * (1 - factor));
       return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
     };
     return {
@@ -242,10 +229,7 @@ export default function ThemesPage() {
     if (selectedTheme) {
       localStorage.setItem('defaultTheme', selectedTheme.name);
       setDefaultTheme(selectedTheme.name);
-      showFeedback(
-        'success',
-        `"${selectedTheme.name}" definido como tema padrao!`,
-      );
+      showFeedback('success', `"${selectedTheme.name}" definido como tema padrao!`);
     }
   };
 
@@ -271,12 +255,9 @@ export default function ThemesPage() {
 
     setRenaming(true);
     try {
-      const response = await api.patch(
-        `/themes/${selectedTheme.name}/rename`,
-        {
-          new_name: cleanName,
-        },
-      );
+      const response = await api.patch(`/themes/${selectedTheme.name}/rename`, {
+        new_name: cleanName,
+      });
 
       if (response.data.success) {
         showFeedback('success', `Tema renomeado para "${cleanName}"!`);
@@ -389,9 +370,7 @@ export default function ThemesPage() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5">
-                    <span className="truncate text-sm font-medium text-gray-900">
-                      {theme.name}
-                    </span>
+                    <span className="truncate text-sm font-medium text-gray-900">{theme.name}</span>
                     {theme.name === defaultTheme && (
                       <span className="shrink-0 rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-700">
                         Padrao
@@ -399,9 +378,7 @@ export default function ThemesPage() {
                     )}
                   </div>
                   {theme.description && (
-                    <p className="truncate text-xs text-gray-500">
-                      {theme.description}
-                    </p>
+                    <p className="truncate text-xs text-gray-500">{theme.description}</p>
                   )}
                 </div>
               </button>
@@ -420,11 +397,11 @@ export default function ThemesPage() {
                     <input
                       type="text"
                       value={newThemeName}
-                      onChange={(e) => setNewThemeName(e.target.value)}
+                      onChange={e => setNewThemeName(e.target.value)}
                       className="mt-1 block w-48 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                       placeholder="Nome do tema"
                       autoFocus
-                      onKeyDown={(e) => {
+                      onKeyDown={e => {
                         if (e.key === 'Enter') handleRenameTheme();
                         if (e.key === 'Escape') cancelEditingName();
                       }}
@@ -490,9 +467,7 @@ export default function ThemesPage() {
                   disabled={selectedTheme?.name === defaultTheme}
                   className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
                 >
-                  {selectedTheme?.name === defaultTheme
-                    ? 'Tema Padrao'
-                    : 'Definir como Padrao'}
+                  {selectedTheme?.name === defaultTheme ? 'Tema Padrao' : 'Definir como Padrao'}
                 </button>
                 <button
                   onClick={handleReset}
@@ -519,36 +494,26 @@ export default function ThemesPage() {
                   Cores
                 </h4>
                 <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
-                  {Object.entries(editedTheme.colors || {}).map(
-                    ([key, value]) => (
-                      <div key={key} className="rounded-lg border p-3">
-                        <label className="block text-xs font-medium text-gray-600">
-                          {key}
-                        </label>
-                        <div className="mt-1.5 flex items-center gap-2">
-                          <input
-                            type="color"
-                            value={
-                              value.startsWith('rgba') ? '#000000' : value
-                            }
-                            onChange={(e) =>
-                              handleColorChange(key, e.target.value)
-                            }
-                            disabled={value.startsWith('rgba')}
-                            className="h-8 w-8 shrink-0 cursor-pointer rounded border border-gray-300"
-                          />
-                          <input
-                            type="text"
-                            value={value}
-                            onChange={(e) =>
-                              handleColorChange(key, e.target.value)
-                            }
-                            className="block w-full rounded-md border border-gray-300 px-2 py-1 text-xs shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                          />
-                        </div>
+                  {Object.entries(editedTheme.colors || {}).map(([key, value]) => (
+                    <div key={key} className="rounded-lg border p-3">
+                      <label className="block text-xs font-medium text-gray-600">{key}</label>
+                      <div className="mt-1.5 flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={value.startsWith('rgba') ? '#000000' : value}
+                          onChange={e => handleColorChange(key, e.target.value)}
+                          disabled={value.startsWith('rgba')}
+                          className="h-8 w-8 shrink-0 cursor-pointer rounded border border-gray-300"
+                        />
+                        <input
+                          type="text"
+                          value={value}
+                          onChange={e => handleColorChange(key, e.target.value)}
+                          className="block w-full rounded-md border border-gray-300 px-2 py-1 text-xs shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                        />
                       </div>
-                    ),
-                  )}
+                    </div>
+                  ))}
                 </div>
               </section>
 
@@ -558,15 +523,11 @@ export default function ThemesPage() {
                   Gradientes
                 </h4>
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                  {Object.entries(
-                    editedTheme.styling?.gradients || {},
-                  ).map(([key, value]) => {
+                  {Object.entries(editedTheme.styling?.gradients || {}).map(([key, value]) => {
                     const numValue = parseInt(value) || 135;
                     return (
                       <div key={key} className="rounded-lg border p-4">
-                        <label className="block text-xs font-medium text-gray-600">
-                          {key}
-                        </label>
+                        <label className="block text-xs font-medium text-gray-600">{key}</label>
                         <div
                           className="mt-2 h-6 w-full rounded"
                           style={{
@@ -579,9 +540,7 @@ export default function ThemesPage() {
                             min="0"
                             max="360"
                             value={numValue}
-                            onChange={(e) =>
-                              handleGradientChange(key, e.target.value)
-                            }
+                            onChange={e => handleGradientChange(key, e.target.value)}
                             className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-indigo-600"
                           />
                           <span className="shrink-0 text-xs font-medium text-gray-500">
@@ -600,15 +559,11 @@ export default function ThemesPage() {
                   Espessuras de Bordas
                 </h4>
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                  {Object.entries(
-                    editedTheme.styling?.borders || {},
-                  ).map(([key, value]) => {
+                  {Object.entries(editedTheme.styling?.borders || {}).map(([key, value]) => {
                     const numValue = parseInt(value) || 2;
                     return (
                       <div key={key} className="rounded-lg border p-4">
-                        <label className="block text-xs font-medium text-gray-600">
-                          {key}
-                        </label>
+                        <label className="block text-xs font-medium text-gray-600">{key}</label>
                         <div
                           className="mt-2 w-full"
                           style={{
@@ -621,9 +576,7 @@ export default function ThemesPage() {
                             min="1"
                             max="10"
                             value={numValue}
-                            onChange={(e) =>
-                              handleBorderChange(key, e.target.value)
-                            }
+                            onChange={e => handleBorderChange(key, e.target.value)}
                             className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-indigo-600"
                           />
                           <span className="shrink-0 text-xs font-medium text-gray-500">
@@ -649,9 +602,7 @@ export default function ThemesPage() {
                       background: `linear-gradient(${editedTheme.styling?.gradients?.header_angle || '135deg'}, ${editedTheme.colors.primary} 0%, ${editedTheme.colors.dark} 50%, ${editedTheme.colors.black_tone} 100%)`,
                     }}
                   >
-                    <h2 className="text-lg font-bold">
-                      Titulo do Documento
-                    </h2>
+                    <h2 className="text-lg font-bold">Titulo do Documento</h2>
                     <p className="text-sm opacity-80">Subtitulo exemplo</p>
                   </div>
 
@@ -684,9 +635,7 @@ export default function ThemesPage() {
                         borderLeft: `${editedTheme.styling?.borders?.alert_boxes || '4px'} solid ${editedTheme.colors.danger}`,
                       }}
                     >
-                      <strong style={{ color: editedTheme.colors.danger }}>
-                        Alerta Critico
-                      </strong>
+                      <strong style={{ color: editedTheme.colors.danger }}>Alerta Critico</strong>
                     </div>
 
                     <div
@@ -696,9 +645,7 @@ export default function ThemesPage() {
                         borderLeft: `${editedTheme.styling?.borders?.alert_boxes || '4px'} solid ${editedTheme.colors.warning}`,
                       }}
                     >
-                      <strong style={{ color: editedTheme.colors.warning }}>
-                        Alerta Medio
-                      </strong>
+                      <strong style={{ color: editedTheme.colors.warning }}>Alerta Medio</strong>
                     </div>
 
                     <div
@@ -708,9 +655,7 @@ export default function ThemesPage() {
                         borderLeft: `${editedTheme.styling?.borders?.alert_boxes || '4px'} solid ${editedTheme.colors.success}`,
                       }}
                     >
-                      <strong style={{ color: editedTheme.colors.success }}>
-                        Alerta Baixo
-                      </strong>
+                      <strong style={{ color: editedTheme.colors.success }}>Alerta Baixo</strong>
                     </div>
                   </div>
 
@@ -738,13 +683,11 @@ export default function ThemesPage() {
         >
           <div
             className="w-full max-w-lg rounded-lg bg-white shadow-xl"
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b px-6 py-4">
-              <h3 className="text-lg font-semibold text-gray-900">
-                Criar Novo Tema
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-900">Criar Novo Tema</h3>
               <button
                 onClick={() => setShowCreateModal(false)}
                 className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
@@ -757,11 +700,7 @@ export default function ThemesPage() {
                   stroke="currentColor"
                   strokeWidth={2}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
@@ -769,14 +708,12 @@ export default function ThemesPage() {
             {/* Modal Body */}
             <div className="space-y-4 px-6 py-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Nome do Tema *
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Nome do Tema *</label>
                 <input
                   type="text"
                   value={newTheme.name}
-                  onChange={(e) =>
-                    setNewTheme((prev) => ({
+                  onChange={e =>
+                    setNewTheme(prev => ({
                       ...prev,
                       name: e.target.value,
                     }))
@@ -785,20 +722,17 @@ export default function ThemesPage() {
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
                 <p className="mt-1 text-xs text-gray-500">
-                  Apenas letras, numeros e hifens. Sera convertido para
-                  minusculas.
+                  Apenas letras, numeros e hifens. Sera convertido para minusculas.
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Descricao
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Descricao</label>
                 <input
                   type="text"
                   value={newTheme.description}
-                  onChange={(e) =>
-                    setNewTheme((prev) => ({
+                  onChange={e =>
+                    setNewTheme(prev => ({
                       ...prev,
                       description: e.target.value,
                     }))
@@ -809,15 +743,13 @@ export default function ThemesPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  Cor Principal
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Cor Principal</label>
                 <div className="mt-1 flex items-center gap-3">
                   <input
                     type="color"
                     value={newTheme.primary_color}
-                    onChange={(e) =>
-                      setNewTheme((prev) => ({
+                    onChange={e =>
+                      setNewTheme(prev => ({
                         ...prev,
                         primary_color: e.target.value,
                       }))
@@ -827,8 +759,8 @@ export default function ThemesPage() {
                   <input
                     type="text"
                     value={newTheme.primary_color}
-                    onChange={(e) =>
-                      setNewTheme((prev) => ({
+                    onChange={e =>
+                      setNewTheme(prev => ({
                         ...prev,
                         primary_color: e.target.value,
                       }))
@@ -883,8 +815,8 @@ export default function ThemesPage() {
                 <input
                   type="text"
                   value={newTheme.logo}
-                  onChange={(e) =>
-                    setNewTheme((prev) => ({
+                  onChange={e =>
+                    setNewTheme(prev => ({
                       ...prev,
                       logo: e.target.value,
                     }))

@@ -57,7 +57,10 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={onClose}
+    >
       <div
         className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
@@ -66,9 +69,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
           {editing ? 'Editar Cliente' : 'Novo Cliente'}
         </h2>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-        )}
+        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -249,9 +250,7 @@ export default function ClientesPage() {
         />
       </div>
 
-      {error && (
-        <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-      )}
+      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -299,13 +298,9 @@ export default function ClientesPage() {
               <tbody className="divide-y">
                 {clientes.map(cliente => (
                   <tr key={cliente.id} className="hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-medium text-gray-900">
-                      {cliente.nome}
-                    </td>
+                    <td className="px-4 py-3 text-sm font-medium text-gray-900">{cliente.nome}</td>
                     <td className="px-4 py-3 text-sm text-gray-600">{cliente.email || '-'}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
-                      {cliente.documento || '-'}
-                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{cliente.documento || '-'}</td>
                     <td className="px-4 py-3">
                       <span className="inline-flex rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">
                         {cliente.tipo}

@@ -21,12 +21,7 @@ const recuperabilidadeColors = {
 
 function Badge({ children, colorClass }) {
   return (
-    <span
-      className={cn(
-        'inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium',
-        colorClass
-      )}
-    >
+    <span className={cn('inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium', colorClass)}>
       {children}
     </span>
   );
@@ -35,9 +30,7 @@ function Badge({ children, colorClass }) {
 function Card({ title, children }) {
   return (
     <div className="rounded-lg border bg-white p-6 shadow-sm">
-      {title && (
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">{title}</h2>
-      )}
+      {title && <h2 className="mb-4 text-lg font-semibold text-gray-900">{title}</h2>}
       {children}
     </div>
   );
@@ -174,8 +167,7 @@ export default function ClientProcessoDetail() {
               processo.recuperabilidade ? (
                 <Badge
                   colorClass={
-                    recuperabilidadeColors[processo.recuperabilidade] ||
-                    'bg-gray-100 text-gray-600'
+                    recuperabilidadeColors[processo.recuperabilidade] || 'bg-gray-100 text-gray-600'
                   }
                 >
                   {processo.recuperabilidade}
@@ -195,10 +187,7 @@ export default function ClientProcessoDetail() {
           <FieldItem label="Tribunal" value={processo.tribunal} />
           <FieldItem label="UF" value={processo.uf} />
           <FieldItem label="Fase Processual" value={processo.fase_processual} />
-          <FieldItem
-            label="Data de Distribuicao"
-            value={formatDate(processo.data_distribuicao)}
-          />
+          <FieldItem label="Data de Distribuicao" value={formatDate(processo.data_distribuicao)} />
           <FieldItem label="Ultima Movimentacao" value={processo.ultima_movimentacao} />
           <FieldItem
             label="Data Ultima Movimentacao"
@@ -254,15 +243,9 @@ export default function ClientProcessoDetail() {
                         {child.numero_cnj}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
-                      {child.tipo_acao || '-'}
-                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{child.tipo_acao || '-'}</td>
                     <td className="px-4 py-3">
-                      <Badge
-                        colorClass={
-                          statusColors[child.status] || 'bg-gray-100 text-gray-700'
-                        }
-                      >
+                      <Badge colorClass={statusColors[child.status] || 'bg-gray-100 text-gray-700'}>
                         {child.status}
                       </Badge>
                     </td>

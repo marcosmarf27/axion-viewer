@@ -16,9 +16,7 @@ function FeedbackMessage({ message, type, onDismiss }) {
   return (
     <div
       className={`rounded-md p-3 text-sm ${
-        type === 'success'
-          ? 'bg-green-50 text-green-700'
-          : 'bg-red-50 text-red-700'
+        type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
       }`}
     >
       {message}
@@ -108,9 +106,7 @@ export default function SharingPage() {
   const handleRevoke = async () => {
     if (!revokeConfirm) return;
     try {
-      await api.delete(
-        `/sharing/carteira/${selectedCarteiraId}/${revokeConfirm.profile_id}`
-      );
+      await api.delete(`/sharing/carteira/${selectedCarteiraId}/${revokeConfirm.profile_id}`);
       setFeedback({ message: 'Acesso revogado com sucesso', type: 'success' });
       setRevokeConfirm(null);
       // Recarregar acessos
@@ -144,9 +140,7 @@ export default function SharingPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">
-        Compartilhamento de Carteiras
-      </h1>
+      <h1 className="text-2xl font-bold text-gray-900">Compartilhamento de Carteiras</h1>
 
       <FeedbackMessage
         message={feedback.message}
@@ -156,9 +150,7 @@ export default function SharingPage() {
 
       {/* Select de carteira */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">
-          Selecione uma carteira
-        </label>
+        <label className="block text-sm font-medium text-gray-700">Selecione uma carteira</label>
         {loadingCarteiras ? (
           <LoadingSpinner className="py-4" size="sm" />
         ) : (
@@ -259,9 +251,7 @@ export default function SharingPage() {
           {/* Card: Conceder acesso */}
           <div className="rounded-lg border bg-white shadow-sm">
             <div className="border-b px-4 py-3">
-              <h2 className="text-lg font-semibold text-gray-900">
-                Conceder Acesso
-              </h2>
+              <h2 className="text-lg font-semibold text-gray-900">Conceder Acesso</h2>
             </div>
             <div className="p-4">
               <div className="flex items-end gap-4">

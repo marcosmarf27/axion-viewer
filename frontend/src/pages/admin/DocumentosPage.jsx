@@ -59,16 +59,17 @@ function VincularModal({ open, documento, onClose, onVincular }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={onClose}
+    >
       <div
         className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
         <h2 className="mb-4 text-lg font-semibold text-gray-900">Vincular a Processo</h2>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-        )}
+        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         {loading ? (
           <LoadingSpinner className="py-8" />
@@ -237,9 +238,7 @@ export default function DocumentosPage() {
         </div>
       </div>
 
-      {error && (
-        <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-      )}
+      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -304,13 +303,9 @@ export default function DocumentosPage() {
                       )}
                     </td>
                     <td className="px-4 py-3 text-sm text-gray-600">
-                      {doc.created_at
-                        ? new Date(doc.created_at).toLocaleDateString('pt-BR')
-                        : '-'}
+                      {doc.created_at ? new Date(doc.created_at).toLocaleDateString('pt-BR') : '-'}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
-                      {formatSize(doc.tamanho)}
-                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{formatSize(doc.tamanho)}</td>
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => handlePreview(doc)}

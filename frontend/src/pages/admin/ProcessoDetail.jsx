@@ -21,12 +21,7 @@ const recuperabilidadeColors = {
 
 function Badge({ children, colorClass }) {
   return (
-    <span
-      className={cn(
-        'inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium',
-        colorClass
-      )}
-    >
+    <span className={cn('inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium', colorClass)}>
       {children}
     </span>
   );
@@ -35,9 +30,7 @@ function Badge({ children, colorClass }) {
 function Card({ title, children }) {
   return (
     <div className="rounded-lg border bg-white p-6 shadow-sm">
-      {title && (
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">{title}</h2>
-      )}
+      {title && <h2 className="mb-4 text-lg font-semibold text-gray-900">{title}</h2>}
       {children}
     </div>
   );
@@ -110,15 +103,9 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
         className="w-full max-w-lg rounded-lg bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">
-          Vincular Documento
-        </h2>
+        <h2 className="mb-4 text-lg font-semibold text-gray-900">Vincular Documento</h2>
 
-        {error && (
-          <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">
-            {error}
-          </div>
-        )}
+        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         {loading ? (
           <LoadingSpinner className="py-8" />
@@ -221,9 +208,7 @@ export default function ProcessoDetail() {
         >
           &larr; Voltar para Processos
         </Link>
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">
-          {error}
-        </div>
+        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">{error}</div>
       </div>
     );
   }
@@ -245,9 +230,7 @@ export default function ProcessoDetail() {
       {/* Header */}
       <Card>
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-bold text-gray-900">
-            {processo.numero_cnj}
-          </h1>
+          <h1 className="text-2xl font-bold text-gray-900">{processo.numero_cnj}</h1>
           <Badge colorClass={statusColors[processo.status] || 'bg-gray-100 text-gray-700'}>
             {processo.status}
           </Badge>
@@ -268,8 +251,7 @@ export default function ProcessoDetail() {
               processo.recuperabilidade ? (
                 <Badge
                   colorClass={
-                    recuperabilidadeColors[processo.recuperabilidade] ||
-                    'bg-gray-100 text-gray-600'
+                    recuperabilidadeColors[processo.recuperabilidade] || 'bg-gray-100 text-gray-600'
                   }
                 >
                   {processo.recuperabilidade}
@@ -279,18 +261,9 @@ export default function ProcessoDetail() {
               )
             }
           />
-          <FieldItem
-            label="Valor da Causa"
-            value={formatCurrency(processo.valor_causa)}
-          />
-          <FieldItem
-            label="Valor da Divida"
-            value={formatCurrency(processo.valor_divida)}
-          />
-          <FieldItem
-            label="Valor Atualizado"
-            value={formatCurrency(processo.valor_atualizado)}
-          />
+          <FieldItem label="Valor da Causa" value={formatCurrency(processo.valor_causa)} />
+          <FieldItem label="Valor da Divida" value={formatCurrency(processo.valor_divida)} />
+          <FieldItem label="Valor Atualizado" value={formatCurrency(processo.valor_atualizado)} />
           <FieldItem label="Polo Ativo" value={processo.polo_ativo} />
           <FieldItem label="Polo Passivo" value={processo.polo_passivo} />
           <FieldItem label="Comarca" value={processo.comarca} />
@@ -298,14 +271,8 @@ export default function ProcessoDetail() {
           <FieldItem label="Tribunal" value={processo.tribunal} />
           <FieldItem label="UF" value={processo.uf} />
           <FieldItem label="Fase Processual" value={processo.fase_processual} />
-          <FieldItem
-            label="Data de Distribuicao"
-            value={formatDate(processo.data_distribuicao)}
-          />
-          <FieldItem
-            label="Ultima Movimentacao"
-            value={processo.ultima_movimentacao}
-          />
+          <FieldItem label="Data de Distribuicao" value={formatDate(processo.data_distribuicao)} />
+          <FieldItem label="Ultima Movimentacao" value={processo.ultima_movimentacao} />
           <FieldItem
             label="Data Ultima Movimentacao"
             value={formatDate(processo.data_ultima_movimentacao)}
@@ -360,15 +327,9 @@ export default function ProcessoDetail() {
                         {child.numero_cnj}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
-                      {child.tipo_acao || '-'}
-                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{child.tipo_acao || '-'}</td>
                     <td className="px-4 py-3">
-                      <Badge
-                        colorClass={
-                          statusColors[child.status] || 'bg-gray-100 text-gray-700'
-                        }
-                      >
+                      <Badge colorClass={statusColors[child.status] || 'bg-gray-100 text-gray-700'}>
                         {child.status}
                       </Badge>
                     </td>
@@ -422,9 +383,7 @@ export default function ProcessoDetail() {
                     <td className="px-4 py-3 text-sm font-medium text-gray-900">
                       {doc.nome || doc.filename}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
-                      {doc.tipo || '-'}
-                    </td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{doc.tipo || '-'}</td>
                     <td className="px-4 py-3 text-sm text-gray-600">
                       {formatDate(doc.created_at)}
                     </td>

@@ -57,9 +57,7 @@ export default function ClientCarteirasPage() {
         />
       </div>
 
-      {error && (
-        <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>
-      )}
+      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -98,9 +96,7 @@ export default function ClientCarteirasPage() {
                   </div>
 
                   {carteira.descricao && (
-                    <p className="mb-4 line-clamp-2 text-sm text-gray-500">
-                      {carteira.descricao}
-                    </p>
+                    <p className="mb-4 line-clamp-2 text-sm text-gray-500">{carteira.descricao}</p>
                   )}
 
                   <div className="flex items-center gap-4 text-sm text-gray-600">

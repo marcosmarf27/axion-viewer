@@ -4,12 +4,27 @@ import api from '@/lib/api';
 import LoadingSpinner from '@/components/LoadingSpinner';
 
 const statCards = [
-  { key: 'total_clientes', label: 'Clientes Ativos', color: 'bg-blue-500', path: '/admin/clientes' },
+  {
+    key: 'total_clientes',
+    label: 'Clientes Ativos',
+    color: 'bg-blue-500',
+    path: '/admin/clientes',
+  },
   { key: 'total_carteiras', label: 'Carteiras', color: 'bg-indigo-500', path: '/admin/carteiras' },
   { key: 'total_casos', label: 'Casos', color: 'bg-purple-500', path: '/admin/casos' },
   { key: 'total_processos', label: 'Processos', color: 'bg-amber-500', path: '/admin/processos' },
-  { key: 'total_documentos', label: 'Documentos', color: 'bg-emerald-500', path: '/admin/documentos' },
-  { key: 'documentos_este_mes', label: 'Docs Este Mes', color: 'bg-rose-500', path: '/admin/documentos' },
+  {
+    key: 'total_documentos',
+    label: 'Documentos',
+    color: 'bg-emerald-500',
+    path: '/admin/documentos',
+  },
+  {
+    key: 'documentos_este_mes',
+    label: 'Docs Este Mes',
+    color: 'bg-rose-500',
+    path: '/admin/documentos',
+  },
 ];
 
 const teseColors = {
@@ -159,9 +174,7 @@ export default function AdminDashboard() {
           <h2 className="text-lg font-semibold text-gray-900">Atividade Recente</h2>
         </div>
         {recent.length === 0 ? (
-          <p className="px-6 py-8 text-center text-sm text-gray-500">
-            Nenhuma atividade recente.
-          </p>
+          <p className="px-6 py-8 text-center text-sm text-gray-500">Nenhuma atividade recente.</p>
         ) : (
           <div className="divide-y">
             {recent.map(doc => (
