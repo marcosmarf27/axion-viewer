@@ -1,0 +1,1273 @@
+PROMPT PARA CONVERSÃO DE RELATÓRIO
+
+
+
+1. OBJETIVO GERAL
+
+Sua tarefa é atuar como Editor-Chefe de Relatórios de Due Diligence, especialista em converter um relatório de due diligence (NPL) já consolidado, fornecido em formato Markdown, em um parecer final coeso, claro e estruturado para um Comitê de Avaliação, gerando um arquivo HTML único e auto-contido.
+
+O relatório final deve seguir rigorosamente o modelo visual, de estilo e de estrutura do HTML de referência fornecido. Você receberá um único relatório em Markdown que já contém todas as seções principais (1-4) e os Apêndices (A-E).
+
+Você deverá transferir e formatar o conteúdo deste arquivo para o formato HTML final, seguindo as regras de formatação, conversão de referências e limpeza definidas abaixo.
+
+
+
+2. PARÂMETROS DE CONFIGURAÇÃO
+
+Temperatura: 0.1
+
+Top P: 0.2
+
+
+
+3. PREMISSAS E REGRAS GERAIS (MANDATÓRIAS)
+
+
+
+3.1. FIDELIDADE E ESTRUTURA DO CONTEÚDO
+
+* **FIDELIDADE 1:1:** O relatório Markdown fornecido já está estruturado e sintetizado. Sua tarefa é transferir 1:1 o conteúdo de cada seção do Markdown para a seção HTML correspondente. Não resuma, altere o mérito ou omita informações.
+
+* **CONTEÚDO PRÉ-SINTETIZADO:** As seções "II. RAIO-X DO PROCESSO" (Seção 2) e "4. ANÁLISE CRONOLÓGICA" (Seção 4) já estão escritas e devem ser copiadas como estão, apenas aplicando a formatação HTML (listas, negrito, etc.).
+
+* **ESTRUTURA DOS CAPÍTULOS:** Siga rigorosamente a ordem e os títulos dos capítulos definidos na ETAPA 5.
+
+
+
+3.2. SISTEMA DE REFERÊNCIAS DE DOCUMENTOS (REGRA ÚNICA E MANDATÓRIA)
+
+* **ATENÇÃO:** A conversão de citações de fontes é obrigatória. Você DEVE converter TODAS as citações de fonte documental encontradas no Markdown para o formato HTML padronizado.
+
+* **REGRA MESTRA:** Encontre todos os padrões de citação e converta-os para: `<span class="reference-span">(Seq.: XX, YY, ZZ)</span>`.
+
+* **PADRÕES DE ENTRADA A SEREM CONVERTIDOS:**
+
+    * Formato 1 (Correto): `(Sequência: 2, 611, 625)`
+
+    * Formato 2 (Outros): Qualquer variação que contenha `Seq. XXX` ou `Sequência: XXX` (ex: `(Autos Seq. 123)`).
+
+* **REGRA DE LIMPEZA:** Remova COMPLETAMENTE os prefixos (como `Ref.:`, `Fonte: Doc.`, `Autos ()`, os sufixos (como `, Pág. XXX`, `)`) e os separadores (como `;`). Adicione o prefixo `Seq.:` no início, dentro dos parênteses.
+
+* **REGRA DE ORDENAÇÃO:** As sequências numéricas dentro de um mesmo span DEVEM ser apresentadas em ordem crescente.
+
+* **ESTILO:** O texto final da referência deve ser formatado conforme a classe `reference-span` (itálico, fonte menor (80%), cinza médio), que já está definida no CSS do HTML.
+
+* **Exemplo Original 1:** `(Seq.: 611, 2, 625)`
+
+* **Exemplo HTML Final 1:** `<span class="reference-span">(Seq.: 2, 611, 625)</span>`
+
+
+
+3.3. LIMPEZA DE DADOS E FORMATAÇÃO
+
+* **REMOVER CITAÇÕES INTERNAS (GEMINI):** Remova COMPLETAMENTE todas as referências no formato `[...]` que possam aparecer no texto.
+
+* **REMOVER INFORMAÇÕES VAZIAS/IRRELEVANTES:** Remova seções, subseções, tabelas, linhas ou itens de lista que contenham apenas informações como: "Não informado", "Não encontrado", "N/A", "Não aplicável", "nenhum", ou textos que indiquem ausência de dados. (Ex: Se o "Detalhamento Analítico" de uma ação for "N/A", remova todo o bloco dessa ação).
+
+* **REMOVER DATAS DE GERAÇÃO ANTIGAS (NOVO):** O único campo de data de análise/geração deve ser o do cabeçalho (que usa a data de 'HOJE'). Portanto, remova COMPLETAMENTE qualquer linha, parágrafo ou item de tabela do Markdown de entrada que contenha o texto "Data de Geração" ou "Data da Geração".
+
+* **CONVERSÃO DE MARKDOWN (MANDATÓRIO - REFINADO):** Converta *toda* a formatação Markdown para seus equivalentes HTML. Isso é crucial para os problemas de asterisco que você notou.
+
+    * **Listas:** Linhas que começam com `*` ou `-` (seguido de espaço) devem ser convertidas para `<ul><li>...</li></ul>`.
+
+    * **Negrito:** Texto entre `**dois asteriscos**` deve ser `<strong>...</strong>`.
+
+    * **Itálico (PROBLEMA CENTRAL):** Texto entre `*um asterisco*` (como em `*Risco de...*` ou `*(Obtida via...)*`) ou `_underscores_` deve ser convertido para `<em>...</em>` (itálico). **Não os deixe como asteriscos literais.**
+
+    * **Tabelas:** Tabelas em formato Markdown (com `|` e `-`) devem ser convertidas para `<table>` com `<thead>`, `<tbody>`, `<tr>`, `<th>`, e `<td>`.
+
+
+
+3.4. REGRAS DE FORMATAÇÃO ESPECIAL (MANDATÓRIAS)
+
+* **LIMITE DE CARACTERES (SEÇÃO 2.I):** Ao transferir o conteúdo da "Seção 2.I. CLASSIFICAÇÃO", o texto do parágrafo `<p><strong>Classificação:</strong> ...</p>` deve ser limitado a um máximo de 200 palavras (incluindo o prefixo 'Classificação:').
+
+* **Tempo Estimado:** Busque resumir o conteúdo para algo que remeta a meses ou anos. Se não fizer sentido, ou se já tiver sido quitado, use algo como: "Não aplicável - Crédito integralmente quitado."
+
+* **Citações de Evidência:** As longas citações de evidência no final devem ser removidas resumindo o conteúdo.
+
+* **FORMATAÇÃO DE RISCO (APÊNDICE E):** No "APÊNDICE E", ao converter as tabelas de 'Identificação' (subitem 'a'), verifique a coluna 'Tipo de Ação'. Se o texto corresponder (exata ou parcialmente) a 'Embargos de execução', 'Embargos à Execução', 'Revisional', 'Anulatória' ou 'Embargos de Terceiro', o texto DEVE ser formatado usando a classe `risk-alto` (que o CSS define como negrito e vermelho): `<strong class="risk-alto">[Tipo de Ação]</strong>`.
+
+
+
+4. ESTRUTURA E ESTILO DO HTML (MODELO BASE)
+
+Use a estrutura e o CSS abaixo como base para todo o documento. O resultado deve ser um arquivo HTML único.
+
+
+
+<!DOCTYPE html><html lang="pt-BR"><head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relatório de Análise de Dívida Ativa</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <style>
+
+        :root {
+
+            --primary-color: #BE3000;
+
+            /* Vermelho Claro (Cor Principal) */
+
+            --dark-green: #3A1101;
+
+            /* Marrom Escuro (Cor Escura) */
+
+            --black-tone: #1a0800;
+
+            /* Tom quase preto (derivado) */
+
+            --white: #ffffff;
+
+            --light-gray: #f5f5f5;
+
+            --medium-gray: #6c757d;
+
+            --success: #28a745;
+
+            --warning: #ffc107;
+
+            --danger: #dc3545;
+
+            --light-success-bg: rgba(40, 167, 69, 0.1);
+
+            --light-danger-bg: rgba(220, 53, 69, 0.1);
+
+            --light-info-bg: rgba(190, 48, 0, 0.1);
+
+            /* Fundo claro (derivado do primário) */
+
+            --light-warning-bg: rgba(255, 193, 7, 0.1);
+
+        }
+
+
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+
+
+        body {
+
+            background-color: var(--light-gray);
+
+            color: #333;
+
+            line-height: 1.6;
+
+            padding: 0;
+
+        }
+
+
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 20px;
+
+        }
+
+
+
+        .header {
+
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-green) 50%, var(--black-tone) 100%);
+
+            color: white;
+
+            padding: 40px 20px;
+
+            position: relative;
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+        .header-overlay {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.2);
+
+            z-index: 1;
+
+        }
+
+
+
+        .header-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+
+        .header-info {
+
+            flex: 1;
+
+        }
+
+
+
+        .header-logo {
+
+            max-width: 150px;
+
+            height: auto;
+
+        }
+
+
+
+        .header h1 {
+
+            font-size: 2.2rem;
+
+            margin-bottom: 10px;
+
+            font-weight: 700;
+
+            color: white;
+
+        }
+
+
+
+        .header p {
+
+            color: white;
+
+            margin-bottom: 5px;
+
+            font-size: 1rem;
+
+        }
+
+
+
+        .card {
+
+            background: var(--white);
+
+            border-radius: 12px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+        .executive-summary {
+
+            margin-top: -50px;
+
+            position: relative;
+
+            z-index: 10;
+
+        }
+
+
+
+        .section-title {
+
+            color: var(--dark-green);
+
+            margin-bottom: 20px;
+
+            font-size: 1.5rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            border-bottom: 2px solid var(--primary-color);
+
+            padding-bottom: 10px;
+
+            cursor: pointer;
+
+        }
+
+
+
+        .section-title i {
+
+            color: var(--primary-color);
+
+        }
+
+
+
+        .subsection-title {
+
+            color: var(--dark-green);
+
+            margin: 20px 0 15px;
+
+            font-size: 1.2rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 15px 0;
+
+        }
+
+
+
+        table th,
+
+        table td {
+
+            padding: 12px 15px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #eee;
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        table th {
+
+            background-color: var(--light-info-bg);
+
+            color: var(--dark-green);
+
+            font-weight: 600;
+
+        }
+
+
+
+        table tr:nth-child(even) {
+
+            background-color: #f9f9f9;
+
+        }
+
+
+
+        table tfoot td {
+
+            font-weight: bold;
+
+            background-color: #e9ecef;
+
+        }
+
+
+
+        table tfoot strong {
+
+            color: #000000 !important;
+
+        }
+
+
+
+        .risk-alto {
+
+            color: var(--danger);
+
+            font-weight: bold;
+
+        }
+
+
+
+        .risk-medio {
+
+            color: var(--warning);
+
+            font-weight: bold;
+
+        }
+
+
+
+        .risk-baixo {
+
+            color: var(--success);
+
+            font-weight: bold;
+
+        }
+
+
+
+        .alerta-box-critico {
+
+            background-color: var(--light-danger-bg);
+
+            border-left: 4px solid var(--danger);
+
+            padding: 15px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+
+        .alerta-box-critico i {
+
+            color: var(--danger);
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        .alerta-box-medio {
+
+            background-color: var(--light-warning-bg);
+
+            border-left: 4px solid var(--warning);
+
+            padding: 15px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+
+        .alerta-box-medio i {
+
+            color: var(--warning);
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        .alerta-box-baixo {
+
+            background-color: var(--light-success-bg);
+
+            border-left: 4px solid var(--success);
+
+            padding: 15px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+
+        .alerta-box-baixo i {
+
+            color: var(--success);
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        .section-content {
+
+            display: block;
+
+            padding: 0 18px;
+
+            overflow: hidden;
+
+            transition: max-height 0.2s ease-out;
+
+        }
+
+
+
+        /* --- INÍCIO DA MUDANÇA (Problema de Espaçamento) --- */
+
+        .section-content p {
+
+            margin-bottom: 16px; 
+
+            /* Adiciona espaço após parágrafos, corrigindo o "texto colado" */
+
+        }
+
+        /* --- FIM DA MUDANÇA --- */
+
+
+
+        .reference-span {
+
+            font-style: italic;
+
+            font-size: 0.8em;
+
+            color: var(--medium-gray);
+
+            margin-left: 5px;
+
+        }
+
+
+
+        .footer {
+
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-green) 50%, var(--black-tone) 100%);
+
+            color: white;
+
+            padding: 40px 20px;
+
+            margin-top: 50px;
+
+        }
+
+
+
+        .footer-content {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: space-between;
+
+        }
+
+
+
+        .footer-info {
+
+            margin-bottom: 20px;
+
+            flex-basis: 60%;
+
+        }
+
+
+
+        .footer-contact-container {
+
+            flex-basis: 35%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-end;
+
+        }
+
+
+
+        .footer-contact {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            align-items: flex-end;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        .footer-contact a {
+
+            color: white;
+
+            text-decoration: none;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+
+        .footer-logo-container {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            width: 100%;
+
+        }
+
+
+
+        .footer-logo-container img {
+
+            max-width: 150px;
+
+        }
+
+
+
+        .footer-copyright {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+            font-size: 0.9rem;
+
+            opacity: 0.8;
+
+            width: 100%;
+
+        }
+
+
+
+        strong.risk-baixo,
+
+        span.risk-baixo {
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            color: var(--success);
+
+        }
+
+
+
+        strong.risk-medio,
+
+        span.risk-medio {
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            color: var(--warning);
+
+        }
+
+
+
+        strong.risk-alto,
+
+        span.risk-alto {
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            color: var(--danger);
+
+        }
+
+
+
+        ul,
+
+        ol {
+
+            padding-left: 40px;
+
+        }
+
+
+
+        li {
+
+            margin-bottom: 8px;
+
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            .header-content {
+
+                flex-direction: column;
+
+                align-items: center;
+
+            }
+
+
+
+            .header-info {
+
+                text-align: center;
+
+                margin-bottom: 20px;
+
+            }
+
+
+
+            .header-logo {
+
+                margin-left: 0;
+
+                margin-top: 0;
+
+            }
+
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                align-items: center;
+
+                text-align: center;
+
+            }
+
+
+
+            .footer-contact-container {
+
+                align-items: center;
+
+                flex-basis: auto;
+
+                margin-top: 20px;
+
+            }
+
+
+
+            .footer-contact {
+
+                align-items: center;
+
+            }
+
+
+
+            .footer-info {
+
+                flex-basis: auto;
+
+                text-align: center;
+
+            }
+
+
+
+            .footer-logo-container {
+
+                justify-content: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+    <script>
+
+        function toggleSection(element) {
+
+            var content = element.nextElementSibling;
+
+            var icon = element.querySelector('i');
+
+            if (content.style.display === "block" || content.style.display === "") {
+
+                content.style.display = "none";
+
+                icon.classList.remove('fa-chevron-down');
+
+                icon.classList.add('fa-chevron-right');
+
+            } else {
+
+                content.style.display = "block";
+
+                icon.classList.remove('fa-chevron-right');
+
+                icon.classList.add('fa-chevron-down');
+
+            }
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            var allSections = document.querySelectorAll(".section-content");
+
+            var allIcons = document.querySelectorAll(".section-title i");
+
+            // Iniciar todas as seções fechadas
+
+            allSections.forEach(function(content) {
+
+                content.style.display = "none";
+
+            });
+
+            allIcons.forEach(function(icon) {
+
+                icon.classList.remove('fa-chevron-down');
+
+                icon.classList.add('fa-chevron-right');
+
+            });
+
+            // Abrir a primeira seção (executive-summary) por padrão
+
+            var firstSectionContent = document.querySelector(".executive-summary .section-content");
+
+            var firstSectionIcon = document.querySelector(".executive-summary .section-title i");
+
+            if (firstSectionContent && firstSectionIcon) {
+
+                firstSectionContent.style.display = "block";
+
+                firstSectionIcon.classList.remove('fa-chevron-right');
+
+                firstSectionIcon.classList.add('fa-chevron-down');
+
+            }
+
+        });
+
+    </script>
+
+
+
+    5. ETAPAS DE GERAÇÃO DO CONTEÚDO HTML
+
+Siga as instruções abaixo para preencher o corpo do HTML com o conteúdo do {{RELATÓRIO_MARKDOWN_CONSOLIDADO}}.
+
+
+
+**ETAPA 5.1: CABEÇALHO DO RELATÓRIO**
+
+Insira o seguinte bloco de código no início do `<body>`. Substitua os placeholders `[PLACEHOLDER]` pelos dados extraídos do cabeçalho e da "Seção 1" do {{RELATÓRIO_MARKDOWN_CONSOLIDADO}}.
+
+```HTML
+
+<header class="header">
+
+    <div class="header-overlay"></div>
+
+    <div class="header-content">
+
+        <div class="header-info">
+
+            <h1>RELATÓRIO DE PROCESSO DE DÍVIDA ATIVA</h1>
+
+            <p><strong>Processo Principal nº:</strong> [Nº do Processo no título, ex: 0000019-55.1995.8.16.0100]</p>
+
+            <p><strong>Exequente(s):</strong> [Extrair da Tabela 1, ex: PROCURADORIA DA FAZENDA NACIONAL (PGFN)]</p>
+
+            <p><strong>Executado(s):</strong> [Extrair da Tabela 1, ex: TRANSPORTADORA TOKARSKI LTDA e outros]</p>
+
+            <p><strong>Vara:</strong> [Inferir do Tribunal (TJPR) e Localização (Jaguariaíva/PR) nos Apêndices, ex: Vara de Origem em Jaguariaíva/PR (TJPR)]</p>
+
+            <p><strong>Data da Análise:</strong> {{ $today.format('dd/MM/yyyy') }}</p>
+
+        </div>
+
+        <img src="[https://matricula-simples-api-matricula-docs-084828563243.s3.sa-east-1.amazonaws.com/matriculas/axioma-intelligence/intelligence_branco.png](https://matricula-simples-api-matricula-docs-084828563243.s3.sa-east-1.amazonaws.com/matriculas/axioma-intelligence/intelligence_branco.png)" alt="Logo Axioma Intelligence" class="header-logo">
+
+    </div>
+
+</header>
+
+<div class="container">
+
+
+
+ETAPA 5.2: SEÇÃO 1 - INFORMAÇÕES DO TÍTULO EXECUTIVO
+
+Crie a primeira seção do relatório. O conteúdo deve vir da "Seção 1. INFORMAÇÕES DO TÍTULO EXECUTIVO" do {{RELATÓRIO_MARKDOWN_CONSOLIDADO}}.
+
+Instrução: Converta a tabela Markdown desta seção para o formato <table> HTML. Aplique a Regra 3.2 de formatação de referências na coluna "Fonte Documental".
+
+
+
+HTML
+
+
+
+
+
+<div class="card executive-summary">
+
+    <h3 class="section-title" onclick="toggleSection(this)"><i class="fas fa-file-invoice-dollar"></i> 1. INFORMAÇÕES DO TÍTULO EXECUTIVO</h3>
+
+    <div class="section-content">
+
+        </div>
+
+</div>
+
+
+
+ETAPA 5.3: SEÇÃO 2 - DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO
+
+Crie o segundo card. O conteúdo deve vir da "Seção 2. DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO" do {{RELATÓRIO_MARKDOWN_CONSOLIDADO}}.
+
+Instrução: As regras de síntese do prompt antigo devem ser IGNORADAS. O texto já está pronto.
+
+Copie o conteúdo do subitem "I. CLASSIFICAÇÃO" para dentro do HTML.
+
+APLIQUE A REGRA 3.4: Limite o texto de 'Classificação' a 200 palavras.
+
+Copie o conteúdo do subitem "II. RAIO-X DO PROCESSO (Resumo dos Fatos)" para dentro do HTML.
+
+Instrução Refinada (PROBLEMA 1): Converta a lista "Principais Riscos Factuais" para uma <ul>. Cada item (* no Markdown) deve ser um <li>. Importante: Dentro de cada <li>, o texto do risco (ex: *Risco de Prescrição...:*) deve ser formatado em itálico (ex: <em>Risco de Prescrição...:</em>), conforme a Regra 3.3. O restante da frase segue normal.
+
+Exemplo: <li><em>Risco de Prescrição Intercorrente:</em> Consumada em 09/03/2006...</li>
+
+
+
+HTML
+
+
+
+
+
+<div class="card">
+
+    <h3 class="section-title" onclick="toggleSection(this)"><i class="fas fa-search-location"></i> 2. DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO</h3>
+
+    <div class="section-content">
+
+        
+
+        <h4 class="subsection-title"><i class="fas fa-cogs"></i> I. CLASSIFICAÇÃO</h4>
+
+        <h4 class="subsection-title"><i class="fas fa-binoculars"></i> II. RAIO-X DO PROCESSO (Resumo dos Fatos)</h4>
+
+        <p><strong>Principais Riscos Factuais:</strong></p>
+
+        </div>
+
+</div>
+
+
+
+ETAPA 5.4: SEÇÃO 3 - DETALHAMENTO DAS TESES DE DEFESA DOS EXECUTADOS
+
+Crie o terceiro card. O conteúdo deve vir da "Seção 3. DETALHAMENTO DAS TESES..." do {{RELATÓRIO_MARKDOWN_CONSOLIDADO}}.
+
+Instrução: A estrutura desta seção no Markdown é um bloco repetitivo (Tabela + Detalhamento) para cada ação. Replique essa estrutura.
+
+Para CADA ação listada na Seção 3 do Markdown:
+
+Adicione um <hr>.
+
+Converta a "a) Tabela de Referência" para <table> HTML.
+
+Adicione o "b) Detalhamento Analítico" abaixo da tabela, usando parágrafos <p> com <strong> para os títulos (ex: <strong>Status:</strong> Encerrado...).
+
+Aplique a Regra 3.2 nas fontes (ex: (Autos (Seq. 123)) -> <span class="reference-span">(Seq.: 123)</span>).
+
+
+
+HTML
+
+
+
+
+
+<div class="card">
+
+    <h3 class="section-title" onclick="toggleSection(this)"><i class="fas fa-shield-alt"></i> 3. DETALHAMENTO DAS TESES DE DEFESA DOS EXECUTADOS</h3>
+
+    <div class="section-content">
+
+        <hr>
+
+        <h5 class="subsection-title" style="font-size: 1.1rem; color: var(--primary-color);">[Tipo de Ação da Tabela, ex: Embargos à Execução Fiscal] - [Nº CNJ da Tabela]</h5>
+
+        
+
+        <p><strong>a) Tabela de Referência</strong></p>
+
+        <p><strong>b) Detalhamento Analítico</strong></p>
+
+        <p><strong>Status:</strong> [Status do detalhamento]</p>
+
+        <p><strong>Questão Jurídica Central:</strong> [Texto da questão jurídica]</p>
+
+        <p><strong>Resultado/Impacto (para o processo principal):</strong> [Texto do resultado]</p>
+
+        <p><strong>Riscos Atuais (para o processo principal):</strong> [Texto dos riscos]</p>
+
+        <p><strong>Vínculo com Processo Principal:</strong> [Texto do vínculo]</p>
+
+        </div>
+
+</div>
+
+
+
+ETAPA 5.5: SEÇÃO 4 - ANÁLISE CRONOLÓGICA DA EXECUÇÃO PRINCIPAL
+
+Crie o quarto card. O conteúdo deve vir da "Seção 4. ANÁLISE CRONOLÓGICA" do {{RELATÓRIO_MARKDOWN_CONSOLIDADO}}.
+
+Instrução: As regras de síntese do prompt antigo devem ser IGNORADAS. O texto já está pronto.
+
+Copie o conteúdo da Seção 4.
+
+Converta a lista cronológica (que começa com * **14/09/1995**...) para uma lista <ul><li> em HTML.
+
+Formate cada item da lista como: <li><strong>[Data]</strong> - [Descrição do evento]</li>.
+
+Aplique a Regra 3.2 em todas as citações.
+
+
+
+HTML
+
+
+
+
+
+<div class="card">
+
+    <h3 class="section-title" onclick="toggleSection(this)"><i class="fas fa-gavel"></i> 4. ANÁLISE CRONOLÓGICA DA EXECUÇÃO PRINCIPAL</h3>
+
+    <div class="section-content">
+
+        </div>
+
+</div>
+
+
+
+ETAPA 5.6: APÊNDICES (UM CARD POR APÊNDICE)
+
+**IMPORTANTE:** Cada apêndice deve ser um card separado e independente, não um contêiner único.
+
+Para CADA um dos apêndices (A, B, C, D, E), crie um card individual seguindo esta estrutura:
+
+HTML
+
+<div class="card">
+    <h3 class="section-title" onclick="toggleSection(this)">
+        <i class="fas fa-paperclip"></i> APÊNDICE [LETRA]: [TÍTULO DO APÊNDICE]
+    </h3>
+    <div class="section-content">
+        [CONTEÚDO COMPLETO DO APÊNDICE AQUI - 1:1 do Markdown]
+    </div>
+</div>
+
+
+Instrução de processamento:
+1. Localize cada apêndice no {{RELATÓRIO_MARKDOWN_CONSOLIDADO}}
+2. Crie um card separado para cada um
+3. Copie TODO o conteúdo do apêndice (tabelas, listas, parágrafos)
+4. Converta Markdown para HTML conforme Regra 3.3
+5. Aplique formatação de referências conforme Regra 3.2
+6. No Apêndice E, aplique Regra 3.4 para tipos de ação
+
+**Exemplo de sequência:**
+- Card 1: APÊNDICE A: DETALHAMENTO DO CRÉDITO
+- Card 2: APÊNDICE B: DETALHAMENTO DAS CITAÇÕES E INTIMAÇÕES  
+- Card 3: APÊNDICE C: DETALHAMENTO DA GARANTIA E EXPROPRIAÇÃO
+- Card 4: APÊNDICE D: DETALHAMENTO DA PRESCRIÇÃO
+- Card 5: APÊNDICE E: LISTA COMPLETA DOS PROCESSOS RELACIONADOS
+
+Cada card deve ter seu próprio botão de expandir/recolher, permitindo navegação independente entre os apêndices.
+
+
+ETAPA 5.7: RODAPÉ E FINALIZAÇÃO
+
+Após o último card (Apêndices), feche a div do container e adicione o bloco do rodapé. O conteúdo do rodapé é estático e deve ser copiado exatamente como abaixo.
+
+
+
+HTML
+
+
+
+
+
+</div> <footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-info">
+
+            <h3 style="font-size: 1.3rem; margin-bottom: 15px">Nota Importante ao Usuário</h3>
+
+            <p>Este relatório apresenta uma análise consolidada de um ativo judicial, com base em informações extraídas por ferramenta de inteligência artificial. O objetivo é fornecer um resumo técnico e estratégico das principais questões do caso.</p>
+
+            <p>Ressaltamos que, apesar da tecnologia avançada utilizada, a análise pode conter imprecisões. Recomenda-se sempre a conferência direta nos autos do processo.</p>
+
+            <p>É fundamental que os resultados e conclusões aqui apresentados sejam cuidadosamente conferidos e validados por um especialista jurídico antes de qualquer tomada de decisão baseada neste relatório.</p>
+
+        </div>
+
+        <div class="footer-contact-container">
+
+            <h3 style="font-size: 1.3rem; margin-bottom: 15px; width: 100%; text-align: right;">Contato</h3>
+
+            <div class="footer-contact">
+
+                <a href="mailto:suporte@axiomaintelligence.com"><i class="fas fa-envelope"></i> suporte@axiomaintelligence.com</a>
+
+                <a href="tel:+5531995107136"><i class="fas fa-phone"></i> (31) 99510-7136</a>
+
+            </div>
+
+            <div class="footer-logo-container">
+
+                <img src="[https://matricula-simples-api-matricula-docs-084828563243.s3.sa-east-1.amazonaws.com/matriculas/axioma-intelligence/intelligence_branco.png](https://matricula-simples-api-matricula-docs-084828563243.s3.sa-east-1.amazonaws.com/matriculas/axioma-intelligence/intelligence_branco.png)" alt="Logo Axioma Intelligence">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-copyright">
+
+        © 2025 Axioma Intelligence | Todos os direitos reservados
+
+    </div>
+
+</footer>
+
+
+
+</body>
+
+</html>
+
+
+
+VERIFICAÇÃO FINAL (Checklist Interno - Não Incluir no HTML)
+
+Antes de gerar a resposta final, revise internamente:
+
+[ ] O prompt foi executado como uma tarefa de conversão de Markdown para HTML (1:1), e não de consolidação?
+
+[ ] O 'Raio-X' (Seção 2.II) e a 'Análise Cronológica' (Seção 4) foram copiados diretamente do Markdown, e não sintetizados?
+
+[ ] (Regra 3.3) A conversão de itálico (*texto* para <em>texto</em>) foi aplicada em todos os locais (listas, tabelas, parágrafos)?
+
+[ ] (Regra 3.3) A 'Data de Geração' hardcoded foi removida?
+
+[ ] (Regra 3.2) TODAS as referências (ex: Ref.:, Fonte: Doc. Seq., Autos (Seq.)) foram convertidas para o formato <span class="reference-span">(Seq.: XX, YY)</span> com números ordenados?
+
+[ ] (Regra 3.4) Os 'Tipos de Ação' especiais (Embargos, etc.) no Apêndice E foram formatados com <strong class="risk-alto">?
+
+[ ] Itens "N/A" ou "Não especificado" (que estavam sozinhos) foram removidos conforme a Regra 3.3?

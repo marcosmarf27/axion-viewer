@@ -1,0 +1,311 @@
+# RELATÓRIO DE PROCESSO DE DÍVIDA ATIVA
+
+**Processo Principal nº:** 5001410-19.2016.4.04.7010  
+**Exequente(s):** UNIÃO - FAZENDA NACIONAL  
+**Executado(s):** APARECIDO LUIZ TOMÉ (Espólio), WANDERLEIA TOMÉ, ROSEMEIRE TOMÉ, GILBERTO TOMÉ, LAERCIO JORGE TOMÉ  
+**Vara:** Tribunal Regional Federal da 4ª Região - Vara Federal de Umuarama/PR  
+**Data da Análise:** 02/11/2025
+
+<details>
+<summary>🔷 1. INFORMAÇÕES DO TÍTULO EXECUTIVO</summary>
+
+| Parâmetro | Informação | Fonte Documental |
+|-----------|------------|------------------|
+| **Exequente** | UNIÃO - FAZENDA NACIONAL (CNPJ: 00.394.460/0216-53) | (Seq.: 254, 341) |
+| **Executado(s)** | APARECIDO LUIZ TOMÉ (CPF: 211.107.359-87) (Espólio)<br>WANDERLEIA TOMÉ (CPF: 595.879-389-68)<br>ROSEMEIRE TOMÉ (CPF: 070.662.149-27)<br>GILBERTO TOMÉ<br>LAERCIO JORGE TOMÉ | (Seq.: 2, 3, 254, 341, 350, 354, 367) |
+| **Valor da Causa (na propositura)** | R$ 151.414,46 | (Seq.: 3, 255, 341) |
+| **Certidão de Dívida Ativa (CDA) nº** | 90 6 06 000103-44 (Processo Judicial Original: 2007.70.10.000565-0) | (Seq.: 3, 255, 327, 341) |
+| **Natureza do Tributo** | Dívida Ativa - Crédito Rural STN (Não Tributária) (STN - MP 2.196-3/2001 - OP CEDIDAS A UNIÃO) | (Seq.: 3, 327, 337) |
+| **Data de Inscrição em Dívida Ativa** | 03/01/2006 | (Seq.: 3, 327, 337) |
+| **Valor Inscrito** | R$ 118.511,06 | (Seq.: 3, 327, 337) |
+| **Encargos na Inscrição** | Correção monetária, juros de mora e encargo de 20% | (Seq.: 3, 327, 337) |
+
+</details>
+
+<details>
+<summary>🔸 2. DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO</summary>
+
+### I. CLASSIFICAÇÃO
+
+**Classificação:** IRRECUPERÁVEL
+
+**Motivo:** Os relatórios de *due diligence* técnica confirmam que o débito principal da execução fiscal foi **quitado** em 05/11/2024. Especificamente, R$ 74.315,69 foi transferida e convertida em pagamento definitivo para a União em 05/11/2024, quitando o débito principal. Esta informação se enquadra no critério de "Pagamento Integral Comprovado" do algoritmo, que define a irrecuperabilidade do crédito quando há quitação integral homologada ou comprovante de pagamento com homologação definitiva.
+
+**Tempo Estimado:** N/A
+
+### II. RAIO-X DO PROCESSO (Resumo dos Fatos)
+
+**Status Geral do Processo:** Execução com débito principal quitado, mas suspensa devido a parcelamento administrativo e aguardando resolução de ações conexas (divisão de imóvel e exigibilidade de crédito). Imóvel arrematado, mas imissão na posse suspensa.
+
+**Status do Crédito (Valor):** CDA nº 90 6 06 000103-44, com valor original de R$ 151.414,46. O débito principal foi quitado em 05/11/2024, restando um saldo remanescente em conta judicial de R$ 197.621,71 (em 08/09/2025) aguardando destinação.
+
+**Status da Garantia:** Execução garantida por imóvel (Mat. 1.913) arrematado por R$ 420.000,00 e transferência de crédito rural de R$ 35.095,98, totalizando R$ 455.095,98, valor suficiente para cobrir o débito. A imissão na posse do arrematante está suspensa.
+
+**Status da Defesa (Executado):** O executado apresentou diversas defesas, incluindo **Ações Anulatórias** e Agravos de Instrumento, alegando nulidade da penhora, arrematação e impenhorabilidade do bem. A maioria dessas teses foi rejeitada ou não conhecida em diversas instâncias, consolidando a validade da arrematação. **Embargos à Execução** anteriores foram extintos por adesão a parcelamento.
+
+### III. PRINCIPAIS RISCOS FACTUAIS
+
+- **Risco ALTO de Nulidade de Citação:** Para Maria Aparecida de Melo, pela ausência de assinatura na certidão de citação, mesmo com aceitação da contrafé.
+
+- **Risco ALTO de Nulidade de Intimação:** Para Gilberto Tomé, devido a AR de intimação de leilão assinado por terceiro sem poderes expressos.
+
+- **Risco MÉDIO de Suspensão por Ação Conexa:** A imissão na posse do imóvel arrematado está suspensa aguardando a resolução de uma ação de divisão de imóvel rural (0001072-42.2023.8.16.0051).
+
+- **Risco MÉDIO de Suspensão por Ação Conexa:** O processo principal está suspenso aguardando a resolução da exigibilidade de um crédito em outro processo (235-26.2019.8.16.0051).
+
+- **Risco MÉDIO de Concurso de Credores:** Múltiplos credores disputam o saldo remanescente da arrematação do imóvel, o que pode atrasar a destinação final dos valores.
+
+- **Risco BAIXO de Sucessão Processual:** O executado original faleceu, e o processo prossegue contra seu espólio, exigindo a regularidade da representação e habilitação de todos os herdeiros.
+
+- **Risco BAIXO de Impenhorabilidade (Precedente):** Embora a tese de impenhorabilidade tenha sido rejeitada no processo principal, houve reconhecimento em outro processo (0000498-05.2012.8.16.0051) sobre o mesmo bem, o que pode ser reiterado pela defesa.
+
+- **Risco BAIXO de Saldo Remanescente:** Há um saldo significativo em conta judicial aguardando destinação, o que requer atenção judicial para a correta distribuição entre os credores e herdeiros.
+
+</details>
+
+<details>
+<summary>❤️ 3. DETALHAMENTO DAS TESES DE DEFESA DOS EXECUTADOS</summary>
+
+<details>
+<summary>📋 PROCESSO 1 - Embargos à Execução (298/98)</summary>
+
+### a) Tabela de Identificação
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Origem |
+|------------------|--------|--------------|----------|-----------|--------|
+| - | 298/98 | **Embargos à Execução** | TJPR | 1º grau | Autos (Seq. 8) |
+
+### b) Detalhamento Analítico
+
+**Status:** Encerrado - Provido (anulou a execução)
+
+**Questão Jurídica Central:** Oposição de **embargos de execução** nº 243/98, alegando a iliquidez do título (CRPH nº 96/70075-0) por ausência de extrato consolidado da conta gráfica do financiamento.
+
+**Resultado/Impacto:** O acórdão do Tribunal de Alçada do Paraná anulou a execução nº 243/98, confirmando a tese de iliquidez do título. Isso é um precedente desfavorável ao credor, reforçando a argumentação do devedor na execução principal.
+
+**Riscos Atuais:** **Risco BAIXO**, pois a execução principal é de outra natureza (Dívida Ativa da União) e a validade de seus títulos foi confirmada.
+
+**Vínculo com Processo Principal:** Sim, no processo principal.
+
+</details>
+
+<details>
+<summary>📋 PROCESSO 2 - Ação de Consignação em Pagamento (2003.70.10.001460-7)</summary>
+
+### a) Tabela de Identificação
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Origem |
+|------------------|--------|--------------|----------|-----------|--------|
+| 20/06/2003 | 2003.70.10.001460-7 | Ação de Consignação em Pagamento | Justiça Federal | 1º Grau | Autos (Seq. 8, 10, 29) |
+
+### b) Detalhamento Analítico
+
+**Status:** Encerrado - Houve transação e adesão a parcelamento (Lei nº 11.775/08)
+
+**Questão Jurídica Central:** Discussão sobre o valor exato da dívida de financiamento agrícola (CRPHs 95/00006-2 e 96/70075-0), alongamento do débito pela Lei nº 10.464/2002 e nulidade da CRPH 96/70075-0 por valor superior ao devido.
+
+**Resultado/Impacto:** A transação e parcelamento da dívida neste contexto levaram à extinção dos **Embargos à Execução** fiscal principal, indicando uma resolução da dívida em outro foro.
+
+**Riscos Atuais:** Nenhum, pois a dívida foi renegociada e os embargos extintos.
+
+**Vínculo com Processo Principal:** Sim, no processo principal.
+
+</details>
+
+<details>
+<summary>📋 PROCESSO 3 - Ação Anulatória (5017187-21.2023.4.04.7003)</summary>
+
+### a) Tabela de Identificação
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação |
+|------------------|--------|--------------|----------|-----------|---------------------|
+| 04/07/2023 | 5017187-21.2023.4.04.7003 | **Ação Anulatória** | TRF4 | 1º grau | Juntada de Ordem Cumprida |
+
+### b) Detalhamento Analítico
+
+**Status:** Encerrado - Improcedente (trânsito em julgado em 12/03/2025)
+
+**Questão Jurídica Central:** **Ação anulatória** visando a desconstituição da penhora de pequena propriedade rural por impenhorabilidade e a nulidade da hasta pública por suposto direito a parcelamento da dívida.
+
+**Resultado/Impacto:** A improcedência da **ação anulatória** resultou na manutenção da arrematação do imóvel e na condenação do Espólio ao pagamento de honorários e multa por litigância de má-fé, totalizando R$ 50.400,00, impactando negativamente o patrimônio do Espólio. Confirma a validade da arrematação do imóvel no processo principal.
+
+**Riscos Atuais:** Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.
+
+**Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal `5001410-19.2016.4.04.7010`. Trata-se de Ação Declaratória Constitutiva de Nulidade, distribuída por dependência à Execução Fiscal, visando a declaração de nulidade da penhora e arrematação de imóvel rural que foi objeto de execução no processo principal.
+
+</details>
+
+<details>
+<summary>📋 PROCESSO 4 - Inventário e Partilha (0001274-53.2022.8.16.0051)</summary>
+
+### a) Tabela de Identificação
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Origem |
+|------------------|--------|--------------|----------|-----------|--------|
+| - | 0001274-53.2022.8.16.0051 | Inventário e Partilha | TJPR | 1º Grau | Autos (Seq. 352, 406, 407, 446) |
+
+### b) Detalhamento Analítico
+
+**Status:** Em andamento - Com inventariante nomeada e pedido de cumulação de inventários.
+
+**Questão Jurídica Central:** Inventário dos bens deixados por Aparecido Luiz Tomé e Maria Aparecida Tomé, com discussão sobre a meação e a responsabilidade por dívidas.
+
+**Resultado/Impacto:** A definição da partilha dos bens e a responsabilidade pelas dívidas dos falecidos neste inventário impactarão diretamente os valores remanescentes da arrematação do imóvel no processo principal, especialmente a meação de Maria Aparecida Tomé.
+
+**Vínculo com Processo Principal:** Sim, no processo principal.
+
+</details>
+
+<details>
+<summary>📋 PROCESSO 5 - Ação de Divisão de Imóvel Rural (0001072-42.2023.8.16.0051)</summary>
+
+### a) Tabela de Identificação
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Origem |
+|------------------|--------|--------------|----------|-----------|--------|
+| - | 0001072-42.2023.8.16.0051 | Ação de Divisão de Imóvel Rural | TJPR | 1º Grau | Autos (Seq. 453) |
+
+### b) Detalhamento Analítico
+
+**Status:** Em andamento (inferido)
+
+**Questão Jurídica Central:** Delimitação dos limites internos das frações ideais e divisão do imóvel arrematado no processo principal, visando extinguir o condomínio.
+
+**Resultado/Impacto:** O resultado desta ação é crucial para a efetiva imissão na posse do arrematante no processo principal, pois definirá a área exata que lhe pertence, impactando a liquidez e a conclusão da execução.
+
+**Vínculo com Processo Principal:** Sim, no processo principal.
+
+</details>
+
+<details>
+<summary>📋 PROCESSO 6 - Agravo de Instrumento (5017624-85.2024.4.04.0000)</summary>
+
+### a) Tabela de Identificação
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação |
+|------------------|--------|--------------|----------|-----------|---------------------|
+| 10/06/2024 | 5017624-85.2024.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | Transitado em Julgado |
+
+### b) Detalhamento Analítico
+
+**Status:** Encerrado - O Agravo de Instrumento foi julgado improcedente por unanimidade pela 12ª Turma do TRF4 em 23/10/2024. Os **Embargos de Declaração** subsequentes foram considerados prejudicados em 26/11/2024 devido à superveniência de sentença de improcedência na ação originária (5017187-21.2023.4.04.7003/PR). O processo transitou em julgado em 29/01/2025.
+
+**Questão Jurídica Central:** O Agravo de Instrumento buscava a declaração de nulidade da penhora e arrematação de imóvel rural e a suspensão do leilão, interposto contra decisão que indeferiu tutela de urgência em **Ação Anulatória**.
+
+**Resultado/Impacto:** O agravo foi negado, mantendo as conclusões anteriores sobre a validade da arrematação e afastando a tese de impenhorabilidade. Isso confirma a validade da arrematação do imóvel no processo principal, consolidando a garantia do crédito e permitindo o prosseguimento da execução.
+
+**Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal 5001410-19.2016.4.04.7010. Trata-se de Agravo de Instrumento interposto contra decisão que indeferiu tutela de urgência em **Ação Anulatória**, a qual foi distribuída por dependência à Execução Fiscal principal, visando a declaração de nulidade da penhora e arrematação de imóvel no processo de origem.
+
+</details>
+
+</details>
+
+<details>
+<summary>🔶 4. ANÁLISE CRONOLÓGICA DA EXECUÇÃO PRINCIPAL</summary>
+
+**Principais Eventos:**
+
+- **03/01/2006** - Data da Inscrição em Dívida Ativa (CDA nº 90 6 06 000103-44)
+
+- **20/03/2007** - Ajuizamento da Execução Fiscal com valor da causa de R$ 151.414,46
+
+- **30/07/2007** - Lavratura do Auto de Penhora de parte ideal de 6,00 alqueires paulistas do Lote 06, Matrícula 1.913, avaliado em R$ 210.000,00
+
+- **13/10/2014** - Laudo de Avaliação de área ideal de 6,00 alqueires do Lote 06, avaliado em R$ 720.000,00
+
+- **21/02/2019** - Laudo de Reavaliação do Imóvel Matrícula 1.913, avaliado em R$ 840.000,00
+
+- **10/02/2020** - Arrematação do Imóvel Matrícula 1.913 por R$ 420.000,00 por Thiago Wilson da Luz Kailer
+
+- **17/06/2020** - Expedição da Carta de Arrematação do imóvel
+
+- **14/12/2020** - Executado aderiu a parcelamento administrativo da dívida
+
+- **17/06/2022** - Processo suspenso por decisão judicial devido a parcelamento do débito
+
+- **04/07/2023** - **Ação anulatória** ajuizada pelo Espólio de Aparecido Luiz Tomé
+
+- **05/11/2024** - R$ 74.315,69 do valor da arrematação foram convertidos em pagamento definitivo para a União, quitando o débito principal da execução fiscal
+
+- **26/11/2024** - Sentença de improcedência na **ação anulatória**
+
+- **12/03/2025** - Trânsito em julgado da sentença de improcedência na **ação anulatória**
+
+- **08/09/2025** - Saldo remanescente na conta judicial de R$ 197.621,71, aguardando destinação
+
+**Status Atual:** O processo principal está suspenso devido a parcelamento administrativo e aguardando a resolução de ações conexas. O débito principal foi quitado, mas há saldo remanescente em conta judicial pendente de destinação.
+
+</details>
+
+<details>
+<summary>🔶 5. DETALHAMENTO DO CRÉDITO</summary>
+
+### RELATÓRIO DE ANÁLISE DO CRÉDITO EXEQUENDO
+
+| Parâmetro | Valor | Observações |
+|-----------|-------|-------------|
+| **Valor Original da CDA** | R$ 151.414,46 | Valor na propositura |
+| **Valor Inscrito** | R$ 118.511,06 | Data: 03/01/2006 |
+| **Pagamento Efetuado** | R$ 74.315,69 | Data: 05/11/2024 |
+| **Saldo Remanescente** | R$ 197.621,71 | Data: 08/09/2025 |
+
+**Situação:** A União informou a quitação do débito em cobrança, mas há valores remanescentes em depósitos judiciais vinculados aos autos, pendentes de destinação, o que requer atenção judicial para a correta distribuição.
+
+**Garantias Constituídas:**
+
+- Imóvel (Mat. 1.913) arrematado por R$ 420.000,00
+- Transferência de crédito rural de R$ 35.095,98
+- **Total de Garantias:** R$ 455.095,98
+
+</details>
+
+<details>
+<summary>🔶 6. DETALHAMENTO DAS CITAÇÕES E INTIMAÇÕES</summary>
+
+### TABELA DE CITAÇÕES E INTIMAÇÕES
+
+| Executado | Tipo de Ato | Data | Observações |
+|-----------|-------------|------|-------------|
+| APARECIDO LUIZ TOMÉ | Citação | 21/07/2006 | Por comparecimento espontâneo |
+| MARIA APARECIDA DE MELO | Citação | 20/08/2012 | Por Oficial de Justiça |
+| GILBERTO TOMÉ | Citação | 20/08/2012 | Por Oficial de Justiça |
+| APARECIDO LUIZ TOMÉ | Intimação de Penhora | 30/07/2007 | Intimação pessoal |
+| MARIA APARECIDA TOMÉ | Intimação de Penhora | 01/08/2007 | Intimação pessoal |
+
+### OBSERVAÇÕES IMPORTANTES
+
+- **Risco ALTO:** Citação de Maria Aparecida de Melo apresenta ausência de assinatura na certidão, mesmo com aceitação da contrafé.
+
+- **Risco ALTO:** AR de intimação de leilão para Gilberto Tomé foi assinado por terceiro sem poderes expressos.
+
+</details>
+
+<details>
+<summary>🔶 7. CONCLUSÕES E RECOMENDAÇÕES</summary>
+
+### 7.1 Quanto ao Crédito
+
+O crédito exequendo foi **integralmente quitado** em 05/11/2024, mediante:
+
+1. Arrematação de imóvel rural (R$ 420.000,00)
+2. Transferência de crédito rural (R$ 35.095,98)
+3. Pagamento definitivo à União (R$ 74.315,69)
+
+### 7.2 Quanto aos Riscos
+
+Persistem os seguintes riscos que merecem atenção:
+
+- **Risco ALTO:** Nulidade processual por vício de citação e intimação
+- **Risco MÉDIO:** Suspensão por ações conexas (divisão de imóvel e exigibilidade de crédito)
+- **Risco MÉDIO:** Disputa pelo saldo remanescente entre múltiplos credores
+- **Risco BAIXO:** Regularização da sucessão processual
+
+### 7.3 Recomendações
+
+1. **Monitorar** a ação de divisão de imóvel (0001072-42.2023.8.16.0051) para viabilizar a imissão na posse
+2. **Acompanhar** a destinação do saldo remanescente de R$ 197.621,71
+3. **Verificar** a regularidade das intimações aos herdeiros
+4. **Avaliar** possibilidade de acordo para liberação da imissão na posse
+5. **Analisar** o impacto do inventário (0001274-53.2022.8.16.0051) na distribuição dos valores
+
+</details>

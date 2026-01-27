@@ -1,0 +1,96 @@
+PROCESSO 22
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 19/08/2020 | 5039629-43.2020.4.04.0000 | Agravo em Recurso Especial / Agravo de Instrumento | STJ | 3º grau | Baixa Definitiva para TRIBUNAL REGIONAL FEDERAL DA 4ª REGIÃO | 2022-08-25T00:00:00+00:00 | API - 149 documentos totais e 0 indisponíveis; Autos (Seq. 3, 14, 84, 116, 283) |
+
+b) Detalhamento Analítico:
+* Status: Encerrado - O Agravo em Recurso Especial (AREsp 2188243/PR), interposto neste processo, foi não conhecido pelo Superior Tribunal de Justiça em 26/09/2022, devido à deficiência na fundamentação (Súmula 284/STF), com trânsito em julgado em 20/10/2022 e posterior baixa dos autos. A decisão anterior do Tribunal Regional Federal da 4ª Região, que havia negado provimento ao Agravo de Instrumento e julgado prejudicado o Agravo Interno, foi mantida, confirmando o indeferimento do pedido de aplicação de descontos na dívida e a validade da arrematação.
+* Questão Jurídica Central: O Agravo em Recurso Especial discutiu a reforma de decisão que indeferiu o pagamento da dívida com descontos da Lei 13.729/2018 e a suspensão da arrematação do imóvel no processo principal.
+* Resultado/Impacto (para o processo principal): O não conhecimento do Agravo em Recurso Especial pelo STJ manteve a decisão do processo principal. Isso resultou na impossibilidade de o executado obter os descontos pleiteados e na consolidação da arrematação do imóvel, permitindo a continuidade da execução fiscal com base no valor integral da dívida.
+* Vínculo com Processo Principal: SIM. O processo analisado possui vínculo direto com o processo principal 5001410-19.2016.4.04.7010. O vínculo foi identificado em: Petição Inicial do Agravo de Instrumento (seq. 3, pág. 371), Carta de Arrematação (seq. 3, pág. 8), Recurso Especial (seq. 14, pág. 38 e seq. 84, p. 284) e Espelho dos dados da Autuação (seq. 116, p. 357). Trata-se de Agravo de Instrumento interposto contra decisão interlocutória proferida na Execução Fiscal principal, que indeferiu o pedido de pagamento da dívida com descontos e a suspensão da arrematação, e recursos subsequentes.
+
+PROCESSO 23
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 5004453-03.2020.4.04.0000 | MANDADO DE SEGURANCA TURMA | TRF4 | 2º grau | BAIXADO - TRANSITO - Trânsito em Julgado - Data: 28/05/2020 | 2020-06-01T00:00:00+00:00 | API, Erro ao realizar consulta.; Autos (Seq. 341) |
+
+b) Detalhamento Analítico:
+* Status: Encerrado - Trânsito em Julgado (API)
+* Questão Jurídica Central: Não detalhado nos documentos, mas relacionado ao processo principal.
+* Resultado/Impacto (para o processo principal): Encerrado, sem impacto direto atual no processo principal.
+* Vínculo com Processo Principal: N/A
+
+PROCESSO 24
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000537-84.2021.8.16.0051 | Ação de prestação de contas | TJPR (inferido) | 1º Grau (inferido) | | | Autos (Seq. 364) |
+
+b) Detalhamento Analítico:
+* Status: Em andamento (inferido)
+* Questão Jurídica Central: Ação de prestação de contas em face do executado.
+* Resultado/Impacto (para o processo principal): Não há impacto direto imediato no processo principal, mas pode influenciar a situação financeira do executado, o que indiretamente afeta a capacidade de pagamento de dívidas.
+* Vínculo com Processo Principal: Sim, no processo principal
+
+PROCESSO 25
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 15/06/2021 | 5024622-74.2021.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | Baixa Definitiva | 2021-06-15T00:00:00+00:00 | API - 21 documentos totais e 0 indisponíveis; Autos (Seq. 1, 341) |
+
+b) Detalhamento Analítico:
+* Status: Encerrado - O Agravo de Instrumento foi julgado improcedente por unanimidade pela 12ª Turma do Tribunal Regional Federal da 4ª Região, com trânsito em julgado em 24/01/2023. A decisão manteve o entendimento de que os créditos do Agravante, Rogério Ito Gomes, não possuem privilégio especial nos autos da execução fiscal principal, sendo tratados como quirografários, e que a cobrança de sua comissão e despesas deveria ocorrer nos autos das ações em que atuou como leiloeiro.
+* Questão Jurídica Central: O Agravo de Instrumento discutiu o privilégio especial ou equiparação a créditos trabalhistas para os créditos do Agravante, Rogério Ito Gomes, na ordem de preferência para recebimento dos valores da arrematação no processo principal.
+* Resultado/Impacto (para o processo principal): O julgamento improcedente do Agravo de Instrumento resultou na manutenção da classificação dos créditos de Rogério Ito Gomes como quirografários no processo principal 5001410-19.2016.4.04.7010. Isso significa que seus créditos não obtiveram o privilégio especial ou a equiparação a créditos trabalhistas pleiteados, permanecendo nas posições de preferência originalmente definidas pela decisão agravada (5ª e 7ª posições). Consequentemente, a ordem de pagamento dos credores no processo principal não foi alterada em favor do Agravante, impactando diretamente a probabilidade de recuperação de seus créditos a partir do produto da arrematação do imóvel, especialmente considerando que o valor arrematado pode não ser suficiente para quitar todos os créditos.
+* Vínculo com Processo Principal: SIM. O processo analisado possui vínculo direto com o processo principal 5001410-19.2016.4.04.7010. O vínculo foi identificado em: Petição Inicial, seq. 1, pág. 1, sob a rubrica 'AUTOS DE ORIGEM'. Trata-se de: Agravo de Instrumento interposto contra decisões interlocutórias proferidas na Execução Fiscal principal que indeferiram o privilégio especial ou a equiparação a créditos trabalhistas para os créditos do Agravante, Rogério Ito Gomes, na ordem de preferência para recebimento dos valores da arrematação.
+
+PROCESSO 26
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0001274-53.2022.8.16.0051 | Inventário e Partilha | TJPR (Vara Cível da Comarca de Barbosa Ferraz / Vara de Família e Sucessões de Barbosa Ferraz) | 1º Grau (inferido) | | | Autos (Seq. 352, 406, 407, 446) |
+
+b) Detalhamento Analítico:
+* Status: Em andamento - Com inventariante nomeada e pedido de cumulação de inventários.
+* Questão Jurídica Central: Inventário dos bens deixados por Aparecido Luiz Tomé e Maria Aparecida Tomé, com discussão sobre a meação e a responsabilidade por dívidas.
+* Resultado/Impacto (para o processo principal): A definição da partilha dos bens e a responsabilidade pelas dívidas dos falecidos neste inventário impactarão diretamente os valores remanescentes da arrematação do imóvel no processo principal, especialmente a meação de Maria Aparecida Tomé.
+* Vínculo com Processo Principal: Sim, no processo principal
+
+PROCESSO 27
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 04/07/2023 | 5017187-21.2023.4.04.7003 | Ação Declaratória Constitutiva de Nulidade / Cumprimento de sentença | TRF4 | 1º grau | Juntada de Ordem Cumprida -
+(APARECIDO LUIZ TOME) | 2023-07-04T00:00:00+00:00 | API - 47 documentos totais e 0 indisponíveis; Autos (Seq. 1, 11, 30, 364, 383) |
+
+b) Detalhamento Analítico:
+* Status: Encerrado - A ação declaratória constitutiva de nulidade foi julgada improcedente em 26/11/2024, com trânsito em julgado em 12/03/2025. A sentença negou os pedidos de nulidade da penhora e da arrematação do imóvel rural, bem como a nulidade da hasta pública, por considerar as matérias preclusas e sem fundamento. O Espólio autor foi condenado ao pagamento de custas, honorários advocatícios no valor de R$ 42.000,00 e multa de 2% por litigância de má-fé. Atualmente, o processo encontra-se em fase de cumprimento de sentença para a cobrança dos honorários e da multa, tendo a União Federal iniciado a execução e o Espólio requerido a habilitação do crédito no processo de inventário.
+* Questão Jurídica Central: Ação anulatória visando a desconstituição da penhora de pequena propriedade rural por impenhorabilidade e a nulidade da hasta pública por suposto direito a parcelamento da dívida.
+* Resultado/Impacto (para o processo principal): A improcedência da ação anulatória resultou na manutenção da arrematação do imóvel e na condenação do Espólio ao pagamento de honorários e multa por litigância de má-fé, totalizando R$ 50.400,00, impactando negativamente o patrimônio do Espólio. Confirma a validade da arrematação do imóvel no processo principal.
+* Vínculo com Processo Principal: SIM. O processo analisado possui vínculo direto com o processo principal 5001410-19.2016.4.04.7010. O vínculo foi identificado em: Petição Inicial (seq. 1, pág. 1), Despacho/Decisão (seq. 11, pág. 1) e Sentença (seq. 30, pág. 1). Trata-se de: Ação Declaratória Constitutiva de Nulidade, distribuída por dependência à Execução Fiscal, visando a declaração de nulidade da penhora e arrematação de imóvel rural que foi objeto de execução no processo principal.
+
+PROCESSO 28
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0001072-42.2023.8.16.0051 | Ação de divisão de imóvel rural | TJPR (Juízo de Barbosa Ferraz) (inferido) | 1º Grau (inferido) | | | Autos (Seq. 453) |
+
+b) Detalhamento Analítico:
+* Status: Em andamento (inferido)
+* Questão Jurídica Central: Delimitação dos limites internos das frações ideais e divisão do imóvel arrematado no processo principal, visando extinguir o condomínio.
+* Resultado/Impacto (para o processo principal): O resultado desta ação é crucial para a efetiva imissão na posse do arrematante no processo principal, pois definirá a área exata que lhe pertence, impactando a liquidez e a conclusão da execução.
+* Vínculo com Processo Principal: Sim, no processo principal
+
+PROCESSO 29
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 10/06/2024 | 5017624-85.2024.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | Transitado em Julgado | 2024-06-10T00:00:00+00:00 | API - 13 documentos totais e 0 indisponíveis; Autos (Seq. 1, 6) |
+
+b) Detalhamento Analítico:
+* Status: Encerrado - O Agravo de Instrumento foi julgado improcedente por unanimidade pela 12ª Turma do TRF4 em 23/10/2024. Os Embargos de Declaração subsequentes foram considerados prejudicados em 26/11/2024 devido à superveniência de sentença de improcedência na ação originária (5017187-21.2023.4.04.7003/PR). O processo transitou em julgado em 29/01/2025.
+* Questão Jurídica Central: O Agravo de Instrumento buscava a declaração de nulidade da penhora e arrematação de imóvel rural e a suspensão do leilão, interposto contra decisão que indeferiu tutela de urgência em Ação Anulatória.
+* Resultado/Impacto (para o processo principal): O agravo foi negado, mantendo as conclusões anteriores sobre a validade da arrematação e afastando a tese de impenhorabilidade. Isso confirma a validade da arrematação do imóvel no processo principal, consolidando a garantia do crédito e permitindo o prosseguimento da execução.
+* Vínculo com Processo Principal: SIM. O processo analisado possui vínculo direto com o processo principal 5001410-19.2016.4.04.7010. O vínculo foi identificado em: Petição Inicial (seq. 1, pág. 2) e Contraminuta (seq. 6, pág. 1). Trata-se de Agravo de Instrumento interposto contra decisão que indeferiu tutela de urgência em Ação Anulatória, a qual foi distribuída por dependência à Execução Fiscal principal, visando a declaração de nulidade da penhora e arrematação de imóvel no processo de origem.

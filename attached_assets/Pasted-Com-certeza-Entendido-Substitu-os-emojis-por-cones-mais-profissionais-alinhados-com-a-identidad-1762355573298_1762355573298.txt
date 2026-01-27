@@ -1,0 +1,460 @@
+Com certeza. Entendido. Substituí os emojis por ícones mais profissionais, alinhados com a identidade visual sugerida na imagem e nas boas práticas. O ícone de coração foi removido.
+
+Aqui está o relatório com os ícones atualizados:
+
+# RELATÓRIO DE PROCESSO DE DÍVIDA ATIVA
+
+**Processo Principal nº:** 5001410-19.2016.4.04.7010  
+**Exequente(s):** UNIÃO - FAZENDA NACIONAL  
+**Executado(s):** APARECIDO LUIZ TOMÉ (Espólio), WANDERLEIA TOMÉ, ROSEMEIRE TOMÉ, GILBERTO TOMÉ, LAERCIO JORGE TOMÉ  
+**Vara:** Tribunal Regional Federal da 4ª Região - Vara Federal de Umuarama/PR  
+**Data da Análise:** 02/11/2025
+
+<details>
+<summary><i class="fas fa-file-invoice-dollar"></i> 1. INFORMAÇÕES DO TÍTULO EXECUTIVO</summary>
+
+| Parâmetro | Informação | Fonte Documental |
+|-----------|------------|------------------|
+| **Exequente** | UNIÃO - FAZENDA NACIONAL (CNPJ: 00.394.460/0216-53) | (Seq.: 254, 341) |
+| **Executado(s)** | APARECIDO LUIZ TOMÉ (CPF: 211.107.359-87) (Espólio)<br>WANDERLEIA TOMÉ (CPF: 595.879.389-68)<br>ROSEMEIRE TOMÉ (CPF: 070.662.149-27)<br>GILBERTO TOMÉ<br>LAERCIO JORGE TOMÉ | (Seq.: 2, 3, 254, 341, 350, 354, 367) |
+| **Valor da Causa (na propositura)** | R$ 151.414,46 | (Seq.: 3, 255, 341) |
+| **Certidão de Dívida Ativa (CDA) nº** | 90 6 06 000103-44 (Processo Judicial Original: 2007.70.10.000565-0) | (Seq.: 3, 255, 327, 341) |
+| **Natureza do Tributo** | Dívida Ativa - Crédito Rural STN (Não Tributária) | (Seq.: 3, 327, 337) |
+| **Data de Inscrição em Dívida Ativa** | 03/01/2006 | (Seq.: 3, 327, 337) |
+| **Valor Inscrito (com encargos)** | R$ 118.511,06 | (Seq.: 3, 327, 337) |
+
+</details>
+
+<details>
+<summary><i class="fas fa-search"></i> 2. DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO</summary>
+
+### I. CLASSIFICAÇÃO
+
+**Classificação:** IRRECUPERÁVEL
+
+**Motivo:** O débito principal da execução fiscal foi **quitado** em 05/11/2024, quando o valor de R$ 74.315,69 foi transferido e convertido em pagamento definitivo para a União. Embora existam valores remanescentes em depósitos judiciais e um parcelamento em andamento, o crédito principal objeto da execução foi satisfeito.
+
+**Tempo Estimado:** N/A
+
+---
+
+### II. RAIO-X DO PROCESSO (Resumo dos Fatos)
+
+**Status Geral do Processo:** Execução com débito principal quitado, mas suspensa devido a parcelamento administrativo e aguardando resolução de ações conexas (divisão de imóvel e exigibilidade de crédito). Imóvel arrematado, mas imissão na posse suspensa.
+
+**Status do Crédito (Valor):** CDA nº 90 6 06 000103-44, com valor original de R$ 151.414,46. O débito principal foi quitado em 05/11/2024, restando um saldo remanescente em conta judicial de R$ 197.621,71 (em 08/09/2025) aguardando destinação.
+
+**Status da Garantia:** Execução garantida por imóvel (Mat. 1.913) arrematado por R$ 420.000,00 e transferência de crédito rural de R$ 35.095,98, totalizando R$ 455.095,98, valor suficiente para cobrir o débito. A imissão na posse do arrematante está suspensa.
+
+**Status da Defesa (Executado):** O executado apresentou diversas defesas, incluindo Ações Anulatórias e Agravos de Instrumento. A maioria das teses foi rejeitada, consolidando a validade da arrematação.
+
+**Principais Riscos Factuais:**
+- **Nulidade de Citação:** Para Maria Aparecida de Melo, pela ausência de assinatura na certidão.
+- **Nulidade de Intimação:** Para Gilberto Tomé, devido a AR de intimação de leilão assinado por terceiro.
+- **Suspensão por Ação Conexa:** A imissão na posse do imóvel está suspensa aguardando a resolução de uma ação de divisão de imóvel rural.
+- **Concurso de Credores:** Múltiplos credores disputam o saldo remanescente da arrematação.
+- **Sucessão Processual:** O processo prossegue contra o espólio do executado original, exigindo regularidade na representação dos herdeiros.
+- **Impenhorabilidade:** Tese já rejeitada no processo principal, mas reconhecida em outro processo sobre o mesmo bem.
+
+</details>
+
+<details>
+<summary><i class="fas fa-shield-alt"></i> 3. DETALHAMENTO DAS TESES DE DEFESA DOS EXECUTADOS</summary>
+
+### TESE 1: Embargos à Execução (298/98)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| N/A | 298/98 | **Embargos à Execução** | TJPR |
+
+**Status:** Encerrado - Provido (anulou a execução de origem).
+
+**Questão Jurídica Central:** Alegada iliquidez do título (CRPH nº 96/70075-0) por ausência de extrato consolidado.
+
+**Impacto:** Anulou a execução nº 243/98, um precedente desfavorável ao credor na época, mas com baixo risco atual, pois a execução principal atual é de outra natureza.
+
+---
+
+### TESE 2: Ação de Consignação em Pagamento (2003.70.10.001460-7)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| N/A | 2003.70.10.001460-7 | Ação de Consignação em Pagamento | Justiça Federal |
+
+**Status:** Encerrado - Houve transação e adesão a parcelamento (Lei nº 11.775/08).
+
+**Questão Jurídica Central:** Discussão sobre o valor da dívida de financiamento agrícola e alongamento do débito.
+
+**Impacto:** A transação resultou na extinção dos embargos à execução fiscal, indicando uma resolução da dívida. Nenhum risco atual.
+
+---
+
+### TESE 3: Embargos à Execução Fiscal (2007.70.10.001771-7)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| N/A | 2007.70.10.001771-7 | **Embargos à Execução Fiscal** | Justiça Federal |
+
+**Status:** Encerrado - Extinto com resolução do mérito devido à adesão a parcelamento.
+
+**Questão Jurídica Central:** Oposição à execução fiscal principal.
+
+**Impacto:** A extinção dos embargos por renegociação da dívida impactou positivamente a execução principal. Nenhum risco atual.
+
+---
+
+### TESE 4: Execução de Título Extrajudicial (0000498-05.2012.8.16.0051)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| N/A | 0000498-05.2012.8.16.0051 | Execução de Título Extrajudicial | TJPR |
+
+**Status:** Encerrado - Nulidade da penhora decretada por impenhorabilidade.
+
+**Questão Jurídica Central:** Reconhecimento da impenhorabilidade da pequena propriedade rural.
+
+**Impacto:** Precedente utilizado pela defesa na execução principal, embora a tese tenha sido rejeitada nesta. Risco médio de ser invocado novamente.
+
+---
+
+### TESE 5: Agravo de Instrumento (5017953-49.2014.404.0000)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| 29/07/2014 | 5017953-49.2014.404.0000 | Agravo de Instrumento | TRF4 |
+
+**Status:** Encerrado - Negado seguimento ao recurso (Trânsito em Julgado).
+
+**Questão Jurídica Central:** Recurso contra decisão que indeferiu o pedido de impenhorabilidade do imóvel.
+
+**Impacto:** Decisão favorável ao credor, mantendo a penhorabilidade do bem. Nenhum risco atual.
+
+---
+
+### TESE 6: Agravo de Instrumento (8036276-68.2015.4.04.0000)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| 23/09/2015 | 8036276-68.2015.4.04.0000 | Agravo de Instrumento | TRF4 |
+
+**Status:** Encerrado - Negado provimento (Trânsito em Julgado).
+
+**Questão Jurídica Central:** Reiteração do pedido de impenhorabilidade do imóvel.
+
+**Impacto:** Decisão favorável ao credor, considerando a matéria preclusa e consolidando a garantia. Nenhum risco atual.
+
+---
+
+### TESE 7: Recurso Extraordinário com Agravo (ARE 960.288)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| N/A | 960.288 | Recurso Extraordinário com Agravo (ARE) | STF |
+
+**Status:** Encerrado - Não conhecido.
+
+**Questão Jurídica Central:** Recurso contra a decisão do TRF4 que manteve a penhorabilidade do imóvel.
+
+**Impacto:** Decisão favorável ao credor, reforçando a preclusão da discussão. Nenhum risco atual.
+
+---
+
+### TESE 8: Agravo em Recurso Especial (5039629-43.2020.4.04.0000)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| 19/08/2020 | 5039629-43.2020.4.04.0000 | Agravo em Recurso Especial | STJ |
+
+**Status:** Encerrado - Não conhecido (Trânsito em Julgado).
+
+**Questão Jurídica Central:** Discussão sobre a aplicação de descontos na dívida e suspensão da arrematação.
+
+**Impacto:** Decisão favorável ao credor, consolidando a arrematação do imóvel pelo valor integral da dívida. Nenhum risco atual.
+
+---
+
+### TESE 9: Ação Anulatória (5017187-21.2023.4.04.7003)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| 04/07/2023 | 5017187-21.2023.4.04.7003 | **Ação Anulatória** | TRF4 |
+
+**Status:** Encerrado - Improcedente (Trânsito em Julgado).
+
+**Questão Jurídica Central:** Tentativa de desconstituir a penhora e a arrematação do imóvel.
+
+**Impacto:** Decisão favorável ao credor, mantendo a arrematação e condenando o Espólio por litigância de má-fé. Nenhum risco atual.
+
+---
+
+### TESE 10: Agravo de Instrumento (5017624-85.2024.4.04.0000)
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal |
+|------------------|--------|--------------|----------|
+| 10/06/2024 | 5017624-85.2024.4.04.0000 | Agravo de Instrumento | TRF4 |
+
+**Status:** Encerrado - Improcedente (Trânsito em Julgado).
+
+**Questão Jurídica Central:** Recurso contra decisão que indeferiu tutela de urgência na **Ação Anulatória**.
+
+**Impacto:** Decisão favorável ao credor, confirmando a validade da arrematação. Nenhum risco atual.
+
+</details>
+
+<details>
+<summary><i class="fas fa-gavel"></i> 4. ANÁLISE CRONOLÓGICA DA EXECUÇÃO PRINCIPAL</summary>
+
+- **03/01/2006** - Data da Inscrição em Dívida Ativa (CDA nº 90 6 06 000103-44).
+- **20/03/2007** - Ajuizamento da Execução Fiscal com valor da causa de R$ 151.414,46.
+- **30/07/2007** - Penhora de parte ideal de 6,00 alqueires do Lote 06 (Mat. 1.913), avaliado em R$ 210.000,00.
+- **13/10/2014** - Nova avaliação da área penhorada em R$ 720.000,00.
+- **21/02/2019** - Reavaliação do imóvel em R$ 840.000,00.
+- **10/02/2020** - Arrematação do imóvel por R$ 420.000,00 por Thiago Wilson da Luz Kailer.
+- **17/06/2020** - Expedição da Carta de Arrematação.
+- **14/12/2020** - Adesão do executado a parcelamento administrativo da dívida.
+- **17/06/2022** - Processo suspenso judicialmente devido ao parcelamento.
+- **04/07/2023** - Ajuizamento de **Ação Anulatória** pelo Espólio.
+- **05/11/2024** - Valor de R$ 74.315,69 (da arrematação) convertido em pagamento definitivo para a União, quitando o débito principal.
+- **26/11/2024** - Sentença de improcedência na **Ação Anulatória**.
+- **12/03/2025** - Trânsito em julgado da sentença de improcedência na **Ação Anulatória**.
+- **08/09/2025** - Saldo remanescente em conta judicial de R$ 197.621,71 aguardando destinação.
+
+**Status Atual:** O processo está suspenso devido a parcelamento administrativo e aguardando a resolução de ações conexas. O débito principal foi quitado, mas há saldo remanescente em conta judicial pendente de destinação.
+
+</details>
+
+<details>
+<summary><i class="fas fa-paperclip"></i> APÊNDICE A: DETALHAMENTO DO CRÉDITO</summary>
+
+### I. INFORMAÇÕES DO TÍTULO EXECUTIVO
+
+| Parâmetro | Informação |
+|-----------|------------|
+| **Valor Original da CDA** | R$ 151.414,46 |
+| **Valor Inscrito** | R$ 118.511,06 |
+| **Data de Inscrição** | 03/01/2006 |
+| **Última Atualização (PGFN)** | 06/11/2024 |
+| **Valor Atualizado (PGFN)** | R$ 301.668,31 |
+
+### II. SITUAÇÃO DO PAGAMENTO
+
+**Débito Principal Quitado:** Sim.
+
+**Pagamento Efetuado (via Arrematação):** R$ 74.315,69 em 05/11/2024.
+
+**Pagamentos (via Parcelamento):** Total de R$ 32.409,85 pagos entre 2020 e 2023.
+
+**Saldo Remanescente em Conta Judicial:** R$ 197.621,71 (em 08/09/2025).
+
+**Observações:** A União informou a quitação do débito principal. O saldo remanescente em conta judicial aguarda destinação devido a um concurso de credores e discussões sobre a meação da falecida Maria Aparecida Tomé.
+
+</details>
+
+<details>
+<summary><i class="fas fa-paperclip"></i> APÊNDICE B: DETALHAMENTO DAS CITAÇÕES E INTIMAÇÕES</summary>
+
+### I. RESUMO DAS CITAÇÕES
+
+| Executado | Status da Citação | Data | Justificativa | Risco |
+|-----------|-------------------|------|---------------|-------|
+| **APARECIDO LUIZ TOMÉ** | Exitosa | 21/07/2006 | Comparecimento espontâneo. | Baixo |
+| **MARIA APARECIDA DE MELO** | Exitosa (com ressalvas) | 20/08/2012 | Aceitou contrafé, mas não assinou a certidão. | Médio |
+| **GILBERTO TOMÉ** | Exitosa | 20/08/2012 | Citado pessoalmente por Oficial de Justiça. | Baixo |
+
+### II. OBSERVAÇÕES SOBRE INTIMAÇÕES
+
+**Intimações de Penhora e Avaliação:**
+- As intimações de penhora e avaliação dos executados principais (Aparecido e Maria Aparecida) foram realizadas pessoalmente por oficial de justiça e são consideradas válidas, apesar de contestações que foram judicialmente rejeitadas.
+
+**Intimações de Leilão:**
+- As intimações de leilão foram realizadas por edital e comunicação aos advogados constituídos, cumprindo os requisitos legais.
+- **Ponto de Atenção:** Há um risco de nulidade **ALTO** para a intimação de leilão de **Gilberto Tomé**, pois o AR foi assinado por um terceiro sem poderes aparentes.
+
+</details>
+
+<details>
+<summary><i class="fas fa-paperclip"></i> APÊNDICE C: DETALHAMENTO DA GARANTIA E EXPROPRIAÇÃO</summary>
+
+### I. SITUAÇÃO GERAL DA GARANTIA
+
+| Parâmetro | Informação |
+|-----------|------------|
+| **Dívida Garantida** | Sim |
+| **Forma de Garantia** | Penhora de imóvel, Transferência de crédito, Penhora no rosto dos autos |
+| **Valor Total Garantido (Nominal)** | R$ 455.095,98 (R$ 420.000,00 da arrematação + R$ 35.095,98 de crédito rural) |
+
+**Conclusão:** A execução demonstrou alta efetividade. O principal ativo, um imóvel rural, foi arrematado por R$ 420.000,00. As tentativas do executado de anular a expropriação foram afastadas por decisões judiciais transitadas em julgado. Embora a imissão na posse esteja suspensa aguardando uma ação de divisão do imóvel, um pagamento de R$ 74.315,69 já foi efetuado à exequente.
+
+### II. DETALHAMENTO DO IMÓVEL (MATRÍCULA 1.913)
+
+- **Penhora:** Realizada inicialmente em 30/07/2007 (parte ideal) e posteriormente sobre a totalidade (20/02/2013).
+- **Avaliações:** O valor do imóvel foi atualizado diversas vezes, com a última avaliação em R$ 840.000,00 (21/02/2019).
+- **Arrematação:** Ocorreu em 10/02/2020 por R$ 420.000,00, com a respectiva Carta de Arrematação expedida em 17/06/2020.
+
+</details>
+
+<details>
+<summary><i class="fas fa-paperclip"></i> APÊNDICE D: DETALHAMENTO DA PRESCRIÇÃO</summary>
+
+**Conclusão Geral:** Risco BAIXO.
+
+**Justificativa:** A prescrição ordinária foi interrompida com o ajuizamento da ação em 2007. A contagem da prescrição intercorrente, que se iniciaria em 2010, foi interrompida por atos de constrição efetiva (penhora em 2013 e arrematação em 2020), todos ocorrendo antes do prazo de 5 anos. Adicionalmente, o processo está suspenso desde 17/06/2022 devido a parcelamento administrativo, o que impede a contagem de qualquer prazo prescricional.
+
+</details>
+
+<details>
+<summary><i class="fas fa-paperclip"></i> APÊNDICE E: LISTA COMPLETA DOS PROCESSOS RELACIONADOS</summary>
+
+A análise revela uma complexa rede de ações conexas. As principais conclusões são:
+- As teses de defesa do executado foram majoritariamente rejeitadas em múltiplas instâncias.
+- Existem riscos relacionados a um concurso de credores sobre o valor da arrematação.
+- A efetivação da posse do imóvel pelo arrematante está suspensa, aguardando a resolução de uma ação de divisão de terras.
+- A execução principal está suspensa aguardando a resolução de outros processos que discutem a exigibilidade de créditos.
+
+<details>
+<summary>📄 PROCESSO 1: 226/1998 - Execução de Título Extrajudicial</summary>
+**Status:** Em andamento.
+**Impacto:** Outro credor (Banco do Brasil) com garantia hipotecária sobre o mesmo imóvel, gerando concorrência na ordem de preferência de créditos.
+</details>
+<details>
+<summary>📄 PROCESSO 2: 243/98 - Execução de Título Extrajudicial</summary>
+**Status:** Encerrado - Anulada.
+**Impacto:** Precedente desfavorável à liquidez do título de crédito original, mas com baixo impacto na execução atual.
+</details>
+<details>
+<summary>📄 PROCESSO 3: 298/98 - Embargos à Execução</summary>
+**Status:** Encerrado - Provido (anulou a execução 243/98).
+**Impacto:** Reforçou a tese de iliquidez do título na execução original.
+</details>
+<details>
+<summary>📄 PROCESSO 4: 0000068-44.1998.8.16.0051 - Execução</summary>
+**Status:** Encerrado - Extinta.
+**Impacto:** Reduziu a concorrência de credores sobre o patrimônio do executado.
+</details>
+<details>
+<summary>📄 PROCESSO 5: 327/2002 - Ação de Consignação em Pagamento</summary>
+**Status:** Encerrado - Remetido à Justiça Federal.
+**Impacto:** Originou o processo que foi usado como argumento de litispendência na execução principal, causando atrasos.
+</details>
+<details>
+<summary>📄 PROCESSO 6: 2003.70.10.001460-7 - Ação de Consignação em Pagamento</summary>
+**Status:** Encerrado - Houve transação e parcelamento.
+**Impacto:** A renegociação da dívida neste processo levou à extinção dos embargos na execução principal.
+</details>
+<details>
+<summary>📄 PROCESSO 7: 0000240-68.2007.8.16.0051 - Origem de crédito de leiloeiro</summary>
+**Status:** Não especificado.
+**Impacto:** O crédito de leiloeiro originado aqui concorre na ordem de preferência no processo principal.
+</details>
+<details>
+<summary>📄 PROCESSO 8: 2007.70.10.001771-7 - Embargos à Execução Fiscal</summary>
+**Status:** Encerrado - Extinto por renúncia (adesão a parcelamento).
+**Impacto:** A extinção destes embargos foi positiva para a execução principal.
+</details>
+<details>
+<summary>📄 PROCESSO 9: 606-39.2009.8.16.0051 - Apenso à Execução</summary>
+**Status:** Não especificado.
+**Impacto:** A nulidade de uma penhora neste processo pode impactar a ordem de preferência de créditos.
+</details>
+<details>
+<summary>📄 PROCESSO 10: 0000150-55.2010.8.16.0051 - Cumprimento de Sentença</summary>
+**Status:** Em andamento.
+**Impacto:** Penhora no rosto dos autos sobre a quota de um herdeiro, afetando a distribuição do saldo da arrematação.
+</details>
+<details>
+<summary>📄 PROCESSO 11: 0000410-64.2012.8.16.0051 - Execução de Título Extrajudicial</summary>
+**Status:** Em andamento.
+**Impacto:** Crédito que concorre na ordem de preferência sobre os valores da arrematação.
+</details>
+<details>
+<summary>📄 PROCESSO 12: 0000498-05.2012.8.16.0051 - Execução de Título Extrajudicial</summary>
+**Status:** Encerrado - Nulidade de penhora por impenhorabilidade.
+**Impacto:** Precedente usado pela defesa para alegar impenhorabilidade no processo principal.
+</details>
+<details>
+<summary>📄 PROCESSO 13: 0000992-30.2013.8.16.0051 - Execução de Título Extrajudicial</summary>
+**Status:** Em andamento.
+**Impacto:** Crédito com penhora no rosto dos autos, concorrendo na ordem de preferência.
+</details>
+<details>
+<summary>📄 PROCESSO 14: 5017953-49.2014.404.0000 - Agravo de Instrumento</summary>
+**Status:** Encerrado - Negado seguimento.
+**Impacto:** Decisão favorável ao credor, mantendo a penhorabilidade do imóvel.
+</details>
+<details>
+<summary>📄 PROCESSO 15: 8036276-68.2015.4.04.0000 - Agravo de Instrumento</summary>
+**Status:** Encerrado - Negado provimento.
+**Impacto:** Consolidou a penhorabilidade do bem, considerando a matéria preclusa.
+</details>
+<details>
+<summary>📄 PROCESSO 16: 0001012-50.2015.8.16.0051 - Cumprimento de Sentença</summary>
+**Status:** Em andamento.
+**Impacto:** Crédito que concorre na ordem de preferência sobre os valores da arrematação.
+</details>
+<details>
+<summary>📄 PROCESSO 17: ARE 960.288 - Recurso Extraordinário com Agravo</summary>
+**Status:** Encerrado - Não conhecido.
+**Impacto:** Reforçou a preclusão da discussão sobre impenhorabilidade.
+</details>
+<details>
+<summary>📄 PROCESSO 18: 0000901-32.2016.8.16.0051 - Carta Precatória Cível</summary>
+**Status:** Encerrado - Leilão realizado e imóvel arrematado.
+**Impacto:** Foi o instrumento que concretizou a expropriação do bem.
+</details>
+<details>
+<summary>📄 PROCESSO 19: 0000964-57.2016.8.16.0051 - Cumprimento de Sentença Provisório</summary>
+**Status:** Arquivado.
+**Impacto:** A penhora realizada neste processo foi aproveitada em outro (0001012-50.2015.8.16.0051), mantendo a relevância do crédito.
+</details>
+<details>
+<summary>📄 PROCESSO 20: 5036128-18.2019.4.04.0000 - Mandado de Segurança</summary>
+**Status:** Encerrado.
+**Impacto:** Sem impacto atual no processo principal.
+</details>
+<details>
+<summary>📄 PROCESSO 21: 235-26.2019.8.16.0051 - Exigibilidade de Crédito</summary>
+**Status:** Em andamento.
+**Impacto:** **Crítico.** A execução principal está suspensa aguardando a resolução deste processo, representando um atraso significativo.
+</details>
+<details>
+<summary>📄 PROCESSO 22: 5039629-43.2020.4.04.0000 - Agravo em Recurso Especial</summary>
+**Status:** Encerrado - Não conhecido.
+**Impacto:** Manteve a validade da arrematação sem os descontos pleiteados pelo executado.
+</details>
+<details>
+<summary>📄 PROCESSO 23: 5004453-03.2020.4.04.0000 - Mandado de Segurança</summary>
+**Status:** Encerrado.
+**Impacto:** Sem impacto atual no processo principal.
+</details>
+<details>
+<summary>📄 PROCESSO 24: 0000537-84.2021.8.16.0051 - Ação de Prestação de Contas</summary>
+**Status:** Em andamento (inferido).
+**Impacto:** Indireto, pode afetar a situação financeira geral do executado.
+</details>
+<details>
+<summary>📄 PROCESSO 25: 5024622-74.2021.4.04.0000 - Agravo de Instrumento</summary>
+**Status:** Encerrado - Improcedente.
+**Impacto:** Manteve a classificação dos créditos de um leiloeiro como quirografários (sem privilégio), o que é favorável à União na ordem de preferência.
+</details>
+<details>
+<summary>📄 PROCESSO 26: 0001274-53.2022.8.16.0051 - Inventário e Partilha</summary>
+**Status:** Em andamento.
+**Impacto:** A definição da partilha impactará a destinação dos valores remanescentes da arrematação.
+</details>
+<details>
+<summary>📄 PROCESSO 27: 5017187-21.2023.4.04.7003 - Ação Anulatória</summary>
+**Status:** Encerrado - Improcedente.
+**Impacto:** Confirmou a validade da arrematação e condenou o Espólio por litigância de má-fé.
+</details>
+<details>
+<summary>📄 PROCESSO 28: 0001072-42.2023.8.16.0051 - Ação de Divisão de Imóvel Rural</summary>
+**Status:** Em andamento (inferido).
+**Impacto:** **Crítico.** O resultado é crucial para a efetiva imissão na posse do arrematante, impactando a conclusão da execução.
+</details>
+<details>
+<summary>📄 PROCESSO 29: 5017624-85.2024.4.04.0000 - Agravo de Instrumento</summary>
+**Status:** Encerrado - Improcedente.
+**Impacto:** Manteve a validade da arrematação, negando tutela de urgência na **Ação Anulatória**.
+</details>
+
+</details>

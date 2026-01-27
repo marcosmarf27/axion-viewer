@@ -1,0 +1,16 @@
+# Configuração Railway (Opcional)
+# Este arquivo define como a Railway deve construir e executar sua aplicação
+
+[build]
+builder = "dockerfile"
+dockerfilePath = "./Dockerfile"
+
+[deploy]
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 5
+
+# Volume persistente para manter arquivos entre deploys
+# IMPORTANTE: Configure o volume no dashboard da Railway
+# Vá em: Service Settings > Volumes > Add Volume > Mount: /app/data
+[[deploy.volumes]]
+mount = "/app/data"

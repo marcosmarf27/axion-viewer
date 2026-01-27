@@ -1,0 +1,67 @@
+PLANO COMPLETO: API Flask para Markdown → HTML com Templates Configuráveis
+
+🏗️ 1. ARQUITETURA DO PROJETO
+markdown-api/
+├── app.py                          # Aplicação Flask principal
+├── requirements.txt                # Dependências
+├── config.py                       # Configurações globais
+├── .env                           # Variáveis de ambiente
+│
+├── templates/                      # Templates Jinja2
+│   ├── base.html                  # Template base
+│   ├── themes/                    # Temas disponíveis
+│   │   ├── default/
+│   │   │   ├── config.json       # Cores e configurações
+│   │   │   ├── header.html
+│   │   │   ├── footer.html
+│   │   │   └── styles.css
+│   │   ├── juridico/
+│   │   │   ├── config.json
+│   │   │   ├── header.html
+│   │   │   ├── footer.html
+│   │   │   └── styles.css
+│   │   └── dark/
+│   │       └── ...
+│
+├── static/                        # Arquivos estáticos
+│   ├── css/
+│   │   └── github-markdown.css   # CSS base do markdown
+│   └── js/
+│       └── app.js
+│
+├── utils/                         # Utilitários
+│   ├── markdown_converter.py     # Conversor de markdown
+│   ├── theme_manager.py          # Gerenciador de temas
+│   └── validators.py             # Validadores
+│
+├── uploads/                       # Arquivos temporários
+└── outputs/                       # HTMLs gerados
+
+🎯 2. FUNCIONALIDADES DA API
+Endpoints Principais:
+python# 1. Converter Markdown → HTML
+POST /api/convert
+    - Body: { "markdown": "texto", "theme": "juridico", "custom_config": {...} }
+    - Response: { "html": "...", "download_url": "..." }
+
+# 2. Upload de arquivo .md
+POST /api/convert/file
+    - Form-data: file, theme, config
+    - Response: { "html": "...", "download_url": "..." }
+
+# 3. Listar temas disponíveis
+GET /api/themes
+    - Response: [ { "name": "default", "preview": "..." }, ... ]
+
+# 4. Criar/Atualizar tema customizado
+POST /api/themes
+    - Body: { "name": "meu_tema", "config": {...}, "header": "...", "footer": "..." }
+
+# 5. Configurar tema existente
+PUT /api/themes/{theme_name}
+    - Body: { "colors": {...}, "fonts": {...} }
+
+# 6. Preview de template
+POST /api/preview
+    - Body: { "markdown": "texto", "theme": "juridico" }
+    - Response: HTML preview

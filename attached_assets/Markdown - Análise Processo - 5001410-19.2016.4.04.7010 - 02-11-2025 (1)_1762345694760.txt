@@ -1,0 +1,961 @@
+# RELATÓRIO DE PROCESSO DE DÍVIDA ATIVA - 5001410-19.2016.4.04.7010
+
+## 1. INFORMAÇÕES DO TÍTULO EXECUTIVO
+| Parâmetro | Informação | Fonte Documental |
+| :--- | :--- | :--- |
+| **Exequente** | UNIÃO - FAZENDA NACIONAL (CNPJ: 00.394.460/0216-53) | (Seq.: 254, 341) |
+| **Executado(s)** | APARECIDO LUIZ TOME (CPF: 211.107.359-87) (Espólio)<br>WANDERLEIA TOMÉ (CPF: 595.879-389-68)<br>ROSEMEIRE TOMÉ (CPF: 070.662.149-27)<br>GILBERTO TOME<br>LAERCIO JORGE TOME | (Seq.: 2, 3, 254, 341, 350, 354, 367) |
+| **Valor da Causa (Valor da CDA na propositura)** | R$ 151.414,46 | (Seq.: 3, 255, 341) |
+| **Certidão de Dívida Ativa (CDA) nº** | 90 6 06 000103-44 (Processo Judicial Original: 2007.70.10.000565-0) | (Seq.: 3, 255, 327, 341) |
+| **Natureza do Tributo** | Dívida Ativa - Crédito Rural STN (Não Tributária) (STN - MP 2.196-3/2001 - OP CEDIDAS A UNIAO) | (Seq.: 3, 327, 337) |
+| **Data de Inscrição em Dívida Ativa** | 03/01/2006 | (Seq.: 3, 327, 337) |
+| **Encargos na Inscrição (Originais da CDA)** | Correção monetária (DL. 2052/83, art. 1 Inciso I, DL. 2284/86, art 41, DL. 2287/86, arts. 12 e 15, modificado pelo DL. 2323/87, arts. 1 e 14, Lei n. 7799/89, alterada pela Lei n. 8383/91, art. 54), juros de mora (DL. 2052/83, art. 1, Inciso II, DL. 2323/87, art 16, modificado pelo DL 2331/87, art. 6, Lei n. 8177/91, art. 9, Lei n. 8218/91, art. 3e 30, Lei n. 8383/91 art. 54 parágrafos 1 e 2, Lei n. 8981/95, art. 84,1 e parágrafo 8 (redação da MP 1110/95, art. 16 e reedições); Lei n. 9065/95, art. 13 e MP 1542/96, art. 26 e reedições, excetuada, quanto aos juros, a parcela relativa à multa de mora, além do encargo de 20% (vinte por cento), previsto no DL. 2952/83, art. 1, Inciso IV, Lei n. 7799/89, art. 64 parágrafo 2 Lei n. 8383/91, art. 57 parágrafo 2. Valor Inscrito: R$ 118.511,06. | (Seq.: 3, 327, 337) |
+
+## 2. DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO
+
+### I. CLASSIFICAÇÃO
+*Classificação:* IRRECUPERÁVEL pois Classificado como **IRRECUPERÁVEL**. Os relatórios de *due diligence* técnica confirmam que o débito principal da execução fiscal foi **quitado** em 05/11/2024. Especificamente, "R$ 74.315,69, foi transferida e convertida em pagamento definitivo para a União em 05/11/2024, quitando o débito principal". Esta informação se enquadra no critério de "Pagamento Integral Comprovado" do algoritmo, que define a irrecuperabilidade do crédito quando há quitação integral homologada ou comprovante de pagamento com homologação definitiva. Embora existam valores remanescentes em depósitos judiciais e um parcelamento administrativo em andamento, o crédito principal que seria objeto de aquisição já foi satisfeito para o exequente original (a União). ( - "RELATÓRIO DE ANÁLISE DO CRÉDITO EXEQUENDO": "Parte desse valor, R$ 74.315,69, foi transferida e convertida em pagamento definitivo para a União em 05/11/2024, quitando o débito principal."
+- "RELATÓRIO DE ANÁLISE DO CRÉDITO EXEQUENDO": "A União informou a quitação do débito em cobrança, mas há valores remanescentes em depósitos judiciais vinculados aos autos, pendentes de destinação, o que requer atenção judicial para a correta distribuição."
+- "ATINGIBILIDADE DE GARANTIAS E EXPROPRIAÇÃO DE BENS": "Um pagamento definitivo de R$ 74.315,69 já foi efetuado à exequente.")
+
+*Tempo Estimado:* N/A
+
+### II. RAIO-X DO PROCESSO (Resumo dos Fatos)
+*   **Status Geral do Processo:** Execução com débito principal quitado, mas suspensa devido a parcelamento administrativo e aguardando resolução de ações conexas (divisão de imóvel e exigibilidade de crédito). Imóvel arrematado, mas imissão na posse suspensa.
+
+*   **Status do Crédito (Valor):** CDA nº 90 6 06 000103-44, com valor original de R$ 151.414,46. O débito principal foi quitado em 05/11/2024, restando um saldo remanescente em conta judicial de R$ 197.621,71 (em 08/09/2025) aguardando destinação.
+
+*   **Status da Garantia:** Execução garantida por imóvel (Mat. 1.913) arrematado por R$ 420.000,00 e transferência de crédito rural de R$ 35.095,98, totalizando R$ 455.095,98, valor suficiente para cobrir o débito. A imissão na posse do arrematante está suspensa.
+
+*   **Status da Defesa (Executado):** O executado apresentou diversas defesas, incluindo Ações Anulatórias e Agravos de Instrumento, alegando nulidade da penhora, arrematação e impenhorabilidade do bem. A maioria dessas teses foi rejeitada ou não conhecida em diversas instâncias, consolidando a validade da arrematação. Embargos à Execução anteriores foram extintos por adesão a parcelamento.
+
+*   **Principais Riscos Factuais:**
+    *   *Risco de Nulidade de Citação:* Para Maria Aparecida de Melo, pela ausência de assinatura na certidão de citação, mesmo com aceitação da contrafé.
+    *   *Risco de Nulidade de Intimação:* Para Gilberto Tomé, devido a AR de intimação de leilão assinado por terceiro sem poderes expressos.
+    *   *Risco de Suspensão por Ação Conexa:* A imissão na posse do imóvel arrematado está suspensa aguardando a resolução de uma ação de divisão de imóvel rural (0001072-42.2023.8.16.0051).
+    *   *Risco de Suspensão por Ação Conexa:* O processo principal está suspenso aguardando a resolução da exigibilidade de um crédito em outro processo (235-26.2019.8.16.0051).
+    *   *Risco de Concurso de Credores:* Múltiplos credores disputam o saldo remanescente da arrematação do imóvel, o que pode atrasar a destinação final dos valores.
+    *   *Risco de Sucessão Processual:* O executado original faleceu, e o processo prossegue contra seu espólio, exigindo a regularidade da representação e habilitação de todos os herdeiros.
+    *   *Risco de Impenhorabilidade (Precedente):* Embora a tese de impenhorabilidade tenha sido rejeitada no processo principal, houve reconhecimento em outro processo (0000498-05.2012.8.16.0051) sobre o mesmo bem, o que pode ser reiterado pela defesa.
+    *   *Risco de Saldo Remanescente:* Há um saldo significativo em conta judicial aguardando destinação, o que requer atenção judicial para a correta distribuição entre os credores e herdeiros.
+
+## 3. DETALHAMENTO DAS TESES DE DEFESA DOS EXECUTADOS
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 298/98 | Embargos à Execução | TJPR | 1º grau (apensado ao 243/98) | | | Autos (Seq. 8) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - Provido (anulou a execução)
+*   **Questão Jurídica Central:** Oposição de **embargos de execução** nº 243/98, alegando a iliquidez do título (CRPH nº 96/70075-0) por ausência de extrato consolidado da conta gráfica do financiamento.
+*   **Resultado/Impacto (para o processo principal):** O acórdão do Tribunal de Alçada do Paraná anulou a execução nº 243/98, confirmando a tese de iliquidez do título. Isso é um precedente desfavorável ao credor, reforçando a argumentação do devedor na execução principal.
+*   **Riscos Atuais (para o processo principal):** Risco baixo, pois a execução principal é de outra natureza (Dívida Ativa da União) e a validade de seus títulos foi confirmada.
+*   **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 2003.70.10.-001460-7 | Ação de Consignação em Pagamento | Justiça Federal (Campo Mourão) | 1º Grau | | | Autos (Seq. 8, 10, 29, 44, 57) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - Houve transação e adesão a parcelamento (Lei nº 11.775/08) nos embargos apensados (2007.70.10.001771-7), resultando na perda de objeto e extinção.
+*   **Questão Jurídica Central:** Discussão sobre o valor exato da dívida de financiamento agrícola (CRPHs 95/00006-2 e 96/70075-0), alongamento do débito pela Lei nº 10.464/2002 e nulidade da CRPH 96/70075-0 por valor superior ao devido.
+*   **Resultado/Impacto (para o processo principal):** Este processo foi a base para a alegação de litispendência e conexão na execução fiscal principal. A transação e parcelamento da dívida neste contexto levaram à extinção dos **embargos de execução** fiscal principal, indicando uma resolução da dívida em outro foro.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a dívida foi renegociada e os embargos extintos.
+*   **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 2007.70.10.001771-7 | Embargos à Execução Fiscal | Justiça Federal (Campo Mourão) | 1º grau (apensado ao 2007.70.10.000565-0) | | | Autos (Seq. 83, 84, 137) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - Extinto com resolução do mérito por renúncia do autor ao direito, devido à adesão a parcelamento (Lei nº 11.775/08) na Ação de Consignação em Pagamento (`2003.70.10.001460-7`).
+*   **Questão Jurídica Central:** Oposição de **embargos de execução** fiscal nº 2007.70.10.000565-0, que é o processo principal em sua numeração anterior.
+*   **Resultado/Impacto (para o processo principal):** A extinção destes **embargos de execução** por adesão a parcelamento na ação consignatória indica que a dívida foi renegociada, impactando diretamente a execução fiscal principal. Para o credor, a resolução da dívida por parcelamento é um desfecho positivo, embora possa implicar em prazos mais longos para recebimento.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a dívida foi renegociada e os embargos extintos.
+*   **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000498-05.2012.8.16.0051 | Execução de Título Extrajudicial | TJPR (Comarca de Barbosa Ferraz) | 1º Grau | | | Autos (Seq. 211, 212, 214, 219, 264) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - Nulidade da penhora decretada em 05/07/2019 por impenhorabilidade da pequena propriedade rural.
+*   **Questão Jurídica Central:** Execução de título extrajudicial contra Aparecido Luiz Tomé, onde foi alegada e reconhecida a impenhorabilidade da pequena propriedade rural.
+*   **Resultado/Impacto (para o processo principal):** A declaração de impenhorabilidade do imóvel rural neste processo, embora em outra execução, é utilizada pelo devedor como argumento para a impenhorabilidade do mesmo bem na execução fiscal principal. Isso representa um risco para o credor na execução principal, pois há um precedente judicial reconhecendo a impenhorabilidade do bem.
+*   **Riscos Atuais (para o processo principal):** Risco médio, pois a tese de impenhorabilidade foi rejeitada no processo principal, mas o precedente em outro processo pode ser invocado.
+*   **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 29/07/2014 | 5017953-49.2014.404.0000 | Agravo de Instrumento | TRF4 | 2º grau | Baixa Definitiva e Trânsito em Julgado em 19/08/2014. Negado seguimento ao recurso. | | Autos (Seq. 112, 117, 119, 147, 148) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - Baixa Definitiva e Trânsito em Julgado em 19/08/2014. Negado seguimento ao recurso.
+*   **Questão Jurídica Central:** Recurso contra decisão que indeferiu o pedido de impenhorabilidade da pequena propriedade rural na execução fiscal principal.
+*   **Resultado/Impacto (para o processo principal):** A decisão manteve a penhorabilidade do imóvel rural, o que é favorável ao credor, permitindo o prosseguimento dos atos executórios sobre o bem. A rejeição do agravo consolida a garantia.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.
+*   **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 23/09/2015 | 8036276-68.2015.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | BAIXADO - RECEBIMENTO - Recebimento - STF | 2016-06-22T00:00:00+00:00 | API, Erro ao realizar consulta.; Autos (Seq. 133, 147, 148, 149) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - Negado provimento ao agravo legal em 09/12/2015, com trânsito em julgado.
+*   **Questão Jurídica Central:** Recurso contra decisão que indeferiu o pedido de impenhorabilidade da pequena propriedade rural na execução fiscal principal, reiterando argumentos e apresentando novas provas.
+*   **Resultado/Impacto (para o processo principal):** A decisão manteve a penhorabilidade do imóvel rural, considerando a matéria preclusa, o que é favorável ao credor e consolida a possibilidade de expropriação do bem.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.
+*   **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 960.288 | Recurso Extraordinário com Agravo (ARE) | STF | STF | | | Autos (Seq. 151) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - Não conhecido em 22/04/2016 por ausência de impugnação específica.
+*   **Questão Jurídica Central:** Recurso contra a decisão que não admitiu o apelo extremo interposto contra o acórdão do TRF4 que manteve a penhorabilidade do imóvel rural.
+*   **Resultado/Impacto (para o processo principal):** A não admissão do recurso no STF por falha formal reforça a preclusão da discussão sobre a impenhorabilidade do imóvel, consolidando a posição do credor na execução principal.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.
+*   **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 19/08/2020 | 5039629-43.2020.4.04.0000 | Agravo em Recurso Especial / Agravo de Instrumento | STJ | 3º grau | Baixa Definitiva para TRIBUNAL REGIONAL FEDERAL DA 4ª REGIÃO | 2022-08-25T00:00:00+00:00 | API - 149 documentos totais e 0 indisponíveis; Autos (Seq. 3, 14, 84, 116, 283) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - O Agravo em Recurso Especial (AREsp 2188243/PR), interposto neste processo, foi não conhecido pelo Superior Tribunal de Justiça em 26/09/2022, devido à deficiência na fundamentação (Súmula 284/STF), com trânsito em julgado em 20/10/2022 e posterior baixa dos autos. A decisão anterior do Tribunal Regional Federal da 4ª Região, que havia negado provimento ao Agravo de Instrumento e julgado prejudicado o Agravo Interno, foi mantida, confirmando o indeferimento do pedido de aplicação de descontos na dívida e a validade da arrematação.
+*   **Questão Jurídica Central:** O Agravo em Recurso Especial discutiu a reforma de decisão que indeferiu o pagamento da dívida com descontos da Lei 13.729/2018 e a suspensão da arrematação do imóvel no processo principal.
+*   **Resultado/Impacto (para o processo principal):** O não conhecimento do Agravo em Recurso Especial pelo STJ manteve a decisão do processo principal. Isso resultou na impossibilidade de o executado obter os descontos pleiteados e na consolidação da arrematação do imóvel, permitindo a continuidade da execução fiscal com base no valor integral da dívida.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.
+*   **Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal `5001410-19.2016.4.04.7010`. O vínculo foi identificado em: Petição Inicial do Agravo de Instrumento (seq. 3, pág. 371), Carta de Arrematação (seq. 3, pág. 8), Recurso Especial (seq. 14, pág. 38 e seq. 84, p. 284) e Espelho dos dados da Autuação (seq. 116, p. 357). Trata-se de Agravo de Instrumento interposto contra decisão interlocutória proferida na Execução Fiscal principal, que indeferiu o pedido de pagamento da dívida com descontos e a suspensão da arrematação, e recursos subsequentes.
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 04/07/2023 | 5017187-21.2023.4.04.7003 | Ação Declaratória Constitutiva de Nulidade / Cumprimento de sentença | TRF4 | 1º grau | Juntada de Ordem Cumprida - <br/>(APARECIDO LUIZ TOME) | 2023-07-04T00:00:00+00:00 | API - 47 documentos totais e 0 indisponíveis; Autos (Seq. 1, 11, 30, 364, 383) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - A ação declaratória constitutiva de nulidade foi julgada improcedente em 26/11/2024, com trânsito em julgado em 12/03/2025. A sentença negou os pedidos de nulidade da penhora e da arrematação do imóvel rural, bem como a nulidade da hasta pública, por considerar as matérias preclusas e sem fundamento. O Espólio autor foi condenado ao pagamento de custas, honorários advocatícios no valor de R$ 42.000,00 e multa de 2% por litigância de má-fé. Atualmente, o processo encontra-se em fase de cumprimento de sentença para a cobrança dos honorários e da multa, tendo a União Federal iniciado a execução e o Espólio requerido a habilitação do crédito no processo de inventário.
+*   **Questão Jurídica Central:** **Ação anulatória** visando a desconstituição da penhora de pequena propriedade rural por impenhorabilidade e a nulidade da hasta pública por suposto direito a parcelamento da dívida.
+*   **Resultado/Impacto (para o processo principal):** A improcedência da **ação anulatória** resultou na manutenção da arrematação do imóvel e na condenação do Espólio ao pagamento de honorários e multa por litigância de má-fé, totalizando R$ 50.400,00, impactando negativamente o patrimônio do Espólio. Confirma a validade da arrematação do imóvel no processo principal.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.
+*   **Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal `5001410-19.2016.4.04.7010`. O vínculo foi identificado em: Petição Inicial (seq. 1, pág. 1), Despacho/Decisão (seq. 11, pág. 1) e Sentença (seq. 30, pág. 1). Trata-se de: Ação Declaratória Constitutiva de Nulidade, distribuída por dependência à Execução Fiscal, visando a declaração de nulidade da penhora e arrematação de imóvel rural que foi objeto de execução no processo principal.
+
+---
+
+#### a) Tabela de Referência
+
+| Data ajuizamento | Nº CNJ | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 10/06/2024 | 5017624-85.2024.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | Transitado em Julgado | 2024-06-10T00:00:00+00:00 | API - 13 documentos totais e 0 indisponíveis; Autos (Seq. 1, 6) |
+
+#### b) Detalhamento Analítico
+*   **Status:** Encerrado - O Agravo de Instrumento foi julgado improcedente por unanimidade pela 12ª Turma do TRF4 em 23/10/2024. Os **Embargos de Declaração** subsequentes foram considerados prejudicados em 26/11/2024 devido à superveniência de sentença de improcedência na ação originária (5017187-21.2023.4.04.7003/PR). O processo transitou em julgado em 29/01/2025.
+*   **Questão Jurídica Central:** O Agravo de Instrumento buscava a declaração de nulidade da penhora e arrematação de imóvel rural e a suspensão do leilão, interposto contra decisão que indeferiu tutela de urgência em **Ação Anulatória**.
+*   **Resultado/Impacto (para o processo principal):** O agravo foi negado, mantendo as conclusões anteriores sobre a validade da arrematação e afastando a tese de impenhorabilidade. Isso confirma a validade da arrematação do imóvel no processo principal, consolidando a garantia do crédito e permitindo o prosseguimento da execução.
+*   **Riscos Atuais (para o processo principal):** Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.
+*   **Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal 5001410-19.2016.4.04.7010. O vínculo foi identificado em: Petição Inicial (seq. 1, pág. 2) e Contraminuta (seq. 6, pág. 1). Trata-se de Agravo de Instrumento interposto contra decisão que indeferiu tutela de urgência em **Ação Anulatória**, a qual foi distribuída por dependência à Execução Fiscal principal, visando a declaração de nulidade da penhora e arrematação de imóvel no processo de origem.
+
+## 4. ANÁLISE CRONOLÓGICA
+
+*   **03/01/2006** - Data da Inscrição em Dívida Ativa (CDA nº 90 6 06 000103-44).
+*   **29/06/2006** - Despacho do Juiz ordenando a citação.
+*   **21/07/2006** - Citação efetiva de APARECIDO LUIZ TOMÉ por comparecimento espontâneo, ao apresentar Exceção de Pré-Executividade.
+*   **20/03/2007** - Ajuizamento da Execução Fiscal (Processo Original: 2007.70.10.000565-0) com valor da causa de R$ 151.414,46.
+*   **30/07/2007** - Lavratura do Auto de Penhora de parte ideal de 6,00 alqueires paulistas do Lote 06, Matrícula 1.913, e avaliação em R$ 210.000,00.
+*   **30/07/2007 e 01/08/2007** - Intimação pessoal de Aparecido Luiz Tomé e Maria Aparecida Tomé sobre a penhora e avaliação.
+*   **27/07/2009** - Ofício de Designação de Leilão para 09/09/2009 (1ª praça) e 23/09/2009 (2ª praça).
+*   **08/10/2012** - Tentativa de bloqueio de valores via BACENJUD, que resultou frustrada.
+*   **20/08/2012** - Citação pessoal de MARIA APARECIDA DE MELO e GILBERTO TOMÉ por Oficial de Justiça. Intimação da penhora para Maria Aparecida de Melo, Aparecido Luiz Tomé e Gilberto Tomé.
+*   **20/02/2013** - Lavratura do Auto de Penhora e Avaliação da totalidade do Imóvel Matrícula 1.913, avaliado em R$ 920.000,00.
+*   **26/02/2013** - Intimação de APARECIDO LUIZ TOMÉ e MARIA APARECIDA TOMÉ sobre a penhora e avaliação.
+*   **13/10/2014** - Laudo de Avaliação de área ideal de 6,00 alqueires do Lote 06, Matrícula 1.913, avaliado em R$ 720.000,00.
+*   **22/10/2014** - Intimação de APARECIDO LUIZ TOMÉ sobre o laudo de avaliação.
+*   **03/11/2014** - Intimação de MARIA APARECIDA TOMÉ sobre o laudo de avaliação.
+*   **13/10/2016** - Laudo de Reavaliação do Imóvel Matrícula 1.913, avaliado em R$ 840.000,00.
+*   **21/02/2019** - Laudo de Reavaliação do Imóvel Matrícula 1.913, avaliado em R$ 840.000,00.
+*   **26/08/2019** - Leilões designados restaram negativos (preço vil).
+*   **24/10/2019** - Ofício de Designação de Leilão para 23/01/2020 (1ª praça online), com deságio de 50% e parcelamento deferido.
+*   **10/02/2020** - Arrematação do Imóvel Matrícula 1.913 por R$ 420.000,00 por Thiago Wilson da Luz Kailer.
+*   **17/06/2020** - Expedição da Carta de Arrematação do imóvel.
+*   **14/12/2020** - Executado aderiu a parcelamento administrativo da dívida.
+*   **14/10/2021** - Anotação de Penhora no Rosto dos Autos sobre créditos do herdeiro Gilberto Tomé.
+*   **17/06/2022** - Processo suspenso por decisão judicial devido a parcelamento do débito.
+*   **04/07/2023** - Ação Declaratória Constitutiva de Nulidade (5017187-21.2023.4.04.7003) ajuizada pelo Espólio de Aparecido Luiz Tomé.
+*   **26/09/2023** - Expedição de Mandado de Imissão na Posse, que foi devolvido frustrado.
+*   **26/11/2024** - Sentença de improcedência na Ação Declaratória Constitutiva de Nulidade (5017187-21.2023.4.04.7003).
+*   **05/11/2024** - R$ 74.315,69 do valor da arrematação foram convertidos em pagamento definitivo para a União, quitando o débito principal da execução fiscal.
+*   **23/10/2024** - Agravo de Instrumento (5017624-85.2024.4.04.0000) julgado improcedente pelo TRF4.
+*   **12/03/2025** - Trânsito em julgado da sentença de improcedência na Ação Declaratória Constitutiva de Nulidade (5017187-21.2023.4.04.7003).
+*   **08/09/2025** - Saldo remanescente na conta judicial de R$ 197.621,71, aguardando destinação.
+*   **Status Atual:** O processo principal está suspenso devido a parcelamento administrativo e aguardando a resolução de ações conexas, como a ação de divisão de imóvel rural (0001072-42.2023.8.16.0051) que impede a imissão na posse do arrematante, e a ação de exigibilidade de crédito (235-26.2019.8.16.0051). O débito principal foi quitado, mas há saldo remanescente em conta judicial pendente de destinação.
+
+# APÊNDICES
+
+## APÊNDICE A: DETALHAMENTO DO CRÉDITO
+### **RELATÓRIO DE ANÁLISE DO CRÉDITO EXEQUENDO**
+
+---
+
+### **I. INFORMAÇÕES DO TÍTULO EXECUTIVO**
+
+| Parâmetro | Informação | Fonte Documental |
+| :--- | :--- | :--- |
+| **Exequente** | UNIÃO - FAZENDA NACIONAL (CNPJ: 00.394.460/0216-53) | (Seq.: 254, 341) |
+| **Executado(s)** | APARECIDO LUIZ TOME (CPF: 211.107.359-87) (Espólio)<br>WANDERLEIA TOMÉ (CPF: 595.879-389-68)<br>ROSEMEIRE TOMÉ (CPF: 070.662.149-27)<br>GILBERTO TOME<br>LAERCIO JORGE TOME | (Seq.: 2, 3, 254, 341, 350, 354, 367) |
+| **Valor da Causa (Valor da CDA na propositura)** | R$ 151.414,46 | (Seq.: 3, 255, 341) |
+| **Certidão de Dívida Ativa (CDA) nº** | 90 6 06 000103-44 (Processo Judicial Original: 2007.70.10.000565-0) | (Seq.: 3, 255, 327, 341) |
+| **Natureza do Tributo** | Dívida Ativa - Crédito Rural STN (Não Tributária) (STN - MP 2.196-3/2001 - OP CEDIDAS A UNIAO) | (Seq.: 3, 327, 337) |
+| **Data de Inscrição em Dívida Ativa** | 03/01/2006 | (Seq.: 3, 327, 337) |
+| **Encargos na Inscrição (Originais da CDA)** | Correção monetária (DL. 2052/83, art. 1 Inciso I, DL. 2284/86, art 41, DL. 2287/86, arts. 12 e 15, modificado pelo DL. 2323/87, arts. 1 e 14, Lei n. 7799/89, alterada pela Lei n. 8383/91, art. 54), juros de mora (DL. 2052/83, art. 1, Inciso II, DL. 2323/87, art 16, modificado pelo DL 2331/87, art. 6, Lei n. 8177/91, art. 9, Lei n. 8218/91, art. 3e 30, Lei n. 8383/91 art. 54 parágrafos 1 e 2, Lei n. 8981/95, art. 84,1 e parágrafo 8 (redação da MP 1110/95, art. 16 e reedições); Lei n. 9065/95, art. 13 e MP 1542/96, art. 26 e reedições, excetuada, quanto aos juros, a parcela relativa à multa de mora, além do encargo de 20% (vinte por cento), previsto no DL. 2952/83, art. 1, Inciso IV, Lei n. 7799/89, art. 64 parágrafo 2 Lei n. 8383/91, art. 57 parágrafo 2. Valor Inscrito: R$ 118.511,06. | (Seq.: 3, 327, 337) |
+
+---
+
+### **II. EVOLUÇÃO DO DÉBITO NOS AUTOS**
+
+| Parâmetro | Informação | Fonte Documental |
+| :--- | :--- | :--- |
+| **Data da Última Atualização** | 06/11/2024 | (Seq.: 144, 422) |
+| **Valor do Débito Atualizado** | R$ 301.668,31 | (Seq.: 144, 422) |
+| **Fonte Documental (Descrição)** | Consulta da Procuradoria Geral da Fazenda Nacional / Petição com Planilha de Débito (PGFN) | (Seq.: 144, 422) |
+
+**Análise de Abatimentos:**
+Abatimento Identificado. Houve arrematação de imóvel em 10/02/2020 no valor de R$ 420.000,00, resultando em depósito judicial. Parte desse valor, R$ 74.315,69, foi transferida e convertida em pagamento definitivo para a União em 05/11/2024, quitando o débito principal. Além disso, o executado aderiu a um parcelamento em 14/12/2020, realizando pagamentos parciais de R$ 10.480,93 (14/12/2020), R$ 7.133,97 (29/11/2021), R$ 7.955,14 (29/12/2022) e R$ 8.815,41 (14/12/2023). (Seq.: 255, 254, 274, 345, 381, 382, 417, 420, 462)
+
+---
+
+### **III. VALORES BLOQUEADOS (SISBAJUD/BACENJUD)**
+
+Não foram identificados bloqueios de valores via SISBAJUD/BACENJUD nos documentos analisados.
+
+---
+
+### **IV. DAÇÃO EM PAGAMENTO**
+
+Não foram identificadas ocorrências de dação em pagamento nos documentos analisados.
+
+---
+
+### **V. PROJEÇÃO DO DÉBITO ATUALIZADO (NOSSO CÁLCULO)**
+
+#### **TABELA DE CÁLCULO:**
+
+| Passo | Descrição | Valor |
+| :--- | :--- | :--- |
+| **A** | **Valor da Causa (CDA na propositura - Seção I)** | R$ 151.414,46 |
+| **B** | **Data de Inscrição em Dívida Ativa (Seção I)** | 03/01/2006 |
+| **C** | **Data Final do Cálculo** <br> *(Último dia do mês anterior ao mês atual)* | N/A (Débito Quitado) |
+| **D** | **Período de Correção** | N/A (Débito Quitado) |
+| **E** | **Taxa SELIC Acumulada no Período** <br> *(Obtida via `calculo_correcao_monetaria`)* | N/A (Débito Quitado) |
+| **F** | **Valor Corrigido do Débito** <br> *(Retornado pela ferramenta)* | N/A (Débito Quitado) |
+| **G** | **Correção Monetária Aplicada (F - A)** | N/A (Débito Quitado) |
+| **H** | **Honorários Advocatícios (% sobre F)** <br> *(% das Observações (Seção VI) ou 10% padrão)* | N/A (Débito Quitado) |
+| **I** | **CUSTO TOTAL PROJETADO (F + H)** | **N/A (Débito Quitado)** |
+
+**Observação:** Projeção não aplicável, pois o débito principal foi identificado como quitado na Seção II.
+
+---
+
+### VI. OBSERVAÇÕES RELEVANTES SOBRE O VALOR
+
+1.  **Evolução do valor:** O débito inicial da CDA era de R$ 151.414,46 (Seq.: 3) / R$ 118.511,06 (Seq.: 327, 337) em 03/01/2006 (Seq.: 3, 327, 337), sendo o valor atualizado mais recente de R$ 301.668,31 em 06/11/2024 (Seq.: 144, 422).
+2.  **Arrematação de Imóvel e Quitação do Débito Principal:** O imóvel de matrícula nº 1.913 foi penhorado e uma parte ideal foi arrematada em 10/02/2020 por R$ 420.000,00. Desse valor, R$ 74.315,69 foram convertidos em pagamento definitivo para a União em 05/11/2024, quitando o débito principal da execução fiscal. (Seq.: 80, 127, 225, 229, 255, 420, 462)
+3.  **Parcelamento Administrativo:** O executado aderiu a um parcelamento administrativo em 14/12/2020, realizando pagamentos parciais que totalizam R$ 32.409,85 até 14/12/2023. (Seq.: 382)
+4.  **Concurso de Credores e Meação:** A arrematação gerou um concurso de credores, e parte do valor depositado judicialmente (referente à meação da falecida Maria Aparecida Tomé) está sendo disputada por outros credores e herdeiros. (Seq.: 174, 215, 256, 258, 295, 345, 358, 388)
+5.  **Saldo Remanescente em Conta Judicial:** Em 08/09/2025, o saldo remanescente na conta judicial era de R$ 197.621,71, aguardando destinação conforme as decisões do concurso de credores. (Seq.: 464)
+
+---
+
+**Número do processo**: 5001410-19.2016.4.04.7010
+**Índice de Anexos**: Não localizado
+**Data da Análise**: 20/05/2024
+
+## APÊNDICE B: DETALHAMENTO DAS CITAÇÕES E INTIMAÇÕES
+### **3. ANÁLISE DA CITAÇÃO**
+
+**3.1. Resumo Conclusivo da Efetividade das Citações**
+
+A citação inicial do executado principal, APARECIDO LUIZ TOMÉ, foi efetivada e convalidada por seu comparecimento espontâneo nos autos, ao apresentar Exceção de Pré-Executividade em 21/07/2006. Posteriormente, em 2012, ele e GILBERTO TOMÉ foram citados pessoalmente por Oficial de Justiça. Para MARIA APARECIDA DE MELO, a citação por Oficial de Justiça, embora com aceitação da contrafé, apresenta risco médio de nulidade pela ausência de assinatura na certidão. A efetividade geral das citações é considerada exitosa, com a participação ativa dos executados no processo, afastando riscos de nulidade sob a ótica do credor.
+
+**3.1.1. Tabela Sumarizada de Citação por Devedor**
+
+| Devedor (Executado) | CPF/CNPJ | Status da Citação | Data da Efetivação | Breve Justificativa do Status |
+| :--- | :--- | :--- | :--- | :--- |
+| APARECIDO LUIZ TOME | 211.107.359-87 | EXITOSA | 21/07/2006 | Comparecimento espontâneo via Exceção de Pré-Executividade (Seq.: 8, 137). |
+| MARIA APARECIDA DE MELO | 044.411.949-35 | EXITOSA (com ressalvas) | 20/08/2012 | Citada por Oficial de Justiça, aceitou contrafé, mas não assinou a certidão (Seq.: 204). |
+| GILBERTO TOMÉ | 749.221.229-15 | EXITOSA | 20/08/2012 | Citado pessoalmente por Oficial de Justiça, assinou a certidão (Seq.: 204). |
+
+**3.2. Discussões Sobre Validade da Citação**
+
+A validade da citação inicial de APARECIDO LUIZ TOMÉ foi consolidada pelo seu comparecimento espontâneo nos autos, que sanou qualquer vício formal. Embora não tenham sido identificadas discussões diretas sobre a nulidade da citação inicial em processos relacionados, as teses de nulidade da penhora e arrematação, bem como a impenhorabilidade do bem, foram exaustivamente debatidas em Agravos de Instrumento (5017624-85.2024.4.04.0000) e Ações Anulatórias (5017187-21.2023.4.04.7003, 5039629-43.2020.4.04.0000), sendo reiteradamente rejeitadas. Essas decisões indiretamente confirmam a regularidade do processo desde a citação.
+
+**3.3. Tabela de Eventos de Citação**
+
+**Tabela 3.1: Análise de Citações (Eventos 1-4)**
+
+| Aspecto | Evento 1 | Evento 2 | Evento 3 | Evento 4 |
+| :--- | :--- | :--- | :--- | :--- |
+| **Data do Despacho que ordenou a citação** | 29/06/2006 | 11/07/2012 | 11/07/2012 | N/A |
+| **Finalidade da Citação** | Citação Inicial | Citação Inicial | Bloqueio de Valores (Bacenjud) | Citação Inicial (convalidada por comparecimento) |
+| **Modalidade da Citação Realizada** | Correios (AR) e Comparecimento Espontâneo | Oficial de Justiça | Eletrônico (BACENJUD) | Eletrônica (intimação inicial do processo eletrônico) |
+| **Data da Efetivação da Citação** | 21/07/2006 (Comparecimento Espontâneo) | 20/08/2012 | 08/10/2012 | 05/05/2016 |
+| **Status da Citação** | Positivo (Sanado) | Positivo (Aparecido e Gilberto), Positivo (Maria Aparecida, aceitou contrafé) | Frustrado | Positivo (convalidado) |
+| **Fonte Documental** | (Seq.: 4, 5, 7, 8, 137) | (Seq.: 204, p. 61-64) | (Seq.: 204, p. 61-63, 67-70) | (Seq.: 341) |
+| **Análise de Validade** | VÁLIDA. O AR foi assinado por terceiro ilegível, mas o executado compareceu espontaneamente ao apresentar Exceção de Pré-Executividade, convalidando o ato citatório. | VÁLIDA para Aparecido e Gilberto. RISCO DE NULIDADE para Maria Aparecida, que aceitou contrafé, mas não assinou a certidão. | VÁLIDA. O sistema Bacenjud foi utilizado conforme determinação judicial, mas não houve valores a serem bloqueados. | VÁLIDA. Embora a comunicação inicial seja uma intimação eletrônica, a posterior constituição de advogados e a participação ativa do executado no processo convalidam o ato citatório. |
+| **Risco de Nulidade** | NENHUM. O comparecimento espontâneo do executado nos autos sanou qualquer vício formal que pudesse invalidar a citação por AR. | MÉDIO para Maria Aparecida. A ausência de assinatura na certidão, mesmo com aceitação da contrafé, pode gerar discussão sobre a validade do ato. | NENHUM. A ausência de valores não invalida a tentativa de bloqueio, que foi realizada corretamente. | NENHUM. A ciência inequívoca do executado, demonstrada pela constituição de advogados e defesa em diversas fases, afasta o risco de nulidade da citação inicial. |
+
+**3.4. Tabela de Eventos de INTIMAÇÃO (Atos Expropriatórios)**
+
+**Tabela 3.4.1: Análise de Intimações Relevantes (Eventos 1-4)**
+
+| Aspecto | Evento 1 | Evento 2 | Evento 3 | Evento 4 |
+| :--- | :--- | :--- | :--- | :--- |
+| **A. Finalidade** | Intimação da Penhora e Avaliação | Intimação da Penhora e Avaliação | Intimação de Leilão/Praça | Intimação de Leilão |
+| **B. Data do Despacho** | Antes de 20/02/2013 | 06/08/2007 | N/A (Ofício informativo) | 21/07/2009 |
+| **C. Devedor Alvo** | APARECIDO LUIZ TOME e MARIA APARECIDA TOMÉ | Aparecido Luiz Tomé e Maria Aparecida Tomé | APARECIDO LUIZ TOME | Aparecido Luiz Tomé e Maria Aparecida Tomé, Banco do Brasil S/A, União - Fazenda Nacional |
+| **D. Modalidade Tentada** | Oficial de Justiça Federal / Oficial de Justiça | Oficial de Justiça (pessoal) | Ofício | Oficial de Justiça (pessoal para executado), Ofício, Edital |
+| **E. Data da Efetivação** | 26/02/2013 | 30/07/2007 e 01/08/2007 | 27/07/2009 | 04/08/2009 (int. pessoal) / 01/09/2009 (edital) |
+| **F. Status do Ato** | Positivo (Contestado, mas mantido) | Positivo | Positivo | Positivo |
+| **G. Fonte Documental** | (Seq.: 92, 93, 103, 107, 414, 453, p. 561) | (Seq.: 137, p. 456, 457, 460, 461) | (Seq.: 72) | (Seq.: 139, p. 570, 572, 574, 576, 578, 579) |
+| **H. Análise de Validade** | VÁLIDA. Oficial de Justiça certificou intimação pessoal. A penhora foi registrada e sua validade confirmada em ações anulatórias. | VÁLIDA. O executado e sua esposa foram intimados pessoalmente da penhora e avaliação, com o executado assinando o auto. | VÁLIDA. Ofício informando datas de arrematação do bem penhorado, com valor de avaliação. Ato meramente informativo. | VÁLIDA. O executado foi intimado pessoalmente, e demais interessados via ofício e edital, cumprindo os requisitos legais. |
+| **I. Risco de Nulidade** | NENHUM. A alegação de nulidade por internação não foi comprovada. A validade da penhora foi exaustivamente discutida e mantida. | NENHUM. A intimação pessoal e a assinatura do executado no auto de penhora conferem validade plena ao ato. | NENHUM. Ato informativo sobre leilão, sem impugnação específica sobre a intimação em si. | NENHUM. A intimação pessoal do executado e a ampla publicidade via edital e ofícios garantem a validade do ato. |
+
+**Tabela 3.4.2: Análise de Intimações Relevantes (Eventos 5-8)**
+
+| Aspecto | Evento 5 | Evento 6 | Evento 7 | Evento 8 |
+| :--- | :--- | :--- | :--- | :--- |
+| **A. Finalidade** | Intimação da Avaliação | Intimação de Nova Avaliação | Intimação de Leilão | Intimação da Penhora |
+| **B. Data do Despacho** | 15/10/2014 (Mandado) | 20/01/2014 (original) / 18/08/2016 (nova CP) | 23/04/2019 | 11/07/2012 |
+| **C. Devedor Alvo** | APARECIDO LUIZ TOME e MARIA APARECIDA THOMÉ | Aparecido Luiz Tomé e Maria Aparecida Tomé, União - Fazenda Nacional | Aparecido Luiz Tomé (e herdeiros), Banco do Brasil, União Fazenda Nacional | Maria Aparecida de Melo, Aparecido Luiz Tomé, Gilberto Tomé |
+| **D. Modalidade Tentada** | Oficial de Justiça | Oficial de Justiça (pessoal para executado), Sistema PROJUDI | Edital | Oficial de Justiça |
+| **E. Data da Efetivação** | 22/10/2014 (APARECIDO) / 03/11/2014 (MARIA APARECIDA) | 03/11/2014 (int. pessoal) / 24/10/2016 (leitura PROJUDI) | 23/04/2019 (Expedição Edital) | 20/08/2012 |
+| **F. Status do Ato** | Positivo (Ciente, sem assinatura) | Positivo | Positivo | Positivo (Aparecido e Gilberto), Positivo (Maria Aparecida, aceitou contrafé) |
+| **G. Fonte Documental** | (Seq.: 116, 384, 385) | (Seq.: 139, p. 629, 630), (Seq.: 180, p. 729) | (Seq.: 192, p. 766-768) | (Seq.: 204, p. 64) |
+| **H. Análise de Validade** | VÁLIDA. Oficial de Justiça certificou ciência do executado e cônjuge sobre o laudo de avaliação, apesar da recusa de assinatura. | VÁLIDA. O executado e sua esposa foram intimados pessoalmente, e a União via sistema, sobre a nova avaliação, aceitando a cópia. | VÁLIDA. A intimação via edital é uma modalidade legal, especialmente quando há múltiplos interessados e a intimação pessoal pode ser infrutífera. | VÁLIDA (Aparecido e Gilberto). RISCO DE NULIDADE (Maria Aparecida). A ausência de assinatura de Maria Aparecida pode ser questionada. |
+| **I. Risco de Nulidade** | NENHUM. A recusa de assinatura não invalida o ato, sendo certificada a ciência. | NENHUM. A intimação pessoal do executado e a leitura da intimação pela União via sistema garantem a validade do ato. | BAIXO. Embora o executado tenha alegado vícios e impenhorabilidade, decisões em Agravos de Instrumento e Ação Anulatória rejeitaram suas teses. | MÉDIO (Maria Aparecida). A falta de assinatura pode ser alegada como nulidade, embora a aceitação da contrafé reduza o impacto. |
+
+**Tabela 3.4.3: Análise de Intimações Relevantes (Eventos 9-12)**
+
+| Aspecto | Evento 9 | Evento 10 | Evento 11 | Evento 12 |
+| :--- | :--- | :--- | :--- | :--- |
+| **A. Finalidade** | Intimação Leilão | Intimação Leilão | Penhora no Rosto dos Autos | Intimação da Avaliação |
+| **B. Data do Despacho** | 24/10/2019 | N/A | 27/09/2019 | N/A (Laudo de Avaliação) |
+| **C. Devedor Alvo** | Aparecido Luiz Thomé (e herdeiros) | Gilberto Thomé | Aparecido Luiz Tomé | APARECIDO LUIZ TOME |
+| **D. Modalidade Tentada** | Edital de Leilão Público | Correios (AR) | Carta Precatória | N/A (Laudo juntado, ciência presumida via advogado) |
+| **E. Data da Efetivação** | 24/10/2019 | 10/12/2019 | 30/10/2019 | 21/02/2019 (Data do Laudo) |
+| **F. Status do Ato** | Positivo | Positivo | Positivo | Positivo |
+| **G. Fonte Documental** | (Seq.: 206, p. 891-893) | (Seq.: 233, p. 959-960) | (Seq.: 204, p. 72, 82, 803) | (Seq.: 451, p. 168) |
+| **H. Análise de Validade** | VÁLIDA. Publicação por edital é modalidade legal para intimação de leilão, especialmente quando não há localização pessoal. | RISCO DE NULIDADE. AR assinado por terceiro (\"Monga do a No Eloiomem\") no endereço do executado pessoa física. | VÁLIDA. Despacho deferindo a penhora e expedição da carta precatória para cumprimento. | VÁLIDA. A avaliação foi realizada e o laudo juntado aos autos, com ciência presumida ao executado através de seu advogado. |
+| **I. Risco de Nulidade** | BAIXO. A modalidade editalícia é adequada para intimação de leilão, especialmente considerando a complexidade do caso. | ALTO. A assinatura de terceiro no AR para pessoa física sem poderes expressos é forte indício de nulidade. | NENHUM. O ato de expedição da carta precatória é formalmente válido. As discussões sobre impenhorabilidade são mérito. | NENHUM. O executado teve ciência da avaliação, e não há indícios de impugnação válida sobre o valor ou o procedimento. |
+
+**Tabela 3.4.4: Análise de Intimações Relevantes (Eventos 13-16)**
+
+| Aspecto | Evento 13 | Evento 14 | Evento 15 | Evento 16 |
+| :--- | :--- | :--- | :--- | :--- |
+| **A. Finalidade** | Intimação do 1º Leilão | Intimação do 2º Leilão | Intimação de Novas Datas de Leilão | Intimação dos Herdeiros sobre Alienação Judicial |
+| **B. Data do Despacho** | 17/04/2019 (Edital) | 17/04/2019 (Edital) | 24/10/2019 (Edital) | Antes de mov. 122.1 e 131 |
+| **C. Devedor Alvo** | APARECIDO LUIZ TOME (e herdeiros) | APARECIDO LUIZ TOME (e herdeiros) | APARECIDO LUIZ TOME (e herdeiros) | Herdeiros de Maria Aparecida Tomé |
+| **D. Modalidade Tentada** | Carta de Intimação (AR) e Edital | Carta de Intimação (AR) e Edital | Carta de Intimação (AR) e Edital | Edital e Correios (AR) |
+| **E. Data da Efetivação** | 23/04/2019 (Leitura da intimação pelo advogado) | 23/04/2019 (Leitura da intimação pelo advogado) | 04/11/2019 (Leitura da intimação pelo advogado) | Conforme mov. 122.1 e 131 (não especificado) |
+| **F. Status do Ato** | Positivo | Positivo | Positivo | Positivo |
+| **G. Fonte Documental** | (Seq.: 451, p. 167, 180, 188) | (Seq.: 451, p. 167, 180, 188) | (Seq.: 451, p. 272, 285, 315) | (Seq.: 419) |
+| **H. Análise de Validade** | VÁLIDA. O executado foi intimado das datas do leilão através de seu advogado, além da publicação por edital. | VÁLIDA. Intimação realizada ao advogado do executado e por edital, assegurando a publicidade e ciência. | VÁLIDA. Novas datas de leilão foram devidamente comunicadas ao advogado do executado e publicadas por edital. | VÁLIDA. O juiz certificou que a intimação dos herdeiros sobre a alienação judicial foi realizada por edital e AR, cumprindo o art. 889 do CPC. |
+| **I. Risco de Nulidade** | NENHUM. A intimação foi realizada ao advogado constituído, garantindo a ciência do executado. | NENHUM. A intimação foi realizada ao advogado constituído, garantindo a ciência do executado. | NENHUM. A intimação foi realizada ao advogado constituído, garantindo a ciência do executado. | NENHUM. A decisão judicial expressamente validou a intimação dos herdeiros, rejeitando as alegações de nulidade do executado. O ato é seguro para o credor. |
+
+**Tabela 3.4.5: Análise de Intimações Relevantes (Eventos 17-20)**
+
+| Aspecto | Evento 17 | Evento 18 | Evento 19 | Evento 20 |
+| :--- | :--- | :--- | :--- | :--- |
+| **A. Finalidade** | Intimação da Expedição da Carta de Arrematação | Intimação da Arrematação/Leilão | Intimação para Imissão na Posse | Intimação sobre Suspensão da Imissão na Posse |
+| **B. Data do Despacho** | 11/02/2020 e 19/06/2020 | N/A (Arrematação em 10/02/2020) | 26/09/2023 | 13/05/2024 |
+| **C. Devedor Alvo** | Aparecido Luiz Tomé (advogado), Thiago Wilson da Luz Kailer (advogado), PGFN (advogado) | APARECIDO LUIZ TOME | APARECIDO LUIZ TOME | APARECIDO LUIZ TOME |
+| **D. Modalidade Tentada** | Eletrônico (Leitura de Intimação) | N/A (Presumida) | Mandado de Oficial de Justiça | Eletrônico (Intimação do Despacho) |
+| **E. Data da Efetivação** | 12/02/2020 e 29/06/2020 | 10/02/2020 | 28/09/2023 (Expedição do Mandado) | 23/05/2024 |
+| **F. Status do Ato** | Positivo | Positivo | Frustrado (Mandado Devolvido) | Positivo |
+| **G. Fonte Documental** | (Seq.: 370, 371, 437, 438, 439, 440, 442) | (Seq.: 453, p. 524, 562), (Relacionado: 5039629-43.2020.4.04.0000, 5017187-21.2023.4.04.7003, 5017624-85.2024.4.04.0000) | (Seq.: 453, p. 568-569, 590-591, 596-597, 622-627, 636-641) | (Seq.: 453, p. 642-643, 645) |
+| **H. Análise de Validade** | VÁLIDA. As intimações foram realizadas eletronicamente aos advogados das partes, que realizaram a leitura, configurando ciência inequívoca do ato. | VÁLIDA. A arrematação foi realizada, registrada e sua validade foi confirmada em múltiplos recursos e ações. | RISCO DE NULIDADE. Mandado devolvido com certidão incompleta. A imissão foi suspensa por acórdão devido à falta de delimitação da área. | VÁLIDA. Intimação eletrônica do despacho que suspendeu a imissão na posse foi confirmada. |
+| **I. Risco de Nulidade** | NENHUM. A comunicação eletrônica aos advogados é modalidade válida e foi confirmada pela leitura. O ato é considerado perfeito e eficaz para o credor. | NENHUM. A validade da arrematação foi confirmada em diversas decisões judiciais, afastando nulidades. | ALTO. O mandado de imissão na posse não foi cumprido e a ordem foi suspensa judicialmente, exigindo delimitação da área. | NENHUM. A intimação foi eletrônica e confirmada, informando sobre a suspensão da imissão na posse. |
+
+**Tabela 3.4.6: Análise de Intimações Relevantes (Evento 21)**
+
+| Aspecto | Evento 21 |
+| :--- | :--- |
+| **A. Finalidade** | Intimação sobre Parcelamento da Dívida |
+| **B. Data do Despacho** | 13/05/2024 |
+| **C. Devedor Alvo** | PROCURADORIA DA FAZENDA NACIONAL (PGFN) |
+| **D. Modalidade Tentada** | Eletrônico |
+| **E. Data da Efetivação** | 23/05/2024 |
+| **F. Status do Ato** | Positivo |
+| **G. Fonte Documental** | (Seq.: 453, p. 642-643, 645, 646-649, 454, p. 5678-5680) |
+| **H. Análise de Validade** | VÁLIDA. A intimação eletrônica foi confirmada, e a PGFN se manifestou sobre o parcelamento da dívida. |
+| **I. Risco de Nulidade** | NENHUM. A intimação foi devidamente realizada e a PGFN tomou ciência e se manifestou nos autos. |
+
+## APÊNDICE C: DETALHAMENTO DA GARANTIA E EXPROPRIAÇÃO
+### **ATINGIBILIDADE DE GARANTIAS E EXPROPRIAÇÃO DE BENS**
+
+### **CONCLUSÃO EXECUTIVA**
+
+A execução fiscal movida pela União - Fazenda Nacional demonstrou alta efetividade na constrição e expropriação de ativos. O principal ativo, um imóvel rural (Matrícula 1.913), foi arrematado por R$ 420.000,00 em 10/02/2020. Este valor, somado a um crédito de cédula rural transferido de R$ 35.095,98, totaliza uma garantia nominal de R$ 455.095,98, superando a dívida consolidada. As tentativas do executado de anular a penhora e a arrematação foram reiteradamente afastadas por decisões judiciais transitadas em julgado (Processos Relacionados: 5017624-85.2024.4.04.0000, 5017187-21.2023.4.04.7003, 5039629-43.2020.4.04.0000), consolidando a expropriação. Embora a imissão na posse do arrematante esteja suspensa aguardando ação de divisão, um pagamento definitivo de R$ 74.315,69 já foi efetuado à exequente. A dívida remanescente está em parcelamento (SISPAR), e uma penhora no rosto dos autos oferece garantia adicional. O potencial de quitação total da dívida é elevado.
+
+---
+
+### **1. SITUAÇÃO GERAL DA GARANTIA**
+
+| Parâmetro | Informação | Fonte Documental |
+| :--- | :--- | :--- |
+| **Dívida Garantida** | Sim | (Análise Consolidada) |
+| **Forma de Garantia** | Penhora de bens (imóvel), Transferência de crédito, Penhora no rosto dos autos | (Seq: 220.2, 250.2, 255, 290, 386) |
+| **Data da Efetivação** | 10/02/2020 | (Seq: 119.2, 137.0, 223, 233.1, 250.1, 250.2, 325, 386, 450) |
+| **Valor Total Garantido (Nominal)** | R$ 455.095,98 | (Seq: 250.1, 250.2, 255, 290, 386, 450) |
+| **Observações** | Garantia formalizada pela arrematação do Imóvel Matrícula 1.913 por R$ 420.000,00 e pela transferência de Cédula Rural no valor de R$ 35.095,98. A validade da arrematação foi confirmada em processos relacionados. A imissão na posse está suspensa aguardando ação de divisão. Um pagamento de R$ 74.315,69 já foi efetuado. | (Análise Consolidada) |
+
+---
+
+### **2. ANÁLISE DE EVENTOS DE CONSTRIÇÃO E EXPROPRIAÇÃO (POR GRUPO DE ATIVO)**
+
+#### **2.1. GRUPO 1: BENS IMÓVEIS**
+
+##### **PENHORA**
+
+| Aspectos Fixos | Ocorrência 1: Penhora Parte Ideal Mat. 1.913 | Ocorrência 2: Penhora Totalidade Mat. 1.913 |
+| :--- | :--- | :--- |
+| **Tipo de Evento** | Auto de Penhora | Auto de Penhora e Avaliação |
+| **Data do Evento** | 30/07/2007 | 20/02/2013 |
+| **Identificação do Bem** | Parte ideal de 6,00 alqueires paulistas do Lote 06, Matrícula 1.913 | Imóvel Matrícula 1.913 (totalidade) |
+| **Localização do Bem** | Barbosa Ferraz/PR | Barbosa Ferraz/PR |
+| **Observações Adicionais** | Penhora original do imóvel rural. Valor da execução R$ 151.414,46 em 04/2006. | Penhora da totalidade do imóvel. Valor da execução R$ 181.709,20 em 02/2012. |
+| **Fonte Documental** | (Seq: 80, 86.2, 114, 116, 119.2, 225, 250.2, 255, 290, 386, 450) | (Seq: 80, 91, 92, 111, 114, 225, 250.2, 255, 290, 386) |
+
+##### **AVALIAÇÃO**
+
+| Aspectos Fixos | Ocorrência 1: Avaliação Parte Ideal (2007) | Ocorrência 2: Avaliação Totalidade (2013) | Ocorrência 3: Avaliação Parte Ideal (2014) | Ocorrência 4: Reavaliação Parte Ideal (2016) | Ocorrência 5: Reavaliação Parte Ideal (2019) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Tipo de Evento** | Auto de Penhora e Avaliação | Auto de Penhora e Avaliação | Laudo de Avaliação | Laudo de Avaliação | Laudo de Avaliação |
+| **Data do Evento** | 30/07/2007 | 20/02/2013 | 13/10/2014 | 13/10/2016 | 21/02/2019 |
+| **Identificação do Bem** | Parte ideal de 6,00 alqueires do Lote 06, Matrícula 1.913 | Lote de terras nº 06, Matrícula 1.913 (totalidade) | Área ideal de 6,00 alqueires do Lote 06, Matrícula 1.913 | Imóvel Matrícula 1.913, 6,00 alqueires | Imóvel Matrícula 1.913, 6,00 alqueires |
+| **Localização do Bem** | Barbosa Ferraz/PR | Barbosa Ferraz/PR | Barbosa Ferraz/PR | Barbosa Ferraz/PR | Barbosa Ferraz/PR |
+| **Observações Adicionais** | Valor avaliado: R$ 210.000,00 (R$ 35.000,00/alqueire). Inclui benfeitorias. | Valor avaliado: R$ 920.000,00. | Valor avaliado: R$ 720.000,00 (R$ 120.000,00/alqueire). Inclui benfeitorias. | Valor avaliado: R$ 840.000,00 | Valor avaliado: R$ 840.000,00 |
+| **Fonte Documental** | (Seq: 72, 116, 137) | (Seq: 91, 92, 111, 225, 255, 290) | (Seq: 116, 450) | (Seq: 450) | (Seq: 86.2, 119.2, 450) |
+
+##### **LEILÃO**
+
+| Aspectos Fixos | Ocorrência 1: Leilão Designado 2009 | Ocorrência 2: Leilão Negativo 2019 | Ocorrência 3: Leilão Designado 2020 | Ocorrência 4: Arrematação 2020 | Ocorrência 5: Carta de Arrematação |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Tipo de Evento** | Ofício de Designação de Leilão | Edital de Leilão / Auto de 2º Leilão Negativo | Ofício de Designação de Leilão | Arrematação em Hasta Pública | Carta de Arrematação |
+| **Data do Evento** | 27/07/2009 | 26/08/2019 | 24/10/2019 | 10/02/2020 | 17/06/2020 |
+| **Identificação do Bem** | Parte ideal de 6,00 alqueires do Lote 06, Matrícula 1.913 | Lote 06, Matrícula 1.913 | Lote 06, Matrícula 1.913 | Lote 06, Matrícula 1.913 (6,00 alqueires) | Fração ideal de 6,00 alqueires do imóvel Matrícula 1.913 |
+| **Localização do Bem** | Barbosa Ferraz/PR | Barbosa Ferraz/PR | Barbosa Ferraz/PR | Barbosa Ferraz/PR | Barbosa Ferraz/PR |
+| **Observações Adicionais** | 1º Leilão: 09/09/2009; 2º Leilão: 23/09/2009. | Ambos os leilões restaram negativos. Preço vil considerado inferior a 60% da avaliação. | PGFN requereu novas hastas com deságio de 50% e parcelamento, o que foi deferido. 1º Leilão: 23/01/2020 (online). | Valor arrematado: R$ 420.000,00. Arrematante: Thiago Wilson da Luz Kailer. | Arrematado por R$ 420.000,00. Registro R.31/1.913 em 22/06/2020. |
+| **Fonte Documental** | (Seq: 72, 137) | (Seq: 86.2, 90.1, 101.1, 102.1, 204) | (Seq: 109.1, 111.1, 119.1, 122.1, 210) | (Seq: 119.2, 137.0, 223, 233.1, 250.1, 250.2, 325, 386, 450) | (Seq: 255, 290, 386) |
+
+##### **Análise Consolidada de Eventos Relevantes (Grupo 1)**
+A arrematação do Imóvel Matrícula 1.913 por R$ 420.000,00 em 10/02/2020 representa um sucesso significativo para a União - Fazenda Nacional. Todas as tentativas do executado de invalidar a penhora e a arrematação, incluindo alegações de impenhorabilidade e pedidos de descontos na dívida, foram definitivamente rejeitadas pelos tribunais, conforme decisões transitadas em julgado nos Agravos de Instrumento nº 5017624-85.2024.4.04.0000 e 5039629-43.2020.4.04.0000, e na Ação Declaratória de Nulidade nº 5017187-21.2023.4.04.7003. Isso consolida a validade da expropriação. Embora a imissão na posse do arrematante esteja suspensa devido à necessidade de delimitação da área arrematada, aguardando uma ação de divisão, tal fato não invalida a arrematação em si, apenas posterga a plena realização de seus benefícios. Um pagamento de R$ 74.315,69 já foi efetuado à exequente a partir do produto da arrematação. As garantias da União ainda recaem sobre os 4,00 alqueires remanescentes do imóvel, indicando potencial adicional de recuperação do crédito.
+
+---
+
+#### **2.3. GRUPO 3: TÍTULOS, VALORES E INSTRUMENTOS DE GARANTIA**
+
+##### **PENHORA**
+
+| Aspectos Fixos | Ocorrência 1: Transferência de Cédula Rural | Ocorrência 2: Penhora no Rosto dos Autos |
+| :--- | :--- | :--- |
+| **Tipo de Evento** | Transferência de Crédito / Averbação de Securitização | Anotação de Penhora no Rosto dos Autos |
+| **Data do Evento** | 08/11/2005 | 14/10/2021 |
+| **Identificação do Bem** | Cédula Rural Pignoratícia e Hipotecária Nº. 96/70075-0 (R.17/1.913) | Créditos do herdeiro Gilberto Tomé nos autos nº 0000150-55.2010.8.16.0051 |
+| **Localização do Bem** | N/A | Comarca de Barbosa Ferraz |
+| **Observações Adicionais** | Valor nominal: R$ 35.095,98. Operação transferida para a União, com base na MP 2.196-3/2001 e Decreto-Lei 1.537/1977. | Para garantia da dívida nos autos nº 0000150-55.2010.8.16.0051. |
+| **Fonte Documental** | (Seq: 225, 255, 290, 386) | (Seq: 220.2) |
+
+##### **Análise Consolidada de Eventos Relevantes (Grupo 3)**
+A transferência da Cédula Rural Pignoratícia e Hipotecária (R.17/1.913) para a União em 08/11/2005, no valor de R$ 35.095,98, formalizou um direito creditório adicional em favor da exequente. Complementarmente, a penhora no rosto dos autos sobre os créditos do herdeiro Gilberto Tomé, anotada em 14/10/2021, constitui uma garantia suplementar para a recuperação da dívida. Embora o valor exato desses créditos não esteja detalhado, essa medida visa fortalecer a posição do exequente. A efetividade desta última constrição dependerá da existência e do montante dos créditos do herdeiro no processo referenciado.
+
+---
+
+## APÊNDICE D: DETALHAMENTO DA PRESCRIÇÃO
+**ANÁLISE DE PRESCRIÇÃO**
+
+**1. CONCLUSÃO GERAL DE RISCO (SUMÁRIO EXECUTIVO)**
+
+**Conclusão:** Risco BAIXO
+
+**Sumário Conclusivo:** Não há risco de prescrição ordinária ou intercorrente. A prescrição ordinária foi interrompida em 20/03/2007, e a intercorrente, iniciada em 28/10/2010 (após o ano de suspensão), foi interrompida por efetivas constrições em 20/02/2013 e 10/02/2020/17/06/2020, antes de completar o prazo de 5 anos. O processo também está suspenso desde 17/06/2022 devido a parcelamento administrativo. Processos relacionados confirmam a validade das constrições e a ordem de preferência dos créditos, reforçando a ausência de risco prescricional.
+
+**2. CRONOLOGIA DA PRESCRIÇÃO INTERCORRENTE (ART. 40 LEF)**
+
+| Data (DD/MM/AAAA) | Ato Processual Relevante (Fonte Consolidada) | Efeito Jurídico para Prescrição |
+| :--- | :--- | :--- |
+| 03/01/2006 | Inscrição em Dívida Ativa (Fonte: CDA, Doc. Seq. 3, Pág. 9; Doc. Seq. 327, Pág. 4272) | **Início** da Prescrição Ordinária (5 anos). |
+| 20/03/2007 | Despacho do Juiz Ordenando Citação (Fonte: Termo de Autuação do processo federal 2007.70.10.000565-0, Doc. Seq. 2, Pág. 2; aparecido - EXTRATO - 20211203.pdf, Doc. Seq. 317, Pág. 4257) | **Interrompe** a Prescrição Ordinária. |
+| 28/10/2009 | **Certidão negativa/Ciência da Não Localização** (Fonte: Petição da Fazenda Nacional informando inadimplência do parcelamento, Doc. Seq. 86, Pág. 243; Certidão Narratória, Doc. Seq. 341, Pág. 4819) | **Início da suspensão de 1 ano** (Art. 40, § 1º). A prescrição não corre. |
+| 28/10/2010 | **Término da Suspensão de 1 ano** (Calculado) | **INÍCIO DA CONTAGEM DA PRESCRIÇÃO INTERCORRENTE (5 ANOS)**. (Súmula 314/STJ) |
+| 20/02/2013 | Efetiva Constrição de Bens (Penhora) (Fonte: Auto de Penhora, Doc. Seq. 91, Pág. 253) | **Interrupção** da prescrição intercorrente. |
+| 28/10/2015 | **Prazo Final da Prescrição Intercorrente** (Calculado, se não houvesse interrupção após 28/10/2010) | Data em que os 5 anos se completam (se não houver interrupção). |
+| 10/02/2020 | Arrematação do Imóvel (Fonte: Embargos de Terceiro, Doc. Seq. 223, Pág. 929) | Efetiva Constrição e Marco para satisfação do crédito. |
+| 17/06/2020 | Efetiva Constrição/Arrematação do Imóvel (Fonte: Doc. Seq. 290, Pág. 4213) | Efetiva Constrição e Marco para satisfação do crédito. |
+| 17/06/2022 | Processo Suspenso por Decisão Judicial - Parcelamento do Débito (Fonte: Certidão Narratória, Doc. Seq. 341, Pág. 4819) | **Suspensão** da prescrição (Art. 151, CTN). |
+
+**3. JUSTIFICATIVA DETALHADA DA CONCLUSÃO**
+
+**Justificativa:** A prescrição ordinária foi interrompida em 20/03/2007, transcorrendo 1 ano, 2 meses e 17 dias desde a inscrição em dívida ativa (03/01/2006), período inferior aos 5 anos. A prescrição intercorrente iniciou sua contagem em 28/10/2010, após o término do ano de suspensão (iniciado em 28/10/2009). Contudo, houve efetiva constrição de bens (penhora) em 20/02/2013, interrompendo o prazo antes de seu término em 28/10/2015. Novas constrições/arrematações ocorreram em 10/02/2020 e 17/06/2020. Adicionalmente, o processo encontra-se suspenso desde 17/06/2022 devido a parcelamento administrativo do débito, o que impede a contagem de qualquer prazo prescricional. Portanto, não há risco de prescrição.
+
+**4. IMPACTO DOS PROCESSOS RELACIONADOS**
+
+Os processos relacionados analisados (5017624-85.2024.4.04.0000, 5024622-74.2021.4.04.0000, 5017187-21.2023.4.04.7003 e 5039629-43.2020.4.04.0000) reforçam a análise de prescrição. O Agravo de Instrumento 5017624-85.2024.4.04.0000 e a Ação Anulatória 5017187-21.2023.4.04.7003, ambos julgados improcedentes, confirmaram a validade da penhora e da arrematação do imóvel, consolidando esses atos como marcos interruptivos válidos da prescrição intercorrente. O Agravo em Recurso Especial 5039629-43.2020.4.04.0000, ao não ser conhecido, manteve a decisão que indeferiu descontos e validou a arrematação. O Agravo de Instrumento 5024622-74.2021.4.04.0000, embora não impacte diretamente a prescrição, confirmou a ordem de preferência dos créditos, o que é relevante para a satisfação do crédito principal. Em suma, as decisões nos processos relacionados são favoráveis à União, confirmando a regularidade dos atos executórios e a ausência de nulidades que pudessem afetar a contagem dos prazos prescricionais.
+
+**5. OUTROS PONTOS DE ATENÇÃO CRÍTICOS**
+
+*   **Concurso de Credores e Distribuição de Valores:** A arrematação do imóvel e a existência de múltiplos credores demandam atenção à ordem de preferência para a distribuição dos valores arrecadados, conforme decisões judiciais.
+*   **Impenhorabilidade da Pequena Propriedade Rural:** A tese de impenhorabilidade foi exaustivamente discutida e rejeitada em diversas instâncias, com trânsito em julgado, confirmando a validade da penhora e arrematação.
+*   **Penhora Incompleta / Excesso de Penhora:** Alegações de penhora incompleta e excesso de penhora foram rejeitadas, mantendo a constrição sobre a integralidade do imóvel.
+*   **Transação Excepcional:** O executado aderiu a uma transação excepcional, mas a Fazenda Nacional informou que os valores depositados serão primeiramente direcionados ao pagamento integral da dívida, sem aplicação de descontos, com saldo remanescente recalculado com benefícios da transação.
+*   **Sucessão Processual:** O executado original faleceu, e o processo prossegue contra seu espólio. É crucial garantir a regularidade da representação e habilitação de todos os herdeiros para evitar nulidades.
+*   **Parcelamento Administrativo Ativo:** O débito está sob parcelamento administrativo, e o processo judicial está suspenso. A manutenção da regularidade do parcelamento é essencial para a suspensão da exigibilidade do crédito e da contagem da prescrição.
+*   **Quitação do Débito e Saldo Remanescente:** A União informou a quitação do débito em cobrança, mas há valores remanescentes em depósitos judiciais vinculados aos autos, pendentes de destinação, o que requer atenção judicial para a correta distribuição.
+
+## APÊNDICE E: LISTA COMPLETA DOS PROCESSOS RELACIONADOS
+### RESUMO DA SEÇÃO
+A análise consolidada revela uma série de ações conexas que podem impactar o processo principal. Embora muitas teses defensivas tenham sido rejeitadas, a persistência em novas ações e recursos, bem como a suspensão de atos executórios, geram atrasos e custos. Os principais riscos para o credor incluem a concorrência de múltiplos credores sobre o mesmo bem arrematado e a necessidade de aguardar a resolução de ações de divisão de imóvel e inventário. Processos críticos que exigem acompanhamento incluem: O processo 235-26.2019.8.16.0051 (Não especificado (processo de exigibilidade de crédito)) está Em andamento - O processo principal (`5001410-19.2016.4.04.7010`) foi suspenso aguardando a resolução da exigibilidade do crédito neste feito. e pode impactar o processo principal. A suspensão da execução fiscal principal aguardando a resolução da exigibilidade do crédito neste processo representa um atraso significativo e um risco potencial para o credor, dependendo do resultado da discussão sobre a exigibilidade. O processo 0000150-55.2010.8.16.0051 (Cumprimento de Sentença / Ação de Despejo cumulada com cobrança de Arrendamento Agrícola) está Em andamento - Penhora no rosto dos autos deferida e pode impactar o processo principal. A penhora no rosto dos autos garante o crédito sobre a parte do herdeiro Gilberto Tomé nos valores remanescentes da arrematação do imóvel no processo principal, afetando a distribuição do saldo. O processo 0000410-64.2012.8.16.0051 (Execução de Título Extrajudicial) está Em andamento - Valores homologados e pode impactar o processo principal. O crédito deste processo concorre na ordem de preferência para recebimento dos valores da arrematação do imóvel no processo principal. A falecida Maria Aparecida Tomé era parte executada, e seu saldo remanescente pode responder pelo débito. O processo 0000498-05.2012.8.16.0051 (Execução de Título Extrajudicial) está Em andamento - Com pedido de certidão explicativa e pode impactar o processo principal. O crédito deste processo concorre na ordem de preferência para recebimento dos valores da arrematação do imóvel no processo principal. A nulidade de uma penhora anterior pode afetar a ordem de preferência, impactando a distribuição do saldo. O processo 0000992-30.2013.8.16.0051 (Execução de Título Extrajudicial) está Em andamento - Com penhora no rosto dos autos e pode impactar o processo principal. O crédito deste processo concorre na ordem de preferência para recebimento dos valores da arrematação do imóvel no processo principal, impactando a disponibilidade de saldo para outros credores. O processo 0001012-50.2015.8.16.0051 (Cumprimento de Sentença) está Em andamento - Com cálculo atualizado e pode impactar o processo principal. O crédito deste processo concorre na ordem de preferência para recebimento dos valores da arrematação do imóvel no processo principal, impactando a distribuição do saldo. O processo 0000901-32.2016.8.16.0051 (Carta Precatória Cível) está Suspenso por depender de julgamento de outra causa e pode impactar o processo principal. A decisão que deferiu a imissão na posse foi reformada, suspendendo a expedição do mandado até a delimitação da área arrematada, que está sendo discutida em ação autônoma. Isso atrasa a consolidação da posse do arrematante. O processo 0000537-84.2021.8.16.0051 (Ação de prestação de contas) está Em andamento (inferido) e pode impactar o processo principal. Não há impacto direto imediato no processo principal, mas pode influenciar a situação financeira do executado, o que indiretamente afeta a capacidade de pagamento de dívidas. O processo 0001274-53.2022.8.16.0051 (Inventário e Partilha) está Em andamento - Com inventariante nomeada e pedido de cumulação de inventários. e pode impactar o processo principal. A definição da partilha dos bens e a responsabilidade pelas dívidas dos falecidos neste inventário impactarão diretamente os valores remanescentes da arrematação do imóvel no processo principal, especialmente a meação de Maria Aparecida Tomé. O processo 0001072-42.2023.8.16.0051 (Ação de divisão de imóvel rural) está Em andamento (inferido) e pode impactar o processo principal. O resultado desta ação é crucial para a efetiva imissão na posse do arrematante no processo principal, pois definirá a área exata que lhe pertence, impactando a liquidez e a conclusão da execução.
+
+---
+
+### RELATÓRIO CONSOLIDADO DE AÇÕES CONEXAS
+
+### PROCESSO 1
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 226/1998 | Execução de Título Extrajudicial | TJPR (Comarca de Barbosa Ferraz) | 1º Grau | | | Autos (Seq. 76, 137, 264, 358, 437) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento - Dívida atualizada até janeiro de 2005 em R$ 9.394,30
+* **Questão Jurídica Central:** Cobrança de dívida pelo Banco do Brasil S/A contra Aparecido Luiz Tomé, com garantia hipotecária em segundo grau sobre o mesmo imóvel penhorado na execução principal.
+* **Resultado/Impacto (para o processo principal):** A existência de outro credor hipotecário sobre o mesmo bem penhorado na execução principal implica em concorrência na ordem de preferência de créditos, podendo reduzir o valor a ser recebido pelo credor principal.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 2
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 243/98 | Execução de Título Extrajudicial | TJPR | 1º Grau | | | Autos (Seq. 8, 10, 137, 264, 358) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Anulada
+* **Questão Jurídica Central:** Execução da Cédula Rural Pignoratícia e Hipotecária (CRPH) nº 96/70075-0 pelo Banco do Brasil S/A. A defesa alegou falta de liquidez do título por ausência de extrato consolidado da conta gráfica do financiamento.
+* **Resultado/Impacto (para o processo principal):** A execução foi anulada pelo Tribunal de Alçada do Paraná, por falta de juntada do extrato consolidado da conta gráfica do financiamento. Para o credor, isso representa um precedente desfavorável à liquidez do título que fundamenta a execução principal.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 3
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 298/98 | **Embargos à Execução** | TJPR | 1º grau (apensado ao 243/98) | | | Autos (Seq. 8) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Provido (anulou a execução)
+* **Questão Jurídica Central:** Oposição de **embargos de execução** nº 243/98, alegando a iliquidez do título (CRPH nº 96/70075-0) por ausência de extrato consolidado da conta gráfica do financiamento.
+* **Resultado/Impacto (para o processo principal):** O acórdão do Tribunal de Alçada do Paraná anulou a execução nº 243/98, confirmando a tese de iliquidez do título. Isso é um precedente desfavorável ao credor, reforçando a argumentação do devedor na execução principal.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 4
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000068-44.1998.8.16.0051 | Execução | TJPR (inferido) | 1º Grau (inferido) | | | Autos (Seq. 406, 437) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Extinta desde novembro/2002
+* **Questão Jurídica Central:** Execução movida pelo Banco do Brasil.
+* **Resultado/Impacto (para o processo principal):** A execução foi extinta, o que significa que o crédito não será pago a partir do processo principal, reduzindo a concorrência de credores.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 5
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 03/12/2002 | 327/2002 | Ação de Consignação em Pagamento | TJPR (Comarca de Barbosa Ferraz) | 1º grau (remetida à Justiça Federal) | | | Autos (Seq. 8, 10, 20, 26) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Remetido à Justiça Federal por incompetência absoluta.
+* **Questão Jurídica Central:** Aparecido Luiz Tomé buscou consignar o pagamento de dívida de financiamento agrícola (CRPHs 95/00006-2 e 96/70075-0) e alongar o débito conforme Lei nº 10.464/2002. O Banco do Brasil alegou incompetência da Justiça Comum.
+* **Resultado/Impacto (para o processo principal):** A remessa à Justiça Federal e a inclusão da Fazenda Nacional geraram o processo `2003.70.10.-001460-7`, que foi utilizado como argumento de litispendência na execução principal, causando atrasos e complexidade processual.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 6
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 2003.70.10.-001460-7 | Ação de Consignação em Pagamento | Justiça Federal (Campo Mourão) | 1º Grau | | | Autos (Seq. 8, 10, 29, 44, 57) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Houve transação e adesão a parcelamento (Lei nº 11.775/08) nos embargos apensados (2007.70.10.001771-7), resultando na perda de objeto e extinção.
+* **Questão Jurídica Central:** Discussão sobre o valor exato da dívida de financiamento agrícola (CRPHs 95/00006-2 e 96/70075-0), alongamento do débito pela Lei nº 10.464/2002 e nulidade da CRPH 96/70075-0 por valor superior ao devido.
+* **Resultado/Impacto (para o processo principal):** Este processo foi a base para a alegação de litispendência e conexão na execução fiscal principal. A transação e parcelamento da dívida neste contexto levaram à extinção dos **embargos de execução** fiscal principal, indicando uma resolução da dívida em outro foro.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 7
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000240-68.2007.8.16.0051 | Origem de crédito de leiloeiro | TJPR (Juizado Especial Cível de Barbosa Ferraz) (inferido) | 1º Grau (inferido) | | | Autos (Seq. 282) |
+
+b) Detalhamento Analítico:
+* **Status:** Não especificado, mas o crédito está sendo executado em outro processo.
+* **Questão Jurídica Central:** Origem de um crédito de natureza salarial de leiloeiro, executado em outro processo (0001012-50.2015.8.16.0051).
+* **Resultado/Impacto (para o processo principal):** O crédito originado neste processo, sendo executado em 0001012-50.2015.8.16.0051, concorre na ordem de preferência no processo principal, impactando a distribuição dos valores da arrematação.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 8
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 2007.70.10.001771-7 | **Embargos à Execução** Fiscal | Justiça Federal (Campo Mourão) | 1º grau (apensado ao 2007.70.10.000565-0) | | | Autos (Seq. 83, 84, 137) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Extinto com resolução do mérito por renúncia do autor ao direito, devido à adesão a parcelamento (Lei nº 11.775/08) na Ação de Consignação em Pagamento (`2003.70.10.001460-7`).
+* **Questão Jurídica Central:** Oposição de **embargos de execução** fiscal nº 2007.70.10.000565-0, que é o processo principal em sua numeração anterior.
+* **Resultado/Impacto (para o processo principal):** A extinção destes **embargos de execução** por adesão a parcelamento na ação consignatória indica que a dívida foi renegociada, impactando diretamente a execução fiscal principal. Para o credor, a resolução da dívida por parcelamento é um desfecho positivo, embora possa implicar em prazos mais longos para recebimento.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 9
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 606-39.2009.8.16.0051 | Apenso à Execução de Título Extrajudicial | TJPR (Vara Cível de Barbosa Ferraz/PR) (inferido) | 1º Grau (inferido) | | | Autos (Seq. 264) |
+
+b) Detalhamento Analítico:
+* **Status:** Não especificado, mas relacionado a um processo onde a penhora foi declarada nula.
+* **Questão Jurídica Central:** Apenso ao processo 0000498-05.2012.8.16.0051, onde a penhora foi declarada nula em Exceção de Pré-Executividade.
+* **Resultado/Impacto (para o processo principal):** A nulidade da penhora neste processo pode impactar a ordem de preferência de créditos no processo principal, alterando a distribuição dos valores da arrematação.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 10
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000150-55.2010.8.16.0051 | Cumprimento de Sentença / Ação de Despejo cumulada com cobrança de Arrendamento Agrícola | TJPR (Vara Cível da Comarca de Barbosa Ferraz) | 1º Grau (inferido) | | | Autos (Seq. 264, 293, 295, 297, 298) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento - Penhora no rosto dos autos deferida
+* **Questão Jurídica Central:** Cobrança de dívida referente a contrato de arrendamento rural, com penhora no rosto dos autos do processo principal sobre a quota parte de um herdeiro.
+* **Resultado/Impacto (para o processo principal):** A penhora no rosto dos autos garante o crédito sobre a parte do herdeiro Gilberto Tomé nos valores remanescentes da arrematação do imóvel no processo principal, afetando a distribuição do saldo.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 11
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000410-64.2012.8.16.0051 | Execução de Título Extrajudicial | TJPR (Vara Cível de Barbosa Ferraz/PR) | 1º Grau (inferido) | | | Autos (Seq. 264, 282, 342, 358, 388) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento - Valores homologados
+* **Questão Jurídica Central:** Execução de título extrajudicial, com discussão sobre a ordem de preferência de créditos e a responsabilidade da meeira falecida.
+* **Resultado/Impacto (para o processo principal):** O crédito deste processo concorre na ordem de preferência para recebimento dos valores da arrematação do imóvel no processo principal. A falecida Maria Aparecida Tomé era parte executada, e seu saldo remanescente pode responder pelo débito.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 12
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000498-05.2012.8.16.0051 | Execução de Título Extrajudicial | TJPR (Comarca de Barbosa Ferraz) | 1º Grau | | | Autos (Seq. 211, 212, 214, 219, 264) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Nulidade da penhora decretada em 05/07/2019 por impenhorabilidade da pequena propriedade rural.
+* **Questão Jurídica Central:** Execução de título extrajudicial contra Aparecido Luiz Tomé, onde foi alegada e reconhecida a impenhorabilidade da pequena propriedade rural.
+* **Resultado/Impacto (para o processo principal):** A declaração de impenhorabilidade do imóvel rural neste processo, embora em outra execução, é utilizada pelo devedor como argumento para a impenhorabilidade do mesmo bem na execução fiscal principal. Isso representa um risco para o credor na execução principal, pois há um precedente judicial reconhecendo a impenhorabilidade do bem.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 13
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000992-30.2013.8.16.0051 | Execução de Título Extrajudicial | TJPR (Vara Cível de Barbosa Ferraz/PR) | 1º Grau (inferido) | | | Autos (Seq. 264, 342, 358, 388) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento - Com penhora no rosto dos autos
+* **Questão Jurídica Central:** Execução de título extrajudicial, com penhora no rosto dos autos do processo principal.
+* **Resultado/Impacto (para o processo principal):** O crédito deste processo concorre na ordem de preferência para recebimento dos valores da arrematação do imóvel no processo principal, impactando a disponibilidade de saldo para outros credores.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 14
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 29/07/2014 | 5017953-49.2014.404.0000 | Agravo de Instrumento | TRF4 | 2º grau | Baixa Definitiva e Trânsito em Julgado em 19/08/2014. Negado seguimento ao recurso. | | Autos (Seq. 112, 117, 119, 147, 148) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Baixa Definitiva e Trânsito em Julgado em 19/08/2014. Negado seguimento ao recurso.
+* **Questão Jurídica Central:** Recurso contra decisão que indeferiu o pedido de impenhorabilidade da pequena propriedade rural na execução fiscal principal.
+* **Resultado/Impacto (para o processo principal):** A decisão manteve a penhorabilidade do imóvel rural, o que é favorável ao credor, permitindo o prosseguimento dos atos executórios sobre o bem. A rejeição do agravo consolida a garantia.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 15
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 23/09/2015 | 8036276-68.2015.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | BAIXADO - RECEBIMENTO - Recebimento - STF | 2016-06-22T00:00:00+00:00 | API, Erro ao realizar consulta.; Autos (Seq. 133, 147, 148, 149) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Negado provimento ao agravo legal em 09/12/2015, com trânsito em julgado.
+* **Questão Jurídica Central:** Recurso contra decisão que indeferiu o pedido de impenhorabilidade da pequena propriedade rural na execução fiscal principal, reiterando argumentos e apresentando novas provas.
+* **Resultado/Impacto (para o processo principal):** A decisão manteve a penhorabilidade do imóvel rural, considerando a matéria preclusa, o que é favorável ao credor e consolida a possibilidade de expropriação do bem.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 16
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0001012-50.2015.8.16.0051 | Cumprimento de Sentença | TJPR (Juizado Especial Cível de Barbosa Ferraz/PR) | 1º Grau (inferido) | | | Autos (Seq. 264, 282, 342, 358, 388) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento - Com cálculo atualizado
+* **Questão Jurídica Central:** Cumprimento de sentença, com crédito de Rogério Ito Gomes, concorrendo na ordem de preferência.
+* **Resultado/Impacto (para o processo principal):** O crédito deste processo concorre na ordem de preferência para recebimento dos valores da arrematação do imóvel no processo principal, impactando a distribuição do saldo.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 17
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 960.288 | Recurso Extraordinário com Agravo (ARE) | STF | STF | | | Autos (Seq. 151) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Não conhecido em 22/04/2016 por ausência de impugnação específica.
+* **Questão Jurídica Central:** Recurso contra a decisão que não admitiu o apelo extremo interposto contra o acórdão do TRF4 que manteve a penhorabilidade do imóvel rural.
+* **Resultado/Impacto (para o processo principal):** A não admissão do recurso no STF por falha formal reforça a preclusão da discussão sobre a impenhorabilidade do imóvel, consolidando a posição do credor na execução principal.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 18
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000901-32.2016.8.16.0051 | Carta Precatória (Execução Fiscal) / Carta Precatória Cível | TJPR (Comarca de Barbosa Ferraz) | 1º Grau | | | Autos (Seq. 168, 169, 182, 188, 208) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Leilão realizado em 10/02/2020, imóvel arrematado.
+* **Questão Jurídica Central:** Cumprimento de atos executórios (reavaliação e expropriação) do imóvel penhorado na execução fiscal principal (`5001410-19.2016.4.04.7010`).
+* **Resultado/Impacto (para o processo principal):** Esta carta precatória é o instrumento para a expropriação do bem penhorado na execução principal. O leilão foi realizado e o imóvel arrematado, o que significa a concretização da garantia para o credor.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 19
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000964-57.2016.8.16.0051 | Cumprimento de Sentença Provisório | TJPR (Juizado Especial Cível de Barbosa Ferraz) (inferido) | 1º Grau (inferido) | | | Autos (Seq. 358, 388) |
+
+b) Detalhamento Analítico:
+* **Status:** Arquivado - Com aproveitamento da penhora em outro processo.
+* **Questão Jurídica Central:** Cumprimento de sentença provisório para garantia de processo principal de execução de título extrajudicial.
+* **Resultado/Impacto (para o processo principal):** Embora arquivado, a penhora realizada neste processo foi aproveitada no processo 0001012-50.2015.8.16.0051, que concorre na ordem de preferência no processo principal, mantendo a relevância do crédito.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 20
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 5036128-18.2019.4.04.0000 | Mandado de Segurança (Turma) | TRF4 | 2º grau | BAIXADO - BAIXA - Baixa Definitiva | 2019-09-28T00:00:00+00:00 | API, Erro ao realizar consulta.; Autos (Seq. 341) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Baixa Definitiva (API)
+* **Questão Jurídica Central:** Não detalhado nos documentos, mas relacionado ao processo principal.
+* **Resultado/Impacto (para o processo principal):** Encerrado, sem impacto direto atual no processo principal.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 21
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 235-26.2019.8.16.0051 | Não especificado (processo de exigibilidade de crédito) | TJPR (Comarca de Barbosa Ferraz) | 1º Grau | | | Autos (Seq. 235) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento - O processo principal (`5001410-19.2016.4.04.7010`) foi suspenso aguardando a resolução da exigibilidade do crédito neste feito.
+* **Questão Jurídica Central:** Resolução sobre a exigibilidade de um crédito, que impacta diretamente a execução fiscal principal, tendo sido deferido arresto de eventual saldo remanescente da venda do bem.
+* **Resultado/Impacto (para o processo principal):** A suspensão da execução fiscal principal aguardando a resolução da exigibilidade do crédito neste processo representa um atraso significativo e um risco potencial para o credor, dependendo do resultado da discussão sobre a exigibilidade.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 22
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 19/08/2020 | 5039629-43.2020.4.04.0000 | Agravo em Recurso Especial / Agravo de Instrumento | STJ | 3º grau | Baixa Definitiva para TRIBUNAL REGIONAL FEDERAL DA 4ª REGIÃO | 2022-08-25T00:00:00+00:00 | API - 149 documentos totais e 0 indisponíveis; Autos (Seq. 3, 14, 84, 116, 283) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - O Agravo em Recurso Especial (AREsp 2188243/PR), interposto neste processo, foi não conhecido pelo Superior Tribunal de Justiça em 26/09/2022, devido à deficiência na fundamentação (Súmula 284/STF), com trânsito em julgado em 20/10/2022 e posterior baixa dos autos. A decisão anterior do Tribunal Regional Federal da 4ª Região, que havia negado provimento ao Agravo de Instrumento e julgado prejudicado o Agravo Interno, foi mantida, confirmando o indeferimento do pedido de aplicação de descontos na dívida e a validade da arrematação.
+* **Questão Jurídica Central:** O Agravo em Recurso Especial discutiu a reforma de decisão que indeferiu o pagamento da dívida com descontos da Lei 13.729/2018 e a suspensão da arrematação do imóvel no processo principal.
+* **Resultado/Impacto (para o processo principal):** O não conhecimento do Agravo em Recurso Especial pelo STJ manteve a decisão do processo principal. Isso resultou na impossibilidade de o executado obter os descontos pleiteados e na consolidação da arrematação do imóvel, permitindo a continuidade da execução fiscal com base no valor integral da dívida.
+* **Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal `5001410-19.2016.4.04.7010`. O vínculo foi identificado em: Petição Inicial do Agravo de Instrumento (seq. 3, pág. 371), Carta de Arrematação (seq. 3, pág. 8), Recurso Especial (seq. 14, pág. 38 e seq. 84, p. 284) e Espelho dos dados da Autuação (seq. 116, p. 357). Trata-se de Agravo de Instrumento interposto contra decisão interlocutória proferida na Execução Fiscal principal, que indeferiu o pedido de pagamento da dívida com descontos e a suspensão da arrematação, e recursos subsequentes.
+
+---
+### PROCESSO 23
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 5004453-03.2020.4.04.0000 | MANDADO DE SEGURANCA TURMA | TRF4 | 2º grau | BAIXADO - TRANSITO - Trânsito em Julgado - Data: 28/05/2020 | 2020-06-01T00:00:00+00:00 | API, Erro ao realizar consulta.; Autos (Seq. 341) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - Trânsito em Julgado (API)
+* **Questão Jurídica Central:** Não detalhado nos documentos, mas relacionado ao processo principal.
+* **Resultado/Impacto (para o processo principal):** Encerrado, sem impacto direto atual no processo principal.
+* **Vínculo com Processo Principal:** N/A
+
+---
+### PROCESSO 24
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0000537-84.2021.8.16.0051 | Ação de prestação de contas | TJPR (inferido) | 1º Grau (inferido) | | | Autos (Seq. 364) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento (inferido)
+* **Questão Jurídica Central:** Ação de prestação de contas em face do executado.
+* **Resultado/Impacto (para o processo principal):** Não há impacto direto imediato no processo principal, mas pode influenciar a situação financeira do executado, o que indiretamente afeta a capacidade de pagamento de dívidas.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 25
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 15/06/2021 | 5024622-74.2021.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | Baixa Definitiva | 2021-06-15T00:00:00+00:00 | API - 21 documentos totais e 0 indisponíveis; Autos (Seq. 1, 341) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - O Agravo de Instrumento foi julgado improcedente por unanimidade pela 12ª Turma do Tribunal Regional Federal da 4ª Região, com trânsito em julgado em 24/01/2023. A decisão manteve o entendimento de que os créditos do Agravante, Rogério Ito Gomes, não possuem privilégio especial nos autos da execução fiscal principal, sendo tratados como quirografários, e que a cobrança de sua comissão e despesas deveria ocorrer nos autos das ações em que atuou como leiloeiro.
+* **Questão Jurídica Central:** O Agravo de Instrumento discutiu o privilégio especial ou equiparação a créditos trabalhistas para os créditos do Agravante, Rogério Ito Gomes, na ordem de preferência para recebimento dos valores da arrematação no processo principal.
+* **Resultado/Impacto (para o processo principal):** O julgamento improcedente do Agravo de Instrumento resultou na manutenção da classificação dos créditos de Rogério Ito Gomes como quirografários no processo principal `5001410-19.2016.4.04.7010`. Isso significa que seus créditos não obtiveram o privilégio especial ou a equiparação a créditos trabalhistas pleiteados, permanecendo nas posições de preferência originalmente definidas pela decisão agravada (5ª e 7ª posições). Consequentemente, a ordem de pagamento dos credores no processo principal não foi alterada em favor do Agravante, impactando diretamente a probabilidade de recuperação de seus créditos a partir do produto da arrematação do imóvel, especialmente considerando que o valor arrematado pode não ser suficiente para quitar todos os créditos.
+* **Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal `5001410-19.2016.4.04.7010`. O vínculo foi identificado em: Petição Inicial, seq. 1, pág. 1, sob a rubrica 'AUTOS DE ORIGEM'. Trata-se de: Agravo de Instrumento interposto contra decisões interlocutórias proferidas na Execução Fiscal principal que indeferiram o privilégio especial ou a equiparação a créditos trabalhistas para os créditos do Agravante, Rogério Ito Gomes, na ordem de preferência para recebimento dos valores da arrematação.
+
+---
+### PROCESSO 26
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0001274-53.2022.8.16.0051 | Inventário e Partilha | TJPR (Vara Cível da Comarca de Barbosa Ferraz / Vara de Família e Sucessões de Barbosa Ferraz) | 1º Grau (inferido) | | | Autos (Seq. 352, 406, 407, 446) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento - Com inventariante nomeada e pedido de cumulação de inventários.
+* **Questão Jurídica Central:** Inventário dos bens deixados por Aparecido Luiz Tomé e Maria Aparecida Tomé, com discussão sobre a meação e a responsabilidade por dívidas.
+* **Resultado/Impacto (para o processo principal):** A definição da partilha dos bens e a responsabilidade pelas dívidas dos falecidos neste inventário impactarão diretamente os valores remanescentes da arrematação do imóvel no processo principal, especialmente a meação de Maria Aparecida Tomé.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 27
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 04/07/2023 | 5017187-21.2023.4.04.7003 | **Ação Declaratória Constitutiva de Nulidade** / Cumprimento de sentença | TRF4 | 1º grau | Juntada de Ordem Cumprida - <br/>(APARECIDO LUIZ TOME) | 2023-07-04T00:00:00+00:00 | API - 47 documentos totais e 0 indisponíveis; Autos (Seq. 1, 11, 30, 364, 383) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - A ação declaratória constitutiva de nulidade foi julgada improcedente em 26/11/2024, com trânsito em julgado em 12/03/2025. A sentença negou os pedidos de nulidade da penhora e da arrematação do imóvel rural, bem como a nulidade da hasta pública, por considerar as matérias preclusas e sem fundamento. O Espólio autor foi condenado ao pagamento de custas, honorários advocatícios no valor de R$ 42.000,00 e multa de 2% por litigância de má-fé. Atualmente, o processo encontra-se em fase de cumprimento de sentença para a cobrança dos honorários e da multa, tendo a União Federal iniciado a execução e o Espólio requerido a habilitação do crédito no processo de inventário.
+* **Questão Jurídica Central:** **Ação anulatória** visando a desconstituição da penhora de pequena propriedade rural por impenhorabilidade e a nulidade da hasta pública por suposto direito a parcelamento da dívida.
+* **Resultado/Impacto (para o processo principal):** A improcedência da **ação anulatória** resultou na manutenção da arrematação do imóvel e na condenação do Espólio ao pagamento de honorários e multa por litigância de má-fé, totalizando R$ 50.400,00, impactando negativamente o patrimônio do Espólio. Confirma a validade da arrematação do imóvel no processo principal.
+* **Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal `5001410-19.2016.4.04.7010`. O vínculo foi identificado em: Petição Inicial (seq. 1, pág. 1), Despacho/Decisão (seq. 11, pág. 1) e Sentença (seq. 30, pág. 1). Trata-se de: Ação Declaratória Constitutiva de Nulidade, distribuída por dependência à Execução Fiscal, visando a declaração de nulidade da penhora e arrematação de imóvel rural que foi objeto de execução no processo principal.
+
+---
+### PROCESSO 28
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | 0001072-42.2023.8.16.0051 | Ação de divisão de imóvel rural | TJPR (Juízo de Barbosa Ferraz) (inferido) | 1º Grau (inferido) | | | Autos (Seq. 453) |
+
+b) Detalhamento Analítico:
+* **Status:** Em andamento (inferido)
+* **Questão Jurídica Central:** Delimitação dos limites internos das frações ideais e divisão do imóvel arrematado no processo principal, visando extinguir o condomínio.
+* **Resultado/Impacto (para o processo principal):** O resultado desta ação é crucial para a efetiva imissão na posse do arrematante no processo principal, pois definirá a área exata que lhe pertence, impactando a liquidez e a conclusão da execução.
+* **Vínculo com Processo Principal:** Sim, no processo principal
+
+---
+### PROCESSO 29
+
+a) Tabela de Identificação:
+| Data ajuizamento | Nº Processo | Tipo de Ação | Tribunal | Instância | Última Movimentação | Data da Última Mov. | Origem da Consulta |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 10/06/2024 | 5017624-85.2024.4.04.0000 | Agravo de Instrumento | TRF4 | 2º grau | Transitado em Julgado | 2024-06-10T00:00:00+00:00 | API - 13 documentos totais e 0 indisponíveis; Autos (Seq. 1, 6) |
+
+b) Detalhamento Analítico:
+* **Status:** Encerrado - O Agravo de Instrumento foi julgado improcedente por unanimidade pela 12ª Turma do TRF4 em 23/10/2024. Os **Embargos de Declaração** subsequentes foram considerados prejudicados em 26/11/2024 devido à superveniência de sentença de improcedência na ação originária (5017187-21.2023.4.04.7003/PR). O processo transitou em julgado em 29/01/2025.
+* **Questão Jurídica Central:** O Agravo de Instrumento buscava a declaração de nulidade da penhora e arrematação de imóvel rural e a suspensão do leilão, interposto contra decisão que indeferiu tutela de urgência em **Ação Anulatória**.
+* **Resultado/Impacto (para o processo principal):** O agravo foi negado, mantendo as conclusões anteriores sobre a validade da arrematação e afastando a tese de impenhorabilidade. Isso confirma a validade da arrematação do imóvel no processo principal, consolidando a garantia do crédito e permitindo o prosseguimento da execução.
+* **Vínculo com Processo Principal:** SIM. O processo analisado possui vínculo direto com o processo principal 5001410-19.2016.4.04.7010. O vínculo foi identificado em: Petição Inicial (seq. 1, pág. 2) e Contraminuta (seq. 6, pág. 1). Trata-se de Agravo de Instrumento interposto contra decisão que indeferiu tutela de urgência em **Ação Anulatória**, a qual foi distribuída por dependência à Execução Fiscal principal, visando a declaração de nulidade da penhora e arrematação de imóvel no processo de origem.
+
+---

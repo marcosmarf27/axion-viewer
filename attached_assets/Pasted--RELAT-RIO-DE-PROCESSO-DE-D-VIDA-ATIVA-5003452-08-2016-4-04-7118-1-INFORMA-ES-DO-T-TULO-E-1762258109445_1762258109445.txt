@@ -1,0 +1,16 @@
+# RELATÓRIO DE PROCESSO DE DÍVIDA ATIVA - 5003452-08.2016.4.04.7118
+
+## 1. INFORMAÇÕES DO TÍTULO EXECUTIVO
+*(**Fonte:** Utilizar **apenas** o subitem I. "ANÁLISE DO CRÉDITO EXEQUENDO" do `{{RELATÓRIO_DÍVIDA}}`)*
+
+| Parâmetro | Informação | Fonte Documental |
+| :--- | :--- | :--- |
+| **Exequente** | UNIÃO - FAZENDA NACIONAL (CNPJ: 00.394.460/0216-53) | (Seq.: 3, 6, 1059, 1225, 1275, 1751) |
+| **Executado(s)** | IVAR DALL AGLIO (CPF: 428.323.810-49)<br>ROSANE COSTELLA DALL AGLIO (CPF: 881.651.160-53)<br>IVAR DALL AGLIO (CNPJ: 01.909.786/0001-27)<br>HUMBERTO COSTELLA (CPF: 048.029.930-72)<br>ESPÓLIO DE LIDYA MITHILDE COSTELLA (CPF: 881.653.370-68) | (Seq.: 3, 121, 418, 761, 1059, 1225, 1275, 1751, 1508, 1734, 28, 43, 1314) |
+| **Valor da Causa (Valor da CDA na propositura)** | R$ 347.305,72 (Seq.: 3, 6, 28) / R$ 242.417,12 (Seq.: 1059, 1225, 1275, 1751) | (Seq.: 3, 6, 28, 1059, 1225, 1275, 1751) |
+| **Certidão de Dívida Ativa (CDA) nº** | 00116 014846-28 | (Seq.: 6, 7, 1059, 1225, 1275, 1751, 43, 64, 1314) |
+| **Natureza do Tributo** | IRPF (Imposto de Renda de Pessoa Física) | (Seq.: 3, 7, 1059, 1225, 1275, 1751, 43, 1314) |
+| **Data de Inscrição em Dívida Ativa** | 27/05/2016 | (Seq.: 7, 1059, 1225, 1275, 1751, 43, 1314) |
+| **Encargos na Inscrição (Originais da CDA)** | Correção monetária (DL. 2052/83, art. 1 Inciso I, DL. 2284/86, art 41, DL. 2287/86, arts. 12 e 15, modificado pelo DL. 2323/87, arts. 1 e 14, Lei n. 7799/89, alterada pela Lei n. 8383/91, art. 54), juros de mora (DL. 2052/83, art.1, Inciso II, DL. 2323/87, art 16, modificado pelo DL. 2331/87, art. 6, Lei n. 8177/91, art. 9, Lei n. 8218/91, art. 3 e 30, Lei n. 8383/91, art. 54 parágrafos 1 e 2, Lei n. 8981/95, art. 84, I e parágrafo 8 (redação da MP 1110/95, art. 16 e reedições); Lei n. 9065/95, art. 13 e MP 1542/96, art. 26 e reedições, excetuada, quanto aos juros, a parcela relativa à multa de mora, além do encargo de 20% (vinte por cento), previsto no DL n 1025/69, art. 1; no DL n 1645/78, art. 3, na Lei nº 7799/89, art. 64, par. 2 e Lei nº 8383/91, art. 57, par. 2 e multa de mora, com base no artigo 84, inciso II, parágrafo 8°, da Lei nº 8.981/95 (incluído pela MP 1.110/95, art. 17, e reedições). (Seq.: 7) / Principal: R$ 202.514,28<br>Multa: R$ 40.402,84<br>Juros: R$ 47.504,32<br>Encargo: R$ 57.884,28 (Seq.: 28) | (Seq.: 7, 28) |
+
+## 2. DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO

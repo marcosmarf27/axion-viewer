@@ -1,0 +1,58 @@
+# Arquivos de desenvolvimento
+.git
+.gitignore
+.replit
+replit.nix
+.upm
+.config
+
+# Node modules (serão instalados no build)
+frontend/node_modules
+node_modules
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+*.env
+venv/
+env/
+.venv
+
+# Arquivos temporários e dados persistentes
+data/*
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Testes
+tests/
+*.test.js
+*.spec.js
+
+# Documentação
+README.md
+*.md
+!EXEMPLO_*.md
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# IDEs
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Arquivos grandes desnecessários
+attached_assets

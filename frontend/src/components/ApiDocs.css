@@ -1,0 +1,137 @@
+.api-docs {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.docs-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.docs-header h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.docs-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+.endpoints-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.endpoint-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.endpoint-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.endpoint-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.method-badge {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.method-post {
+  background: #10b981;
+  color: white;
+}
+
+.method-get {
+  background: #3b82f6;
+  color: white;
+}
+
+.method-delete {
+  background: #ef4444;
+  color: white;
+}
+
+.endpoint-path {
+  background: #f3f4f6;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #1f2937;
+  flex: 1;
+}
+
+.endpoint-card h3 {
+  color: #1f2937;
+  margin: 12px 0 8px 0;
+  font-size: 18px;
+}
+
+.endpoint-description {
+  color: #6b7280;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.code-block {
+  background: #1f2937;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: #111827;
+  border-bottom: 1px solid #374151;
+}
+
+.code-header span {
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.copy-btn {
+  background: #374151;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: #4b5563;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.code-block code {
+  color: #d1d5db;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}

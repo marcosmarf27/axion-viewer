@@ -1,0 +1,120 @@
+Olá Marcos! Aqui estão as principais variáveis CSS e estilos que controlam cores, gradientes e espessuras de linhas no seu template:
+
+## **Variáveis de Cores (`:root`)**
+
+```css
+--primary-color: {{ theme.colors.primary }};
+--dark-green: {{ theme.colors.dark }};
+--black-tone: {{ theme.colors.black_tone }};
+--white: {{ theme.colors.white }};
+--light-gray: {{ theme.colors.light_gray }};
+--medium-gray: {{ theme.colors.medium_gray }};
+--success: {{ theme.colors.success }};
+--warning: {{ theme.colors.warning }};
+--danger: {{ theme.colors.danger }};
+--light-success-bg: {{ theme.colors.light_success_bg }};
+--light-danger-bg: {{ theme.colors.light_danger_bg }};
+--light-info-bg: {{ theme.colors.light_info_bg }};
+--light-warning-bg: {{ theme.colors.light_warning_bg }};
+```
+
+## **Gradientes**
+
+### Header (topo):
+```css
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-green) 50%, var(--black-tone) 100%);
+}
+```
+
+### Footer (rodapé):
+```css
+.footer {
+    background: linear-gradient(135deg, #BE3000 0%, #3A1101 50%, #1a0800 100%);
+}
+```
+
+## **Linhas/Bordas Abaixo de Textos**
+
+### Títulos de Seção (`.section-title`):
+```css
+.section-title {
+    border-bottom: 2px solid var(--primary-color);  /* ESPESSURA: 2px */
+    padding-bottom: 10px;
+}
+```
+
+### H1:
+```css
+h1 {
+    border-bottom: 3px solid var(--primary-color);  /* ESPESSURA: 3px */
+    padding-bottom: 10px;
+}
+```
+
+### H2:
+```css
+h2 {
+    border-bottom: 2px solid var(--primary-color);  /* ESPESSURA: 2px */
+    padding-bottom: 8px;
+}
+```
+
+### Summary (menus collapse):
+```css
+summary::after {
+    height: 2px;  /* ESPESSURA: 2px */
+    background-color: var(--primary-color);
+}
+```
+
+## **Bordas Laterais (Alertas)**
+
+```css
+.alerta-box-critico {
+    border-left: 4px solid var(--danger);  /* ESPESSURA: 4px */
+}
+
+.alerta-box-medio {
+    border-left: 4px solid var(--warning);  /* ESPESSURA: 4px */
+}
+
+.alerta-box-baixo {
+    border-left: 4px solid var(--success);  /* ESPESSURA: 4px */
+}
+```
+
+## **Para Personalizar:**
+
+Se você quiser alterar facilmente, pode criar variáveis adicionais no `:root`:
+
+```css
+:root {
+    /* Cores existentes... */
+    
+    /* Novas variáveis para espessuras */
+    --border-thin: 2px;
+    --border-medium: 3px;
+    --border-thick: 4px;
+    
+    /* Ângulo do gradiente */
+    --gradient-angle: 135deg;
+}
+```
+
+E então usar assim:
+
+```css
+.section-title {
+    border-bottom: var(--border-thin) solid var(--primary-color);
+}
+
+.header {
+    background: linear-gradient(var(--gradient-angle), 
+                var(--primary-color) 0%, 
+                var(--dark-green) 50%, 
+                var(--black-tone) 100%);
+}
+```
+
+Precisa ajustar alguma cor ou espessura específica?

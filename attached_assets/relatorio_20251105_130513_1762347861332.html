@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RELATÓRIO DE PROCESSO DE DÍVIDA ATIVA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #BE3000;
+            --dark-green: #3A1101;
+            --black-tone: #1a0800;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light-success-bg: rgba(40, 167, 69, 0.1);
+            --light-danger-bg: rgba(220, 53, 69, 0.1);
+            --light-info-bg: rgba(190, 48, 0, 0.1);
+            --light-warning-bg: rgba(255, 193, 7, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-green) 50%, var(--black-tone) 100%);
+            color: white;
+            padding: 40px 20px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .header-logo {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .header p {
+            color: white;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .executive-summary {
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .subsection-title {
+            color: var(--dark-green);
+            margin: 20px 0 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+
+        table th {
+            background-color: var(--light-info-bg);
+            color: var(--dark-green);
+            font-weight: 700;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tfoot td {
+            font-weight: 700;
+            background-color: #e9ecef;
+        }
+
+        table tfoot strong {
+            color: #000000 !important;
+        }
+
+        .risk-alto {
+            color: var(--danger);
+            font-weight: 700;
+        }
+
+        .risk-medio {
+            color: var(--warning);
+            font-weight: 700;
+        }
+
+        .risk-baixo {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .alerta-box-critico {
+            background-color: var(--light-danger-bg);
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alerta-box-critico i {
+            color: var(--danger);
+            font-size: 1.2rem;
+        }
+
+        .alerta-box-medio {
+            background-color: var(--light-warning-bg);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alerta-box-medio i {
+            color: var(--warning);
+            font-size: 1.2rem;
+        }
+
+        .alerta-box-baixo {
+            background-color: var(--light-success-bg);
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alerta-box-baixo i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        .section-content {
+            display: block;
+            padding: 0 18px;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        .reference-span {
+            font-style: italic;
+            font-size: 0.8em;
+            color: var(--medium-gray);
+            margin-left: 5px;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #8B3A1F 0%, #5C2612 50%, #3D1A0F 100%);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-info {
+            margin-bottom: 20px;
+            flex-basis: 60%;
+        }
+
+        .footer-info h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .footer-info p {
+            color: white;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact-container {
+            flex-basis: 35%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .footer-contact-container h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .footer-logo-container img {
+            max-width: 150px;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            width: 100%;
+        }
+
+        strong.risk-baixo,
+        span.risk-baixo {
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--success);
+        }
+
+        strong.risk-medio,
+        span.risk-medio {
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--warning);
+        }
+
+        strong.risk-alto,
+        span.risk-alto {
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--danger);
+        }
+
+        ul,
+        ol {
+            padding-left: 40px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--dark-green);
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        h5 {
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        strong, b {
+            font-weight: 700;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            margin: 15px 0;
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+
+        /* Estilos para menus collapse (<details> e <summary>) */
+        details {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            background-color: #fff;
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(190, 48, 0, 0.1);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark-green);
+            padding: 10px;
+            margin: -15px -15px 0 -15px;
+            border-radius: 8px 8px 0 0;
+            background-color: var(--light-info-bg);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: rgba(190, 48, 0, 0.15);
+            color: var(--primary-color);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: '▶';
+            display: inline-block;
+            transition: transform 0.3s ease;
+            color: var(--primary-color);
+            font-size: 0.8em;
+        }
+
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        details > *:not(summary) {
+            margin-top: 15px;
+        }
+
+        /* Suporte para menus aninhados */
+        details details {
+            margin-left: 20px;
+            margin-top: 15px;
+            background-color: #fff;
+        }
+
+        details details summary {
+            font-size: 1rem;
+            background-color: rgba(190, 48, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header-info {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .header-logo {
+                margin-left: 0;
+                margin-top: 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-contact-container {
+                align-items: center;
+                flex-basis: auto;
+                margin-top: 20px;
+            }
+
+            .footer-contact {
+                align-items: center;
+            }
+
+            .footer-info {
+                flex-basis: auto;
+                text-align: center;
+            }
+
+            .footer-logo-container {
+                justify-content: center;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            table th,
+            table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+    <script>
+        function toggleSection(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-info">
+                <h1>RELATÓRIO DE PROCESSO DE DÍVIDA ATIVA</h1>
+                
+                <p><strong>Processo Principal nº:</strong> 5001410-19.2016.4.04.7010</p>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </div>
+            
+            <img src="https://matricula-simples-api-matricula-docs-084828563243.s3.sa-east-1.amazonaws.com/matriculas/axioma-intelligence/intelligence_branco.png" alt="Logo" class="header-logo">
+            
+        </div>
+    </header>
+    
+    <div class="container">
+        
+<p><strong>Processo Principal nº:</strong> 5001410-19.2016.4.04.7010<br/>
+<strong>Exequente(s):</strong> UNIÃO - FAZENDA NACIONAL<br/>
+<strong>Executado(s):</strong> APARECIDO LUIZ TOMÉ (Espólio), WANDERLEIA TOMÉ, ROSEMEIRE TOMÉ, GILBERTO TOMÉ, LAERCIO JORGE TOMÉ<br/>
+<strong>Vara:</strong> Tribunal Regional Federal da 4ª Região - Vara Federal de Umuarama/PR<br/>
+<strong>Data da Análise:</strong> 02/11/2025</p>
+<hr/>
+<details><summary>🔷 1. INFORMAÇÕES DO TÍTULO EXECUTIVO</summary><table class="">
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Informação</th>
+<th>Fonte Documental</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exequente</strong></td>
+<td>UNIÃO - FAZENDA NACIONAL</td>
+<td><span class="reference-span">(Seq.: 254, 341)</span></td>
+</tr>
+<tr>
+<td><strong>Executado(s)</strong></td>
+<td>APARECIDO LUIZ TOMÉ (Espólio)<br/>WANDERLEIA TOMÉ<br/>ROSEMEIRE TOMÉ<br/>GILBERTO TOMÉ<br/>LAERCIO JORGE TOMÉ</td>
+<td><span class="reference-span">(Seq.: 2, 3, 254, 341, 350, 354, 367)</span></td>
+</tr>
+<tr>
+<td><strong>Valor da Causa (na propositura)</strong></td>
+<td>R$ 151.414,46</td>
+<td><span class="reference-span">(Seq.: 3, 255, 341)</span></td>
+</tr>
+<tr>
+<td><strong>Certidão de Dívida Ativa (CDA) nº</strong></td>
+<td>90 6 06 000103-44</td>
+<td><span class="reference-span">(Seq.: 3, 255, 327, 341)</span></td>
+</tr>
+<tr>
+<td><strong>Natureza do Tributo</strong></td>
+<td>Dívida Ativa - Crédito Rural STN (Não Tributária)</td>
+<td><span class="reference-span">(Seq.: 3, 327, 337)</span></td>
+</tr>
+<tr>
+<td><strong>Data de Inscrição em Dívida Ativa</strong></td>
+<td>03/01/2006</td>
+<td><span class="reference-span">(Seq.: 3, 327, 337)</span></td>
+</tr>
+<tr>
+<td><strong>Valor Inscrito</strong></td>
+<td>R$ 118.511,06</td>
+<td><span class="reference-span">(Seq.: 3, 327, 337)</span></td>
+</tr>
+</tbody>
+</table></details>
+<details><summary>🔸 2. DIAGNÓSTICO E CLASSIFICAÇÃO DO ATIVO</summary><h3>I. CLASSIFICAÇÃO</h3><p class="classification-info"><strong>Classificação:</strong> IRRECUPERÁVEL</p><p><strong>Motivo:</strong> Os relatórios de <em>due diligence</em> técnica confirmam que o débito principal da execução fiscal foi <strong>quitado</strong> em 05/11/2024. Especificamente, R$ 74.315,69 foi transferida e convertida em pagamento definitivo para a União em 05/11/2024, quitando o débito principal.</p><p><strong>Tempo Estimado:</strong> N/A</p><hr/><h3>II. RAIO-X DO PROCESSO (Resumo dos Fatos)</h3><p><strong>Status Geral do Processo:</strong> Execução com débito principal quitado, mas suspensa devido a parcelamento administrativo e aguardando resolução de ações conexas (divisão de imóvel e exigibilidade de crédito). Imóvel arrematado, mas imissão na posse suspensa.</p><p><strong>Status do Crédito (Valor):</strong> CDA nº 90 6 06 000103-44, com valor original de R$ 151.414,46. O débito principal foi quitado em 05/11/2024, restando um saldo remanescente em conta judicial de R$ 197.621,71 (em 08/09/2025) aguardando destinação.</p><p><strong>Status da Garantia:</strong> Execução garantida por imóvel (Mat. 1.913) arrematado por R$ 420.000,00 e transferência de crédito rural de R$ 35.095,98, totalizando R$ 455.095,98, valor suficiente para cobrir o débito. A imissão na posse do arrematante está suspensa.</p><p><strong>Status da Defesa (Executado):</strong> O executado apresentou diversas defesas, incluindo <strong>Anulatória</strong> e Agravos de Instrumento, alegando nulidade da penhora, arrematação e impenhorabilidade do bem. A maioria dessas teses foi rejeitada ou não conhecida em diversas instâncias.</p><hr/><h3>III. PRINCIPAIS RISCOS FACTUAIS</h3><ul>
+<li>
+<p><strong>Risco de Nulidade de Citação:</strong> Para Maria Aparecida de Melo, pela ausência de assinatura na certidão de citação, mesmo com aceitação da contrafé.</p>
+</li>
+<li>
+<p><strong>Risco de Nulidade de Intimação:</strong> Para Gilberto Tomé, devido a AR de intimação de leilão assinado por terceiro sem poderes expressos.</p>
+</li>
+<li>
+<p><strong>Risco de Suspensão por Ação Conexa:</strong> A imissão na posse do imóvel arrematado está suspensa aguardando a resolução de uma ação de divisão de imóvel rural.</p>
+</li>
+<li>
+<p><strong>Risco de Concurso de Credores:</strong> Múltiplos credores disputam o saldo remanescente da arrematação do imóvel, o que pode atrasar a destinação final dos valores.</p>
+</li>
+<li>
+<p><strong>Risco de Sucessão Processual:</strong> O executado original faleceu, e o processo prossegue contra seu espólio, exigindo a regularidade da representação.</p>
+</li>
+</ul></details>
+<details><summary>❤️ 3. DETALHAMENTO DAS TESES DE DEFESA DOS EXECUTADOS</summary><h3>TESE 1</h3><h4>a) Tabela de Referência</h4><table class="">
+<thead>
+<tr>
+<th>Data ajuizamento</th>
+<th>Nº CNJ</th>
+<th>Tipo de Ação</th>
+<th>Tribunal</th>
+<th>Instância</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15/03/1998</td>
+<td>298/98</td>
+<td><strong>Embargos à Execução</strong></td>
+<td>TJPR</td>
+<td>1º grau</td>
+</tr>
+</tbody>
+</table><h4>b) Detalhamento Analítico</h4><p><strong>Status:</strong> Encerrado - Provido (anulou a execução)</p><p><strong>Questão Jurídica Central:</strong> Oposição de <strong>embargos de execução</strong> nº 243/98, alegando a iliquidez do título (CRPH nº 96/70075-0) por ausência de extrato consolidado da conta gráfica do financiamento.</p><p><strong>Resultado/Impacto:</strong> O acórdão do Tribunal de Alçada do Paraná anulou a execução nº 243/98, confirmando a tese de iliquidez do título. Isso é um precedente desfavorável ao credor.</p><p><strong>Riscos Atuais:</strong> Risco baixo, pois a execução principal é de outra natureza (Dívida Ativa da União) e a validade de seus títulos foi confirmada.</p><hr/><h3>TESE 2</h3><h4>a) Tabela de Referência</h4><table class="">
+<thead>
+<tr>
+<th>Data ajuizamento</th>
+<th>Nº CNJ</th>
+<th>Tipo de Ação</th>
+<th>Tribunal</th>
+<th>Instância</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20/06/2003</td>
+<td>2003.70.10.001460-7</td>
+<td>Ação de Consignação em Pagamento</td>
+<td>Justiça Federal</td>
+<td>1º Grau</td>
+</tr>
+</tbody>
+</table><h4>b) Detalhamento Analítico</h4><p><strong>Status:</strong> Encerrado - Houve transação e adesão a parcelamento (Lei nº 11.775/08)</p><p><strong>Questão Jurídica Central:</strong> Discussão sobre o valor exato da dívida de financiamento agrícola, alongamento do débito pela Lei nº 10.464/2002 e nulidade da CRPH.</p><p><strong>Resultado/Impacto:</strong> A transação e parcelamento da dívida neste contexto levaram à extinção dos <strong>embargos de execução</strong> fiscal principal, indicando uma resolução da dívida em outro foro.</p><p><strong>Riscos Atuais:</strong> Nenhum, pois a dívida foi renegociada e os embargos extintos.</p><hr/><h3>TESE 3</h3><h4>a) Tabela de Referência</h4><table class="">
+<thead>
+<tr>
+<th>Data ajuizamento</th>
+<th>Nº CNJ</th>
+<th>Tipo de Ação</th>
+<th>Tribunal</th>
+<th>Instância</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>04/07/2023</td>
+<td>5017187-21.2023.4.04.7003</td>
+<td><strong>Anulatória</strong></td>
+<td>TRF4</td>
+<td>1º grau</td>
+</tr>
+</tbody>
+</table><h4>b) Detalhamento Analítico</h4><p><strong>Status:</strong> Encerrado - Improcedente (trânsito em julgado em 12/03/2025)</p><p><strong>Questão Jurídica Central:</strong> <strong>Ação anulatória</strong> visando a desconstituição da penhora de pequena propriedade rural por impenhorabilidade e a nulidade da hasta pública.</p><p><strong>Resultado/Impacto:</strong> A improcedência da <strong>ação anulatória</strong> resultou na manutenção da arrematação do imóvel e na condenação do Espólio ao pagamento de honorários e multa por litigância de má-fé (R$ 50.400,00).</p><p><strong>Riscos Atuais:</strong> Nenhum, pois a questão foi decidida favoravelmente ao credor e transitou em julgado.</p></details>
+<details><summary>🔶 4. ANÁLISE CRONOLÓGICA DA EXECUÇÃO PRINCIPAL</summary><ul>
+<li>
+<p><strong>03/01/2006</strong> - Data da Inscrição em Dívida Ativa (CDA nº 90 6 06 000103-44).</p>
+</li>
+<li>
+<p><strong>20/03/2007</strong> - Ajuizamento da Execução Fiscal com valor da causa de R$ 151.414,46.</p>
+</li>
+<li>
+<p><strong>30/07/2007</strong> - Lavratura do Auto de Penhora de parte ideal de 6,00 alqueires paulistas do Lote 06, Matrícula 1.913, e avaliação em R$ 210.000,00.</p>
+</li>
+<li>
+<p><strong>13/10/2014</strong> - Laudo de Avaliação de área ideal de 6,00 alqueires do Lote 06, avaliado em R$ 720.000,00.</p>
+</li>
+<li>
+<p><strong>21/02/2019</strong> - Laudo de Reavaliação do Imóvel Matrícula 1.913, avaliado em R$ 840.000,00.</p>
+</li>
+<li>
+<p><strong>10/02/2020</strong> - Arrematação do Imóvel Matrícula 1.913 por R$ 420.000,00 por Thiago Wilson da Luz Kailer.</p>
+</li>
+<li>
+<p><strong>17/06/2020</strong> - Expedição da Carta de Arrematação do imóvel.</p>
+</li>
+<li>
+<p><strong>14/12/2020</strong> - Executado aderiu a parcelamento administrativo da dívida.</p>
+</li>
+<li>
+<p><strong>17/06/2022</strong> - Processo suspenso por decisão judicial devido a parcelamento do débito.</p>
+</li>
+<li>
+<p><strong>04/07/2023</strong> - <strong>Ação anulatória</strong> ajuizada pelo Espólio de Aparecido Luiz Tomé.</p>
+</li>
+<li>
+<p><strong>05/11/2024</strong> - R$ 74.315,69 do valor da arrematação foram convertidos em pagamento definitivo para a União, quitando o débito principal da execução fiscal.</p>
+</li>
+<li>
+<p><strong>26/11/2024</strong> - Sentença de improcedência na <strong>ação anulatória</strong>.</p>
+</li>
+<li>
+<p><strong>12/03/2025</strong> - Trânsito em julgado da sentença de improcedência na <strong>ação anulatória</strong>.</p>
+</li>
+<li>
+<p><strong>08/09/2025</strong> - Saldo remanescente na conta judicial de R$ 197.621,71, aguardando destinação.</p>
+</li>
+</ul><p><strong>Status Atual:</strong> O processo principal está suspenso devido a parcelamento administrativo e aguardando a resolução de ações conexas. O débito principal foi quitado, mas há saldo remanescente em conta judicial pendente de destinação.</p></details>
+<details><summary>🔶 APÊNDICE A: DETALHAMENTO DO CRÉDITO</summary><h3>RELATÓRIO DE ANÁLISE DO CRÉDITO EXEQUENDO</h3><p><strong>Valor Original da CDA:</strong> R$ 151.414,46</p><p><strong>Valor Inscrito:</strong> R$ 118.511,06</p><p><strong>Pagamento Efetuado:</strong> R$ 74.315,69 em 05/11/2024</p><p><strong>Saldo Remanescente em Conta Judicial:</strong> R$ 197.621,71 (em 08/09/2025)</p><p><strong>Situação:</strong> A União informou a quitação do débito em cobrança, mas há valores remanescentes em depósitos judiciais vinculados aos autos, pendentes de destinação, o que requer atenção judicial para a correta distribuição.</p></details>
+<details><summary>🔶 APÊNDICE B: DETALHAMENTO DAS CITAÇÕES E INTIMAÇÕES</summary><h3>TABELA DE CITAÇÕES E INTIMAÇÕES</h3><table class="">
+<thead>
+<tr>
+<th>Executado</th>
+<th>Tipo de Ato</th>
+<th>Data</th>
+<th>Observações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APARECIDO LUIZ TOMÉ</td>
+<td>Citação</td>
+<td>21/07/2006</td>
+<td>Por comparecimento espontâneo</td>
+</tr>
+<tr>
+<td>MARIA APARECIDA DE MELO</td>
+<td>Citação</td>
+<td>20/08/2012</td>
+<td>Por Oficial de Justiça</td>
+</tr>
+<tr>
+<td>GILBERTO TOMÉ</td>
+<td>Citação</td>
+<td>20/08/2012</td>
+<td>Por Oficial de Justiça</td>
+</tr>
+<tr>
+<td>APARECIDO LUIZ TOMÉ</td>
+<td>Intimação de Penhora</td>
+<td>30/07/2007</td>
+<td>Intimação pessoal</td>
+</tr>
+<tr>
+<td>MARIA APARECIDA TOMÉ</td>
+<td>Intimação de Penhora</td>
+<td>01/08/2007</td>
+<td>Intimação pessoal</td>
+</tr>
+</tbody>
+</table><h3>OBSERVAÇÕES IMPORTANTES</h3><ul>
+<li>
+<p><strong>Risco de Nulidade:</strong> Citação de Maria Aparecida de Melo apresenta ausência de assinatura na certidão, mesmo com aceitação da contrafé.</p>
+</li>
+<li>
+<p><strong>Risco de Nulidade:</strong> AR de intimação de leilão para Gilberto Tomé foi assinado por terceiro sem poderes expressos.</p>
+</li>
+</ul></details>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Nota Importante ao Usuário</h3>
+                <p>Este relatório apresenta uma análise consolidada de um ativo judicial, com base em informações extraídas por ferramenta de inteligência artificial. O objetivo é fornecer um resumo técnico e estratégico das principais questões do caso.</p>
+                <p>Ressaltamos que, apesar da tecnologia avançada utilizada, a análise pode conter imprecisões. Recomenda-se sempre a conferência direta nos autos do processo.</p>
+                <p>É fundamental que os resultados e conclusões aqui apresentados sejam cuidadosamente conferidos e validados por um especialista jurídico antes de qualquer tomada de decisão baseada neste relatório.</p>
+            </div>
+            <div class="footer-contact-container">
+                <h3>Contato</h3>
+                <div class="footer-contact">
+                    <a href="mailto:suporte@axiomaintelligence.com"><i class="fas fa-envelope"></i> suporte@axiomaintelligence.com</a>
+                    <a href="tel:+553199510-7136"><i class="fas fa-phone"></i> (31) 99510-7136</a>
+                </div>
+                <div class="footer-logo-container">
+                    
+                    <img src="https://matricula-simples-api-matricula-docs-084828563243.s3.sa-east-1.amazonaws.com/matriculas/axioma-intelligence/intelligence_branco.png" alt="Logo">
+                    
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Axioma Intelligence | Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

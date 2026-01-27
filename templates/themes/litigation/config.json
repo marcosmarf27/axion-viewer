@@ -1,0 +1,36 @@
+{
+  "name": "litigation",
+  "description": "Tese Litigation Público e Privado",
+  "colors": {
+    "primary": "#D4A017",
+    "dark": "#8B6914",
+    "black_tone": "#4a3809",
+    "white": "#ffffff",
+    "light_gray": "#f8f9fa",
+    "medium_gray": "#6c757d",
+    "success": "#28a745",
+    "warning": "#ffc107",
+    "danger": "#dc3545",
+    "light_success_bg": "rgba(40, 167, 69, 0.1)",
+    "light_danger_bg": "rgba(220, 53, 69, 0.1)",
+    "light_info_bg": "rgba(212, 160, 23, 0.1)",
+    "light_warning_bg": "rgba(255, 193, 7, 0.1)"
+  },
+  "styling": {
+    "gradients": {
+      "header_angle": "135deg",
+      "footer_angle": "135deg"
+    },
+    "borders": {
+      "section_title": "4px",
+      "h1": "7px",
+      "h2": "9px",
+      "alert_boxes": "3px",
+      "summary_line": "10px"
+    }
+  },
+  "fonts": {
+    "primary": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"
+  },
+  "logo": "https://matricula-simples-api-matricula-docs-084828563243.s3.sa-east-1.amazonaws.com/matriculas/axioma-intelligence/intelligence_branco.png"
+}
