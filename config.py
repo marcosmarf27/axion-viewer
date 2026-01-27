@@ -13,6 +13,10 @@ class Config:
     TEMPLATES_FOLDER = "templates"  # Temas padrão (vem com o código)
     ALLOWED_EXTENSIONS = {"md", "txt", "markdown"}
 
+    # Supabase
+    SUPABASE_URL = os.environ.get("SUPABASE_URL")
+    SUPABASE_SERVICE_ROLE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+
     @staticmethod
     def allowed_file(filename):
         return (

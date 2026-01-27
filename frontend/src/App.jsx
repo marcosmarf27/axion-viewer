@@ -1,51 +1,65 @@
-import { useState } from 'react';
-import ApiDocs from './components/ApiDocs';
-import FileManager from './components/FileManager';
-import ThemeManager from './components/ThemeManager';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { ProtectedRoute, AdminRoute } from '@/components/ProtectedRoute';
+import Layout from '@/components/Layout';
+import LoginPage from '@/pages/LoginPage';
+import NotFoundPage from '@/pages/NotFoundPage';
+import DashboardRedirect from '@/pages/DashboardRedirect';
 
-function App() {
-  const [activeTab, setActiveTab] = useState('docs');
+// Admin pages
+import ClientesPage from '@/pages/admin/ClientesPage';
+import CarteirasPage from '@/pages/admin/CarteirasPage';
+import CasosPage from '@/pages/admin/CasosPage';
+import ProcessosPage from '@/pages/admin/ProcessosPage';
+import ProcessoDetail from '@/pages/admin/ProcessoDetail';
+import DocumentosPage from '@/pages/admin/DocumentosPage';
+import ConvertPage from '@/pages/admin/ConvertPage';
+import ThemesPage from '@/pages/admin/ThemesPage';
+import AccountsPage from '@/pages/admin/AccountsPage';
+import SharingPage from '@/pages/admin/SharingPage';
 
+// Client pages
+import ClientCarteirasPage from '@/pages/client/ClientCarteirasPage';
+import ClientCasosPage from '@/pages/client/ClientCasosPage';
+import ClientProcessosPage from '@/pages/client/ClientProcessosPage';
+import ClientProcessoDetail from '@/pages/client/ClientProcessoDetail';
+
+export default function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>⚙️ Markdown API - Painel Administrativo</h1>
-        <p>Gerencie conversões, arquivos e temas</p>
-      </header>
+    <Routes>
+      {/* Public */}
+      <Route path="/login" element={<LoginPage />} />
 
-      <nav className="tabs">
-        <button
-          className={`tab ${activeTab === 'docs' ? 'active' : ''}`}
-          onClick={() => setActiveTab('docs')}
-        >
-          📖 Documentação
-        </button>
-        <button
-          className={`tab ${activeTab === 'files' ? 'active' : ''}`}
-          onClick={() => setActiveTab('files')}
-        >
-          📁 Arquivos
-        </button>
-        <button
-          className={`tab ${activeTab === 'themes' ? 'active' : ''}`}
-          onClick={() => setActiveTab('themes')}
-        >
-          🎨 Temas
-        </button>
-      </nav>
+      {/* Protected (authenticated) */}
+      <Route element={<ProtectedRoute />}>
+        <Route element={<Layout />}>
+          <Route index element={<DashboardRedirect />} />
 
-      <main className="content">
-        {activeTab === 'docs' && <ApiDocs />}
-        {activeTab === 'files' && <FileManager />}
-        {activeTab === 'themes' && <ThemeManager />}
-      </main>
+          {/* Admin routes */}
+          <Route element={<AdminRoute />}>
+            <Route path="admin/clientes" element={<ClientesPage />} />
+            <Route path="admin/carteiras" element={<CarteirasPage />} />
+            <Route path="admin/carteiras/:id/casos" element={<CasosPage />} />
+            <Route path="admin/casos" element={<CasosPage />} />
+            <Route path="admin/casos/:id/processos" element={<ProcessosPage />} />
+            <Route path="admin/processos" element={<ProcessosPage />} />
+            <Route path="admin/processos/:id" element={<ProcessoDetail />} />
+            <Route path="admin/documentos" element={<DocumentosPage />} />
+            <Route path="admin/convert" element={<ConvertPage />} />
+            <Route path="admin/themes" element={<ThemesPage />} />
+            <Route path="admin/accounts" element={<AccountsPage />} />
+            <Route path="admin/sharing" element={<SharingPage />} />
+          </Route>
 
-      <footer className="app-footer">
-        <p>API de Conversão Markdown v2.0.0 - Painel Administrativo</p>
-      </footer>
-    </div>
+          {/* Client routes */}
+          <Route path="carteiras" element={<ClientCarteirasPage />} />
+          <Route path="carteiras/:id/casos" element={<ClientCasosPage />} />
+          <Route path="casos/:id/processos" element={<ClientProcessosPage />} />
+          <Route path="processos/:id" element={<ClientProcessoDetail />} />
+        </Route>
+      </Route>
+
+      {/* 404 */}
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
-
-export default App;

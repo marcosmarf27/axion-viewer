@@ -49,9 +49,12 @@ RUN set -eux && \
 # Criar diretório de trabalho
 WORKDIR /app
 
-# Copiar requirements e instalar dependências Python
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Instalar UV
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+# Copiar arquivos de dependências e instalar com UV
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev --no-editable
 
 # Copiar código da aplicação
 COPY . .
@@ -68,5 +71,5 @@ EXPOSE 8080
 # Variável de ambiente padrão (Railway vai sobrescrever)
 ENV PORT=8080
 
-# Comando para iniciar a aplicação com Gunicorn (production-ready)
-CMD gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --access-logfile - --error-logfile - app:app
+# Comando para iniciar a aplicação com Gunicorn via UV
+CMD uv run gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --access-logfile - --error-logfile - app:app

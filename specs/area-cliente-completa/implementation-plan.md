@@ -55,18 +55,18 @@ Aplicar 10 migrations no projeto Supabase `rvzkszfowlzioddqjryz` via MCP `apply_
 
 ### Tarefas
 
-- [ ] Migration 1: Criar enums e tabela profiles [complexo]
-  - [ ] Criar enums: `tipo_tese`, `recuperabilidade`, `user_role`, `status_cliente`, `status_carteira`, `status_caso`, `status_processo`
-  - [ ] Criar tabela `profiles` vinculada a `auth.users`
-  - [ ] Criar function `update_updated_at_column()` reutilizavel
-  - [ ] Criar trigger `on_auth_user_created` para auto-criar profile
-- [ ] Migration 2: Criar tabela `clientes` (com UNIQUE em documento)
-- [ ] Migration 3: Criar tabela `carteiras` com FK para clientes
-- [ ] Migration 4: Criar tabela `casos` com FK para carteiras
-- [ ] Migration 5: Criar tabela `processos` com auto-referencia [complexo]
-  - [ ] Campo `processo_pai_id` self-referencing nullable
-  - [ ] Campo `is_incidental` boolean
-  - [ ] Indices detalhados:
+- [x] Migration 1: Criar enums e tabela profiles [complexo]
+  - [x] Criar enums: `tipo_tese`, `recuperabilidade`, `user_role`, `status_cliente`, `status_carteira`, `status_caso`, `status_processo`
+  - [x] Criar tabela `profiles` vinculada a `auth.users`
+  - [x] Criar function `update_updated_at_column()` reutilizavel
+  - [x] Criar trigger `on_auth_user_created` para auto-criar profile
+- [x] Migration 2: Criar tabela `clientes` (com UNIQUE em documento)
+- [x] Migration 3: Criar tabela `carteiras` com FK para clientes
+- [x] Migration 4: Criar tabela `casos` com FK para carteiras
+- [x] Migration 5: Criar tabela `processos` com auto-referencia [complexo]
+  - [x] Campo `processo_pai_id` self-referencing nullable
+  - [x] Campo `is_incidental` boolean
+  - [x] Indices detalhados:
     - `idx_processos_caso_id ON processos(caso_id)`
     - `idx_processos_processo_pai_id ON processos(processo_pai_id)`
     - `idx_processos_tipo_tese ON processos(tipo_tese)`
@@ -75,26 +75,26 @@ Aplicar 10 migrations no projeto Supabase `rvzkszfowlzioddqjryz` via MCP `apply_
     - `idx_processos_status ON processos(status)`
     - `idx_processos_data_distribuicao ON processos(data_distribuicao)`
     - `idx_processos_numero_cnj ON processos(numero_cnj)`
-- [ ] Migration 6: Criar tabela `documentos` com `processo_id` NULLABLE e `updated_at`
-- [ ] Migration 7: Criar tabela `cliente_carteira_access` com UNIQUE constraint
-- [ ] Migration 8: Habilitar RLS e criar policies [complexo]
-  - [ ] Function helper `is_admin()`
-  - [ ] Policies para profiles (own + admin)
-  - [ ] Policies para clientes (admin only)
-  - [ ] Policies para carteiras (admin + client via access)
-  - [ ] Policies para casos (admin + client via carteira access)
-  - [ ] Policies para processos (admin + client via caso→carteira access)
-  - [ ] Policies para documentos (admin + client via processo→caso→carteira access)
-  - [ ] Policies para documentos sem processo (admin only)
-  - [ ] Policies para cliente_carteira_access (admin manage + client view own)
-- [ ] Migration 9: Criar triggers e functions de dashboard [complexo]
-  - [ ] Trigger `update_carteira_caso_count` (AFTER INSERT/UPDATE/DELETE ON casos) — atualiza `qtd_casos`
-  - [ ] Trigger `update_carteira_processo_count` (AFTER INSERT/UPDATE/DELETE ON processos) — atualiza `qtd_processos` (via caso→carteira)
-  - [ ] Function `get_admin_dashboard_stats()` via RPC
-- [ ] Migration 10: Criar bucket Storage e policies
-  - [ ] Bucket `documents` (privado, 50MB, mime types restritos)
-  - [ ] Policy admins upload/delete/view all
-  - [ ] Policy clients view shared documents only
+- [x] Migration 6: Criar tabela `documentos` com `processo_id` NULLABLE e `updated_at`
+- [x] Migration 7: Criar tabela `cliente_carteira_access` com UNIQUE constraint
+- [x] Migration 8: Habilitar RLS e criar policies [complexo]
+  - [x] Function helper `is_admin()`
+  - [x] Policies para profiles (own + admin)
+  - [x] Policies para clientes (admin only)
+  - [x] Policies para carteiras (admin + client via access)
+  - [x] Policies para casos (admin + client via carteira access)
+  - [x] Policies para processos (admin + client via caso→carteira access)
+  - [x] Policies para documentos (admin + client via processo→caso→carteira access)
+  - [x] Policies para documentos sem processo (admin only)
+  - [x] Policies para cliente_carteira_access (admin manage + client view own)
+- [x] Migration 9: Criar triggers e functions de dashboard [complexo]
+  - [x] Trigger `update_carteira_caso_count` (AFTER INSERT/UPDATE/DELETE ON casos) — atualiza `qtd_casos`
+  - [x] Trigger `update_carteira_processo_count` (AFTER INSERT/UPDATE/DELETE ON processos) — atualiza `qtd_processos` (via caso→carteira)
+  - [x] Function `get_admin_dashboard_stats()` via RPC
+- [x] Migration 10: Criar bucket Storage e policies
+  - [x] Bucket `documents` (privado, 50MB, mime types restritos)
+  - [x] Policy admins upload/delete/view all
+  - [x] Policy clients view shared documents only
 
 ### Detalhes Tecnicos
 
@@ -509,30 +509,30 @@ Adicionar dependencias Python, criar modulos de autenticacao e cliente Supabase.
 
 ### Tarefas
 
-- [ ] Migrar Dockerfile para UV (substituir `pip install -r requirements.txt`) [CRITICO]
-  - [ ] Instalar UV no estagio Python do Dockerfile
-  - [ ] Copiar `pyproject.toml` e `uv.lock` em vez de `requirements.txt`
-  - [ ] Usar `uv sync --no-dev` para instalar apenas dependencias de producao
-  - [ ] Remover `requirements.txt` do repositorio (UV com pyproject.toml e a unica fonte de verdade)
-- [ ] Adicionar dependencias no `pyproject.toml`: `supabase>=2.0.0`, `PyJWT[crypto]>=2.8.0`
-- [ ] Executar `uv sync` para atualizar lockfile
-- [ ] Criar `utils/__init__.py` (vazio)
-- [ ] Adicionar configs Supabase em `config.py`: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
-- [ ] Criar `utils/auth.py` com verificacao JWT e decorators [complexo]
-  - [ ] `verify_supabase_token(token)` via JWKS/ES256
-  - [ ] `get_user_profile(user_id)` busca no banco
-  - [ ] Decorator `@auth_required` - seta `g.user`, `g.user_id`, `g.token`
-  - [ ] Decorator `@admin_required` - herda auth_required + verifica role
-- [ ] Criar `utils/supabase_client.py` com classe SupabaseService [complexo]
-  - [ ] Storage: `upload_file(content, file_type)`, `delete_file(path)`, `get_signed_url(path, expires_in=3600)`
-  - [ ] CRUD Clientes: list, get, create, update, delete
-  - [ ] CRUD Carteiras: list (com paginacao), get, create, update, delete
-  - [ ] CRUD Casos: list (com filtros), get, create, update, delete
-  - [ ] CRUD Processos: list (com filtros completos), get (com pai e filhos), create, update, delete
-  - [ ] CRUD Documentos: list (com filtros), get, create, delete (DB + Storage)
-  - [ ] Acesso: grant_carteira_access, revoke_carteira_access, list_carteira_access, get_client_carteiras
-  - [ ] Auth Admin: create_user_account, delete_user_account, reset_user_password, list_user_accounts
-  - [ ] Dashboard: get_admin_stats (via RPC)
+- [x] Migrar Dockerfile para UV (substituir `pip install -r requirements.txt`) [CRITICO]
+  - [x] Instalar UV no estagio Python do Dockerfile
+  - [x] Copiar `pyproject.toml` e `uv.lock` em vez de `requirements.txt`
+  - [x] Usar `uv sync --no-dev` para instalar apenas dependencias de producao
+  - [x] Remover `requirements.txt` do repositorio (UV com pyproject.toml e a unica fonte de verdade)
+- [x] Adicionar dependencias no `pyproject.toml`: `supabase>=2.0.0`, `PyJWT[crypto]>=2.8.0`
+- [x] Executar `uv sync` para atualizar lockfile
+- [x] Criar `utils/__init__.py` (vazio)
+- [x] Adicionar configs Supabase em `config.py`: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
+- [x] Criar `utils/auth.py` com verificacao JWT e decorators [complexo]
+  - [x] `verify_supabase_token(token)` via JWKS/ES256
+  - [x] `get_user_profile(user_id)` busca no banco
+  - [x] Decorator `@auth_required` - seta `g.user`, `g.user_id`, `g.token`
+  - [x] Decorator `@admin_required` - herda auth_required + verifica role
+- [x] Criar `utils/supabase_client.py` com classe SupabaseService [complexo]
+  - [x] Storage: `upload_file(content, file_type)`, `delete_file(path)`, `get_signed_url(path, expires_in=3600)`
+  - [x] CRUD Clientes: list, get, create, update, delete
+  - [x] CRUD Carteiras: list (com paginacao), get, create, update, delete
+  - [x] CRUD Casos: list (com filtros), get, create, update, delete
+  - [x] CRUD Processos: list (com filtros completos), get (com pai e filhos), create, update, delete
+  - [x] CRUD Documentos: list (com filtros), get, create, delete (DB + Storage)
+  - [x] Acesso: grant_carteira_access, revoke_carteira_access, list_carteira_access, get_client_carteiras
+  - [x] Auth Admin: create_user_account, delete_user_account, reset_user_password, list_user_accounts
+  - [x] Dashboard: get_admin_stats (via RPC)
 
 ### Detalhes Tecnicos
 
@@ -642,60 +642,60 @@ Extrair logica do `app.py` (889 linhas) para Flask Blueprints. A logica de conve
 
 ### Tarefas
 
-- [ ] Criar `routes/__init__.py` com `register_blueprints(app)` [complexo]
-- [ ] Criar `routes/auth_routes.py` - health check (publico) + GET /api/me (auth)
-- [ ] Criar `routes/convert_routes.py` - COPIAR logica de conversao do app.py [complexo]
-  - [ ] POST /api/convert (admin_required) - mesma logica + upload Storage + registro DB
-  - [ ] POST /api/convert/file (admin_required) - mesma logica + upload Storage + registro DB
-  - [ ] POST /api/convert/pdf (admin_required) - mesma logica + upload Storage + registro DB
-  - [ ] POST /api/convert/file/pdf (admin_required) - mesma logica + upload Storage + registro DB
-  - [ ] Campo `processo_id` opcional no request
-  - [ ] Campo `title` opcional no request
-  - [ ] Response preserva formato original + novos campos (document_id, signed_url)
-- [ ] Criar `routes/themes_routes.py` - COPIAR logica de temas do app.py [complexo]
-  - [ ] GET /api/themes (admin_required) - IDENTICO ao app.py
-  - [ ] POST /api/themes (admin_required) - IDENTICO ao app.py
-  - [ ] PUT /api/themes/<name> (admin_required) - IDENTICO ao app.py
-  - [ ] DELETE /api/themes/<name> (admin_required) - IDENTICO ao app.py
-  - [ ] PATCH /api/themes/<name>/rename (admin_required) - IDENTICO ao app.py
-  - [ ] Temas operam 100% no filesystem, sem Supabase
-- [ ] Criar `routes/files_routes.py` - download e preview via Supabase Storage
-  - [ ] GET /api/download/<document_id> (auth_required) - redirect signed URL
-  - [ ] GET /api/preview/<document_id> (auth_required) - retorna signed URL para HTML
-  - [ ] GET /api/generate-pdf/<document_id> (admin_required) - baixa HTML, converte PDF, upload
-- [ ] Criar `routes/clientes_routes.py` - CRUD clientes (admin_required)
-- [ ] Criar `routes/carteiras_routes.py` - CRUD carteiras (auth_required / admin para write)
-- [ ] Criar `routes/casos_routes.py` - CRUD casos com filtros (auth_required / admin para write)
-- [ ] Criar `routes/processos_routes.py` - CRUD processos com filtros completos (auth_required / admin para write) [complexo]
-- [ ] Criar `routes/documentos_routes.py` - lista/detalhe/delete documentos (auth_required / admin para delete) [complexo]
-  - [ ] GET /api/documentos - lista com filtros (processo_id, search, file_type, sem_processo)
-  - [ ] GET /api/documentos/<id> - detalhe + signed URL
-  - [ ] PUT /api/documentos/<id> - vincular a processo (admin)
-  - [ ] DELETE /api/documentos/<id> - remove DB + Storage (admin)
-- [ ] Criar `routes/dashboard_routes.py` - stats admin e cliente
-  - [ ] GET /api/dashboard/stats (admin_required) - via RPC get_admin_dashboard_stats()
-  - [ ] GET /api/dashboard/recent (admin_required) - ultimos 10 documentos
-  - [ ] GET /api/dashboard/client (auth_required) - stats do cliente
-- [ ] Criar `routes/sharing_routes.py` - acesso carteiras + contas [complexo]
-  - [ ] GET /api/sharing/carteira/<id> (admin) - listar acessos
-  - [ ] POST /api/sharing/carteira/<id> (admin) - conceder acesso
-  - [ ] DELETE /api/sharing/carteira/<id>/<profile_id> (admin) - revogar
-  - [ ] POST /api/accounts (admin) - criar conta usuario
-  - [ ] GET /api/accounts (admin) - listar contas
-  - [ ] DELETE /api/accounts/<id> (admin) - remover conta
-  - [ ] PUT /api/accounts/<id>/password (admin) - resetar senha
-- [ ] Refatorar `app.py` para factory pattern `create_app()` [complexo]
-  - [ ] Manter criacao de pastas (UPLOAD_FOLDER, CUSTOM_THEMES_FOLDER, OUTPUT_FOLDER)
-  - [ ] Registrar todos os blueprints
-  - [ ] Serve frontend SPA com catch-all para React Router
-  - [ ] Manter `app = create_app()` no final para gunicorn
-- [ ] Adaptar `tests/conftest.py` com mock fixtures
-  - [ ] Fixture `mock_auth` (monkeypatch verify_supabase_token + get_user_profile)
-  - [ ] Fixture `mock_supabase` (monkeypatch upload_file + create_documento + get_signed_url)
-- [ ] Adaptar `tests/test_api_integration.py` com auth headers (dependem de mock_auth e mock_supabase)
-- [ ] Verificar que `tests/test_converter.py` passa SEM MUDANCA (14 testes)
-- [ ] Executar `uv run ruff check . && uv run ruff format .`
-- [ ] Executar `uv run pytest tests/ -v` - todos os testes passam
+- [x] Criar `routes/__init__.py` com `register_blueprints(app)` [complexo]
+- [x] Criar `routes/auth_routes.py` - health check (publico) + GET /api/me (auth)
+- [x] Criar `routes/convert_routes.py` - COPIAR logica de conversao do app.py [complexo]
+  - [x] POST /api/convert (admin_required) - mesma logica + upload Storage + registro DB
+  - [x] POST /api/convert/file (admin_required) - mesma logica + upload Storage + registro DB
+  - [x] POST /api/convert/pdf (admin_required) - mesma logica + upload Storage + registro DB
+  - [x] POST /api/convert/file/pdf (admin_required) - mesma logica + upload Storage + registro DB
+  - [x] Campo `processo_id` opcional no request
+  - [x] Campo `title` opcional no request
+  - [x] Response preserva formato original + novos campos (document_id, signed_url)
+- [x] Criar `routes/themes_routes.py` - COPIAR logica de temas do app.py [complexo]
+  - [x] GET /api/themes (admin_required) - IDENTICO ao app.py
+  - [x] POST /api/themes (admin_required) - IDENTICO ao app.py
+  - [x] PUT /api/themes/<name> (admin_required) - IDENTICO ao app.py
+  - [x] DELETE /api/themes/<name> (admin_required) - IDENTICO ao app.py
+  - [x] PATCH /api/themes/<name>/rename (admin_required) - IDENTICO ao app.py
+  - [x] Temas operam 100% no filesystem, sem Supabase
+- [x] Criar `routes/files_routes.py` - download e preview via Supabase Storage
+  - [x] GET /api/download/<document_id> (auth_required) - redirect signed URL
+  - [x] GET /api/preview/<document_id> (auth_required) - retorna signed URL para HTML
+  - [x] GET /api/generate-pdf/<document_id> (admin_required) - baixa HTML, converte PDF, upload
+- [x] Criar `routes/clientes_routes.py` - CRUD clientes (admin_required)
+- [x] Criar `routes/carteiras_routes.py` - CRUD carteiras (auth_required / admin para write)
+- [x] Criar `routes/casos_routes.py` - CRUD casos com filtros (auth_required / admin para write)
+- [x] Criar `routes/processos_routes.py` - CRUD processos com filtros completos (auth_required / admin para write) [complexo]
+- [x] Criar `routes/documentos_routes.py` - lista/detalhe/delete documentos (auth_required / admin para delete) [complexo]
+  - [x] GET /api/documentos - lista com filtros (processo_id, search, file_type, sem_processo)
+  - [x] GET /api/documentos/<id> - detalhe + signed URL
+  - [x] PUT /api/documentos/<id> - vincular a processo (admin)
+  - [x] DELETE /api/documentos/<id> - remove DB + Storage (admin)
+- [x] Criar `routes/dashboard_routes.py` - stats admin e cliente
+  - [x] GET /api/dashboard/stats (admin_required) - via RPC get_admin_dashboard_stats()
+  - [x] GET /api/dashboard/recent (admin_required) - ultimos 10 documentos
+  - [x] GET /api/dashboard/client (auth_required) - stats do cliente
+- [x] Criar `routes/sharing_routes.py` - acesso carteiras + contas [complexo]
+  - [x] GET /api/sharing/carteira/<id> (admin) - listar acessos
+  - [x] POST /api/sharing/carteira/<id> (admin) - conceder acesso
+  - [x] DELETE /api/sharing/carteira/<id>/<profile_id> (admin) - revogar
+  - [x] POST /api/accounts (admin) - criar conta usuario
+  - [x] GET /api/accounts (admin) - listar contas
+  - [x] DELETE /api/accounts/<id> (admin) - remover conta
+  - [x] PUT /api/accounts/<id>/password (admin) - resetar senha
+- [x] Refatorar `app.py` para factory pattern `create_app()` [complexo]
+  - [x] Manter criacao de pastas (UPLOAD_FOLDER, CUSTOM_THEMES_FOLDER, OUTPUT_FOLDER)
+  - [x] Registrar todos os blueprints
+  - [x] Serve frontend SPA com catch-all para React Router
+  - [x] Manter `app = create_app()` no final para gunicorn
+- [x] Adaptar `tests/conftest.py` com mock fixtures
+  - [x] Fixture `mock_auth` (monkeypatch verify_supabase_token + get_user_profile)
+  - [x] Fixture `mock_supabase` (monkeypatch upload_file + create_documento + get_signed_url)
+- [x] Adaptar `tests/test_api_integration.py` com auth headers (dependem de mock_auth e mock_supabase)
+- [x] Verificar que `tests/test_converter.py` passa SEM MUDANCA (14 testes)
+- [x] Executar `uv run ruff check . && uv run ruff format .`
+- [x] Executar `uv run pytest tests/ -v` - todos os testes passam
 
 ### Detalhes Tecnicos
 
@@ -930,49 +930,49 @@ Instalar dependencias, configurar Supabase client, AuthContext, React Router e L
 
 ### Tarefas
 
-- [ ] Instalar dependencias: `pnpm add @supabase/supabase-js react-router-dom@6`
-- [ ] Criar `frontend/src/lib/supabase.js` - cliente Supabase JS
-- [ ] Criar `frontend/src/lib/api.js` - Axios instance com JWT interceptor [complexo]
-  - [ ] Interceptor de request injeta `Authorization: Bearer {token}`
-  - [ ] Token obtido de `supabase.auth.getSession()`
-  - [ ] Interceptor de response trata 401 (redirect login)
-- [ ] Criar `frontend/src/contexts/AuthContext.jsx` [complexo]
-  - [ ] State: user, profile, loading, error
-  - [ ] Computed: isAdmin, isClient
-  - [ ] Methods: signIn(email, password), signOut()
-  - [ ] Effect: onAuthStateChange listener
-  - [ ] Effect: fetch profile via Supabase JS client direto (`supabase.from('profiles').select('*').eq('id', user.id).single()`) — NAO depende do backend Flask para auth funcionar
-  - [ ] Fallback: se Supabase direto falhar, tentar /api/me
-- [ ] Criar `frontend/src/hooks/useAuth.js` - re-export do context
-- [ ] Criar `frontend/src/components/ProtectedRoute.jsx` - guards de rota
-  - [ ] Redirect para /login se nao autenticado
-  - [ ] AdminRoute verifica role admin
-- [ ] Criar `frontend/src/components/Layout.jsx` [complexo]
-  - [ ] Sidebar com navegacao por role (admin vs client)
-  - [ ] Header com nome usuario, role badge, botao logout
-  - [ ] Breadcrumb dinamico baseado na rota
-  - [ ] `<Outlet>` para conteudo das paginas
-  - [ ] Sidebar colapsavel com hamburger menu em telas < 768px (responsividade mobile)
-  - [ ] Grid responsivo para cards (1 col mobile, 2 tablet, 3+ desktop)
-- [ ] Criar `frontend/src/pages/LoginPage.jsx` - form email/senha
-- [ ] Criar `frontend/src/pages/NotFoundPage.jsx` - 404
-- [ ] Reescrever `frontend/src/App.jsx` com React Router [complexo]
-  - [ ] BrowserRouter no main.jsx com AuthProvider
-  - [ ] Rotas publicas: /login
-  - [ ] Rotas protegidas: / (dashboard por role)
-  - [ ] Rotas admin: /admin/*
-  - [ ] Rotas client: /carteiras/*, /casos/*, /processos/*
-  - [ ] Catch-all: 404
-- [ ] Criar componentes compartilhados
-  - [ ] `LoadingSpinner.jsx`
-  - [ ] `Pagination.jsx`
-  - [ ] `EmptyState.jsx`
-  - [ ] `ConfirmDialog.jsx`
-- [ ] Criar testes frontend minimos (Vitest)
-  - [ ] `AuthContext.test.jsx` - testa login, logout, state management
-  - [ ] `ProtectedRoute.test.jsx` - testa redirect para login quando nao autenticado
-  - [ ] `LoginPage.test.jsx` - testa renderizacao e submit do form
-  - [ ] `Layout.test.jsx` - testa renderizacao por role (admin vs client)
+- [x] Instalar dependencias: `pnpm add @supabase/supabase-js react-router-dom@6`
+- [x] Criar `frontend/src/lib/supabase.js` - cliente Supabase JS
+- [x] Criar `frontend/src/lib/api.js` - Axios instance com JWT interceptor [complexo]
+  - [x] Interceptor de request injeta `Authorization: Bearer {token}`
+  - [x] Token obtido de `supabase.auth.getSession()`
+  - [x] Interceptor de response trata 401 (redirect login)
+- [x] Criar `frontend/src/contexts/AuthContext.jsx` [complexo]
+  - [x] State: user, profile, loading, error
+  - [x] Computed: isAdmin, isClient
+  - [x] Methods: signIn(email, password), signOut()
+  - [x] Effect: onAuthStateChange listener
+  - [x] Effect: fetch profile via Supabase JS client direto (`supabase.from('profiles').select('*').eq('id', user.id).single()`) — NAO depende do backend Flask para auth funcionar
+  - [x] Fallback: se Supabase direto falhar, tentar /api/me
+- [x] Criar `frontend/src/hooks/useAuth.js` - re-export do context
+- [x] Criar `frontend/src/components/ProtectedRoute.jsx` - guards de rota
+  - [x] Redirect para /login se nao autenticado
+  - [x] AdminRoute verifica role admin
+- [x] Criar `frontend/src/components/Layout.jsx` [complexo]
+  - [x] Sidebar com navegacao por role (admin vs client)
+  - [x] Header com nome usuario, role badge, botao logout
+  - [x] Breadcrumb dinamico baseado na rota
+  - [x] `<Outlet>` para conteudo das paginas
+  - [x] Sidebar colapsavel com hamburger menu em telas < 768px (responsividade mobile)
+  - [x] Grid responsivo para cards (1 col mobile, 2 tablet, 3+ desktop)
+- [x] Criar `frontend/src/pages/LoginPage.jsx` - form email/senha
+- [x] Criar `frontend/src/pages/NotFoundPage.jsx` - 404
+- [x] Reescrever `frontend/src/App.jsx` com React Router [complexo]
+  - [x] BrowserRouter no main.jsx com AuthProvider
+  - [x] Rotas publicas: /login
+  - [x] Rotas protegidas: / (dashboard por role)
+  - [x] Rotas admin: /admin/*
+  - [x] Rotas client: /carteiras/*, /casos/*, /processos/*
+  - [x] Catch-all: 404
+- [x] Criar componentes compartilhados
+  - [x] `LoadingSpinner.jsx`
+  - [x] `Pagination.jsx`
+  - [x] `EmptyState.jsx`
+  - [x] `ConfirmDialog.jsx`
+- [x] Criar testes frontend minimos (Vitest)
+  - [x] `AuthContext.test.jsx` - testa login, logout, state management
+  - [x] `ProtectedRoute.test.jsx` - testa redirect para login quando nao autenticado
+  - [x] `LoginPage.test.jsx` - testa renderizacao e submit do form
+  - [x] `Layout.test.jsx` - testa renderizacao por role (admin vs client)
 
 ### Detalhes Tecnicos
 
@@ -1043,55 +1043,55 @@ Criar todas as paginas do painel administrativo.
 
 ### Tarefas
 
-- [ ] Criar `pages/admin/AdminDashboard.jsx` [complexo]
-  - [ ] Cards de estatisticas (GET /api/dashboard/stats)
-  - [ ] Grafico distribuicao por tese
-  - [ ] Grafico distribuicao por recuperabilidade
-  - [ ] Lista atividade recente (GET /api/dashboard/recent)
-  - [ ] Botoes de acoes rapidas
-- [ ] Criar `pages/admin/ClientesPage.jsx` + `ClienteFormModal.jsx`
-  - [ ] Lista com busca
-  - [ ] Modal criar/editar (nome, email, telefone, documento, tipo PF/PJ)
-  - [ ] Botao excluir com confirmacao
-- [ ] Criar `pages/admin/CarteirasPage.jsx` + `CarteiraFormModal.jsx`
-  - [ ] Lista com filtro por cliente
-  - [ ] Modal criar/editar (nome, descricao, cliente_id, data_aquisicao, status)
-  - [ ] Exibe contadores (qtd_casos, qtd_processos)
-- [ ] Criar `pages/admin/CasosPage.jsx` + `CasoFormModal.jsx`
-  - [ ] Lista com filtros (carteira_id, tese, recuperabilidade, status)
-  - [ ] Modal criar/editar (nome, descricao, carteira_id, tese, credor, devedor, etc.)
-- [ ] Criar `pages/admin/ProcessosPage.jsx` + `ProcessoFormModal.jsx` [complexo]
-  - [ ] Lista com filtros completos do PRD
-  - [ ] Modal com todos os campos do processo
-  - [ ] Campo processo_pai_id para processos incidentais
-  - [ ] Checkbox is_incidental
-- [ ] Criar `pages/admin/ProcessoDetail.jsx` [complexo]
-  - [ ] Dados completos do processo
-  - [ ] Lista de documentos vinculados
-  - [ ] Lista de processos incidentais (filhos)
-  - [ ] Botao vincular documento existente
-- [ ] Criar `pages/admin/DocumentosPage.jsx` [complexo]
-  - [ ] Lista todos os documentos com filtros (processo_id, search, file_type)
-  - [ ] Filtro especial: documentos sem processo (para vincular)
-  - [ ] Acoes: vincular a processo, preview, download, excluir
-- [ ] Criar `pages/admin/ConvertPage.jsx` - editor markdown + conversao
-  - [ ] MESMA LOGICA do MarkdownEditor.jsx atual
-  - [ ] Campo processo_id opcional (select ou input)
-  - [ ] Campo title opcional
-  - [ ] Usa api.js (com auth header automatico)
-- [ ] Criar `pages/admin/ThemesPage.jsx` - editor de temas
-  - [ ] MESMA LOGICA do ThemeManager.jsx atual
-  - [ ] Usa api.js (com auth header automatico)
-- [ ] Criar `pages/admin/AccountsPage.jsx` [complexo]
-  - [ ] Lista contas de usuario (profiles com role=client)
-  - [ ] Criar nova conta (email, senha, nome)
-  - [ ] Resetar senha
-  - [ ] Excluir conta
-- [ ] Criar `pages/admin/SharingPage.jsx` [complexo]
-  - [ ] Selecionar carteira
-  - [ ] Lista profiles com acesso
-  - [ ] Conceder acesso (selecionar profile)
-  - [ ] Revogar acesso
+- [x] Criar `pages/admin/AdminDashboard.jsx` [complexo]
+  - [x] Cards de estatisticas (GET /api/dashboard/stats)
+  - [x] Grafico distribuicao por tese
+  - [x] Grafico distribuicao por recuperabilidade
+  - [x] Lista atividade recente (GET /api/dashboard/recent)
+  - [x] Botoes de acoes rapidas
+- [x] Criar `pages/admin/ClientesPage.jsx` + `ClienteFormModal.jsx`
+  - [x] Lista com busca
+  - [x] Modal criar/editar (nome, email, telefone, documento, tipo PF/PJ)
+  - [x] Botao excluir com confirmacao
+- [x] Criar `pages/admin/CarteirasPage.jsx` + `CarteiraFormModal.jsx`
+  - [x] Lista com filtro por cliente
+  - [x] Modal criar/editar (nome, descricao, cliente_id, data_aquisicao, status)
+  - [x] Exibe contadores (qtd_casos, qtd_processos)
+- [x] Criar `pages/admin/CasosPage.jsx` + `CasoFormModal.jsx`
+  - [x] Lista com filtros (carteira_id, tese, recuperabilidade, status)
+  - [x] Modal criar/editar (nome, descricao, carteira_id, tese, credor, devedor, etc.)
+- [x] Criar `pages/admin/ProcessosPage.jsx` + `ProcessoFormModal.jsx` [complexo]
+  - [x] Lista com filtros completos do PRD
+  - [x] Modal com todos os campos do processo
+  - [x] Campo processo_pai_id para processos incidentais
+  - [x] Checkbox is_incidental
+- [x] Criar `pages/admin/ProcessoDetail.jsx` [complexo]
+  - [x] Dados completos do processo
+  - [x] Lista de documentos vinculados
+  - [x] Lista de processos incidentais (filhos)
+  - [x] Botao vincular documento existente
+- [x] Criar `pages/admin/DocumentosPage.jsx` [complexo]
+  - [x] Lista todos os documentos com filtros (processo_id, search, file_type)
+  - [x] Filtro especial: documentos sem processo (para vincular)
+  - [x] Acoes: vincular a processo, preview, download, excluir
+- [x] Criar `pages/admin/ConvertPage.jsx` - editor markdown + conversao
+  - [x] MESMA LOGICA do MarkdownEditor.jsx atual
+  - [x] Campo processo_id opcional (select ou input)
+  - [x] Campo title opcional
+  - [x] Usa api.js (com auth header automatico)
+- [x] Criar `pages/admin/ThemesPage.jsx` - editor de temas
+  - [x] MESMA LOGICA do ThemeManager.jsx atual
+  - [x] Usa api.js (com auth header automatico)
+- [x] Criar `pages/admin/AccountsPage.jsx` [complexo]
+  - [x] Lista contas de usuario (profiles com role=client)
+  - [x] Criar nova conta (email, senha, nome)
+  - [x] Resetar senha
+  - [x] Excluir conta
+- [x] Criar `pages/admin/SharingPage.jsx` [complexo]
+  - [x] Selecionar carteira
+  - [x] Lista profiles com acesso
+  - [x] Conceder acesso (selecionar profile)
+  - [x] Revogar acesso
 
 ### Detalhes Tecnicos
 
@@ -1164,36 +1164,36 @@ Criar paginas do painel do cliente com dashboard e navegacao hierarquica.
 
 ### Tarefas
 
-- [ ] Criar `pages/client/ClientDashboard.jsx` [complexo]
-  - [ ] Cards resumo (carteiras com acesso, total casos, total processos)
-  - [ ] Lista de carteiras com cards visuais (nome, qtd, valor)
-  - [ ] Atalhos para carteiras
-- [ ] Criar `pages/client/ClientCarteirasPage.jsx`
-  - [ ] Lista carteiras com acesso (GET /api/carteiras)
-  - [ ] Cards com resumo de cada carteira
-  - [ ] Click navega para casos
-- [ ] Criar `pages/client/ClientCasosPage.jsx`
-  - [ ] Lista casos da carteira selecionada
-  - [ ] Filtros: tese, recuperabilidade, status
-  - [ ] Click navega para processos
-- [ ] Criar `pages/client/ClientProcessosPage.jsx` [complexo]
-  - [ ] Lista processos do caso selecionado
-  - [ ] Filtros completos do PRD:
-    - [ ] Busca textual (CNJ, partes, comarca)
-    - [ ] Tipo de tese
-    - [ ] Recuperabilidade
-    - [ ] Faixa de valor (min/max)
-    - [ ] Comarca/jurisdicao
-    - [ ] Periodo (data distribuicao)
-    - [ ] Ordenacao por multiplos campos
-  - [ ] Paginacao (20 por pagina)
-- [ ] Criar `pages/client/ClientProcessoDetail.jsx` [complexo]
-  - [ ] Todos os dados do processo
-  - [ ] Lista de documentos com botoes download/preview
-  - [ ] Download via signed URL (redirect)
-  - [ ] Preview HTML via signed URL (iframe ou nova aba)
-  - [ ] Lista de processos incidentais (filhos)
-  - [ ] Navegacao para processo pai (se incidental)
+- [x] Criar `pages/client/ClientDashboard.jsx` [complexo]
+  - [x] Cards resumo (carteiras com acesso, total casos, total processos)
+  - [x] Lista de carteiras com cards visuais (nome, qtd, valor)
+  - [x] Atalhos para carteiras
+- [x] Criar `pages/client/ClientCarteirasPage.jsx`
+  - [x] Lista carteiras com acesso (GET /api/carteiras)
+  - [x] Cards com resumo de cada carteira
+  - [x] Click navega para casos
+- [x] Criar `pages/client/ClientCasosPage.jsx`
+  - [x] Lista casos da carteira selecionada
+  - [x] Filtros: tese, recuperabilidade, status
+  - [x] Click navega para processos
+- [x] Criar `pages/client/ClientProcessosPage.jsx` [complexo]
+  - [x] Lista processos do caso selecionado
+  - [x] Filtros completos do PRD:
+    - [x] Busca textual (CNJ, partes, comarca)
+    - [x] Tipo de tese
+    - [x] Recuperabilidade
+    - [x] Faixa de valor (min/max)
+    - [x] Comarca/jurisdicao
+    - [x] Periodo (data distribuicao)
+    - [x] Ordenacao por multiplos campos
+  - [x] Paginacao (20 por pagina)
+- [x] Criar `pages/client/ClientProcessoDetail.jsx` [complexo]
+  - [x] Todos os dados do processo
+  - [x] Lista de documentos com botoes download/preview
+  - [x] Download via signed URL (redirect)
+  - [x] Preview HTML via signed URL (iframe ou nova aba)
+  - [x] Lista de processos incidentais (filhos)
+  - [x] Navegacao para processo pai (se incidental)
 
 ### Detalhes Tecnicos
 
@@ -1243,20 +1243,20 @@ Migrar arquivos existentes do filesystem para Supabase Storage e fazer deploy.
 
 ### Tarefas
 
-- [ ] Criar/reescrever `scripts/migrate_files.py` [complexo]
-  - [ ] Cria cliente placeholder "Documentos Migrados"
-  - [ ] Cria carteira "Migracao Automatica"
-  - [ ] Cria caso "Documentos Pre-Migracao"
-  - [ ] Cria processo placeholder "0000000-00.0000.0.00.0000"
-  - [ ] Para cada arquivo em data/outputs/: upload + registro DB
-  - [ ] Report sucesso/erros
-  - [ ] NAO deleta arquivos locais (backup)
-- [ ] Atualizar `docker-compose.yml` com env vars Supabase
-- [ ] Executar lint e format: `uv run ruff check . --fix && uv run ruff format .`
-- [ ] Executar todos os testes: `uv run pytest tests/ -v`
-- [ ] Executar lint frontend: `cd frontend && pnpm lint`
-- [ ] Build frontend: `cd frontend && pnpm build`
-- [ ] Verificar que docker build funciona localmente
+- [x] Criar/reescrever `scripts/migrate_files.py` [complexo]
+  - [x] Cria cliente placeholder "Documentos Migrados"
+  - [x] Cria carteira "Migracao Automatica"
+  - [x] Cria caso "Documentos Pre-Migracao"
+  - [x] Cria processo placeholder "0000000-00.0000.0.00.0000"
+  - [x] Para cada arquivo em data/outputs/: upload + registro DB
+  - [x] Report sucesso/erros
+  - [x] NAO deleta arquivos locais (backup)
+- [x] Atualizar `docker-compose.yml` com env vars Supabase
+- [x] Executar lint e format: `uv run ruff check . --fix && uv run ruff format .`
+- [x] Executar todos os testes: `uv run pytest tests/ -v`
+- [x] Executar lint frontend: `cd frontend && pnpm lint`
+- [x] Build frontend: `cd frontend && pnpm build`
+- [x] Verificar que docker build funciona localmente
 
 ### Detalhes Tecnicos
 
