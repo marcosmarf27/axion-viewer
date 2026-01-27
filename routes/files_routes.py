@@ -30,7 +30,7 @@ def download_document(document_id):
         if not doc:
             return jsonify({"error": "Documento nao encontrado"}), 404
 
-        signed_url = supa_service.get_signed_url(doc["storage_path"])
+        signed_url = supa_service.get_signed_url(doc["storage_path"], download=True)
         if not signed_url:
             return jsonify({"error": "Erro ao gerar URL de download"}), 500
 

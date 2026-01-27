@@ -73,10 +73,11 @@ class SupabaseService:
         except Exception:
             logger.exception("Erro ao deletar arquivo do Storage: %s", storage_path)
 
-    def get_signed_url(self, storage_path, expires_in=3600):
+    def get_signed_url(self, storage_path, expires_in=3600, download=False):
         """Gera signed URL para acesso temporario ao arquivo."""
+        options = {"download": True} if download else {}
         result = self.client.storage.from_("documents").create_signed_url(
-            storage_path, expires_in
+            storage_path, expires_in, options
         )
         return result.get("signedUrl") or result.get("signedURL")
 
