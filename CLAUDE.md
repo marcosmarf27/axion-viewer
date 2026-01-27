@@ -357,6 +357,11 @@ uv run ruff check . && uv run ruff format . && uv run pytest tests/ -v
 cd frontend && pnpm lint && pnpm format:check && pnpm test --run
 ```
 
+## Preferencias de Teste
+
+- **Sempre testar em producao**: Nao usar dev server local para verificacao visual. Fazer deploy e testar diretamente na URL de producao (`https://axion-viewer-production.up.railway.app`).
+- Fluxo: build/lint/tests local → commit → push → verificar em producao.
+
 ## Supabase
 
 O projeto usa MCP Supabase conectado via plugin do Claude Code para consultas, migracoes e debugging.

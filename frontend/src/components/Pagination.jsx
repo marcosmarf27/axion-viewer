@@ -20,8 +20,17 @@ export default function Pagination({ page, totalPages, onPageChange }) {
       <button
         onClick={() => onPageChange(page - 1)}
         disabled={page <= 1}
-        className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
       >
+        <svg
+          className="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
         Anterior
       </button>
 
@@ -29,11 +38,11 @@ export default function Pagination({ page, totalPages, onPageChange }) {
         <>
           <button
             onClick={() => onPageChange(1)}
-            className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100"
+            className="rounded-lg px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100"
           >
             1
           </button>
-          {start > 2 && <span className="px-1 text-gray-400">...</span>}
+          {start > 2 && <span className="px-1 text-slate-400">...</span>}
         </>
       )}
 
@@ -42,8 +51,8 @@ export default function Pagination({ page, totalPages, onPageChange }) {
           key={p}
           onClick={() => onPageChange(p)}
           className={cn(
-            'rounded-md px-3 py-1.5 text-sm',
-            p === page ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+            'rounded-lg px-3 py-1.5 text-sm',
+            p === page ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'
           )}
         >
           {p}
@@ -52,10 +61,10 @@ export default function Pagination({ page, totalPages, onPageChange }) {
 
       {end < totalPages && (
         <>
-          {end < totalPages - 1 && <span className="px-1 text-gray-400">...</span>}
+          {end < totalPages - 1 && <span className="px-1 text-slate-400">...</span>}
           <button
             onClick={() => onPageChange(totalPages)}
-            className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100"
+            className="rounded-lg px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100"
           >
             {totalPages}
           </button>
@@ -65,9 +74,18 @@ export default function Pagination({ page, totalPages, onPageChange }) {
       <button
         onClick={() => onPageChange(page + 1)}
         disabled={page >= totalPages}
-        className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
       >
         Proximo
+        <svg
+          className="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
       </button>
     </nav>
   );

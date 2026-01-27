@@ -3,27 +3,56 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
 
-const adminNav = [
-  { label: 'Dashboard', path: '/', icon: 'LayoutDashboard' },
-  { label: 'Clientes', path: '/admin/clientes', icon: 'Users' },
-  { label: 'Carteiras', path: '/admin/carteiras', icon: 'Briefcase' },
-  { label: 'Casos', path: '/admin/casos', icon: 'FolderOpen' },
-  { label: 'Processos', path: '/admin/processos', icon: 'Scale' },
-  { label: 'Documentos', path: '/admin/documentos', icon: 'FileText' },
-  { label: 'Converter', path: '/admin/convert', icon: 'FileOutput' },
-  { label: 'Temas', path: '/admin/themes', icon: 'Palette' },
-  { label: 'Contas', path: '/admin/accounts', icon: 'UserCog' },
-  { label: 'Compartilhamento', path: '/admin/sharing', icon: 'Share2' },
+const adminNavGroups = [
+  {
+    label: 'PRINCIPAL',
+    items: [{ label: 'Dashboard', path: '/', icon: 'LayoutDashboard' }],
+  },
+  {
+    label: 'CADASTROS',
+    items: [
+      { label: 'Clientes', path: '/admin/clientes', icon: 'Users' },
+      { label: 'Carteiras', path: '/admin/carteiras', icon: 'Briefcase' },
+      { label: 'Casos', path: '/admin/casos', icon: 'FolderOpen' },
+      { label: 'Processos', path: '/admin/processos', icon: 'Scale' },
+      { label: 'Documentos', path: '/admin/documentos', icon: 'FileText' },
+    ],
+  },
+  {
+    label: 'FERRAMENTAS',
+    items: [
+      { label: 'Converter', path: '/admin/convert', icon: 'FileOutput' },
+      { label: 'Temas', path: '/admin/themes', icon: 'Palette' },
+    ],
+  },
+  {
+    label: 'ADMINISTRACAO',
+    items: [
+      { label: 'Contas', path: '/admin/accounts', icon: 'UserCog' },
+      { label: 'Compartilhamento', path: '/admin/sharing', icon: 'Share2' },
+    ],
+  },
 ];
 
-const clientNav = [
-  { label: 'Dashboard', path: '/', icon: 'LayoutDashboard' },
-  { label: 'Minhas Carteiras', path: '/carteiras', icon: 'Briefcase' },
+const clientNavGroups = [
+  {
+    label: 'PRINCIPAL',
+    items: [
+      { label: 'Dashboard', path: '/', icon: 'LayoutDashboard' },
+      { label: 'Minhas Carteiras', path: '/carteiras', icon: 'Briefcase' },
+    ],
+  },
 ];
 
 const iconMap = {
   LayoutDashboard: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -32,7 +61,13 @@ const iconMap = {
     </svg>
   ),
   Users: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -41,7 +76,13 @@ const iconMap = {
     </svg>
   ),
   Briefcase: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -50,7 +91,13 @@ const iconMap = {
     </svg>
   ),
   FolderOpen: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -59,7 +106,13 @@ const iconMap = {
     </svg>
   ),
   Scale: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -68,7 +121,13 @@ const iconMap = {
     </svg>
   ),
   FileText: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -77,7 +136,13 @@ const iconMap = {
     </svg>
   ),
   FileOutput: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -86,7 +151,13 @@ const iconMap = {
     </svg>
   ),
   Palette: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -95,7 +166,13 @@ const iconMap = {
     </svg>
   ),
   UserCog: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -104,7 +181,13 @@ const iconMap = {
     </svg>
   ),
   Share2: (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+    >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -134,8 +217,8 @@ function Breadcrumb() {
   if (segments.length === 0) return null;
 
   return (
-    <nav className="flex items-center gap-1 text-sm text-gray-500">
-      <Link to="/" className="hover:text-gray-700">
+    <nav className="flex items-center gap-1 text-sm text-slate-500">
+      <Link to="/" className="hover:text-slate-700">
         Inicio
       </Link>
       {segments.map((segment, idx) => {
@@ -145,11 +228,11 @@ function Breadcrumb() {
 
         return (
           <span key={path} className="flex items-center gap-1">
-            <span className="text-gray-400">/</span>
+            <span className="text-slate-300">/</span>
             {isLast ? (
-              <span className="text-gray-900 font-medium">{label}</span>
+              <span className="font-medium text-slate-900">{label}</span>
             ) : (
-              <Link to={path} className="hover:text-gray-700">
+              <Link to={path} className="hover:text-slate-700">
                 {label}
               </Link>
             )}
@@ -160,12 +243,29 @@ function Breadcrumb() {
   );
 }
 
+function UserAvatar({ name, email }) {
+  const displayName = name || email || '';
+  const initials = displayName
+    .split(' ')
+    .map(w => w[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+
+  return (
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-700">
+      {initials || '?'}
+    </div>
+  );
+}
+
 export default function Layout() {
   const { profile, signOut } = useAuth();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const nav = profile?.role === 'admin' ? adminNav : clientNav;
+  const navGroups = profile?.role === 'admin' ? adminNavGroups : clientNavGroups;
 
   const isActive = path => {
     if (path === '/') return location.pathname === '/';
@@ -173,7 +273,7 @@ export default function Layout() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-slate-50">
       {/* Overlay mobile */}
       {sidebarOpen && (
         <div
@@ -185,49 +285,79 @@ export default function Layout() {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-gray-900 text-white transition-transform md:static md:translate-x-0',
+          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-slate-900 text-white transition-transform md:static md:translate-x-0',
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <div className="flex h-16 items-center gap-2 px-4 border-b border-gray-800">
-          <span className="text-lg font-bold tracking-tight">Axion Viewer</span>
+        {/* Sidebar header */}
+        <div className="flex h-16 items-center gap-3 border-b border-slate-800 px-5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              className="h-4 w-4 text-white"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 3v18" />
+              <path d="M5 7l7-4 7 4" />
+              <path d="M5 7l-1 5c0 1.5 1 2 2.5 2S9 13.5 9 12L8 7" />
+              <path d="M19 7l-1 5c0 1.5 1 2 2.5 2S23 13.5 23 12l-1-5" />
+              <path d="M9 21h6" />
+            </svg>
+          </div>
+          <span className="text-base font-bold tracking-tight text-white">Axion Viewer</span>
         </div>
 
+        {/* Navigation groups */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
-          <ul className="space-y-1">
-            {nav.map(item => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  onClick={() => setSidebarOpen(false)}
-                  className={cn(
-                    'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                    isActive(item.path)
-                      ? 'bg-gray-800 text-white'
-                      : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-                  )}
-                >
-                  {iconMap[item.icon]}
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {navGroups.map((group, gi) => (
+            <div key={group.label} className={cn(gi > 0 && 'mt-6')}>
+              <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
+                {group.label}
+              </p>
+              <ul className="space-y-0.5">
+                {group.items.map(item => {
+                  const active = isActive(item.path);
+                  return (
+                    <li key={item.path}>
+                      <Link
+                        to={item.path}
+                        onClick={() => setSidebarOpen(false)}
+                        className={cn(
+                          'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                          active
+                            ? 'border-r-2 border-indigo-400 bg-indigo-600/10 text-indigo-400'
+                            : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+                        )}
+                      >
+                        {iconMap[item.icon]}
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
         </nav>
 
-        <div className="border-t border-gray-800 px-4 py-3">
-          <div className="text-xs text-gray-500">Axion Viewer v3.0</div>
+        {/* Sidebar footer */}
+        <div className="border-t border-slate-800 px-5 py-3">
+          <div className="text-[11px] text-slate-600">Axion Viewer v3.0</div>
         </div>
       </aside>
 
       {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Header */}
-        <header className="flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 md:px-6">
+        <header className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-4 shadow-sm md:px-6">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="rounded-md p-2 text-gray-500 hover:bg-gray-100 md:hidden"
+              className="rounded-md p-2 text-slate-500 hover:bg-slate-100 md:hidden"
             >
               <svg
                 className="h-5 w-5"
@@ -247,23 +377,35 @@ export default function Layout() {
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="hidden text-sm text-gray-600 sm:inline">
-              {profile?.full_name || profile?.email}
-            </span>
-            <span
-              className={cn(
-                'rounded-full px-2 py-0.5 text-xs font-medium',
-                profile?.role === 'admin'
-                  ? 'bg-indigo-100 text-indigo-700'
-                  : 'bg-green-100 text-green-700'
-              )}
-            >
-              {profile?.role === 'admin' ? 'Admin' : 'Cliente'}
-            </span>
+            <div className="hidden items-center gap-2.5 sm:flex">
+              <UserAvatar name={profile?.full_name} email={profile?.email} />
+              <div className="text-right">
+                <p className="text-sm font-medium text-slate-700">
+                  {profile?.full_name || profile?.email}
+                </p>
+                <p className="text-[11px] text-slate-400">
+                  {profile?.role === 'admin' ? 'Administrador' : 'Cliente'}
+                </p>
+              </div>
+            </div>
+            <div className="h-6 w-px bg-slate-200 hidden sm:block" />
             <button
               onClick={signOut}
-              className="rounded-md px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-100"
+              className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700"
             >
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                />
+              </svg>
               Sair
             </button>
           </div>

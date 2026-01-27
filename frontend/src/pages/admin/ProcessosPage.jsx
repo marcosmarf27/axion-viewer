@@ -8,7 +8,7 @@ import EmptyState from '@/components/EmptyState';
 import ConfirmDialog from '@/components/ConfirmDialog';
 
 const inputClass =
-  'mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 
 const TIPO_TESE_OPTIONS = ['NPL', 'RJ', 'Divida_Ativa', 'Litigio'];
 const RECUPERABILIDADE_OPTIONS = ['Alta', 'Potencial', 'Critica', 'Indefinida', 'Nenhuma'];
@@ -48,11 +48,11 @@ const recuperabilidadeBadge = value => {
     case 'Critica':
       return 'bg-red-100 text-red-700';
     case 'Indefinida':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     case 'Nenhuma':
-      return 'bg-gray-200 text-gray-700';
+      return 'bg-slate-200 text-slate-700';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -63,11 +63,11 @@ const statusBadge = value => {
     case 'suspenso':
       return 'bg-yellow-100 text-yellow-700';
     case 'arquivado':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     case 'encerrado':
       return 'bg-red-100 text-red-700';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -181,20 +181,20 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
       onClick={onClose}
     >
       <div
-        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
+        className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">
+        <h2 className="mb-4 text-lg font-semibold text-slate-900">
           {editing ? 'Editar Processo' : 'Novo Processo'}
         </h2>
 
-        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {/* numero_cnj */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Numero CNJ *</label>
+              <label className="block text-sm font-medium text-slate-700">Numero CNJ *</label>
               <input
                 type="text"
                 value={form.numero_cnj}
@@ -206,7 +206,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* caso_id */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Caso *</label>
+              <label className="block text-sm font-medium text-slate-700">Caso *</label>
               <select
                 value={form.caso_id}
                 onChange={e => set('caso_id', e.target.value)}
@@ -224,7 +224,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* processo_pai_id */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Processo Pai</label>
+              <label className="block text-sm font-medium text-slate-700">Processo Pai</label>
               <select
                 value={form.processo_pai_id}
                 onChange={e => set('processo_pai_id', e.target.value)}
@@ -242,7 +242,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* tipo_tese */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Tipo de Tese</label>
+              <label className="block text-sm font-medium text-slate-700">Tipo de Tese</label>
               <select
                 value={form.tipo_tese}
                 onChange={e => set('tipo_tese', e.target.value)}
@@ -259,7 +259,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* tipo_acao */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Tipo de Acao</label>
+              <label className="block text-sm font-medium text-slate-700">Tipo de Acao</label>
               <input
                 type="text"
                 value={form.tipo_acao}
@@ -270,12 +270,12 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* is_incidental */}
             <div className="flex items-end">
-              <label className="flex items-center gap-2 text-sm font-medium text-gray-700">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <input
                   type="checkbox"
                   checked={form.is_incidental}
                   onChange={e => set('is_incidental', e.target.checked)}
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                 />
                 Incidental
               </label>
@@ -283,7 +283,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* recuperabilidade */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Recuperabilidade</label>
+              <label className="block text-sm font-medium text-slate-700">Recuperabilidade</label>
               <select
                 value={form.recuperabilidade}
                 onChange={e => set('recuperabilidade', e.target.value)}
@@ -300,7 +300,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* status */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Status</label>
+              <label className="block text-sm font-medium text-slate-700">Status</label>
               <select
                 value={form.status}
                 onChange={e => set('status', e.target.value)}
@@ -316,7 +316,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* valor_causa */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Valor da Causa</label>
+              <label className="block text-sm font-medium text-slate-700">Valor da Causa</label>
               <input
                 type="number"
                 step="0.01"
@@ -328,7 +328,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* valor_divida */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Valor da Divida</label>
+              <label className="block text-sm font-medium text-slate-700">Valor da Divida</label>
               <input
                 type="number"
                 step="0.01"
@@ -340,7 +340,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* valor_atualizado */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Valor Atualizado</label>
+              <label className="block text-sm font-medium text-slate-700">Valor Atualizado</label>
               <input
                 type="number"
                 step="0.01"
@@ -352,7 +352,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* polo_ativo */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Polo Ativo</label>
+              <label className="block text-sm font-medium text-slate-700">Polo Ativo</label>
               <input
                 type="text"
                 value={form.polo_ativo}
@@ -363,7 +363,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* polo_passivo */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Polo Passivo</label>
+              <label className="block text-sm font-medium text-slate-700">Polo Passivo</label>
               <input
                 type="text"
                 value={form.polo_passivo}
@@ -374,7 +374,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* comarca */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Comarca</label>
+              <label className="block text-sm font-medium text-slate-700">Comarca</label>
               <input
                 type="text"
                 value={form.comarca}
@@ -385,7 +385,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* vara */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Vara</label>
+              <label className="block text-sm font-medium text-slate-700">Vara</label>
               <input
                 type="text"
                 value={form.vara}
@@ -396,7 +396,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* tribunal */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Tribunal</label>
+              <label className="block text-sm font-medium text-slate-700">Tribunal</label>
               <input
                 type="text"
                 value={form.tribunal}
@@ -407,7 +407,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* uf */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">UF</label>
+              <label className="block text-sm font-medium text-slate-700">UF</label>
               <input
                 type="text"
                 value={form.uf}
@@ -419,7 +419,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* fase_processual */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Fase Processual</label>
+              <label className="block text-sm font-medium text-slate-700">Fase Processual</label>
               <input
                 type="text"
                 value={form.fase_processual}
@@ -430,7 +430,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* data_distribuicao */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Data Distribuicao</label>
+              <label className="block text-sm font-medium text-slate-700">Data Distribuicao</label>
               <input
                 type="date"
                 value={form.data_distribuicao}
@@ -441,7 +441,9 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* ultima_movimentacao */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">Ultima Movimentacao</label>
+              <label className="block text-sm font-medium text-slate-700">
+                Ultima Movimentacao
+              </label>
               <input
                 type="text"
                 value={form.ultima_movimentacao}
@@ -452,7 +454,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
             {/* data_ultima_movimentacao */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-slate-700">
                 Data Ultima Movimentacao
               </label>
               <input
@@ -466,7 +468,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
           {/* observacoes - full width */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Observacoes</label>
+            <label className="block text-sm font-medium text-slate-700">Observacoes</label>
             <textarea
               value={form.observacoes}
               onChange={e => set('observacoes', e.target.value)}
@@ -480,14 +482,14 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
               type="button"
               onClick={onClose}
               disabled={saving}
-              className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
             >
               {saving ? 'Salvando...' : editing ? 'Salvar' : 'Criar'}
             </button>
@@ -607,20 +609,20 @@ export default function ProcessosPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Processos</h1>
+        <h1 className="text-2xl font-bold text-slate-900">Processos</h1>
         <button
           onClick={openCreate}
-          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
         >
           Novo Processo
         </button>
       </div>
 
       {/* Filtros */}
-      <div className="rounded-lg border bg-white shadow-sm">
+      <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
         <button
           onClick={() => setFiltersOpen(!filtersOpen)}
-          className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
         >
           <span className="flex items-center gap-2">
             <svg
@@ -658,7 +660,7 @@ export default function ProcessosPage() {
           <div className="border-t px-4 py-4">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700">Busca</label>
+                <label className="block text-sm font-medium text-slate-700">Busca</label>
                 <input
                   type="text"
                   placeholder="CNJ, partes, comarca..."
@@ -672,7 +674,7 @@ export default function ProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Caso</label>
+                <label className="block text-sm font-medium text-slate-700">Caso</label>
                 <select
                   value={filterCasoId}
                   onChange={e => {
@@ -691,7 +693,7 @@ export default function ProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Tipo de Tese</label>
+                <label className="block text-sm font-medium text-slate-700">Tipo de Tese</label>
                 <select
                   value={filterTipoTese}
                   onChange={e => {
@@ -710,7 +712,7 @@ export default function ProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Recuperabilidade</label>
+                <label className="block text-sm font-medium text-slate-700">Recuperabilidade</label>
                 <select
                   value={filterRecuperabilidade}
                   onChange={e => {
@@ -729,7 +731,7 @@ export default function ProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">UF</label>
+                <label className="block text-sm font-medium text-slate-700">UF</label>
                 <input
                   type="text"
                   placeholder="Ex: SP, RJ..."
@@ -744,7 +746,7 @@ export default function ProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Status</label>
+                <label className="block text-sm font-medium text-slate-700">Status</label>
                 <select
                   value={filterStatus}
                   onChange={e => {
@@ -777,7 +779,7 @@ export default function ProcessosPage() {
         )}
       </div>
 
-      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+      {error && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -793,7 +795,7 @@ export default function ProcessosPage() {
             !hasActiveFilters && (
               <button
                 onClick={openCreate}
-                className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
               >
                 Novo Processo
               </button>
@@ -802,45 +804,45 @@ export default function ProcessosPage() {
         />
       ) : (
         <>
-          <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <tr className="border-b border-slate-100 bg-slate-50/80">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Numero CNJ
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Caso
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tipo Tese
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Recuperabilidade
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     UF
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Status
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Inc.
                   </th>
-                  <th className="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Acoes
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {processos.map(processo => (
-                  <tr key={processo.id} className="hover:bg-gray-50">
+                  <tr key={processo.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm font-medium text-indigo-600">
                       <Link to={`/admin/processos/${processo.id}`} className="hover:underline">
                         {processo.numero_cnj}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-slate-600">
                       {processo.caso_nome || casoNome(processo.caso_id)}
                     </td>
                     <td className="px-4 py-3">
@@ -849,7 +851,7 @@ export default function ProcessosPage() {
                           {processo.tipo_tese.replace('_', ' ')}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
                     <td className="px-4 py-3">
@@ -863,10 +865,10 @@ export default function ProcessosPage() {
                           {processo.recuperabilidade}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{processo.uf || '-'}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">{processo.uf || '-'}</td>
                     <td className="px-4 py-3">
                       <span
                         className={cn(
@@ -890,7 +892,7 @@ export default function ProcessosPage() {
                     <td className="px-4 py-3 text-right">
                       <Link
                         to={`/admin/processos/${processo.id}`}
-                        className="mr-2 text-sm font-medium text-gray-600 hover:text-gray-800"
+                        className="mr-2 text-sm font-medium text-slate-600 hover:text-slate-800"
                       >
                         Ver
                       </Link>

@@ -23,8 +23,8 @@ function FeedbackMessage({ message, type, onDismiss }) {
     <div
       className={
         type === 'success'
-          ? 'rounded-md bg-green-50 p-3 text-sm text-green-700'
-          : 'rounded-md bg-red-50 p-3 text-sm text-red-700'
+          ? 'rounded-lg bg-green-50 p-3 text-sm text-green-700'
+          : 'rounded-lg bg-red-50 p-3 text-sm text-red-700'
       }
     >
       {message}
@@ -78,43 +78,43 @@ function CreateAccountModal({ open, onSave, onClose }) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
+        className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">Nova Conta</h2>
+        <h2 className="mb-4 text-lg font-semibold text-slate-900">Nova Conta</h2>
 
-        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email *</label>
+            <label className="block text-sm font-medium text-slate-700">Email *</label>
             <input
               type="email"
               value={form.email}
               onChange={e => setForm({ ...form, email: e.target.value })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Senha *</label>
+            <label className="block text-sm font-medium text-slate-700">Senha *</label>
             <input
               type="password"
               value={form.password}
               onChange={e => setForm({ ...form, password: e.target.value })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Nome completo</label>
+            <label className="block text-sm font-medium text-slate-700">Nome completo</label>
             <input
               type="text"
               value={form.full_name}
               onChange={e => setForm({ ...form, full_name: e.target.value })}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
 
@@ -123,14 +123,14 @@ function CreateAccountModal({ open, onSave, onClose }) {
               type="button"
               onClick={onClose}
               disabled={saving}
-              className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
             >
               {saving ? 'Criando...' : 'Criar'}
             </button>
@@ -179,24 +179,24 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
+        className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">Resetar Senha</h2>
-        <p className="mb-4 text-sm text-gray-600">
+        <h2 className="mb-4 text-lg font-semibold text-slate-900">Resetar Senha</h2>
+        <p className="mb-4 text-sm text-slate-600">
           Definir nova senha para <strong>{account?.email}</strong>
         </p>
 
-        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Nova senha *</label>
+            <label className="block text-sm font-medium text-slate-700">Nova senha *</label>
             <input
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               required
             />
           </div>
@@ -206,14 +206,14 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
               type="button"
               onClick={onClose}
               disabled={saving}
-              className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
             >
               {saving ? 'Salvando...' : 'Salvar'}
             </button>
@@ -291,10 +291,10 @@ export default function AccountsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Contas</h1>
+        <h1 className="text-2xl font-bold text-slate-900">Contas</h1>
         <button
           onClick={() => setCreateModalOpen(true)}
-          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
         >
           Nova Conta
         </button>
@@ -315,39 +315,39 @@ export default function AccountsPage() {
           action={
             <button
               onClick={() => setCreateModalOpen(true)}
-              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
             >
               Nova Conta
             </button>
           }
         />
       ) : (
-        <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
+        <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
           <table className="w-full">
             <thead>
-              <tr className="border-b bg-gray-50">
-                <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+              <tr className="border-b border-slate-100 bg-slate-50/80">
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Email
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Nome
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Role
                 </th>
-                <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Criado em
                 </th>
-                <th className="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">
+                <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Acoes
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y">
               {accounts.map(account => (
-                <tr key={account.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-sm font-medium text-gray-900">{account.email}</td>
-                  <td className="px-4 py-3 text-sm text-gray-600">
+                <tr key={account.id} className="hover:bg-slate-50 transition-colors">
+                  <td className="px-4 py-3 text-sm font-medium text-slate-900">{account.email}</td>
+                  <td className="px-4 py-3 text-sm text-slate-600">
                     {account.user_metadata?.full_name || '-'}
                   </td>
                   <td className="px-4 py-3">
@@ -361,7 +361,7 @@ export default function AccountsPage() {
                       {account.user_metadata?.role || '-'}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm text-gray-600">
+                  <td className="px-4 py-3 text-sm text-slate-600">
                     {formatDate(account.created_at)}
                   </td>
                   <td className="px-4 py-3 text-right">

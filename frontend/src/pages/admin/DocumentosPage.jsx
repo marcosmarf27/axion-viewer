@@ -16,7 +16,7 @@ function formatSize(bytes) {
 const typeBadgeClass = {
   html: 'bg-blue-100 text-blue-700',
   pdf: 'bg-red-100 text-red-700',
-  md: 'bg-gray-100 text-gray-700',
+  md: 'bg-slate-100 text-slate-700',
 };
 
 function VincularModal({ open, documento, onClose, onVincular }) {
@@ -64,23 +64,23 @@ function VincularModal({ open, documento, onClose, onVincular }) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
+        className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">Vincular a Processo</h2>
+        <h2 className="mb-4 text-lg font-semibold text-slate-900">Vincular a Processo</h2>
 
-        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         {loading ? (
           <LoadingSpinner className="py-8" />
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Processo</label>
+              <label className="block text-sm font-medium text-slate-700">Processo</label>
               <select
                 value={selectedProcessoId}
                 onChange={e => setSelectedProcessoId(e.target.value)}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               >
                 <option value="">Selecione um processo...</option>
                 {processos.map(p => (
@@ -97,14 +97,14 @@ function VincularModal({ open, documento, onClose, onVincular }) {
                 type="button"
                 onClick={onClose}
                 disabled={saving}
-                className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={saving || !selectedProcessoId}
-                className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
               >
                 {saving ? 'Vinculando...' : 'Vincular'}
               </button>
@@ -185,13 +185,13 @@ export default function DocumentosPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Documentos</h1>
+        <h1 className="text-2xl font-bold text-slate-900">Documentos</h1>
       </div>
 
       {/* Filtros */}
       <div className="flex flex-wrap items-end gap-4">
         <div className="w-full max-w-sm">
-          <label className="block text-sm font-medium text-gray-700">Buscar</label>
+          <label className="block text-sm font-medium text-slate-700">Buscar</label>
           <input
             type="text"
             placeholder="Buscar por titulo ou filename..."
@@ -200,19 +200,19 @@ export default function DocumentosPage() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
         </div>
 
         <div className="w-40">
-          <label className="block text-sm font-medium text-gray-700">Tipo</label>
+          <label className="block text-sm font-medium text-slate-700">Tipo</label>
           <select
             value={fileType}
             onChange={e => {
               setFileType(e.target.value);
               setPage(1);
             }}
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todos</option>
             <option value="html">HTML</option>
@@ -230,15 +230,15 @@ export default function DocumentosPage() {
               setSemProcesso(e.target.checked);
               setPage(1);
             }}
-            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
           />
-          <label htmlFor="sem-processo" className="text-sm text-gray-700">
+          <label htmlFor="sem-processo" className="text-sm text-slate-700">
             Sem processo vinculado
           </label>
         </div>
       </div>
 
-      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+      {error && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -253,47 +253,47 @@ export default function DocumentosPage() {
         />
       ) : (
         <>
-          <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <tr className="border-b border-slate-100 bg-slate-50/80">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Titulo/Filename
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tipo
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Processo
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Data
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tamanho
                   </th>
-                  <th className="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Acoes
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {documentos.map(doc => (
-                  <tr key={doc.id} className="hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                  <tr key={doc.id} className="hover:bg-slate-50 transition-colors">
+                    <td className="px-4 py-3 text-sm font-medium text-slate-900">
                       {doc.titulo || doc.filename}
                     </td>
                     <td className="px-4 py-3">
                       <span
                         className={cn(
-                          'inline-flex rounded-full px-2 py-0.5 text-xs font-medium uppercase',
-                          typeBadgeClass[doc.file_type] || 'bg-gray-100 text-gray-700'
+                          'inline-flex rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wider',
+                          typeBadgeClass[doc.file_type] || 'bg-slate-100 text-slate-700'
                         )}
                       >
                         {doc.file_type}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-slate-600">
                       {doc.processo_numero_cnj ? (
                         doc.processo_numero_cnj
                       ) : (
@@ -302,10 +302,10 @@ export default function DocumentosPage() {
                         </span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-slate-600">
                       {doc.created_at ? new Date(doc.created_at).toLocaleDateString('pt-BR') : '-'}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{formatSize(doc.tamanho)}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">{formatSize(doc.tamanho)}</td>
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => handlePreview(doc)}

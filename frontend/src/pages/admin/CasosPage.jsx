@@ -12,7 +12,7 @@ const RECUPERABILIDADES = ['Alta', 'Potencial', 'Critica', 'Indefinida', 'Nenhum
 const STATUSES = ['em_andamento', 'concluido', 'arquivado'];
 
 const inputClass =
-  'mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 
 const emptyForm = {
   nome: '',
@@ -38,11 +38,11 @@ const recuperabilidadeBadge = valor => {
     case 'Critica':
       return 'bg-red-100 text-red-700';
     case 'Indefinida':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     case 'Nenhuma':
-      return 'bg-gray-200 text-gray-700';
+      return 'bg-slate-200 text-slate-700';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -53,9 +53,9 @@ const statusBadge = valor => {
     case 'concluido':
       return 'bg-green-100 text-green-700';
     case 'arquivado':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -138,18 +138,18 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
       onClick={onClose}
     >
       <div
-        className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
+        className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">
+        <h2 className="mb-4 text-lg font-semibold text-slate-900">
           {editing ? 'Editar Caso' : 'Novo Caso'}
         </h2>
 
-        {error && <div className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+        {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Nome *</label>
+            <label className="block text-sm font-medium text-slate-700">Nome *</label>
             <input
               type="text"
               value={form.nome}
@@ -160,7 +160,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Descricao</label>
+            <label className="block text-sm font-medium text-slate-700">Descricao</label>
             <textarea
               value={form.descricao}
               onChange={e => setForm({ ...form, descricao: e.target.value })}
@@ -170,7 +170,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Carteira *</label>
+            <label className="block text-sm font-medium text-slate-700">Carteira *</label>
             <select
               value={form.carteira_id}
               onChange={e => setForm({ ...form, carteira_id: e.target.value })}
@@ -188,7 +188,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Tese</label>
+              <label className="block text-sm font-medium text-slate-700">Tese</label>
               <select
                 value={form.tese}
                 onChange={e => setForm({ ...form, tese: e.target.value })}
@@ -204,7 +204,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Recuperabilidade</label>
+              <label className="block text-sm font-medium text-slate-700">Recuperabilidade</label>
               <select
                 value={form.recuperabilidade}
                 onChange={e => setForm({ ...form, recuperabilidade: e.target.value })}
@@ -222,7 +222,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Credor Principal</label>
+              <label className="block text-sm font-medium text-slate-700">Credor Principal</label>
               <input
                 type="text"
                 value={form.credor_principal}
@@ -232,7 +232,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Devedor Principal</label>
+              <label className="block text-sm font-medium text-slate-700">Devedor Principal</label>
               <input
                 type="text"
                 value={form.devedor_principal}
@@ -244,7 +244,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">CNPJ/CPF Devedor</label>
+              <label className="block text-sm font-medium text-slate-700">CNPJ/CPF Devedor</label>
               <input
                 type="text"
                 value={form.cnpj_cpf_devedor}
@@ -254,7 +254,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Valor Total</label>
+              <label className="block text-sm font-medium text-slate-700">Valor Total</label>
               <input
                 type="number"
                 step="0.01"
@@ -267,7 +267,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">UF Principal</label>
+              <label className="block text-sm font-medium text-slate-700">UF Principal</label>
               <input
                 type="text"
                 value={form.uf_principal}
@@ -278,7 +278,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Status</label>
+              <label className="block text-sm font-medium text-slate-700">Status</label>
               <select
                 value={form.status}
                 onChange={e => setForm({ ...form, status: e.target.value })}
@@ -294,7 +294,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Observacoes</label>
+            <label className="block text-sm font-medium text-slate-700">Observacoes</label>
             <textarea
               value={form.observacoes}
               onChange={e => setForm({ ...form, observacoes: e.target.value })}
@@ -308,14 +308,14 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
               type="button"
               onClick={onClose}
               disabled={saving}
-              className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
             >
               {saving ? 'Salvando...' : editing ? 'Salvar' : 'Criar'}
             </button>
@@ -420,10 +420,10 @@ export default function CasosPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">{pageTitle}</h1>
+        <h1 className="text-2xl font-bold text-slate-900">{pageTitle}</h1>
         <button
           onClick={openCreate}
-          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
         >
           Novo Caso
         </button>
@@ -440,19 +440,19 @@ export default function CasosPage() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            className="w-full max-w-xs rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full max-w-xs rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-500">Carteira</label>
+          <label className="block text-xs font-medium text-slate-500">Carteira</label>
           <select
             value={filterCarteira}
             onChange={e => {
               setFilterCarteira(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todas</option>
             {carteiras.map(c => (
@@ -464,14 +464,14 @@ export default function CasosPage() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-500">Tese</label>
+          <label className="block text-xs font-medium text-slate-500">Tese</label>
           <select
             value={filterTese}
             onChange={e => {
               setFilterTese(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todas</option>
             {TESES.map(t => (
@@ -483,14 +483,14 @@ export default function CasosPage() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-500">Recuperabilidade</label>
+          <label className="block text-xs font-medium text-slate-500">Recuperabilidade</label>
           <select
             value={filterRecuperabilidade}
             onChange={e => {
               setFilterRecuperabilidade(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todas</option>
             {RECUPERABILIDADES.map(r => (
@@ -502,14 +502,14 @@ export default function CasosPage() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-500">Status</label>
+          <label className="block text-xs font-medium text-slate-500">Status</label>
           <select
             value={filterStatus}
             onChange={e => {
               setFilterStatus(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todos</option>
             {STATUSES.map(s => (
@@ -521,7 +521,7 @@ export default function CasosPage() {
         </div>
       </div>
 
-      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+      {error && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -541,7 +541,7 @@ export default function CasosPage() {
             !filterStatus && (
               <button
                 onClick={openCreate}
-                className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
               >
                 Novo Caso
               </button>
@@ -550,33 +550,33 @@ export default function CasosPage() {
         />
       ) : (
         <>
-          <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <tr className="border-b border-slate-100 bg-slate-50/80">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Nome
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Carteira
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tese
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Recuperabilidade
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Status
                   </th>
-                  <th className="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Acoes
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {casos.map(caso => (
-                  <tr key={caso.id} className="hover:bg-gray-50">
+                  <tr key={caso.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm font-medium">
                       <Link
                         to={`/admin/casos/${caso.id}/processos`}
@@ -585,7 +585,7 @@ export default function CasosPage() {
                         {caso.nome}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-slate-600">
                       {caso.carteira?.nome || carteiraNome(caso.carteira_id)}
                     </td>
                     <td className="px-4 py-3">
@@ -594,7 +594,7 @@ export default function CasosPage() {
                           {caso.tese.replace('_', ' ')}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
                     <td className="px-4 py-3">
@@ -608,7 +608,7 @@ export default function CasosPage() {
                           {caso.recuperabilidade}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
                     <td className="px-4 py-3">

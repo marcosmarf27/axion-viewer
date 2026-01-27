@@ -15,7 +15,7 @@ function FeedbackMessage({ message, type, onDismiss }) {
 
   return (
     <div
-      className={`rounded-md p-3 text-sm ${
+      className={`rounded-lg p-3 text-sm ${
         type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
       }`}
     >
@@ -140,7 +140,7 @@ export default function SharingPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Compartilhamento de Carteiras</h1>
+      <h1 className="text-2xl font-bold text-slate-900">Compartilhamento de Carteiras</h1>
 
       <FeedbackMessage
         message={feedback.message}
@@ -150,14 +150,14 @@ export default function SharingPage() {
 
       {/* Select de carteira */}
       <div>
-        <label className="block text-sm font-medium text-gray-700">Selecione uma carteira</label>
+        <label className="block text-sm font-medium text-slate-700">Selecione uma carteira</label>
         {loadingCarteiras ? (
           <LoadingSpinner className="py-4" size="sm" />
         ) : (
           <select
             value={selectedCarteiraId}
             onChange={e => setSelectedCarteiraId(e.target.value)}
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Selecione uma carteira</option>
             {carteiras.map(c => (
@@ -181,9 +181,9 @@ export default function SharingPage() {
       ) : (
         <div className="space-y-6">
           {/* Card: Acessos atuais */}
-          <div className="rounded-lg border bg-white shadow-sm">
+          <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
             <div className="border-b px-4 py-3">
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 className="text-lg font-semibold text-slate-900">
                 Acessos da Carteira: {selectedCarteira?.nome || ''}
               </h2>
             </div>
@@ -199,37 +199,37 @@ export default function SharingPage() {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b bg-gray-50">
-                      <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                    <tr className="border-b border-slate-100 bg-slate-50/80">
+                      <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                         Email
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                      <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                         Nome
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                      <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                         Concedido por
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                      <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                         Data Concessao
                       </th>
-                      <th className="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">
+                      <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                         Acao
                       </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y">
                     {acessos.map(acesso => (
-                      <tr key={acesso.profile_id} className="hover:bg-gray-50">
-                        <td className="px-4 py-3 text-sm text-gray-900">
+                      <tr key={acesso.profile_id} className="hover:bg-slate-50 transition-colors">
+                        <td className="px-4 py-3 text-sm text-slate-900">
                           {acesso.profiles?.email || '-'}
                         </td>
-                        <td className="px-4 py-3 text-sm text-gray-600">
+                        <td className="px-4 py-3 text-sm text-slate-600">
                           {acesso.profiles?.full_name || '-'}
                         </td>
-                        <td className="px-4 py-3 text-sm text-gray-600">
+                        <td className="px-4 py-3 text-sm text-slate-600">
                           {acesso.granted_by_nome || acesso.granted_by_email || '-'}
                         </td>
-                        <td className="px-4 py-3 text-sm text-gray-600">
+                        <td className="px-4 py-3 text-sm text-slate-600">
                           {formatDate(acesso.granted_at || acesso.created_at)}
                         </td>
                         <td className="px-4 py-3 text-right">
@@ -249,14 +249,14 @@ export default function SharingPage() {
           </div>
 
           {/* Card: Conceder acesso */}
-          <div className="rounded-lg border bg-white shadow-sm">
+          <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
             <div className="border-b px-4 py-3">
-              <h2 className="text-lg font-semibold text-gray-900">Conceder Acesso</h2>
+              <h2 className="text-lg font-semibold text-slate-900">Conceder Acesso</h2>
             </div>
             <div className="p-4">
               <div className="flex items-end gap-4">
                 <div className="flex-1">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-medium text-slate-700">
                     Selecione um usuario
                   </label>
                   {loadingProfiles ? (
@@ -265,7 +265,7 @@ export default function SharingPage() {
                     <select
                       value={selectedProfileId}
                       onChange={e => setSelectedProfileId(e.target.value)}
-                      className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                      className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                     >
                       <option value="">Selecione um usuario</option>
                       {profiles.map(p => (
@@ -280,7 +280,7 @@ export default function SharingPage() {
                 <button
                   onClick={handleGrantAccess}
                   disabled={!selectedProfileId || granting}
-                  className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                  className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
                 >
                   {granting ? 'Concedendo...' : 'Conceder Acesso'}
                 </button>

@@ -45,18 +45,14 @@ describe('Layout', () => {
     expect(screen.queryByText('Converter')).not.toBeInTheDocument();
   });
 
-  it('shows admin badge for admin users', () => {
+  it('shows admin role label for admin users', () => {
     renderLayout({ role: 'admin', email: 'admin@test.com', full_name: 'Admin User' });
-    const badges = screen.getAllByText('Admin');
-    const badge = badges.find(el => el.classList.contains('rounded-full'));
-    expect(badge).toBeInTheDocument();
+    expect(screen.getByText('Administrador')).toBeInTheDocument();
   });
 
-  it('shows client badge for client users', () => {
+  it('shows client role label for client users', () => {
     renderLayout({ role: 'client', email: 'client@test.com', full_name: 'Client User' });
-    const badges = screen.getAllByText('Cliente');
-    const badge = badges.find(el => el.classList.contains('rounded-full'));
-    expect(badge).toBeInTheDocument();
+    expect(screen.getByText('Cliente')).toBeInTheDocument();
   });
 
   it('displays user name in header', () => {

@@ -19,11 +19,11 @@ const recuperabilidadeBadge = valor => {
     case 'Critica':
       return 'bg-red-100 text-red-700';
     case 'Indefinida':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     case 'Nenhuma':
-      return 'bg-gray-200 text-gray-700';
+      return 'bg-slate-200 text-slate-700';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -34,9 +34,9 @@ const statusBadge = valor => {
     case 'concluido':
       return 'bg-green-100 text-green-700';
     case 'arquivado':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -107,15 +107,15 @@ export default function ClientCasosPage() {
   return (
     <div className="space-y-6">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-gray-500">
+      <div className="flex items-center gap-2 text-sm text-slate-500">
         <Link to="/carteiras" className="font-medium text-indigo-600 hover:text-indigo-800">
           Carteiras
         </Link>
         <span>/</span>
-        <span className="text-gray-900">{carteiraNome || 'Casos'}</span>
+        <span className="text-slate-900">{carteiraNome || 'Casos'}</span>
       </div>
 
-      <h1 className="text-2xl font-bold text-gray-900">
+      <h1 className="text-2xl font-bold text-slate-900">
         Casos {carteiraNome ? `- ${carteiraNome}` : ''}
       </h1>
 
@@ -130,19 +130,19 @@ export default function ClientCasosPage() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            className="w-full max-w-xs rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full max-w-xs rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-500">Tese</label>
+          <label className="block text-xs font-medium text-slate-500">Tese</label>
           <select
             value={filterTese}
             onChange={e => {
               setFilterTese(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todas</option>
             {TESES.map(t => (
@@ -154,14 +154,14 @@ export default function ClientCasosPage() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-500">Recuperabilidade</label>
+          <label className="block text-xs font-medium text-slate-500">Recuperabilidade</label>
           <select
             value={filterRecuperabilidade}
             onChange={e => {
               setFilterRecuperabilidade(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todas</option>
             {RECUPERABILIDADES.map(r => (
@@ -173,14 +173,14 @@ export default function ClientCasosPage() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-500">Status</label>
+          <label className="block text-xs font-medium text-slate-500">Status</label>
           <select
             value={filterStatus}
             onChange={e => {
               setFilterStatus(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           >
             <option value="">Todos</option>
             {STATUSES.map(s => (
@@ -192,7 +192,7 @@ export default function ClientCasosPage() {
         </div>
       </div>
 
-      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+      {error && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -207,30 +207,30 @@ export default function ClientCasosPage() {
         />
       ) : (
         <>
-          <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <tr className="border-b border-slate-100 bg-slate-50/80">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Nome
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tese
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Recuperabilidade
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Valor
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Status
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {casos.map(caso => (
-                  <tr key={caso.id} className="hover:bg-gray-50">
+                  <tr key={caso.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm font-medium">
                       <Link
                         to={`/casos/${caso.id}/processos`}
@@ -245,7 +245,7 @@ export default function ClientCasosPage() {
                           {caso.tese.replace('_', ' ')}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
                     <td className="px-4 py-3">
@@ -259,10 +259,10 @@ export default function ClientCasosPage() {
                           {caso.recuperabilidade}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-slate-600">
                       {formatCurrency(caso.valor_total)}
                     </td>
                     <td className="px-4 py-3">

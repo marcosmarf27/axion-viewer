@@ -18,7 +18,7 @@ const SORT_OPTIONS = [
 ];
 
 const inputClass =
-  'mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 
 const recuperabilidadeBadge = value => {
   switch (value) {
@@ -29,11 +29,11 @@ const recuperabilidadeBadge = value => {
     case 'Critica':
       return 'bg-red-100 text-red-700';
     case 'Indefinida':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     case 'Nenhuma':
-      return 'bg-gray-200 text-gray-700';
+      return 'bg-slate-200 text-slate-700';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -44,11 +44,11 @@ const statusBadge = value => {
     case 'suspenso':
       return 'bg-yellow-100 text-yellow-700';
     case 'arquivado':
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
     case 'encerrado':
       return 'bg-red-100 text-red-700';
     default:
-      return 'bg-gray-100 text-gray-600';
+      return 'bg-slate-100 text-slate-600';
   }
 };
 
@@ -169,7 +169,7 @@ export default function ClientProcessosPage() {
   return (
     <div className="space-y-6">
       {/* Breadcrumb */}
-      <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
         <Link to="/carteiras" className="font-medium text-indigo-600 hover:text-indigo-800">
           Carteiras
         </Link>
@@ -185,18 +185,18 @@ export default function ClientProcessosPage() {
             <span>/</span>
           </>
         )}
-        <span className="text-gray-900">{casoNome || 'Processos'}</span>
+        <span className="text-slate-900">{casoNome || 'Processos'}</span>
       </div>
 
-      <h1 className="text-2xl font-bold text-gray-900">
+      <h1 className="text-2xl font-bold text-slate-900">
         Processos {casoNome ? `- ${casoNome}` : ''}
       </h1>
 
       {/* Filters panel */}
-      <div className="rounded-lg border bg-white shadow-sm">
+      <div className="rounded-xl border border-slate-200 bg-white shadow-sm">
         <button
           onClick={() => setFiltersOpen(!filtersOpen)}
-          className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-gray-50"
+          className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
         >
           <span className="flex items-center gap-2">
             <svg
@@ -235,7 +235,7 @@ export default function ClientProcessosPage() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {/* Busca textual */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Busca</label>
+                <label className="block text-sm font-medium text-slate-700">Busca</label>
                 <input
                   type="text"
                   placeholder="CNJ, partes, comarca..."
@@ -250,7 +250,7 @@ export default function ClientProcessosPage() {
 
               {/* Tipo de tese */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Tipo de Tese</label>
+                <label className="block text-sm font-medium text-slate-700">Tipo de Tese</label>
                 <select
                   value={filterTipoTese}
                   onChange={e => {
@@ -270,7 +270,7 @@ export default function ClientProcessosPage() {
 
               {/* Recuperabilidade */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Recuperabilidade</label>
+                <label className="block text-sm font-medium text-slate-700">Recuperabilidade</label>
                 <select
                   value={filterRecuperabilidade}
                   onChange={e => {
@@ -290,7 +290,7 @@ export default function ClientProcessosPage() {
 
               {/* Faixa de valor */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Valor minimo</label>
+                <label className="block text-sm font-medium text-slate-700">Valor minimo</label>
                 <input
                   type="number"
                   step="0.01"
@@ -305,7 +305,7 @@ export default function ClientProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Valor maximo</label>
+                <label className="block text-sm font-medium text-slate-700">Valor maximo</label>
                 <input
                   type="number"
                   step="0.01"
@@ -321,7 +321,7 @@ export default function ClientProcessosPage() {
 
               {/* UF / Comarca */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">UF</label>
+                <label className="block text-sm font-medium text-slate-700">UF</label>
                 <input
                   type="text"
                   placeholder="Ex: SP, RJ..."
@@ -337,7 +337,7 @@ export default function ClientProcessosPage() {
 
               {/* Status */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Status</label>
+                <label className="block text-sm font-medium text-slate-700">Status</label>
                 <select
                   value={filterStatus}
                   onChange={e => {
@@ -357,7 +357,7 @@ export default function ClientProcessosPage() {
 
               {/* Periodo (data distribuicao) */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Data inicio</label>
+                <label className="block text-sm font-medium text-slate-700">Data inicio</label>
                 <input
                   type="date"
                   value={filterDataInicio}
@@ -370,7 +370,7 @@ export default function ClientProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Data fim</label>
+                <label className="block text-sm font-medium text-slate-700">Data fim</label>
                 <input
                   type="date"
                   value={filterDataFim}
@@ -384,7 +384,7 @@ export default function ClientProcessosPage() {
 
               {/* Ordenacao */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">Ordenar por</label>
+                <label className="block text-sm font-medium text-slate-700">Ordenar por</label>
                 <select
                   value={sortField}
                   onChange={e => {
@@ -402,7 +402,7 @@ export default function ClientProcessosPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Ordem</label>
+                <label className="block text-sm font-medium text-slate-700">Ordem</label>
                 <select
                   value={sortOrder}
                   onChange={e => {
@@ -431,7 +431,7 @@ export default function ClientProcessosPage() {
         )}
       </div>
 
-      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+      {error && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -446,36 +446,36 @@ export default function ClientProcessosPage() {
         />
       ) : (
         <>
-          <div className="overflow-x-auto rounded-lg border bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <tr className="border-b border-slate-100 bg-slate-50/80">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Numero CNJ
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tipo Tese
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Recuperabilidade
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Valor Causa
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     UF
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Status
                   </th>
-                  <th className="px-4 py-3 text-center text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Inc.
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {processos.map(processo => (
-                  <tr key={processo.id} className="hover:bg-gray-50">
+                  <tr key={processo.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm font-medium">
                       <Link
                         to={`/processos/${processo.id}`}
@@ -490,7 +490,7 @@ export default function ClientProcessosPage() {
                           {processo.tipo_tese.replace('_', ' ')}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
                     <td className="px-4 py-3">
@@ -504,13 +504,13 @@ export default function ClientProcessosPage() {
                           {processo.recuperabilidade}
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">-</span>
+                        <span className="text-sm text-slate-400">-</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-slate-600">
                       {formatCurrency(processo.valor_causa)}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{processo.uf || '-'}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">{processo.uf || '-'}</td>
                     <td className="px-4 py-3">
                       <span
                         className={cn(

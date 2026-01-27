@@ -7,7 +7,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 const statusColors = {
   ativo: 'bg-green-100 text-green-700',
   suspenso: 'bg-yellow-100 text-yellow-700',
-  arquivado: 'bg-gray-100 text-gray-700',
+  arquivado: 'bg-slate-100 text-slate-700',
   encerrado: 'bg-red-100 text-red-700',
 };
 
@@ -15,8 +15,8 @@ const recuperabilidadeColors = {
   Alta: 'bg-green-100 text-green-700',
   Potencial: 'bg-indigo-100 text-indigo-700',
   Critica: 'bg-red-100 text-red-700',
-  Indefinida: 'bg-gray-100 text-gray-600',
-  Nenhuma: 'bg-gray-200 text-gray-800',
+  Indefinida: 'bg-slate-100 text-slate-600',
+  Nenhuma: 'bg-slate-200 text-slate-800',
 };
 
 function Badge({ children, colorClass }) {
@@ -29,8 +29,8 @@ function Badge({ children, colorClass }) {
 
 function Card({ title, children }) {
   return (
-    <div className="rounded-lg border bg-white p-6 shadow-sm">
-      {title && <h2 className="mb-4 text-lg font-semibold text-gray-900">{title}</h2>}
+    <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      {title && <h2 className="mb-4 text-lg font-semibold text-slate-900">{title}</h2>}
       {children}
     </div>
   );
@@ -39,8 +39,8 @@ function Card({ title, children }) {
 function FieldItem({ label, value }) {
   return (
     <div>
-      <dt className="text-sm font-medium text-gray-500">{label}</dt>
-      <dd className="mt-1 text-sm text-gray-900">{value || '-'}</dd>
+      <dt className="text-sm font-medium text-slate-500">{label}</dt>
+      <dd className="mt-1 text-sm text-slate-900">{value || '-'}</dd>
     </div>
   );
 }
@@ -111,7 +111,7 @@ export default function ClientProcessoDetail() {
         >
           &larr; Voltar
         </Link>
-        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">{error}</div>
+        <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">{error}</div>
       </div>
     );
   }
@@ -124,7 +124,7 @@ export default function ClientProcessoDetail() {
   return (
     <div className="space-y-6">
       {/* Breadcrumb */}
-      <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
+      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
         <Link to="/carteiras" className="font-medium text-indigo-600 hover:text-indigo-800">
           Carteiras
         </Link>
@@ -140,14 +140,14 @@ export default function ClientProcessoDetail() {
             <span>/</span>
           </>
         )}
-        <span className="text-gray-900">{processo.numero_cnj}</span>
+        <span className="text-slate-900">{processo.numero_cnj}</span>
       </div>
 
       {/* Header */}
       <Card>
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-bold text-gray-900">{processo.numero_cnj}</h1>
-          <Badge colorClass={statusColors[processo.status] || 'bg-gray-100 text-gray-700'}>
+          <h1 className="text-2xl font-bold text-slate-900">{processo.numero_cnj}</h1>
+          <Badge colorClass={statusColors[processo.status] || 'bg-slate-100 text-slate-700'}>
             {processo.status}
           </Badge>
           {processo.is_incidental && (
@@ -167,7 +167,8 @@ export default function ClientProcessoDetail() {
               processo.recuperabilidade ? (
                 <Badge
                   colorClass={
-                    recuperabilidadeColors[processo.recuperabilidade] || 'bg-gray-100 text-gray-600'
+                    recuperabilidadeColors[processo.recuperabilidade] ||
+                    'bg-slate-100 text-slate-600'
                   }
                 >
                   {processo.recuperabilidade}
@@ -202,7 +203,7 @@ export default function ClientProcessoDetail() {
       {/* Processo pai */}
       {processo.processo_pai && (
         <Card title="Processo Pai">
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-slate-700">
             Este processo e incidental ao processo principal:{' '}
             <Link
               to={`/processos/${processo.processo_pai.id}`}
@@ -220,21 +221,21 @@ export default function ClientProcessoDetail() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <tr className="border-b border-slate-100 bg-slate-50/80">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     CNJ
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tipo de Acao
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Status
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {incidentais.map(child => (
-                  <tr key={child.id} className="hover:bg-gray-50">
+                  <tr key={child.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm">
                       <Link
                         to={`/processos/${child.id}`}
@@ -243,9 +244,11 @@ export default function ClientProcessoDetail() {
                         {child.numero_cnj}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{child.tipo_acao || '-'}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">{child.tipo_acao || '-'}</td>
                     <td className="px-4 py-3">
-                      <Badge colorClass={statusColors[child.status] || 'bg-gray-100 text-gray-700'}>
+                      <Badge
+                        colorClass={statusColors[child.status] || 'bg-slate-100 text-slate-700'}
+                      >
                         {child.status}
                       </Badge>
                     </td>
@@ -262,36 +265,36 @@ export default function ClientProcessoDetail() {
         {docsLoading ? (
           <LoadingSpinner className="py-8" />
         ) : documentos.length === 0 ? (
-          <p className="py-4 text-center text-sm text-gray-500">
+          <p className="py-4 text-center text-sm text-slate-500">
             Nenhum documento vinculado a este processo.
           </p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b bg-gray-50">
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                <tr className="border-b border-slate-100 bg-slate-50/80">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Nome
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Tipo
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Data
                   </th>
-                  <th className="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">
+                  <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Acoes
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {documentos.map(doc => (
-                  <tr key={doc.id} className="hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                  <tr key={doc.id} className="hover:bg-slate-50 transition-colors">
+                    <td className="px-4 py-3 text-sm font-medium text-slate-900">
                       {doc.nome || doc.filename}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{doc.tipo || '-'}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-slate-600">{doc.tipo || '-'}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">
                       {formatDate(doc.created_at)}
                     </td>
                     <td className="px-4 py-3 text-right">

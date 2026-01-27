@@ -25,11 +25,11 @@ function hello() {
 Use o editor para criar seus documentos!`;
 
 const INPUT_CLASS =
-  'mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 const BTN_PRIMARY =
-  'rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50';
+  'rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50';
 const BTN_SECONDARY =
-  'rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50';
+  'rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50';
 
 export default function ConvertPage() {
   const [markdown, setMarkdown] = useState(DEFAULT_MARKDOWN);
@@ -160,18 +160,18 @@ export default function ConvertPage() {
     <div className="flex h-full flex-col">
       {/* Header */}
       <div className="mb-4">
-        <h1 className="text-2xl font-bold text-gray-900">Converter Documento</h1>
-        <p className="mt-1 text-sm text-gray-600">
+        <h1 className="text-2xl font-bold text-slate-900">Converter Documento</h1>
+        <p className="mt-1 text-sm text-slate-600">
           Converta documentos Markdown em HTML ou PDF formatados.
         </p>
       </div>
 
       {/* Top bar: controles */}
-      <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <div className="mb-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {/* Tema */}
           <div>
-            <label htmlFor="theme-select" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="theme-select" className="block text-sm font-medium text-slate-700">
               Tema
             </label>
             <select
@@ -190,7 +190,7 @@ export default function ConvertPage() {
 
           {/* Processo */}
           <div>
-            <label htmlFor="processo-select" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="processo-select" className="block text-sm font-medium text-slate-700">
               Processo
             </label>
             <select
@@ -210,7 +210,7 @@ export default function ConvertPage() {
 
           {/* Titulo */}
           <div>
-            <label htmlFor="title-input" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="title-input" className="block text-sm font-medium text-slate-700">
               Titulo
             </label>
             <input
@@ -225,7 +225,7 @@ export default function ConvertPage() {
 
           {/* Upload de arquivo */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Upload .md</label>
+            <label className="block text-sm font-medium text-slate-700">Upload .md</label>
             <div className="mt-1 flex gap-2">
               <label className={`${BTN_SECONDARY} cursor-pointer text-center`}>
                 HTML
@@ -266,7 +266,7 @@ export default function ConvertPage() {
       {/* Mensagem de feedback */}
       {message && (
         <div
-          className={`mb-4 rounded-md px-4 py-3 text-sm ${
+          className={`mb-4 rounded-lg px-4 py-3 text-sm ${
             message.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
           }`}
         >
@@ -277,9 +277,9 @@ export default function ConvertPage() {
       {/* Split pane: editor + preview */}
       <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Left pane: textarea markdown */}
-        <div className="flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-          <div className="border-b border-gray-200 bg-gray-50 px-4 py-2">
-            <h3 className="text-sm font-medium text-gray-700">Markdown</h3>
+        <div className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+          <div className="border-b border-slate-200 bg-slate-50 px-4 py-2">
+            <h3 className="text-sm font-medium text-slate-700">Markdown</h3>
           </div>
           <textarea
             value={markdown}
@@ -291,9 +291,9 @@ export default function ConvertPage() {
         </div>
 
         {/* Right pane: preview */}
-        <div className="flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-          <div className="border-b border-gray-200 bg-gray-50 px-4 py-2">
-            <h3 className="text-sm font-medium text-gray-700">Preview</h3>
+        <div className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+          <div className="border-b border-slate-200 bg-slate-50 px-4 py-2">
+            <h3 className="text-sm font-medium text-slate-700">Preview</h3>
           </div>
           <div
             className="prose prose-sm max-w-none flex-1 overflow-auto p-4"

@@ -41,7 +41,7 @@ export default function ClientCarteirasPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Minhas Carteiras</h1>
+      <h1 className="text-2xl font-bold text-slate-900">Minhas Carteiras</h1>
 
       {/* Search */}
       <div>
@@ -53,11 +53,11 @@ export default function ClientCarteirasPage() {
             setSearch(e.target.value);
             setPage(1);
           }}
-          className="w-full max-w-md rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full max-w-md rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
         />
       </div>
 
-      {error && <div className="rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</div>}
+      {error && <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
       {loading ? (
         <LoadingSpinner className="py-12" />
@@ -76,16 +76,16 @@ export default function ClientCarteirasPage() {
             {carteiras.map(carteira => {
               const sc = statusConfig[carteira.status] || {
                 label: carteira.status,
-                className: 'bg-gray-100 text-gray-700',
+                className: 'bg-slate-100 text-slate-700',
               };
               return (
                 <Link
                   key={carteira.id}
                   to={`/carteiras/${carteira.id}/casos`}
-                  className="rounded-lg border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+                  className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="mb-3 flex items-center justify-between">
-                    <h3 className="truncate text-base font-semibold text-gray-900">
+                    <h3 className="truncate text-base font-semibold text-slate-900">
                       {carteira.nome}
                     </h3>
                     <span
@@ -96,10 +96,10 @@ export default function ClientCarteirasPage() {
                   </div>
 
                   {carteira.descricao && (
-                    <p className="mb-4 line-clamp-2 text-sm text-gray-500">{carteira.descricao}</p>
+                    <p className="mb-4 line-clamp-2 text-sm text-slate-500">{carteira.descricao}</p>
                   )}
 
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-4 text-sm text-slate-600">
                     <span>
                       <span className="inline-flex rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700">
                         {carteira.qtd_casos ?? 0}
@@ -115,7 +115,7 @@ export default function ClientCarteirasPage() {
                   </div>
 
                   {carteira.valor_total != null && Number(carteira.valor_total) > 0 && (
-                    <p className="mt-3 text-sm font-semibold text-gray-900">
+                    <p className="mt-3 text-sm font-semibold text-slate-900">
                       {Number(carteira.valor_total).toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',

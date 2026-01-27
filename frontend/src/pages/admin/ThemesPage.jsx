@@ -295,7 +295,7 @@ export default function ThemesPage() {
         <p className="text-sm text-red-600">{error}</p>
         <button
           onClick={() => loadThemes()}
-          className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
         >
           Tentar novamente
         </button>
@@ -309,8 +309,8 @@ export default function ThemesPage() {
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Editor de Temas</h1>
-        <p className="mt-1 text-sm text-gray-500">
+        <h1 className="text-2xl font-bold text-slate-900">Editor de Temas</h1>
+        <p className="mt-1 text-sm text-slate-500">
           Personalize cores, gradientes e bordas do seu tema
         </p>
       </div>
@@ -318,7 +318,7 @@ export default function ThemesPage() {
       {/* Feedback message */}
       {saveMessage && (
         <div
-          className={`rounded-md px-4 py-3 text-sm font-medium ${
+          className={`rounded-lg px-4 py-3 text-sm font-medium ${
             saveMessage.type === 'success'
               ? 'bg-green-50 text-green-700'
               : saveMessage.type === 'error'
@@ -333,12 +333,12 @@ export default function ThemesPage() {
       {/* Content: Sidebar + Editor */}
       <div className="flex gap-4">
         {/* Sidebar - Lista de Temas */}
-        <div className="w-64 shrink-0 rounded-lg border bg-white shadow-sm">
+        <div className="w-64 shrink-0 rounded-xl border border-slate-200 bg-white shadow-sm">
           <div className="flex items-center justify-between border-b px-4 py-3">
-            <h3 className="text-sm font-semibold text-gray-900">Temas</h3>
+            <h3 className="text-sm font-semibold text-slate-900">Temas</h3>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
+              className="rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
             >
               + Novo Tema
             </button>
@@ -348,29 +348,31 @@ export default function ThemesPage() {
               <button
                 key={index}
                 onClick={() => setSelectedTheme(theme)}
-                className={`mb-1 flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left transition-colors ${
+                className={`mb-1 flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
                   selectedTheme?.name === theme.name
                     ? 'bg-indigo-50 ring-1 ring-indigo-200'
-                    : 'hover:bg-gray-50'
+                    : 'hover:bg-slate-50'
                 }`}
               >
                 <div className="flex shrink-0 gap-1">
                   {theme.colors?.primary && (
                     <span
-                      className="inline-block h-3 w-3 rounded-full border border-gray-200"
+                      className="inline-block h-3 w-3 rounded-full border border-slate-200"
                       style={{ background: theme.colors.primary }}
                     />
                   )}
                   {theme.colors?.dark && (
                     <span
-                      className="inline-block h-3 w-3 rounded-full border border-gray-200"
+                      className="inline-block h-3 w-3 rounded-full border border-slate-200"
                       style={{ background: theme.colors.dark }}
                     />
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5">
-                    <span className="truncate text-sm font-medium text-gray-900">{theme.name}</span>
+                    <span className="truncate text-sm font-medium text-slate-900">
+                      {theme.name}
+                    </span>
                     {theme.name === defaultTheme && (
                       <span className="shrink-0 rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-700">
                         Padrao
@@ -378,7 +380,7 @@ export default function ThemesPage() {
                     )}
                   </div>
                   {theme.description && (
-                    <p className="truncate text-xs text-gray-500">{theme.description}</p>
+                    <p className="truncate text-xs text-slate-500">{theme.description}</p>
                   )}
                 </div>
               </button>
@@ -388,7 +390,7 @@ export default function ThemesPage() {
 
         {/* Editor - Tema selecionado */}
         {editedTheme && (
-          <div className="min-w-0 flex-1 rounded-lg border bg-white shadow-sm">
+          <div className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-white shadow-sm">
             {/* Editor Header */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b px-6 py-4">
               <div className="flex items-center gap-2">
@@ -398,7 +400,7 @@ export default function ThemesPage() {
                       type="text"
                       value={newThemeName}
                       onChange={e => setNewThemeName(e.target.value)}
-                      className="mt-1 block w-48 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                      className="mt-1 block w-48 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                       placeholder="Nome do tema"
                       autoFocus
                       onKeyDown={e => {
@@ -409,7 +411,7 @@ export default function ThemesPage() {
                     <button
                       onClick={handleRenameTheme}
                       disabled={renaming || !newThemeName.trim()}
-                      className="rounded-md bg-green-600 px-3 py-2 text-sm font-medium text-white hover:bg-green-700 disabled:opacity-50"
+                      className="rounded-lg bg-green-600 px-3 py-2 text-sm font-medium text-white hover:bg-green-700 disabled:opacity-50"
                       title="Salvar nome"
                     >
                       {renaming ? '...' : 'OK'}
@@ -417,7 +419,7 @@ export default function ThemesPage() {
                     <button
                       onClick={cancelEditingName}
                       disabled={renaming}
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+                      className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100"
                       title="Cancelar"
                     >
                       Cancelar
@@ -425,13 +427,13 @@ export default function ThemesPage() {
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-slate-900">
                       Editando: {editedTheme.name}
                     </h3>
                     {selectedTheme?.name !== 'juridico' && (
                       <button
                         onClick={startEditingName}
-                        className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                        className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
                         title="Editar nome do tema"
                       >
                         <svg
@@ -457,7 +459,7 @@ export default function ThemesPage() {
                 {selectedTheme?.name !== 'juridico' && (
                   <button
                     onClick={() => setShowDeleteConfirm(true)}
-                    className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
+                    className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
                   >
                     Excluir
                   </button>
@@ -465,21 +467,21 @@ export default function ThemesPage() {
                 <button
                   onClick={handleSetDefaultTheme}
                   disabled={selectedTheme?.name === defaultTheme}
-                  className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                  className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
                 >
                   {selectedTheme?.name === defaultTheme ? 'Tema Padrao' : 'Definir como Padrao'}
                 </button>
                 <button
                   onClick={handleReset}
                   disabled={!hasChanges() || saving}
-                  className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                  className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
                 >
                   Reverter
                 </button>
                 <button
                   onClick={handleSave}
                   disabled={!hasChanges() || saving}
-                  className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                  className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
                 >
                   {saving ? 'Salvando...' : 'Salvar'}
                 </button>
@@ -490,26 +492,26 @@ export default function ThemesPage() {
             <div className="max-h-[calc(100vh-320px)] space-y-6 overflow-y-auto p-6">
               {/* Cores */}
               <section>
-                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500">
+                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">
                   Cores
                 </h4>
                 <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
                   {Object.entries(editedTheme.colors || {}).map(([key, value]) => (
                     <div key={key} className="rounded-lg border p-3">
-                      <label className="block text-xs font-medium text-gray-600">{key}</label>
+                      <label className="block text-xs font-medium text-slate-600">{key}</label>
                       <div className="mt-1.5 flex items-center gap-2">
                         <input
                           type="color"
                           value={value.startsWith('rgba') ? '#000000' : value}
                           onChange={e => handleColorChange(key, e.target.value)}
                           disabled={value.startsWith('rgba')}
-                          className="h-8 w-8 shrink-0 cursor-pointer rounded border border-gray-300"
+                          className="h-8 w-8 shrink-0 cursor-pointer rounded border border-slate-300"
                         />
                         <input
                           type="text"
                           value={value}
                           onChange={e => handleColorChange(key, e.target.value)}
-                          className="block w-full rounded-md border border-gray-300 px-2 py-1 text-xs shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                          className="block w-full rounded-lg border border-slate-300 px-2 py-1 text-xs shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                         />
                       </div>
                     </div>
@@ -519,7 +521,7 @@ export default function ThemesPage() {
 
               {/* Gradientes */}
               <section>
-                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500">
+                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">
                   Gradientes
                 </h4>
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -527,7 +529,7 @@ export default function ThemesPage() {
                     const numValue = parseInt(value) || 135;
                     return (
                       <div key={key} className="rounded-lg border p-4">
-                        <label className="block text-xs font-medium text-gray-600">{key}</label>
+                        <label className="block text-xs font-medium text-slate-600">{key}</label>
                         <div
                           className="mt-2 h-6 w-full rounded"
                           style={{
@@ -541,9 +543,9 @@ export default function ThemesPage() {
                             max="360"
                             value={numValue}
                             onChange={e => handleGradientChange(key, e.target.value)}
-                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-indigo-600"
+                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-indigo-600"
                           />
-                          <span className="shrink-0 text-xs font-medium text-gray-500">
+                          <span className="shrink-0 text-xs font-medium text-slate-500">
                             {value}
                           </span>
                         </div>
@@ -555,7 +557,7 @@ export default function ThemesPage() {
 
               {/* Bordas */}
               <section>
-                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500">
+                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">
                   Espessuras de Bordas
                 </h4>
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -563,7 +565,7 @@ export default function ThemesPage() {
                     const numValue = parseInt(value) || 2;
                     return (
                       <div key={key} className="rounded-lg border p-4">
-                        <label className="block text-xs font-medium text-gray-600">{key}</label>
+                        <label className="block text-xs font-medium text-slate-600">{key}</label>
                         <div
                           className="mt-2 w-full"
                           style={{
@@ -577,9 +579,9 @@ export default function ThemesPage() {
                             max="10"
                             value={numValue}
                             onChange={e => handleBorderChange(key, e.target.value)}
-                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-indigo-600"
+                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-indigo-600"
                           />
-                          <span className="shrink-0 text-xs font-medium text-gray-500">
+                          <span className="shrink-0 text-xs font-medium text-slate-500">
                             {value}
                           </span>
                         </div>
@@ -591,7 +593,7 @@ export default function ThemesPage() {
 
               {/* Preview */}
               <section>
-                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-500">
+                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">
                   Preview do Tema
                 </h4>
                 <div className="overflow-hidden rounded-lg border">
@@ -687,10 +689,10 @@ export default function ThemesPage() {
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b px-6 py-4">
-              <h3 className="text-lg font-semibold text-gray-900">Criar Novo Tema</h3>
+              <h3 className="text-lg font-semibold text-slate-900">Criar Novo Tema</h3>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -708,7 +710,7 @@ export default function ThemesPage() {
             {/* Modal Body */}
             <div className="space-y-4 px-6 py-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700">Nome do Tema *</label>
+                <label className="block text-sm font-medium text-slate-700">Nome do Tema *</label>
                 <input
                   type="text"
                   value={newTheme.name}
@@ -719,15 +721,15 @@ export default function ThemesPage() {
                     }))
                   }
                   placeholder="ex: financeiro, medico, imobiliario"
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
-                <p className="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-slate-500">
                   Apenas letras, numeros e hifens. Sera convertido para minusculas.
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Descricao</label>
+                <label className="block text-sm font-medium text-slate-700">Descricao</label>
                 <input
                   type="text"
                   value={newTheme.description}
@@ -738,12 +740,12 @@ export default function ThemesPage() {
                     }))
                   }
                   placeholder="ex: Tema para relatorios financeiros"
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Cor Principal</label>
+                <label className="block text-sm font-medium text-slate-700">Cor Principal</label>
                 <div className="mt-1 flex items-center gap-3">
                   <input
                     type="color"
@@ -754,7 +756,7 @@ export default function ThemesPage() {
                         primary_color: e.target.value,
                       }))
                     }
-                    className="h-10 w-10 cursor-pointer rounded border border-gray-300"
+                    className="h-10 w-10 cursor-pointer rounded border border-slate-300"
                   />
                   <input
                     type="text"
@@ -765,37 +767,37 @@ export default function ThemesPage() {
                         primary_color: e.target.value,
                       }))
                     }
-                    className="block w-32 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="block w-32 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   />
                 </div>
               </div>
 
               {/* Preview das cores derivadas */}
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-slate-700">
                   Preview das Cores (geradas automaticamente)
                 </label>
                 <div className="mt-2 flex gap-4">
                   <div className="flex items-center gap-2">
                     <span
-                      className="inline-block h-6 w-6 rounded border border-gray-200"
+                      className="inline-block h-6 w-6 rounded border border-slate-200"
                       style={{ background: derivedColors.primary }}
                     />
-                    <span className="text-xs text-gray-600">Primary</span>
+                    <span className="text-xs text-slate-600">Primary</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span
-                      className="inline-block h-6 w-6 rounded border border-gray-200"
+                      className="inline-block h-6 w-6 rounded border border-slate-200"
                       style={{ background: derivedColors.dark }}
                     />
-                    <span className="text-xs text-gray-600">Dark</span>
+                    <span className="text-xs text-slate-600">Dark</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span
-                      className="inline-block h-6 w-6 rounded border border-gray-200"
+                      className="inline-block h-6 w-6 rounded border border-slate-200"
                       style={{ background: derivedColors.black_tone }}
                     />
-                    <span className="text-xs text-gray-600">Black Tone</span>
+                    <span className="text-xs text-slate-600">Black Tone</span>
                   </div>
                 </div>
                 <div
@@ -809,7 +811,7 @@ export default function ThemesPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-slate-700">
                   URL do Logo (opcional)
                 </label>
                 <input
@@ -822,7 +824,7 @@ export default function ThemesPage() {
                     }))
                   }
                   placeholder="https://exemplo.com/logo.png"
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 />
               </div>
             </div>
@@ -832,14 +834,14 @@ export default function ThemesPage() {
               <button
                 onClick={() => setShowCreateModal(false)}
                 disabled={creating}
-                className="rounded-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
               >
                 Cancelar
               </button>
               <button
                 onClick={handleCreateTheme}
                 disabled={creating || !newTheme.name.trim()}
-                className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
               >
                 {creating ? 'Criando...' : 'Criar Tema'}
               </button>
