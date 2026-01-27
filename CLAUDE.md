@@ -261,7 +261,7 @@ cd frontend && pnpm lint && pnpm format:check && pnpm test --run
 
 ## MCP Supabase
 
-O projeto tem MCP Supabase configurado em `.claude/settings.json`. Isso permite interagir com o banco de dados Supabase diretamente pelo Claude Code para consultas, migrações e debugging.
+O projeto usa MCP Supabase conectado via plugin do Claude Code. Isso permite interagir com o banco de dados Supabase diretamente para consultas, migracoes e debugging. Projeto Supabase: `rvzkszfowlzioddqjryz` (regiao sa-east-1).
 
 ## Especificacoes de Features
 

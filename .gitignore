@@ -47,6 +47,3 @@ frontend/.vite/
 .env
 .env.local
 .env.production
-
-# Claude Code local settings (pode conter credenciais)
-.claude/settings.json
