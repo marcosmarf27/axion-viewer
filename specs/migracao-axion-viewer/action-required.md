@@ -22,7 +22,8 @@ Passos que precisam ser executados manualmente por um humano.
   - Criar novo projeto
   - Conectar ao repositório `marcosmarf27/axion-viewer`
   - Configurar volume `/app/data` (50GB)
-  - Definir variáveis de ambiente: `PORT=8080`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_JWT_SECRET`
+  - Definir variáveis de ambiente: `PORT=8080`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
+  - ~~`SUPABASE_JWT_SECRET`~~ — **Não necessário** (JWT verificado via JWKS/ES256)
 
 - [ ] **Criar repositório no Docker Hub** (se necessário) — Criar repo `marcosmarf27/axion-viewer` no Docker Hub para receber as imagens do CI/CD.
 

@@ -136,14 +136,17 @@ git push → GitHub Actions (build Docker image) → Railway (deploy)
 
 ### Variaveis de Ambiente
 
-**GitHub Actions Secrets** (Settings > Secrets > Actions):
-- `VITE_SUPABASE_URL` - URL do Supabase (build time)
-- `VITE_SUPABASE_ANON_KEY` - Chave publica do Supabase (build time)
+**GitHub Actions Secrets** (Settings > Secrets > Actions) — ja configurados:
+- `DOCKERHUB_USERNAME` = `marcosmarf27`
+- `DOCKERHUB_TOKEN` = token Docker Hub
+- `VITE_SUPABASE_URL` = `https://rvzkszfowlzioddqjryz.supabase.co`
+- `VITE_SUPABASE_ANON_KEY` = `sb_publishable_By8P6igMjQYhOj18G37J_A_Ao7dQsFv`
 
 **Railway Variables** (Dashboard > Settings > Variables):
-- `SUPABASE_URL` - URL do projeto Supabase
-- `SUPABASE_SERVICE_ROLE_KEY` - Chave service role (backend, nunca expor!)
-- `SUPABASE_JWT_SECRET` - Secret para validar JWT
+- `PORT` = `8080`
+- `SUPABASE_URL` = `https://rvzkszfowlzioddqjryz.supabase.co`
+- `SUPABASE_SERVICE_ROLE_KEY` = `sb_secret_aLHe6WDEWoczDo0Ah2Ksrg_rckvR5n8`
+- JWT verificado via endpoint JWKS publico (ES256) - sem necessidade de secret
 
 ### Railway CLI
 
@@ -241,13 +244,13 @@ config.py                       # Configuracoes (pastas, limites, extensoes)
 ### Backend (runtime)
 - `FLASK_PORT` - Porta do servidor (padrao: 5000)
 - `DATA_FOLDER` - Pasta para dados persistentes (padrao: `data/`)
-- `SUPABASE_URL` - URL do projeto Supabase
-- `SUPABASE_SERVICE_ROLE_KEY` - Chave service role (apenas backend)
-- `SUPABASE_JWT_SECRET` - Secret para validar tokens JWT
+- `SUPABASE_URL` = `https://rvzkszfowlzioddqjryz.supabase.co`
+- `SUPABASE_SERVICE_ROLE_KEY` = `sb_secret_aLHe6WDEWoczDo0Ah2Ksrg_rckvR5n8`
+- JWT verificado via endpoint JWKS publico (ES256) - sem necessidade de secret
 
 ### Frontend (build time - prefixo VITE_)
-- `VITE_SUPABASE_URL` - URL do projeto Supabase
-- `VITE_SUPABASE_ANON_KEY` - Chave publica (anon key) do Supabase
+- `VITE_SUPABASE_URL` = `https://rvzkszfowlzioddqjryz.supabase.co`
+- `VITE_SUPABASE_ANON_KEY` = `sb_publishable_By8P6igMjQYhOj18G37J_A_Ao7dQsFv`
 
 ## Verificacao Rapida
 
@@ -259,9 +262,22 @@ uv run ruff check . && uv run ruff format . && uv run pytest tests/ -v
 cd frontend && pnpm lint && pnpm format:check && pnpm test --run
 ```
 
-## MCP Supabase
+## Supabase
 
-O projeto usa MCP Supabase conectado via plugin do Claude Code. Isso permite interagir com o banco de dados Supabase diretamente para consultas, migracoes e debugging. Projeto Supabase: `rvzkszfowlzioddqjryz` (regiao sa-east-1).
+O projeto usa MCP Supabase conectado via plugin do Claude Code para consultas, migracoes e debugging.
+
+| Item | Valor |
+|------|-------|
+| **Projeto** | `axion-viewer` |
+| **Project ID** | `rvzkszfowlzioddqjryz` |
+| **Regiao** | `sa-east-1` (Sao Paulo) |
+| **URL** | `https://rvzkszfowlzioddqjryz.supabase.co` |
+| **DB Host** | `db.rvzkszfowlzioddqjryz.supabase.co` |
+| **Publishable Key** (frontend) | `sb_publishable_By8P6igMjQYhOj18G37J_A_Ao7dQsFv` |
+| **Secret Key** (backend) | `sb_secret_aLHe6WDEWoczDo0Ah2Ksrg_rckvR5n8` |
+| **Legacy Anon Key** | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2emtzemZvd2x6aW9kZHFqcnl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MTUzMjQsImV4cCI6MjA4NTA5MTMyNH0.QY0xN1XCLtfzE6O-E2_7GHbNXRGkdv2tmfnoXAW6ot8` |
+
+> **Nota**: Repositorio privado. Chaves formato novo (`sb_publishable_`, `sb_secret_`) recomendadas pelo Supabase.
 
 ## Especificacoes de Features
 

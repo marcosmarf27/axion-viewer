@@ -31,7 +31,7 @@ Passos que precisam ser executados manualmente por um humano.
   | Project URL | Settings > API | Backend + Frontend |
   | anon key (public) | Settings > API | Frontend |
   | service_role key | Settings > API | Backend (NUNCA expor!) |
-  | JWT Secret | Settings > API > JWT Settings | Backend |
+  | ~~JWT Secret~~ | ~~Settings > API > JWT Settings~~ | **Não necessário** — JWT verificado via JWKS/ES256 |
 
 ---
 
@@ -100,7 +100,7 @@ Passos que precisam ser executados manualmente por um humano.
   # Supabase - Backend
   SUPABASE_URL=https://xxxxx.supabase.co
   SUPABASE_SERVICE_ROLE_KEY=eyJ...
-  SUPABASE_JWT_SECRET=your-jwt-secret
+  # JWT verificado via JWKS/ES256 (endpoint publico) - SUPABASE_JWT_SECRET nao necessario
   ```
 
 - [ ] **Criar arquivo `.env` no frontend** - Em `frontend/`:
@@ -208,9 +208,9 @@ Passos que precisam ser executados manualmente por um humano.
 - [ ] **Adicionar secrets no repositório** - Settings > Secrets > Actions:
   - `SUPABASE_URL`
   - `SUPABASE_SERVICE_ROLE_KEY`
-  - `SUPABASE_JWT_SECRET`
   - `VITE_SUPABASE_URL`
   - `VITE_SUPABASE_ANON_KEY`
+  - ~~`SUPABASE_JWT_SECRET`~~ — **Não necessário** (JWT verificado via JWKS/ES256)
 
 - [ ] **Verificar workflow do GitHub Actions** (`.github/workflows/`):
   - Build args para variáveis VITE_* devem ser passados durante o build da imagem
@@ -228,7 +228,7 @@ Passos que precisam ser executados manualmente por um humano.
 - [ ] **Configurar variáveis de ambiente** no dashboard Railway:
   - `SUPABASE_URL` - URL do projeto Supabase
   - `SUPABASE_SERVICE_ROLE_KEY` - Chave service role (backend)
-  - `SUPABASE_JWT_SECRET` - Secret para validar JWT
+  - ~~`SUPABASE_JWT_SECRET`~~ — **Não necessário** (JWT verificado via JWKS/ES256)
   - Variáveis `VITE_*` são injetadas no build via GitHub Actions
 
 - [ ] **Verificar volume existente**:
@@ -243,7 +243,7 @@ Passos que precisam ser executados manualmente por um humano.
   environment:
     - SUPABASE_URL=${SUPABASE_URL}
     - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
-    - SUPABASE_JWT_SECRET=${SUPABASE_JWT_SECRET}
+    # JWT verificado via JWKS/ES256 (endpoint publico) - SUPABASE_JWT_SECRET nao necessario
   ```
 
 ---
@@ -251,7 +251,8 @@ Passos que precisam ser executados manualmente por um humano.
 ## Troubleshooting
 
 ### Erro: "Token inválido ou expirado"
-- Verificar se JWT Secret está correto
+- Verificar se o endpoint JWKS está acessível: `curl https://rvzkszfowlzioddqjryz.supabase.co/auth/v1/.well-known/jwks.json`
+- Verificar se token foi assinado com ES256 (esperado): `python3 -c "import jwt; print(jwt.get_unverified_header('TOKEN'))"`
 - Verificar se token não expirou (padrão: 1 hora)
 
 ### Erro: "Acesso negado" para cliente

@@ -168,7 +168,7 @@ FLASK_ENV=production
 # Supabase (Backend)
 SUPABASE_URL=https://SEU_PROJETO.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=eyJ...
-SUPABASE_JWT_SECRET=seu-jwt-secret
+# JWT verificado via JWKS/ES256 (endpoint publico) - SUPABASE_JWT_SECRET nao necessario
 
 # Supabase (Frontend - build time)
 VITE_SUPABASE_URL=https://SEU_PROJETO.supabase.co

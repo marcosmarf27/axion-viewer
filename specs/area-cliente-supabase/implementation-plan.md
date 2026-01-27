@@ -134,7 +134,7 @@ FLASK_ENV=production
 # Supabase - Backend
 SUPABASE_URL=https://xxxxx.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=eyJ...  # Apenas backend (nunca expor)
-SUPABASE_JWT_SECRET=your-jwt-secret
+# JWT verificado via endpoint JWKS publico (ES256) - sem necessidade de secret
 
 # Supabase - Frontend (prefixo VITE_)
 VITE_SUPABASE_URL=https://xxxxx.supabase.co
@@ -411,9 +411,11 @@ Implementar validação de JWT do Supabase e decorators de proteção no Flask.
 
 **Adicionar ao requirements.txt:**
 ```
-PyJWT>=2.8.0
+PyJWT[crypto]>=2.8.0
 supabase>=2.0.0
 ```
+
+> **Nota**: O extra `[crypto]` instala a biblioteca `cryptography`, necessária para suporte a algoritmos assimétricos como ES256 (ECDSA). Sem ele, apenas HS256 (HMAC) é suportado.
 
 **Adicionar ao config.py:**
 ```python
@@ -426,25 +428,32 @@ class Config:
     SUPABASE_URL = os.environ.get('SUPABASE_URL')
     SUPABASE_ANON_KEY = os.environ.get('SUPABASE_ANON_KEY')
     SUPABASE_SERVICE_ROLE_KEY = os.environ.get('SUPABASE_SERVICE_ROLE_KEY')
-    SUPABASE_JWT_SECRET = os.environ.get('SUPABASE_JWT_SECRET')
+    # JWT verificado via JWKS/ES256 (endpoint publico) - SUPABASE_JWT_SECRET nao necessario
 ```
 
 **Criar utils/auth.py:**
 ```python
 import jwt
+from jwt import PyJWKClient
 from functools import wraps
 from flask import request, jsonify, g
 from config import Config
 from utils.supabase_client import supabase_admin
 
+# Cliente JWKS para buscar chaves publicas do Supabase (ES256)
+# Cache de 600s (10 min) alinhado com cache do Supabase
+JWKS_URL = f"{Config.SUPABASE_URL}/auth/v1/.well-known/jwks.json"
+jwks_client = PyJWKClient(JWKS_URL, cache_jwk_set=True, lifespan=600)
+
 def verify_supabase_token(token):
-    """Verifica e decodifica o JWT do Supabase"""
+    """Verifica e decodifica o JWT do Supabase usando JWKS/ES256"""
     try:
+        signing_key = jwks_client.get_signing_key_from_jwt(token)
         payload = jwt.decode(
             token,
-            Config.SUPABASE_JWT_SECRET,
-            algorithms=['HS256'],
-            audience='authenticated'
+            signing_key.key,
+            algorithms=["ES256"],
+            audience="authenticated"
         )
         return payload
     except jwt.ExpiredSignatureError:
@@ -502,7 +511,7 @@ def admin_required(f):
 SUPABASE_URL=https://xxx.supabase.co
 SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-SUPABASE_JWT_SECRET=your-jwt-secret-from-supabase-dashboard
+# JWT verificado via JWKS/ES256 (endpoint publico) - SUPABASE_JWT_SECRET nao necessario
 ```
 
 **Testar autenticação:**
@@ -2156,7 +2165,7 @@ services:
       - PORT=8080
       - SUPABASE_URL=${SUPABASE_URL}
       - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
-      - SUPABASE_JWT_SECRET=${SUPABASE_JWT_SECRET}
+      # JWT verificado via JWKS/ES256 (endpoint publico) - SUPABASE_JWT_SECRET nao necessario
     volumes:
       - ./data:/app/data
 ```
@@ -2190,7 +2199,7 @@ RUN pnpm run build
 - No dashboard Railway > Settings > Variables:
   - `SUPABASE_URL`
   - `SUPABASE_SERVICE_ROLE_KEY`
-  - `SUPABASE_JWT_SECRET`
+  - JWT verificado via JWKS/ES256 (endpoint publico) — `SUPABASE_JWT_SECRET` **não é necessário**
 - Variáveis `VITE_*` são injetadas via GitHub Actions (build time)
 
 ---
