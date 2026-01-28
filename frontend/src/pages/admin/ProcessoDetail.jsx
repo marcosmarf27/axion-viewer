@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Search, Link2 } from 'lucide-react';
 import api from '@/lib/api';
 import { cn } from '@/lib/utils';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -63,11 +64,13 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [vinculando, setVinculando] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     if (!open) return;
     setLoading(true);
     setError(null);
+    setSearchTerm('');
     api
       .get('/documentos', { params: { sem_processo: true } })
       .then(({ data }) => {
@@ -103,7 +106,10 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
         className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="mb-4 text-lg font-semibold text-slate-900">Vincular Documento</h2>
+        <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-900">
+          <Link2 className="h-5 w-5 text-indigo-600" />
+          Vincular Documento
+        </h2>
 
         {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
@@ -114,30 +120,61 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
             Nenhum documento disponivel para vincular.
           </p>
         ) : (
-          <div className="max-h-80 space-y-2 overflow-y-auto">
-            {documentos.map(doc => (
-              <div
-                key={doc.id}
-                className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-slate-900">
-                    {doc.title || doc.filename}
-                  </p>
-                  <p className="text-xs text-slate-500">
-                    {doc.file_type || 'Documento'} — {formatDate(doc.created_at)}
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleVincular(doc.id)}
-                  disabled={vinculando === doc.id}
-                  className="ml-3 shrink-0 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
-                >
-                  {vinculando === doc.id ? 'Vinculando...' : 'Vincular'}
-                </button>
+          <>
+            <div className="mb-3">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Buscar documento por nome ou tipo..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                  className="block w-full rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                />
               </div>
-            ))}
-          </div>
+              <p className="mt-1 text-xs text-slate-400">
+                {documentos.filter(doc => {
+                  if (!searchTerm) return true;
+                  const term = searchTerm.toLowerCase();
+                  const name = (doc.title || doc.filename || '').toLowerCase();
+                  const type = (doc.file_type || '').toLowerCase();
+                  return name.includes(term) || type.includes(term);
+                }).length} documento(s) disponivel(is)
+              </p>
+            </div>
+            <div className="max-h-80 space-y-2 overflow-y-auto">
+              {documentos
+                .filter(doc => {
+                  if (!searchTerm) return true;
+                  const term = searchTerm.toLowerCase();
+                  const name = (doc.title || doc.filename || '').toLowerCase();
+                  const type = (doc.file_type || '').toLowerCase();
+                  return name.includes(term) || type.includes(term);
+                })
+                .map(doc => (
+                  <div
+                    key={doc.id}
+                    className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium text-slate-900">
+                        {doc.title || doc.filename}
+                      </p>
+                      <p className="text-xs text-slate-500">
+                        {doc.file_type || 'Documento'} — {formatDate(doc.created_at)}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => handleVincular(doc.id)}
+                      disabled={vinculando === doc.id}
+                      className="ml-3 shrink-0 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                    >
+                      {vinculando === doc.id ? 'Vinculando...' : 'Vincular'}
+                    </button>
+                  </div>
+                ))}
+            </div>
+          </>
         )}
 
         <div className="mt-4 flex justify-end">
@@ -349,8 +386,9 @@ export default function ProcessoDetail() {
         <div className="mb-4 flex justify-end">
           <button
             onClick={() => setVincularOpen(true)}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
           >
+            <Link2 className="h-4 w-4" />
             Vincular Documento
           </button>
         </div>

@@ -33,10 +33,14 @@ export function TourProvider({ children }) {
     const saved = loadState();
     return saved?.dismissed || false;
   });
+  const [hidden, setHidden] = useState(() => {
+    const saved = loadState();
+    return saved?.hidden || false;
+  });
 
   useEffect(() => {
-    saveState({ dismissed, completedSteps });
-  }, [dismissed, completedSteps]);
+    saveState({ dismissed, completedSteps, hidden });
+  }, [dismissed, completedSteps, hidden]);
 
   const startTour = useCallback(() => {
     setCurrentStepIndex(0);
@@ -67,6 +71,16 @@ export function TourProvider({ children }) {
     setCurrentStepIndex(0);
   }, []);
 
+  const hideTour = useCallback(() => {
+    setIsActive(false);
+    setHidden(true);
+  }, []);
+
+  const showTour = useCallback(() => {
+    setHidden(false);
+    setDismissed(false);
+  }, []);
+
   const isStepCompleted = useCallback(
     id => completedSteps.includes(id),
     [completedSteps]
@@ -94,8 +108,8 @@ export function TourProvider({ children }) {
   }, []);
 
   const shouldAutoStart = useMemo(
-    () => !dismissed && completedSteps.length === 0,
-    [dismissed, completedSteps]
+    () => !dismissed && !hidden && completedSteps.length === 0,
+    [dismissed, hidden, completedSteps]
   );
 
   const value = useMemo(
@@ -106,12 +120,15 @@ export function TourProvider({ children }) {
       steps: TOUR_STEPS,
       completedSteps,
       dismissed,
+      hidden,
       shouldAutoStart,
       startTour,
       nextStep,
       prevStep,
       skipTour,
       resetTour,
+      hideTour,
+      showTour,
       isStepCompleted,
       toggleManualStep,
       updateProgressFromStats,
@@ -121,12 +138,15 @@ export function TourProvider({ children }) {
       currentStepIndex,
       completedSteps,
       dismissed,
+      hidden,
       shouldAutoStart,
       startTour,
       nextStep,
       prevStep,
       skipTour,
       resetTour,
+      hideTour,
+      showTour,
       isStepCompleted,
       toggleManualStep,
       updateProgressFromStats,

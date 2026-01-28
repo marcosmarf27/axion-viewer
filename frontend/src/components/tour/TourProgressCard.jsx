@@ -6,11 +6,13 @@ export default function TourProgressCard() {
   const {
     completedSteps,
     dismissed,
+    hidden,
     isStepCompleted,
     toggleManualStep,
     startTour,
     skipTour,
     resetTour,
+    hideTour,
   } = useTour();
 
   const total = TOUR_STEPS.length;
@@ -18,16 +20,24 @@ export default function TourProgressCard() {
   const percent = Math.round((completed / total) * 100);
   const allDone = completed === total;
 
+  if (hidden) return null;
+
   if (dismissed && allDone) return null;
 
   if (dismissed) {
     return (
-      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex items-center justify-between">
         <button
           onClick={resetTour}
           className="text-sm text-indigo-600 hover:text-indigo-700"
         >
           Reexibir tour de configuracao
+        </button>
+        <button
+          onClick={hideTour}
+          className="text-xs text-slate-400 hover:text-slate-600"
+        >
+          Nao mostrar novamente
         </button>
       </div>
     );
@@ -48,12 +58,20 @@ export default function TourProgressCard() {
           </p>
         </div>
         {!allDone && (
-          <button
-            onClick={skipTour}
-            className="text-xs text-slate-400 hover:text-slate-600"
-          >
-            Ocultar
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={hideTour}
+              className="text-xs text-slate-400 hover:text-slate-600"
+            >
+              Nao mostrar novamente
+            </button>
+            <button
+              onClick={skipTour}
+              className="text-xs text-slate-400 hover:text-slate-600"
+            >
+              Ocultar
+            </button>
+          </div>
         )}
       </div>
 

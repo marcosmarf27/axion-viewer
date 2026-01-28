@@ -182,7 +182,7 @@ export default function AdminDashboard() {
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { updateProgressFromStats, shouldAutoStart, startTour } = useTour();
+  const { updateProgressFromStats, shouldAutoStart, startTour, hidden } = useTour();
   const autoStarted = useRef(false);
 
   useEffect(() => {
@@ -198,13 +198,13 @@ export default function AdminDashboard() {
 
   // Auto-start tour on first visit
   useEffect(() => {
-    if (!loading && shouldAutoStart && !autoStarted.current) {
+    if (!loading && shouldAutoStart && !hidden && !autoStarted.current) {
       autoStarted.current = true;
       // Small delay to let the page render
       const timer = setTimeout(() => startTour(), 500);
       return () => clearTimeout(timer);
     }
-  }, [loading, shouldAutoStart, startTour]);
+  }, [loading, shouldAutoStart, hidden, startTour]);
 
   const fetchData = async () => {
     setLoading(true);

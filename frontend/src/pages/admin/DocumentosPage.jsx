@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Eye, Download, Link2, Trash2 } from 'lucide-react';
 import api from '@/lib/api';
 import { cn } from '@/lib/utils';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Pagination from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import ConfirmDialog from '@/components/ConfirmDialog';
+import SearchableSelect from '@/components/SearchableSelect';
 
 function formatSize(bytes) {
   if (!bytes) return '-';
@@ -77,19 +79,23 @@ function VincularModal({ open, documento, onClose, onVincular }) {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-slate-700">Processo</label>
-              <select
+              <SearchableSelect
                 value={selectedProcessoId}
-                onChange={e => setSelectedProcessoId(e.target.value)}
-                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-              >
-                <option value="">Selecione um processo...</option>
-                {processos.map(p => (
-                  <option key={p.id} value={p.id}>
-                    {p.numero_cnj}
-                    {p.caso_nome ? ` - ${p.caso_nome}` : ''}
-                  </option>
-                ))}
-              </select>
+                onChange={setSelectedProcessoId}
+                options={processos}
+                valueKey="id"
+                labelKey="numero_cnj"
+                placeholder="Selecione um processo..."
+                searchPlaceholder="Buscar por numero CNJ..."
+                renderOption={p => (
+                  <div>
+                    <span className="font-medium">{p.numero_cnj}</span>
+                    {p.caso_nome && (
+                      <span className="ml-2 text-xs text-slate-400">{p.caso_nome}</span>
+                    )}
+                  </div>
+                )}
+              />
             </div>
 
             <div className="flex justify-end gap-3 pt-2">
@@ -460,10 +466,7 @@ export default function DocumentosPage() {
                           onClick={() => handlePreview(doc)}
                           className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
                         >
-                          <svg className="h-[18px] w-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
+                          <Eye className="h-[18px] w-[18px]" />
                           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
                             Preview
                           </span>
@@ -472,9 +475,7 @@ export default function DocumentosPage() {
                           onClick={() => handleDownload(doc)}
                           className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
                         >
-                          <svg className="h-[18px] w-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                          </svg>
+                          <Download className="h-[18px] w-[18px]" />
                           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
                             Download
                           </span>
@@ -483,9 +484,7 @@ export default function DocumentosPage() {
                           onClick={() => setVincularDoc(doc)}
                           className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
                         >
-                          <svg className="h-[18px] w-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-2.556a4.5 4.5 0 00-1.242-7.244l-4.5-4.5a4.5 4.5 0 00-6.364 6.364L4.757 8.25" />
-                          </svg>
+                          <Link2 className="h-[18px] w-[18px]" />
                           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
                             Vincular
                           </span>
@@ -494,9 +493,7 @@ export default function DocumentosPage() {
                           onClick={() => setDeleteConfirm(doc)}
                           className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
                         >
-                          <svg className="h-[18px] w-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                          </svg>
+                          <Trash2 className="h-[18px] w-[18px]" />
                           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
                             Excluir
                           </span>

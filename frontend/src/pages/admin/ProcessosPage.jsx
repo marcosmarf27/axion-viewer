@@ -6,6 +6,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import Pagination from '@/components/Pagination';
 import EmptyState from '@/components/EmptyState';
 import ConfirmDialog from '@/components/ConfirmDialog';
+import SearchableSelect from '@/components/SearchableSelect';
 
 const inputClass =
   'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
@@ -70,6 +71,19 @@ const statusBadge = value => {
       return 'bg-slate-100 text-slate-600';
   }
 };
+
+function FormSection({ title, children, fullWidth = false }) {
+  return (
+    <div>
+      <h3 className="mb-3 border-b border-slate-100 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+        {title}
+      </h3>
+      <div className={fullWidth ? 'space-y-4' : 'grid grid-cols-1 gap-4 sm:grid-cols-2'}>
+        {children}
+      </div>
+    </div>
+  );
+}
 
 function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
   const [form, setForm] = useState(emptyForm);
@@ -190,9 +204,8 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
 
         {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {/* numero_cnj */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <FormSection title="Identificacao">
             <div>
               <label className="block text-sm font-medium text-slate-700">Numero CNJ *</label>
               <input
@@ -203,44 +216,74 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 required
               />
             </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700">Tipo de Acao</label>
+              <input
+                type="text"
+                value={form.tipo_acao}
+                onChange={e => set('tipo_acao', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            <div className="flex items-end">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
+                <input
+                  type="checkbox"
+                  checked={form.is_incidental}
+                  onChange={e => set('is_incidental', e.target.checked)}
+                  className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                />
+                Incidental
+              </label>
+            </div>
+          </FormSection>
 
-            {/* caso_id */}
+          <FormSection title="Relacionamentos">
             <div>
               <label className="block text-sm font-medium text-slate-700">Caso *</label>
-              <select
+              <SearchableSelect
                 value={form.caso_id}
-                onChange={e => set('caso_id', e.target.value)}
-                className={inputClass}
+                onChange={v => set('caso_id', v)}
+                options={casos}
+                valueKey="id"
+                labelKey="nome"
+                placeholder="Selecione um caso"
+                searchPlaceholder="Buscar caso..."
                 required
-              >
-                <option value="">Selecione um caso</option>
-                {casos.map(c => (
-                  <option key={c.id} value={c.id}>
-                    {c.nome}
-                  </option>
-                ))}
-              </select>
+                renderOption={c => (
+                  <div className="flex justify-between">
+                    <span className="font-medium">{c.nome}</span>
+                    {c.cliente_nome && (
+                      <span className="text-xs text-slate-400">{c.cliente_nome}</span>
+                    )}
+                  </div>
+                )}
+              />
             </div>
-
-            {/* processo_pai_id */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Processo Pai</label>
-              <select
+              <SearchableSelect
                 value={form.processo_pai_id}
-                onChange={e => set('processo_pai_id', e.target.value)}
-                className={inputClass}
+                onChange={v => set('processo_pai_id', v)}
+                options={processosDoCase}
+                valueKey="id"
+                labelKey="numero_cnj"
+                placeholder="Nenhum (processo principal)"
+                searchPlaceholder="Buscar processo..."
                 disabled={!form.caso_id}
-              >
-                <option value="">Nenhum (processo principal)</option>
-                {processosDoCase.map(p => (
-                  <option key={p.id} value={p.id}>
-                    {p.numero_cnj}
-                  </option>
-                ))}
-              </select>
+                renderOption={p => (
+                  <div>
+                    <span className="font-medium">{p.numero_cnj}</span>
+                    {p.tipo_acao && (
+                      <span className="ml-2 text-xs text-slate-400">{p.tipo_acao}</span>
+                    )}
+                  </div>
+                )}
+              />
             </div>
+          </FormSection>
 
-            {/* tipo_tese */}
+          <FormSection title="Classificacao">
             <div>
               <label className="block text-sm font-medium text-slate-700">Tipo de Tese</label>
               <select
@@ -256,32 +299,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 ))}
               </select>
             </div>
-
-            {/* tipo_acao */}
-            <div>
-              <label className="block text-sm font-medium text-slate-700">Tipo de Acao</label>
-              <input
-                type="text"
-                value={form.tipo_acao}
-                onChange={e => set('tipo_acao', e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            {/* is_incidental */}
-            <div className="flex items-end">
-              <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                <input
-                  type="checkbox"
-                  checked={form.is_incidental}
-                  onChange={e => set('is_incidental', e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                />
-                Incidental
-              </label>
-            </div>
-
-            {/* recuperabilidade */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Recuperabilidade</label>
               <select
@@ -297,8 +314,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 ))}
               </select>
             </div>
-
-            {/* status */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Status</label>
               <select
@@ -313,44 +328,9 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 ))}
               </select>
             </div>
+          </FormSection>
 
-            {/* valor_causa */}
-            <div>
-              <label className="block text-sm font-medium text-slate-700">Valor da Causa</label>
-              <input
-                type="number"
-                step="0.01"
-                value={form.valor_causa}
-                onChange={e => set('valor_causa', e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            {/* valor_divida */}
-            <div>
-              <label className="block text-sm font-medium text-slate-700">Valor da Divida</label>
-              <input
-                type="number"
-                step="0.01"
-                value={form.valor_divida}
-                onChange={e => set('valor_divida', e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            {/* valor_atualizado */}
-            <div>
-              <label className="block text-sm font-medium text-slate-700">Valor Atualizado</label>
-              <input
-                type="number"
-                step="0.01"
-                value={form.valor_atualizado}
-                onChange={e => set('valor_atualizado', e.target.value)}
-                className={inputClass}
-              />
-            </div>
-
-            {/* polo_ativo */}
+          <FormSection title="Dados Judiciais">
             <div>
               <label className="block text-sm font-medium text-slate-700">Polo Ativo</label>
               <input
@@ -360,8 +340,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-
-            {/* polo_passivo */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Polo Passivo</label>
               <input
@@ -371,8 +349,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-
-            {/* comarca */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Comarca</label>
               <input
@@ -382,8 +358,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-
-            {/* vara */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Vara</label>
               <input
@@ -393,8 +367,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-
-            {/* tribunal */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Tribunal</label>
               <input
@@ -404,8 +376,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-
-            {/* uf */}
             <div>
               <label className="block text-sm font-medium text-slate-700">UF</label>
               <input
@@ -416,8 +386,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 maxLength={2}
               />
             </div>
-
-            {/* fase_processual */}
             <div>
               <label className="block text-sm font-medium text-slate-700">Fase Processual</label>
               <input
@@ -427,8 +395,42 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
+          </FormSection>
 
-            {/* data_distribuicao */}
+          <FormSection title="Valores">
+            <div>
+              <label className="block text-sm font-medium text-slate-700">Valor da Causa</label>
+              <input
+                type="number"
+                step="0.01"
+                value={form.valor_causa}
+                onChange={e => set('valor_causa', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700">Valor da Divida</label>
+              <input
+                type="number"
+                step="0.01"
+                value={form.valor_divida}
+                onChange={e => set('valor_divida', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700">Valor Atualizado</label>
+              <input
+                type="number"
+                step="0.01"
+                value={form.valor_atualizado}
+                onChange={e => set('valor_atualizado', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+          </FormSection>
+
+          <FormSection title="Movimentacao">
             <div>
               <label className="block text-sm font-medium text-slate-700">Data Distribuicao</label>
               <input
@@ -438,8 +440,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-
-            {/* ultima_movimentacao */}
             <div>
               <label className="block text-sm font-medium text-slate-700">
                 Ultima Movimentacao
@@ -451,8 +451,6 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-
-            {/* data_ultima_movimentacao */}
             <div>
               <label className="block text-sm font-medium text-slate-700">
                 Data Ultima Movimentacao
@@ -464,18 +462,18 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-          </div>
+          </FormSection>
 
-          {/* observacoes - full width */}
-          <div>
-            <label className="block text-sm font-medium text-slate-700">Observacoes</label>
-            <textarea
-              value={form.observacoes}
-              onChange={e => set('observacoes', e.target.value)}
-              rows={3}
-              className={inputClass}
-            />
-          </div>
+          <FormSection title="Observacoes" fullWidth>
+            <div>
+              <textarea
+                value={form.observacoes}
+                onChange={e => set('observacoes', e.target.value)}
+                rows={3}
+                className={inputClass}
+              />
+            </div>
+          </FormSection>
 
           <div className="flex justify-end gap-3 pt-2">
             <button
