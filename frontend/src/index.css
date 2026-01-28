@@ -49,6 +49,21 @@
   50% { opacity: 0.06; }
 }
 
+/* ── Client Portal Colors ── */
+:root {
+  --color-accent: #1a365d;
+  --color-accent-hover: #234578;
+  --color-accent-subtle: rgba(26, 54, 93, 0.06);
+  --color-accent-gold: #8b6914;
+  --color-accent-gold-subtle: rgba(139, 105, 20, 0.08);
+  --color-bg: #f5f6f8;
+  --color-border: #dfe1e5;
+  --color-border-subtle: #e8eaed;
+  --color-text: #1a1d21;
+  --color-text-muted: #5f6368;
+  --color-text-subtle: #80868b;
+}
+
 /* ── Base ── */
 html,
 body,
