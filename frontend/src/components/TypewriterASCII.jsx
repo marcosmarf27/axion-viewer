@@ -281,7 +281,7 @@ export default function TypewriterASCII({ className }) {
                 color: '#d4a843',
               }}
             >
-              .
+              V
             </span>
           </div>
 
@@ -296,7 +296,7 @@ export default function TypewriterASCII({ className }) {
                 letterSpacing: '-0.01em',
               }}
             >
-              Axioma
+              Axion
             </span>
             <span
               style={{
@@ -304,9 +304,10 @@ export default function TypewriterASCII({ className }) {
                 fontSize: '26px',
                 fontWeight: 600,
                 color: '#d4a843',
+                marginLeft: '6px',
               }}
             >
-              .
+              Viewer
             </span>
           </div>
 

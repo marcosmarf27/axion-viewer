@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import TypewriterASCII from '@/components/TypewriterASCII';
+import NetworkCanvas from '@/components/NetworkCanvas';
 
 export default function LoginPage() {
   const { user, loading, signIn } = useAuth();
@@ -46,7 +47,7 @@ export default function LoginPage() {
                   letterSpacing: '-0.01em',
                 }}
               >
-                Axioma
+                Axion
               </span>
               <span
                 style={{
@@ -54,9 +55,10 @@ export default function LoginPage() {
                   fontSize: '28px',
                   fontWeight: 600,
                   color: '#8b6914',
+                  marginLeft: '6px',
                 }}
               >
-                .
+                Viewer
               </span>
             </div>
             <p
@@ -233,7 +235,7 @@ export default function LoginPage() {
                 textTransform: 'uppercase',
               }}
             >
-              Axioma v2.0
+              Axion Viewer v2.0
             </span>
             <div
               style={{
@@ -253,12 +255,12 @@ export default function LoginPage() {
           background: 'linear-gradient(160deg, #0f1f36 0%, #1a365d 40%, #162d4d 100%)',
         }}
       >
-        {/* Grid background */}
-        <div className="navy-grid absolute inset-0" />
+        {/* Particle network background */}
+        <NetworkCanvas className="absolute inset-0 z-[1]" />
 
         {/* Ambient glow — gold */}
         <div
-          className="absolute"
+          className="absolute z-[2]"
           style={{
             left: '50%',
             top: '45%',
@@ -269,6 +271,7 @@ export default function LoginPage() {
             background: 'radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%)',
             filter: 'blur(60px)',
             animation: 'pulseGlow 6s ease-in-out infinite',
+            pointerEvents: 'none',
           }}
         />
 
@@ -304,7 +307,7 @@ export default function LoginPage() {
                 letterSpacing: '0.04em',
               }}
             >
-              axioma-terminal
+              axion-viewer
             </span>
           </div>
           <div className="flex items-center gap-2" style={{ animation: 'fadeIn 1.5s ease-out 0.6s both' }}>

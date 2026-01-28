@@ -34,7 +34,7 @@
   }
 }
 
-/* ── Design System Axioma v2 ── */
+/* ── Design System Axion Viewer v2 ── */
 :root {
   --color-accent: #1a365d;
   --color-accent-hover: #234578;
@@ -143,20 +143,6 @@ body {
 .login-button:disabled {
   opacity: 0.5;
   pointer-events: none;
-}
-
-/* Navy panel grid background */
-.navy-grid {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-  animation: gridPulse 8s ease-in-out infinite;
-}
-
-@keyframes gridPulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
 }
 
 /* Subtle scanline overlay for terminal panel */
