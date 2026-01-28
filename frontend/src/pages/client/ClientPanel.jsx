@@ -250,7 +250,7 @@ export default function ClientPanel() {
                         {caso.nome}
                       </div>
                       <div className="text-xs text-[var(--color-text-muted)]">
-                        {caso.devedor || '-'}
+                        {caso.devedor_principal || '-'}
                       </div>
                     </td>
                     <td className="px-5 py-3.5">

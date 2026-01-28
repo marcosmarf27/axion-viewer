@@ -42,7 +42,17 @@ def list_processos():
             sort_field=sort_field,
             sort_order=sort_order,
             search=search,
+            select="*, casos(nome)",
         )
+
+        # Achatar caso_nome para facilitar uso no frontend
+        if result.get("data"):
+            for proc in result["data"]:
+                caso_data = proc.pop("casos", None)
+                proc["caso_nome"] = (
+                    caso_data.get("nome") if isinstance(caso_data, dict) else None
+                )
+
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500

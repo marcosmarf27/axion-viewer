@@ -39,7 +39,19 @@ def list_casos():
             sort_field=sort_field,
             sort_order=sort_order,
             search=search,
+            select="*, processos(count)",
         )
+
+        # Achatar contagem de processos
+        if result.get("data"):
+            for caso in result["data"]:
+                processos_data = caso.pop("processos", [])
+                caso["qtd_processos"] = (
+                    processos_data[0].get("count", 0)
+                    if processos_data and isinstance(processos_data, list)
+                    else 0
+                )
+
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500

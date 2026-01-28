@@ -60,11 +60,85 @@ function DownloadButton({ label, onClick, loading }) {
   );
 }
 
+function DocumentPreviewModal({ doc, content, url, loading: previewLoading, onClose: onPreviewClose }) {
+  useEffect(() => {
+    const handleKey = e => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        onPreviewClose();
+      }
+    };
+    document.addEventListener('keydown', handleKey, true);
+    return () => document.removeEventListener('keydown', handleKey, true);
+  }, [onPreviewClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[60] flex flex-col bg-black/70"
+      onClick={onPreviewClose}
+    >
+      {/* Top bar */}
+      <div
+        className="flex items-center justify-between bg-white px-5 py-3 shadow"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-semibold text-[var(--color-text)]">
+            {doc?.titulo || doc?.file_name || 'Documento'}
+          </span>
+          {doc?.file_type && (
+            <span className="rounded bg-[var(--color-accent-subtle)] px-2 py-0.5 text-[10px] font-medium uppercase text-[var(--color-accent)]">
+              {doc.file_type}
+            </span>
+          )}
+        </div>
+        <button
+          onClick={onPreviewClose}
+          className="rounded-md p-1.5 text-[var(--color-text-subtle)] hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-text)]"
+        >
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      {/* Content */}
+      <div className="flex-1 p-4" onClick={e => e.stopPropagation()}>
+        {previewLoading ? (
+          <div className="flex h-full items-center justify-center">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-[var(--color-accent)] border-t-transparent" />
+          </div>
+        ) : content ? (
+          <iframe
+            srcDoc={content}
+            title={doc?.titulo || 'Preview'}
+            className="h-full w-full rounded-lg bg-white"
+            sandbox="allow-same-origin"
+          />
+        ) : url ? (
+          <iframe
+            src={url}
+            title={doc?.titulo || 'Preview'}
+            className="h-full w-full rounded-lg bg-white"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center text-sm text-white">
+            Nao foi possivel carregar o preview.
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function CaseDetailModal({ casoId, onClose }) {
   const [caso, setCaso] = useState(null);
   const [processos, setProcessos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [downloadingId, setDownloadingId] = useState(null);
+  const [previewDoc, setPreviewDoc] = useState(null);
+  const [previewContent, setPreviewContent] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -123,12 +197,50 @@ export default function CaseDetailModal({ casoId, onClose }) {
     };
   }, []);
 
+  const handlePreview = async doc => {
+    setPreviewDoc(doc);
+    setPreviewUrl(null);
+    setPreviewContent(null);
+    setPreviewLoading(true);
+    try {
+      const { data } = await api.get(`/preview/${doc.id}`);
+      if (data.signed_url) {
+        setPreviewUrl(data.signed_url);
+        if (doc.file_type === 'html') {
+          try {
+            const response = await fetch(data.signed_url);
+            const html = await response.text();
+            setPreviewContent(html);
+          } catch {
+            // fallback: usa URL direta no iframe
+          }
+        }
+      }
+    } catch {
+      alert('Erro ao gerar preview');
+      setPreviewDoc(null);
+    } finally {
+      setPreviewLoading(false);
+    }
+  };
+
+  const closePreview = () => {
+    setPreviewDoc(null);
+    setPreviewContent(null);
+    setPreviewUrl(null);
+  };
+
   const handleDownload = async docId => {
     setDownloadingId(docId);
     try {
       const { data } = await api.get(`/preview/${docId}`);
       if (data.signed_url) {
-        window.open(data.signed_url, '_blank');
+        const a = document.createElement('a');
+        a.href = data.signed_url;
+        a.download = '';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       }
     } catch {
       alert('Erro ao baixar documento');
@@ -175,8 +287,8 @@ export default function CaseDetailModal({ casoId, onClose }) {
               <div>
                 <h2 className="text-lg font-semibold text-[var(--color-text)]">{caso.nome}</h2>
                 <p className="mt-0.5 text-sm text-[var(--color-text-muted)]">
-                  {caso.devedor || '-'}
-                  {caso.cnpj_devedor && ` · ${caso.cnpj_devedor}`}
+                  {caso.devedor_principal || '-'}
+                  {caso.cnpj_cpf_devedor && ` · ${caso.cnpj_cpf_devedor}`}
                 </p>
               </div>
               <button
@@ -193,7 +305,7 @@ export default function CaseDetailModal({ casoId, onClose }) {
             <div className="max-h-[70vh] overflow-y-auto px-6 py-5">
               {/* Details grid */}
               <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-                <DetailField label="Credor" value={caso.credor} />
+                <DetailField label="Credor" value={caso.credor_principal} />
                 <DetailField
                   label="Tese"
                   value={
@@ -224,7 +336,7 @@ export default function CaseDetailModal({ casoId, onClose }) {
                   }
                 />
                 <DetailField label="Valor Total" value={formatCurrency(caso.valor_total)} />
-                <DetailField label="UF" value={caso.uf} />
+                <DetailField label="UF" value={caso.uf_principal} />
                 <DetailField label="Data Analise" value={formatDate(caso.data_analise || caso.updated_at)} />
               </div>
 
@@ -254,12 +366,23 @@ export default function CaseDetailModal({ casoId, onClose }) {
                       {(consolidatedDocs.length > 0 ? consolidatedDocs : allDocs)
                         .slice(0, 2)
                         .map(doc => (
-                          <DownloadButton
-                            key={doc.id}
-                            label={doc.file_type?.toUpperCase() || 'DOC'}
-                            onClick={() => handleDownload(doc.id)}
-                            loading={downloadingId === doc.id}
-                          />
+                          <div key={doc.id} className="flex gap-1">
+                            <button
+                              onClick={() => handlePreview(doc)}
+                              className="inline-flex items-center gap-1 rounded px-2.5 py-1.5 text-xs font-medium border border-[var(--color-accent)] bg-[var(--color-accent)] text-white hover:opacity-90 transition"
+                            >
+                              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                              </svg>
+                              Ver
+                            </button>
+                            <DownloadButton
+                              label={doc.file_type?.toUpperCase() || 'DOC'}
+                              onClick={() => handleDownload(doc.id)}
+                              loading={downloadingId === doc.id}
+                            />
+                          </div>
                         ))}
                     </div>
                   </div>
@@ -342,16 +465,27 @@ export default function CaseDetailModal({ casoId, onClose }) {
                         </div>
                       </div>
 
-                      {/* Download buttons */}
+                      {/* Document buttons */}
                       {proc.documentos && proc.documentos.length > 0 && (
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                           {proc.documentos.map(doc => (
-                            <DownloadButton
-                              key={doc.id}
-                              label={doc.file_type?.toUpperCase() || 'DOC'}
-                              onClick={() => handleDownload(doc.id)}
-                              loading={downloadingId === doc.id}
-                            />
+                            <div key={doc.id} className="flex gap-1">
+                              <button
+                                onClick={() => handlePreview(doc)}
+                                className="inline-flex items-center gap-1 rounded px-2.5 py-1.5 text-xs font-medium border border-[var(--color-accent)] bg-[var(--color-accent)] text-white hover:opacity-90 transition"
+                              >
+                                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                Ver
+                              </button>
+                              <DownloadButton
+                                label={doc.file_type?.toUpperCase() || 'DOC'}
+                                onClick={() => handleDownload(doc.id)}
+                                loading={downloadingId === doc.id}
+                              />
+                            </div>
                           ))}
                         </div>
                       )}
@@ -369,6 +503,17 @@ export default function CaseDetailModal({ casoId, onClose }) {
           </>
         )}
       </div>
+
+      {/* Document Preview Modal */}
+      {previewDoc && (
+        <DocumentPreviewModal
+          doc={previewDoc}
+          content={previewContent}
+          url={previewUrl}
+          loading={previewLoading}
+          onClose={closePreview}
+        />
+      )}
     </div>
   );
 }

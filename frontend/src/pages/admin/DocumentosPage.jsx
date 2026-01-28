@@ -139,7 +139,7 @@ function PreviewModal({ doc, url, content, blobUrl, loading, onClose }) {
   if (!doc) return null;
 
   const isPdf = doc.file_type === 'pdf';
-  const title = doc.titulo || doc.filename;
+  const title = doc.title || doc.filename;
   const openUrl = blobUrl || url;
 
   return (
@@ -435,7 +435,7 @@ export default function DocumentosPage() {
                 {documentos.map(doc => (
                   <tr key={doc.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm font-medium text-slate-900">
-                      {doc.titulo || doc.filename}
+                      {doc.title || doc.filename}
                     </td>
                     <td className="px-4 py-3">
                       <span
@@ -459,44 +459,40 @@ export default function DocumentosPage() {
                     <td className="px-4 py-3 text-sm text-slate-600">
                       {doc.created_at ? new Date(doc.created_at).toLocaleDateString('pt-BR') : '-'}
                     </td>
-                    <td className="px-4 py-3 text-sm text-slate-600">{formatSize(doc.tamanho)}</td>
+                    <td className="px-4 py-3 text-sm text-slate-600">{formatSize(doc.file_size)}</td>
                     <td className="px-4 py-3 text-right">
                       <div className="inline-flex items-center gap-1">
                         <button
                           onClick={() => handlePreview(doc)}
-                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                          title="Preview"
+                          aria-label="Preview"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
                         >
                           <Eye className="h-[18px] w-[18px]" />
-                          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-                            Preview
-                          </span>
                         </button>
                         <button
                           onClick={() => handleDownload(doc)}
-                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                          title="Download"
+                          aria-label="Download"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
                         >
                           <Download className="h-[18px] w-[18px]" />
-                          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-                            Download
-                          </span>
                         </button>
                         <button
                           onClick={() => setVincularDoc(doc)}
-                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                          title="Vincular"
+                          aria-label="Vincular"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
                         >
                           <Link2 className="h-[18px] w-[18px]" />
-                          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-                            Vincular
-                          </span>
                         </button>
                         <button
                           onClick={() => setDeleteConfirm(doc)}
-                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
+                          title="Excluir"
+                          aria-label="Excluir"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
                         >
                           <Trash2 className="h-[18px] w-[18px]" />
-                          <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-                            Excluir
-                          </span>
                         </button>
                       </div>
                     </td>
@@ -535,7 +531,7 @@ export default function DocumentosPage() {
       <ConfirmDialog
         open={!!deleteConfirm}
         title="Excluir Documento"
-        message={`Deseja excluir o documento "${deleteConfirm?.titulo || deleteConfirm?.filename}"? Esta acao nao pode ser desfeita.`}
+        message={`Deseja excluir o documento "${deleteConfirm?.title || deleteConfirm?.filename}"? Esta acao nao pode ser desfeita.`}
         onConfirm={handleDelete}
         onCancel={() => setDeleteConfirm(null)}
       />

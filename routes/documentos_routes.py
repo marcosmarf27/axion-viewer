@@ -34,7 +34,16 @@ def list_documentos():
             sort_field=sort_field,
             sort_order=sort_order,
             search=search,
+            select="*, processos(numero_cnj)",
         )
+
+        # Achatar processo_numero_cnj
+        if result.get("data"):
+            for doc in result["data"]:
+                proc_data = doc.pop("processos", None)
+                doc["processo_numero_cnj"] = (
+                    proc_data.get("numero_cnj") if isinstance(proc_data, dict) else None
+                )
 
         # Filtro especial: documentos sem processo (para admin vincular)
         if sem_processo == "true":
