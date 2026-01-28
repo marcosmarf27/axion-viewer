@@ -187,6 +187,7 @@ class SupabaseService:
         return self._list(
             "carteiras",
             search_fields=["nome", "descricao"],
+            select="*, cliente:clientes(nome)",
             **kwargs,
         )
 
