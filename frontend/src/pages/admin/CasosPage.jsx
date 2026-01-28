@@ -201,6 +201,9 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
                   </option>
                 ))}
               </select>
+              <p className="mt-1 text-xs text-slate-500">
+                Tipo de credito: NPL, Recuperacao Judicial, Divida Ativa ou Litigio
+              </p>
             </div>
 
             <div>
@@ -217,6 +220,9 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
                   </option>
                 ))}
               </select>
+              <p className="mt-1 text-xs text-slate-500">
+                Probabilidade estimada de recuperacao do credito
+              </p>
             </div>
           </div>
 

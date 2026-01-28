@@ -140,7 +140,12 @@ export default function SharingPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-slate-900">Compartilhamento de Carteiras</h1>
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900">Compartilhamento de Carteiras</h1>
+        <p className="mt-1 text-sm text-slate-500">
+          Gerencie quais clientes podem visualizar cada carteira no Portal do Cliente.
+        </p>
+      </div>
 
       <FeedbackMessage
         message={feedback.message}
@@ -227,7 +232,9 @@ export default function SharingPage() {
                           {acesso.profiles?.full_name || '-'}
                         </td>
                         <td className="px-4 py-3 text-sm text-slate-600">
-                          {acesso.granted_by_nome || acesso.granted_by_email || '-'}
+                          {acesso.granted_by_profile?.full_name ||
+                            acesso.granted_by_profile?.email ||
+                            '-'}
                         </td>
                         <td className="px-4 py-3 text-sm text-slate-600">
                           {formatDate(acesso.granted_at || acesso.created_at)}
@@ -257,7 +264,7 @@ export default function SharingPage() {
               <div className="flex items-end gap-4">
                 <div className="flex-1">
                   <label className="block text-sm font-medium text-slate-700">
-                    Selecione um usuario
+                    Selecione um cliente para conceder acesso
                   </label>
                   {loadingProfiles ? (
                     <LoadingSpinner className="py-2" size="sm" />
@@ -267,7 +274,7 @@ export default function SharingPage() {
                       onChange={e => setSelectedProfileId(e.target.value)}
                       className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                     >
-                      <option value="">Selecione um usuario</option>
+                      <option value="">Selecione um cliente</option>
                       {profiles.map(p => (
                         <option key={p.id} value={p.id}>
                           {p.email}

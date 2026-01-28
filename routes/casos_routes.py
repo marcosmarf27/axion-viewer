@@ -1,8 +1,8 @@
 """Blueprint CRUD de casos (auth_required read, admin_required write)."""
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, g, jsonify, request
 
-from utils.auth import admin_required, auth_required
+from utils.auth import admin_required, auth_required, get_client_carteira_ids
 from utils.supabase_client import supa_service
 
 casos_bp = Blueprint("casos", __name__)
@@ -20,7 +20,25 @@ def list_casos():
         carteira_id = request.args.get("carteira_id")
         tese = request.args.get("tese")
         recuperabilidade = request.args.get("recuperabilidade")
+        uf_principal = request.args.get("uf_principal")
+        data_analise_desde = request.args.get("data_analise_desde")
         status = request.args.get("status")
+
+        # Cliente: validar acesso a carteira
+        if g.user.get("role") != "admin":
+            allowed = get_client_carteira_ids(g.user_id)
+            if carteira_id and carteira_id not in allowed:
+                return jsonify(
+                    {
+                        "data": [],
+                        "pagination": {
+                            "page": 1,
+                            "per_page": per_page,
+                            "total": 0,
+                            "total_pages": 1,
+                        },
+                    }
+                )
 
         filters = {}
         if carteira_id:
@@ -29,8 +47,17 @@ def list_casos():
             filters["tese"] = tese
         if recuperabilidade:
             filters["recuperabilidade"] = recuperabilidade
+        if uf_principal:
+            filters["uf_principal"] = uf_principal
         if status:
             filters["status"] = status
+
+        # data_analise_desde requer tratamento especial (gte, nao eq)
+        extra_query_fn = None
+        if data_analise_desde:
+
+            def extra_query_fn(query):
+                return query.gte("data_analise", data_analise_desde)
 
         result = supa_service.list_casos(
             filters=filters,
@@ -40,6 +67,7 @@ def list_casos():
             sort_order=sort_order,
             search=search,
             select="*, processos(count)",
+            extra_query_fn=extra_query_fn,
         )
 
         # Achatar contagem de processos
@@ -80,6 +108,13 @@ def get_caso(caso_id):
         caso = supa_service.get_caso(caso_id)
         if not caso:
             return jsonify({"error": "Caso nao encontrado"}), 404
+
+        # Cliente: verificar acesso via carteira
+        if g.user.get("role") != "admin":
+            allowed = get_client_carteira_ids(g.user_id)
+            if caso.get("carteira_id") not in allowed:
+                return jsonify({"error": "Acesso negado"}), 403
+
         return jsonify({"success": True, "data": caso})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

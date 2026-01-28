@@ -1,8 +1,8 @@
 """Blueprint CRUD de processos (auth_required read, admin_required write)."""
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, g, jsonify, request
 
-from utils.auth import admin_required, auth_required
+from utils.auth import admin_required, auth_required, get_client_carteira_ids
 from utils.supabase_client import supa_service
 
 processos_bp = Blueprint("processos", __name__)
@@ -22,6 +22,24 @@ def list_processos():
         recuperabilidade = request.args.get("recuperabilidade")
         uf = request.args.get("uf")
         status = request.args.get("status")
+
+        # Cliente: validar que o caso pertence a uma carteira acessivel
+        if g.user.get("role") != "admin" and caso_id:
+            caso = supa_service.get_caso(caso_id)
+            if caso:
+                allowed = get_client_carteira_ids(g.user_id)
+                if caso.get("carteira_id") not in allowed:
+                    return jsonify(
+                        {
+                            "data": [],
+                            "pagination": {
+                                "page": 1,
+                                "per_page": per_page,
+                                "total": 0,
+                                "total_pages": 1,
+                            },
+                        }
+                    )
 
         filters = {}
         if caso_id:
@@ -82,6 +100,15 @@ def get_processo(processo_id):
         processo = supa_service.get_processo(processo_id)
         if not processo:
             return jsonify({"error": "Processo nao encontrado"}), 404
+
+        # Cliente: verificar acesso via caso -> carteira
+        if g.user.get("role") != "admin":
+            caso = supa_service.get_caso(processo.get("caso_id"))
+            if caso:
+                allowed = get_client_carteira_ids(g.user_id)
+                if caso.get("carteira_id") not in allowed:
+                    return jsonify({"error": "Acesso negado"}), 403
+
         return jsonify({"success": True, "data": processo})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

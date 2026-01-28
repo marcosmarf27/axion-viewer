@@ -93,6 +93,9 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
         <h2 className="mb-4 text-lg font-semibold text-slate-900">
           {editing ? 'Editar Carteira' : 'Nova Carteira'}
         </h2>
+        <p className="mb-4 text-sm text-slate-500">
+          Uma carteira agrupa casos e processos de um mesmo cliente ou operacao.
+        </p>
 
         {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
 
@@ -103,6 +106,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
               type="text"
               value={form.nome}
               onChange={e => setForm({ ...form, nome: e.target.value })}
+              placeholder="Ex: Creditos Bancarios 2024"
               className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               required
             />

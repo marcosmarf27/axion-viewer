@@ -1,8 +1,8 @@
 """Blueprint CRUD de carteiras (auth_required read, admin_required write)."""
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, g, jsonify, request
 
-from utils.auth import admin_required, auth_required
+from utils.auth import admin_required, auth_required, get_client_carteira_ids
 from utils.supabase_client import supa_service
 
 carteiras_bp = Blueprint("carteiras", __name__)
@@ -12,6 +12,21 @@ carteiras_bp = Blueprint("carteiras", __name__)
 @auth_required
 def list_carteiras():
     try:
+        # Cliente: retornar apenas carteiras com acesso
+        if g.user.get("role") != "admin":
+            carteiras = supa_service.get_client_carteiras(g.user_id)
+            return jsonify(
+                {
+                    "data": carteiras,
+                    "pagination": {
+                        "page": 1,
+                        "per_page": len(carteiras),
+                        "total": len(carteiras),
+                        "total_pages": 1,
+                    },
+                }
+            )
+
         page = request.args.get("page", 1, type=int)
         per_page = min(request.args.get("per_page", 20, type=int), 100)
         sort_field = request.args.get("sort_field", "created_at")
@@ -59,6 +74,12 @@ def create_carteira():
 @auth_required
 def get_carteira(carteira_id):
     try:
+        # Cliente: verificar acesso
+        if g.user.get("role") != "admin":
+            allowed = get_client_carteira_ids(g.user_id)
+            if carteira_id not in allowed:
+                return jsonify({"error": "Acesso negado"}), 403
+
         carteira = supa_service.get_carteira(carteira_id)
         if not carteira:
             return jsonify({"error": "Carteira nao encontrada"}), 404

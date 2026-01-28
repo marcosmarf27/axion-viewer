@@ -15,7 +15,16 @@ export default function ClientLayout() {
   const [selectedCarteira, setSelectedCarteira] = useState(null);
   const [filters, setFilters] = useState(FILTER_DEFAULTS);
   const [appliedFilters, setAppliedFilters] = useState(FILTER_DEFAULTS);
+  const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
+
+  // Debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearch(searchInput);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [searchInput]);
 
   const fetchCarteiras = useCallback(async () => {
     try {
@@ -156,9 +165,33 @@ export default function ClientLayout() {
               >
                 <option value="">UF</option>
                 {[
-                  'AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS',
-                  'MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC',
-                  'SP','SE','TO',
+                  'AC',
+                  'AL',
+                  'AP',
+                  'AM',
+                  'BA',
+                  'CE',
+                  'DF',
+                  'ES',
+                  'GO',
+                  'MA',
+                  'MT',
+                  'MS',
+                  'MG',
+                  'PA',
+                  'PB',
+                  'PR',
+                  'PE',
+                  'PI',
+                  'RJ',
+                  'RN',
+                  'RS',
+                  'RO',
+                  'RR',
+                  'SC',
+                  'SP',
+                  'SE',
+                  'TO',
                 ].map(uf => (
                   <option key={uf} value={uf}>
                     {uf}
@@ -254,7 +287,7 @@ export default function ClientLayout() {
                 />
               </svg>
             </button>
-            <h1 className="text-lg font-semibold text-[var(--color-text)]">Meus Relatorios</h1>
+            <h1 className="text-lg font-semibold text-[var(--color-text)]">Meus Casos</h1>
           </div>
 
           {/* Search */}
@@ -275,8 +308,8 @@ export default function ClientLayout() {
             <input
               type="text"
               placeholder="Buscar casos..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
               className="w-full rounded-md border border-[var(--color-border)] bg-white py-2 pl-9 pr-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text-subtle)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
           </div>

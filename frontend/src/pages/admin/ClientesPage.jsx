@@ -109,8 +109,12 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
               type="text"
               value={form.documento}
               onChange={e => setForm({ ...form, documento: e.target.value })}
+              placeholder="Ex: 12.345.678/0001-90"
               className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
+            <p className="mt-1 text-xs text-slate-500">
+              CPF (pessoa fisica) ou CNPJ (pessoa juridica) do cliente
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">

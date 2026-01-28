@@ -225,7 +225,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 className={inputClass}
               />
             </div>
-            <div className="flex items-end">
+            <div className="flex flex-col justify-end">
               <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <input
                   type="checkbox"
@@ -235,6 +235,9 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                 />
                 Incidental
               </label>
+              <p className="mt-1 text-xs text-slate-500">
+                Processo derivado de outro (ex: agravo, embargo)
+              </p>
             </div>
           </FormSection>
 
@@ -280,6 +283,9 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                   </div>
                 )}
               />
+              <p className="mt-1 text-xs text-slate-500">
+                Se incidental, selecione o processo principal ao qual este se vincula
+              </p>
             </div>
           </FormSection>
 
@@ -298,6 +304,9 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                   </option>
                 ))}
               </select>
+              <p className="mt-1 text-xs text-slate-500">
+                Classificacao juridica do credito neste processo
+              </p>
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700">Recuperabilidade</label>
@@ -313,6 +322,9 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                   </option>
                 ))}
               </select>
+              <p className="mt-1 text-xs text-slate-500">
+                Probabilidade estimada de recuperacao do credito
+              </p>
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700">Status</label>

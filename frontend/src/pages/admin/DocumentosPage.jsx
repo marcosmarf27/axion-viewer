@@ -88,14 +88,17 @@ function VincularModal({ open, documento, onClose, onVincular }) {
                 placeholder="Selecione um processo..."
                 searchPlaceholder="Buscar por numero CNJ..."
                 renderOption={p => (
-                  <div>
+                  <div className="flex flex-col">
                     <span className="font-medium">{p.numero_cnj}</span>
                     {p.caso_nome && (
-                      <span className="ml-2 text-xs text-slate-400">{p.caso_nome}</span>
+                      <span className="text-xs text-slate-400">Caso: {p.caso_nome}</span>
                     )}
                   </div>
                 )}
               />
+              <p className="mt-1 text-xs text-slate-500">
+                Escolha o processo judicial ao qual este documento sera vinculado
+              </p>
             </div>
 
             <div className="flex justify-end gap-3 pt-2">

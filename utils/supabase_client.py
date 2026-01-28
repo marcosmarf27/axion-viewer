@@ -94,6 +94,7 @@ class SupabaseService:
         search=None,
         search_fields=None,
         select="*",
+        extra_query_fn=None,
     ):
         """Listagem generica paginada com filtros e busca."""
         query = self.client.table(table).select(select, count="exact")
@@ -106,6 +107,9 @@ class SupabaseService:
         if search and search_fields:
             conditions = ",".join(f"{f}.ilike.%{search}%" for f in search_fields)
             query = query.or_(conditions)
+
+        if extra_query_fn:
+            query = extra_query_fn(query)
 
         if sort_field not in ALLOWED_SORT_FIELDS:
             sort_field = "created_at"
@@ -200,10 +204,11 @@ class SupabaseService:
 
     # ========== CASOS ==========
 
-    def list_casos(self, **kwargs):
+    def list_casos(self, extra_query_fn=None, **kwargs):
         return self._list(
             "casos",
             search_fields=["nome", "credor_principal", "devedor_principal"],
+            extra_query_fn=extra_query_fn,
             **kwargs,
         )
 
@@ -278,7 +283,13 @@ class SupabaseService:
         """Lista profiles com acesso a uma carteira."""
         result = (
             self.client.table("cliente_carteira_access")
-            .select("*, profiles(id, email, full_name, role)")
+            .select(
+                "*, "
+                "profiles!cliente_carteira_access_profile_id_fkey("
+                "id, email, full_name, role), "
+                "granted_by_profile:profiles!cliente_carteira_access_granted_by_fkey("
+                "id, email, full_name)"
+            )
             .eq("carteira_id", carteira_id)
             .execute()
         )
@@ -373,7 +384,9 @@ class SupabaseService:
         return result.data
 
     def get_client_dashboard_stats(self, profile_id):
-        """Busca estatisticas do dashboard do cliente."""
+        """Busca estatisticas do dashboard do cliente com stats por carteira."""
+        from collections import defaultdict
+
         carteiras = self.get_client_carteiras(profile_id)
         carteira_ids = [c["id"] for c in carteiras]
 
@@ -385,32 +398,58 @@ class SupabaseService:
                 "carteiras": [],
             }
 
-        # Buscar total de casos de todas as carteiras em uma unica query
+        # Buscar todos casos com carteira_id e valor_total
         casos_result = (
             self.client.table("casos")
-            .select("id", count="exact")
+            .select("id, carteira_id, valor_total")
             .in_("carteira_id", carteira_ids)
             .execute()
         )
-        total_casos = casos_result.count or 0
+        casos_data = casos_result.data or []
 
-        # Buscar processos vinculados aos casos encontrados
-        total_processos = 0
-        caso_ids = [c["id"] for c in casos_result.data] if casos_result.data else []
+        # Agrupar casos por carteira
+        casos_por_carteira = defaultdict(list)
+        for caso in casos_data:
+            casos_por_carteira[caso["carteira_id"]].append(caso)
+
+        # Buscar processos de todos os casos
+        caso_ids = [c["id"] for c in casos_data]
+        processos_por_caso = defaultdict(int)
         if caso_ids:
             processos_result = (
                 self.client.table("processos")
-                .select("id", count="exact")
+                .select("id, caso_id")
                 .in_("caso_id", caso_ids)
                 .execute()
             )
-            total_processos = processos_result.count or 0
+            for proc in processos_result.data or []:
+                processos_por_caso[proc["caso_id"]] += 1
+
+        # Montar carteiras enriquecidas com stats
+        total_casos = 0
+        total_processos = 0
+        enriched_carteiras = []
+        for cart in carteiras:
+            cart_casos = casos_por_carteira.get(cart["id"], [])
+            qtd_casos = len(cart_casos)
+            qtd_processos = sum(processos_por_caso.get(c["id"], 0) for c in cart_casos)
+            valor_total = sum(float(c.get("valor_total") or 0) for c in cart_casos)
+            total_casos += qtd_casos
+            total_processos += qtd_processos
+            enriched_carteiras.append(
+                {
+                    **cart,
+                    "qtd_casos": qtd_casos,
+                    "qtd_processos": qtd_processos,
+                    "valor_total": valor_total,
+                }
+            )
 
         return {
             "total_carteiras": len(carteiras),
             "total_casos": total_casos,
             "total_processos": total_processos,
-            "carteiras": carteiras,
+            "carteiras": enriched_carteiras,
         }
 
 

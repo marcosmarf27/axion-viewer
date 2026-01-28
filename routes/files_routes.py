@@ -8,7 +8,7 @@ from datetime import datetime
 from flask import Blueprint, g, jsonify, redirect, request
 
 from config import Config
-from utils.auth import admin_required, auth_required
+from utils.auth import admin_required, auth_required, get_client_carteira_ids
 from utils.markdown_converter import MarkdownConverter
 from utils.pdf_converter import PDFConverter
 from utils.supabase_client import supa_service
@@ -30,6 +30,16 @@ def download_document(document_id):
         if not doc:
             return jsonify({"error": "Documento nao encontrado"}), 404
 
+        # Cliente: verificar acesso via processo -> caso -> carteira
+        if g.user.get("role") != "admin" and doc.get("processo_id"):
+            processo = supa_service.get_processo(doc["processo_id"])
+            if processo:
+                caso = supa_service.get_caso(processo.get("caso_id"))
+                if caso:
+                    allowed = get_client_carteira_ids(g.user_id)
+                    if caso.get("carteira_id") not in allowed:
+                        return jsonify({"error": "Acesso negado"}), 403
+
         signed_url = supa_service.get_signed_url(doc["storage_path"], download=True)
         if not signed_url:
             return jsonify({"error": "Erro ao gerar URL de download"}), 500
@@ -42,15 +52,26 @@ def download_document(document_id):
 @files_bp.route("/api/preview/<document_id>", methods=["GET"])
 @auth_required
 def preview_document(document_id):
-    """Retorna signed URL para preview de documento HTML."""
+    """Retorna signed URL para preview ou download de documento."""
     try:
         doc = supa_service.get_documento(document_id)
         if not doc:
             return jsonify({"error": "Documento nao encontrado"}), 404
 
-        signed_url = supa_service.get_signed_url(doc["storage_path"])
+        # Cliente: verificar acesso via processo -> caso -> carteira
+        if g.user.get("role") != "admin" and doc.get("processo_id"):
+            processo = supa_service.get_processo(doc["processo_id"])
+            if processo:
+                caso = supa_service.get_caso(processo.get("caso_id"))
+                if caso:
+                    allowed = get_client_carteira_ids(g.user_id)
+                    if caso.get("carteira_id") not in allowed:
+                        return jsonify({"error": "Acesso negado"}), 403
+
+        download = request.args.get("download") == "true"
+        signed_url = supa_service.get_signed_url(doc["storage_path"], download=download)
         if not signed_url:
-            return jsonify({"error": "Erro ao gerar URL de preview"}), 500
+            return jsonify({"error": "Erro ao gerar URL"}), 500
 
         return jsonify({"success": True, "signed_url": signed_url})
     except Exception as e:

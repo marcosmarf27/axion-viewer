@@ -1,8 +1,8 @@
 """Blueprint de documentos: lista, detalhe, vincular, delete."""
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, g, jsonify, request
 
-from utils.auth import admin_required, auth_required
+from utils.auth import admin_required, auth_required, get_client_carteira_ids
 from utils.supabase_client import supa_service
 
 documentos_bp = Blueprint("documentos", __name__)
@@ -20,6 +20,26 @@ def list_documentos():
         processo_id = request.args.get("processo_id")
         file_type = request.args.get("file_type")
         sem_processo = request.args.get("sem_processo")
+
+        # Cliente: validar acesso via processo -> caso -> carteira
+        if g.user.get("role") != "admin" and processo_id:
+            processo = supa_service.get_processo(processo_id)
+            if processo:
+                caso = supa_service.get_caso(processo.get("caso_id"))
+                if caso:
+                    allowed = get_client_carteira_ids(g.user_id)
+                    if caso.get("carteira_id") not in allowed:
+                        return jsonify(
+                            {
+                                "data": [],
+                                "pagination": {
+                                    "page": 1,
+                                    "per_page": per_page,
+                                    "total": 0,
+                                    "total_pages": 1,
+                                },
+                            }
+                        )
 
         filters = {}
         if processo_id:
@@ -101,6 +121,16 @@ def get_documento(documento_id):
         doc = supa_service.get_documento(documento_id)
         if not doc:
             return jsonify({"error": "Documento nao encontrado"}), 404
+
+        # Cliente: verificar acesso via processo -> caso -> carteira
+        if g.user.get("role") != "admin" and doc.get("processo_id"):
+            processo = supa_service.get_processo(doc["processo_id"])
+            if processo:
+                caso = supa_service.get_caso(processo.get("caso_id"))
+                if caso:
+                    allowed = get_client_carteira_ids(g.user_id)
+                    if caso.get("carteira_id") not in allowed:
+                        return jsonify({"error": "Acesso negado"}), 403
 
         signed_url = supa_service.get_signed_url(doc["storage_path"])
         doc["signed_url"] = signed_url

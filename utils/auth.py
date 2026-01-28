@@ -87,6 +87,23 @@ def auth_required(f):
     return decorated
 
 
+def get_client_carteira_ids(user_id):
+    """Retorna set de carteira_ids que o usuario cliente tem acesso."""
+    from utils.supabase_client import supa_service
+
+    try:
+        result = (
+            supa_service.client.table("cliente_carteira_access")
+            .select("carteira_id")
+            .eq("profile_id", user_id)
+            .execute()
+        )
+        return {item["carteira_id"] for item in result.data}
+    except Exception:
+        logger.exception("Erro ao buscar carteiras do cliente %s", user_id)
+        return set()
+
+
 def admin_required(f):
     """Decorator que exige autenticacao + role admin."""
 
