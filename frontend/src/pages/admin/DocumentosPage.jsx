@@ -110,7 +110,7 @@ function VincularModal({ open, documento, onClose, onVincular }) {
               <button
                 type="submit"
                 disabled={saving || !selectedProcessoId}
-                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
               >
                 {saving ? 'Vinculando...' : 'Vincular'}
               </button>
@@ -354,7 +354,7 @@ export default function DocumentosPage() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           />
         </div>
 
@@ -366,7 +366,7 @@ export default function DocumentosPage() {
               setFileType(e.target.value);
               setPage(1);
             }}
-            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           >
             <option value="">Todos</option>
             <option value="html">HTML</option>
@@ -384,7 +384,7 @@ export default function DocumentosPage() {
               setSemProcesso(e.target.checked);
               setPage(1);
             }}
-            className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded border-slate-300 text-[var(--color-accent)] focus:ring-[var(--color-accent)]"
           />
           <label htmlFor="sem-processo" className="text-sm text-slate-700">
             Sem processo vinculado
@@ -464,7 +464,7 @@ export default function DocumentosPage() {
                       <div className="inline-flex items-center gap-1">
                         <button
                           onClick={() => handlePreview(doc)}
-                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
                         >
                           <Eye className="h-[18px] w-[18px]" />
                           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
@@ -473,7 +473,7 @@ export default function DocumentosPage() {
                         </button>
                         <button
                           onClick={() => handleDownload(doc)}
-                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
                         >
                           <Download className="h-[18px] w-[18px]" />
                           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
@@ -482,7 +482,7 @@ export default function DocumentosPage() {
                         </button>
                         <button
                           onClick={() => setVincularDoc(doc)}
-                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-indigo-50 hover:text-indigo-600"
+                          className="group relative rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
                         >
                           <Link2 className="h-[18px] w-[18px]" />
                           <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">

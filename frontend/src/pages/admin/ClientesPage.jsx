@@ -78,7 +78,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
               type="text"
               value={form.nome}
               onChange={e => setForm({ ...form, nome: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               required
             />
           </div>
@@ -89,7 +89,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
               type="email"
               value={form.email}
               onChange={e => setForm({ ...form, email: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
           </div>
 
@@ -99,7 +99,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
               type="text"
               value={form.telefone}
               onChange={e => setForm({ ...form, telefone: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
           </div>
 
@@ -109,7 +109,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
               type="text"
               value={form.documento}
               onChange={e => setForm({ ...form, documento: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
           </div>
 
@@ -119,7 +119,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
               <select
                 value={form.tipo}
                 onChange={e => setForm({ ...form, tipo: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               >
                 <option value="PJ">Pessoa Juridica</option>
                 <option value="PF">Pessoa Fisica</option>
@@ -131,7 +131,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
               <select
                 value={form.status}
                 onChange={e => setForm({ ...form, status: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               >
                 <option value="ativo">Ativo</option>
                 <option value="inativo">Inativo</option>
@@ -151,7 +151,7 @@ function ClienteFormModal({ open, editing, onSave, onClose }) {
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
             >
               {saving ? 'Salvando...' : editing ? 'Salvar' : 'Criar'}
             </button>
@@ -230,7 +230,7 @@ export default function ClientesPage() {
         <h1 className="text-2xl font-bold text-slate-900">Clientes</h1>
         <button
           onClick={openCreate}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
         >
           Novo Cliente
         </button>
@@ -246,7 +246,7 @@ export default function ClientesPage() {
             setSearch(e.target.value);
             setPage(1);
           }}
-          className="w-full max-w-md rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full max-w-md rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
         />
       </div>
 
@@ -262,7 +262,7 @@ export default function ClientesPage() {
             !search && (
               <button
                 onClick={openCreate}
-                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
               >
                 Novo Cliente
               </button>
@@ -321,7 +321,7 @@ export default function ClientesPage() {
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => openEdit(cliente)}
-                        className="mr-2 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                        className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                       >
                         Editar
                       </button>

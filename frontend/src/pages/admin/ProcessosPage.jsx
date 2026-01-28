@@ -9,7 +9,7 @@ import ConfirmDialog from '@/components/ConfirmDialog';
 import SearchableSelect from '@/components/SearchableSelect';
 
 const inputClass =
-  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]';
 
 const TIPO_TESE_OPTIONS = ['NPL', 'RJ', 'Divida_Ativa', 'Litigio'];
 const RECUPERABILIDADE_OPTIONS = ['Alta', 'Potencial', 'Critica', 'Indefinida', 'Nenhuma'];
@@ -45,7 +45,7 @@ const recuperabilidadeBadge = value => {
     case 'Alta':
       return 'bg-green-100 text-green-700';
     case 'Potencial':
-      return 'bg-indigo-100 text-indigo-700';
+      return 'bg-[rgba(26,54,93,0.08)] text-[var(--color-accent)]';
     case 'Critica':
       return 'bg-red-100 text-red-700';
     case 'Indefinida':
@@ -231,7 +231,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
                   type="checkbox"
                   checked={form.is_incidental}
                   onChange={e => set('is_incidental', e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                  className="h-4 w-4 rounded border-slate-300 text-[var(--color-accent)] focus:ring-[var(--color-accent)]"
                 />
                 Incidental
               </label>
@@ -487,7 +487,7 @@ function ProcessoFormModal({ open, editing, onSave, onClose, defaultCasoId }) {
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
             >
               {saving ? 'Salvando...' : editing ? 'Salvar' : 'Criar'}
             </button>
@@ -610,7 +610,7 @@ export default function ProcessosPage() {
         <h1 className="text-2xl font-bold text-slate-900">Processos</h1>
         <button
           onClick={openCreate}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
         >
           Novo Processo
         </button>
@@ -638,7 +638,7 @@ export default function ProcessosPage() {
             </svg>
             Filtros
             {hasActiveFilters && (
-              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-indigo-100 text-xs font-medium text-indigo-700">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[rgba(26,54,93,0.08)] text-xs font-medium text-[var(--color-accent)]">
                 !
               </span>
             )}
@@ -767,7 +767,7 @@ export default function ProcessosPage() {
               <div className="mt-4 flex justify-end">
                 <button
                   onClick={clearFilters}
-                  className="text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                  className="text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                 >
                   Limpar filtros
                 </button>
@@ -793,7 +793,7 @@ export default function ProcessosPage() {
             !hasActiveFilters && (
               <button
                 onClick={openCreate}
-                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
               >
                 Novo Processo
               </button>
@@ -835,7 +835,7 @@ export default function ProcessosPage() {
               <tbody className="divide-y">
                 {processos.map(processo => (
                   <tr key={processo.id} className="hover:bg-slate-50 transition-colors">
-                    <td className="px-4 py-3 text-sm font-medium text-indigo-600">
+                    <td className="px-4 py-3 text-sm font-medium text-[var(--color-accent)]">
                       <Link to={`/admin/processos/${processo.id}`} className="hover:underline">
                         {processo.numero_cnj}
                       </Link>
@@ -896,7 +896,7 @@ export default function ProcessosPage() {
                       </Link>
                       <button
                         onClick={() => openEdit(processo)}
-                        className="mr-2 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                        className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                       >
                         Editar
                       </button>

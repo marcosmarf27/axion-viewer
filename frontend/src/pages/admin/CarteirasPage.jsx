@@ -103,7 +103,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
               type="text"
               value={form.nome}
               onChange={e => setForm({ ...form, nome: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               required
             />
           </div>
@@ -114,7 +114,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
               value={form.descricao}
               onChange={e => setForm({ ...form, descricao: e.target.value })}
               rows={3}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
           </div>
 
@@ -123,7 +123,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
             <select
               value={form.cliente_id}
               onChange={e => setForm({ ...form, cliente_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               required
             >
               <option value="">Selecione um cliente</option>
@@ -142,7 +142,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
                 type="date"
                 value={form.data_aquisicao}
                 onChange={e => setForm({ ...form, data_aquisicao: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               />
             </div>
 
@@ -153,7 +153,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
                 step="0.01"
                 value={form.valor_total}
                 onChange={e => setForm({ ...form, valor_total: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               />
             </div>
           </div>
@@ -163,7 +163,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
             <select
               value={form.status}
               onChange={e => setForm({ ...form, status: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             >
               <option value="em_analise">Em Analise</option>
               <option value="ativa">Ativa</option>
@@ -183,7 +183,7 @@ function CarteiraFormModal({ open, editing, onSave, onClose }) {
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
             >
               {saving ? 'Salvando...' : editing ? 'Salvar' : 'Criar'}
             </button>
@@ -286,7 +286,7 @@ export default function CarteirasPage() {
         <h1 className="text-2xl font-bold text-slate-900">Carteiras</h1>
         <button
           onClick={openCreate}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
         >
           Nova Carteira
         </button>
@@ -302,7 +302,7 @@ export default function CarteirasPage() {
             setSearch(e.target.value);
             setPage(1);
           }}
-          className="w-full max-w-md rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full max-w-md rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
         />
         <select
           value={clienteFilter}
@@ -310,7 +310,7 @@ export default function CarteirasPage() {
             setClienteFilter(e.target.value);
             setPage(1);
           }}
-          className="rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
         >
           <option value="">Todos os clientes</option>
           {clientes.map(c => (
@@ -338,7 +338,7 @@ export default function CarteirasPage() {
             !clienteFilter && (
               <button
                 onClick={openCreate}
-                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
               >
                 Nova Carteira
               </button>
@@ -374,7 +374,7 @@ export default function CarteirasPage() {
               <tbody className="divide-y">
                 {carteiras.map(carteira => (
                   <tr key={carteira.id} className="hover:bg-slate-50 transition-colors">
-                    <td className="px-4 py-3 text-sm font-medium text-indigo-600 hover:text-indigo-800">
+                    <td className="px-4 py-3 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">
                       <Link to={`/admin/carteiras/${carteira.id}/casos`}>{carteira.nome}</Link>
                     </td>
                     <td className="px-4 py-3 text-sm text-slate-600">
@@ -394,7 +394,7 @@ export default function CarteirasPage() {
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => openEdit(carteira)}
-                        className="mr-2 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                        className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                       >
                         Editar
                       </button>

@@ -41,7 +41,7 @@ export default function Compartilhamento() {
         <div id="criar-conta-cliente" className="scroll-mt-6">
           <h3 className="text-lg font-semibold text-slate-800">Passo 1: Criar Conta de Cliente</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            Primeiro, crie uma conta com o perfil <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-indigo-600">client</code>.
+            Primeiro, crie uma conta com o perfil <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">client</code>.
             O cliente recebera um email para confirmar a conta (se configurado no Supabase):
           </p>
           <div className="mt-4">
@@ -95,7 +95,7 @@ export default function Compartilhamento() {
                   },
                 ].map((item, i) => (
                   <div key={item.title} className="flex gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[rgba(26,54,93,0.08)] text-xs font-bold text-[var(--color-accent)]">
                       {i + 1}
                     </span>
                     <div>
@@ -107,9 +107,9 @@ export default function Compartilhamento() {
               </div>
             </div>
           </div>
-          <div className="mt-4 rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-4">
-            <p className="text-sm font-medium text-indigo-800">Fluxo completo</p>
-            <p className="mt-1 text-sm text-indigo-700">
+          <div className="mt-4 rounded-lg border-l-4 border-[var(--color-accent)] bg-[var(--color-accent-subtle)] p-4">
+            <p className="text-sm font-medium text-[var(--color-accent)]">Fluxo completo</p>
+            <p className="mt-1 text-sm text-[var(--color-accent)]">
               Para compartilhar com um cliente: (1) cadastre os dados (cliente, carteira, caso, processo),
               (2) converta os documentos, (3) crie a conta do cliente, (4) compartilhe a carteira.
               O cliente tera acesso imediato apos o compartilhamento.

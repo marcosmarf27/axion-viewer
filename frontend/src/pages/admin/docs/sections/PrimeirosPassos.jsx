@@ -15,9 +15,9 @@ export default function PrimeirosPassos() {
             gerenciar clientes, carteiras, casos e processos, e compartilhar documentos com
             clientes de forma segura.
           </p>
-          <div className="mt-4 rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-4">
-            <p className="text-sm font-medium text-indigo-800">Como funciona</p>
-            <p className="mt-1 text-sm text-indigo-700">
+          <div className="mt-4 rounded-lg border-l-4 border-[var(--color-accent)] bg-[var(--color-accent-subtle)] p-4">
+            <p className="text-sm font-medium text-[var(--color-accent)]">Como funciona</p>
+            <p className="mt-1 text-sm text-[var(--color-accent)]">
               A API REST do Axion Viewer usa autenticacao JWT via Supabase. Todas as operacoes
               de escrita requerem perfil de administrador. Clientes possuem acesso somente-leitura
               as carteiras compartilhadas com eles.
@@ -34,7 +34,7 @@ export default function PrimeirosPassos() {
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <div className="rounded-lg border border-slate-200 bg-white p-4">
               <div className="flex items-center gap-2">
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700">A</span>
+                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[rgba(26,54,93,0.08)] text-xs font-bold text-[var(--color-accent)]">A</span>
                 <span className="text-sm font-semibold text-slate-800">Administrador</span>
               </div>
               <ul className="mt-2 space-y-1 text-sm text-slate-600">

@@ -74,7 +74,7 @@ export default function Conversao() {
         <div id="upload-arquivo" className="scroll-mt-6">
           <h3 className="text-lg font-semibold text-slate-800">Upload de Arquivo</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            Voce tambem pode enviar um arquivo <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-indigo-600">.md</code> diretamente
+            Voce tambem pode enviar um arquivo <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">.md</code> diretamente
             via multipart form-data:
           </p>
           <div className="mt-4 space-y-3">
@@ -96,16 +96,16 @@ export default function Conversao() {
               { name: 'corporativo', desc: 'Visual corporativo para relatorios' },
             ].map(t => (
               <div key={t.name} className="rounded-lg border border-slate-200 bg-white p-3">
-                <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-indigo-600">{t.name}</code>
+                <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">{t.name}</code>
                 <p className="mt-1.5 text-xs text-slate-500">{t.desc}</p>
               </div>
             ))}
           </div>
-          <div className="mt-4 rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-4">
-            <p className="text-sm font-medium text-indigo-800">Temas customizados</p>
-            <p className="mt-1 text-sm text-indigo-700">
+          <div className="mt-4 rounded-lg border-l-4 border-[var(--color-accent)] bg-[var(--color-accent-subtle)] p-4">
+            <p className="text-sm font-medium text-[var(--color-accent)]">Temas customizados</p>
+            <p className="mt-1 text-sm text-[var(--color-accent)]">
               Administradores podem criar temas personalizados pela pagina{' '}
-              <strong>Ferramentas &gt; Temas</strong> ou via API (<code className="rounded bg-indigo-100 px-1.5 py-0.5 font-mono text-xs text-indigo-900">POST /api/themes</code>).
+              <strong>Ferramentas &gt; Temas</strong> ou via API (<code className="rounded bg-[rgba(26,54,93,0.08)] px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">POST /api/themes</code>).
             </p>
           </div>
         </div>

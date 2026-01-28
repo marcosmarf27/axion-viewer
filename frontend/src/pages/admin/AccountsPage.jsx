@@ -92,7 +92,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
               type="email"
               value={form.email}
               onChange={e => setForm({ ...form, email: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               required
             />
           </div>
@@ -103,7 +103,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
               type="password"
               value={form.password}
               onChange={e => setForm({ ...form, password: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               required
             />
           </div>
@@ -114,7 +114,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
               type="text"
               value={form.full_name}
               onChange={e => setForm({ ...form, full_name: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
           </div>
 
@@ -130,7 +130,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
             >
               {saving ? 'Criando...' : 'Criar'}
             </button>
@@ -196,7 +196,7 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               required
             />
           </div>
@@ -213,7 +213,7 @@ function ResetPasswordModal({ open, account, onSave, onClose }) {
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
             >
               {saving ? 'Salvando...' : 'Salvar'}
             </button>
@@ -294,7 +294,7 @@ export default function AccountsPage() {
         <h1 className="text-2xl font-bold text-slate-900">Contas</h1>
         <button
           onClick={() => setCreateModalOpen(true)}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
         >
           Nova Conta
         </button>
@@ -315,7 +315,7 @@ export default function AccountsPage() {
           action={
             <button
               onClick={() => setCreateModalOpen(true)}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+              className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
             >
               Nova Conta
             </button>
@@ -354,7 +354,7 @@ export default function AccountsPage() {
                     <span
                       className={
                         account.user_metadata?.role === 'admin'
-                          ? 'inline-flex rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-700'
+                          ? 'inline-flex rounded-full bg-[rgba(26,54,93,0.08)] px-2 py-0.5 text-xs font-medium text-[var(--color-accent)]'
                           : 'inline-flex rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700'
                       }
                     >
@@ -367,7 +367,7 @@ export default function AccountsPage() {
                   <td className="px-4 py-3 text-right">
                     <button
                       onClick={() => setResetTarget(account)}
-                      className="mr-2 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                      className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                     >
                       Resetar senha
                     </button>

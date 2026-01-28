@@ -21,7 +21,7 @@ export default function ConfirmDialog({
   const buttonClass =
     variant === 'danger'
       ? 'bg-red-600 text-white hover:bg-red-700'
-      : 'bg-indigo-600 text-white hover:bg-indigo-700';
+      : 'bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-hover)]';
 
   return (
     <dialog ref={dialogRef} onClose={onCancel} className="rounded-xl p-0 backdrop:bg-black/50">

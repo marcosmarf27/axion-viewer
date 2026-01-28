@@ -52,7 +52,7 @@ export default function Pagination({ page, totalPages, onPageChange }) {
           onClick={() => onPageChange(p)}
           className={cn(
             'rounded-lg px-3 py-1.5 text-sm',
-            p === page ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'
+            p === page ? 'bg-[var(--color-accent)] text-white' : 'text-slate-600 hover:bg-slate-100'
           )}
         >
           {p}

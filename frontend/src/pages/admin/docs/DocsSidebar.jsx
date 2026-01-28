@@ -34,7 +34,7 @@ export default function DocsSidebar({ activeId }) {
                 className={cn(
                   'flex w-full items-center justify-between rounded-lg px-3 py-1.5 text-left text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-indigo-50 text-indigo-700'
+                    ? 'bg-[var(--color-accent-subtle)] text-[var(--color-accent)]'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 )}
               >
@@ -58,7 +58,7 @@ export default function DocsSidebar({ activeId }) {
                         className={cn(
                           'block w-full truncate rounded-r-lg py-1 pl-3 pr-2 text-left text-xs transition-colors',
                           activeId === sub.id
-                            ? 'border-l-2 border-indigo-500 bg-indigo-50/50 font-medium text-indigo-700'
+                            ? 'border-l-2 border-[var(--color-accent)] bg-[var(--color-accent-subtle)]/50 font-medium text-[var(--color-accent)]'
                             : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700'
                         )}
                       >

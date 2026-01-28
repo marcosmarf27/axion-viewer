@@ -30,7 +30,7 @@ const statCards = [
   {
     key: 'total_carteiras',
     label: 'Carteiras',
-    color: 'bg-indigo-500',
+    color: 'bg-[var(--color-accent)]',
     path: '/admin/carteiras',
     icon: (
       <svg
@@ -335,7 +335,7 @@ export default function AdminDashboard() {
         <div className="flex flex-wrap gap-3">
           <Link
             to="/admin/convert"
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+            className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
           >
             <svg
               className="h-4 w-4"

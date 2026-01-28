@@ -122,7 +122,7 @@ const methodColors = {
 
 const authColors = {
   Bearer: 'bg-slate-100 text-slate-700',
-  Admin: 'bg-indigo-100 text-indigo-700',
+  Admin: 'bg-[rgba(26,54,93,0.08)] text-[var(--color-accent)]',
 };
 
 export default function ReferenciaApi() {

@@ -93,7 +93,7 @@ export default function Autenticacao() {
         <div id="usar-token" className="scroll-mt-6">
           <h3 className="text-lg font-semibold text-slate-800">Usar Token na API</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            Inclua o token no header <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-indigo-600">Authorization</code> de
+            Inclua o token no header <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">Authorization</code> de
             todas as requisicoes:
           </p>
           <div className="mt-4 space-y-4">
@@ -112,12 +112,12 @@ export default function Autenticacao() {
           <div className="mt-4">
             <CodeBlock code={sdkExample} language="javascript" title="Supabase SDK (renovacao automatica)" />
           </div>
-          <div className="mt-4 rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-4">
-            <p className="text-sm font-medium text-indigo-800">Dica</p>
-            <p className="mt-1 text-sm text-indigo-700">
+          <div className="mt-4 rounded-lg border-l-4 border-[var(--color-accent)] bg-[var(--color-accent-subtle)] p-4">
+            <p className="text-sm font-medium text-[var(--color-accent)]">Dica</p>
+            <p className="mt-1 text-sm text-[var(--color-accent)]">
               Para uso via API direta (sem SDK), use o endpoint{' '}
-              <code className="rounded bg-indigo-100 px-1.5 py-0.5 font-mono text-xs text-indigo-900">POST /auth/v1/token?grant_type=refresh_token</code>{' '}
-              passando o <code className="rounded bg-indigo-100 px-1.5 py-0.5 font-mono text-xs text-indigo-900">refresh_token</code> no body.
+              <code className="rounded bg-[rgba(26,54,93,0.08)] px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">POST /auth/v1/token?grant_type=refresh_token</code>{' '}
+              passando o <code className="rounded bg-[rgba(26,54,93,0.08)] px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">refresh_token</code> no body.
             </p>
           </div>
         </div>

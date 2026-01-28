@@ -14,7 +14,7 @@ const statusColors = {
 
 const recuperabilidadeColors = {
   Alta: 'bg-green-100 text-green-700',
-  Potencial: 'bg-indigo-100 text-indigo-700',
+  Potencial: 'bg-[rgba(26,54,93,0.08)] text-[var(--color-accent)]',
   Critica: 'bg-red-100 text-red-700',
   Indefinida: 'bg-slate-100 text-slate-600',
   Nenhuma: 'bg-slate-200 text-slate-800',
@@ -107,7 +107,7 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
         onClick={e => e.stopPropagation()}
       >
         <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-900">
-          <Link2 className="h-5 w-5 text-indigo-600" />
+          <Link2 className="h-5 w-5 text-[var(--color-accent)]" />
           Vincular Documento
         </h2>
 
@@ -129,7 +129,7 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
                   placeholder="Buscar documento por nome ou tipo..."
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
-                  className="block w-full rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="block w-full rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                 />
               </div>
               <p className="mt-1 text-xs text-slate-400">
@@ -167,7 +167,7 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
                     <button
                       onClick={() => handleVincular(doc.id)}
                       disabled={vinculando === doc.id}
-                      className="ml-3 shrink-0 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                      className="ml-3 shrink-0 rounded-lg bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
                     >
                       {vinculando === doc.id ? 'Vinculando...' : 'Vincular'}
                     </button>
@@ -241,7 +241,7 @@ export default function ProcessoDetail() {
       <div className="space-y-4">
         <Link
           to="/admin/processos"
-          className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800"
+          className="inline-flex items-center text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
         >
           &larr; Voltar para Processos
         </Link>
@@ -259,7 +259,7 @@ export default function ProcessoDetail() {
       {/* Link voltar */}
       <Link
         to="/admin/processos"
-        className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800"
+        className="inline-flex items-center text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
       >
         &larr; Voltar para Processos
       </Link>
@@ -328,7 +328,7 @@ export default function ProcessoDetail() {
             Este processo e incidental ao processo principal:{' '}
             <Link
               to={`/admin/processos/${processo.processo_pai.id}`}
-              className="font-medium text-indigo-600 hover:text-indigo-800"
+              className="font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
             >
               {processo.processo_pai.numero_cnj || processo.processo_pai.id}
             </Link>
@@ -360,7 +360,7 @@ export default function ProcessoDetail() {
                     <td className="px-4 py-3 text-sm">
                       <Link
                         to={`/admin/processos/${child.id}`}
-                        className="font-medium text-indigo-600 hover:text-indigo-800"
+                        className="font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                       >
                         {child.numero_cnj}
                       </Link>
@@ -386,7 +386,7 @@ export default function ProcessoDetail() {
         <div className="mb-4 flex justify-end">
           <button
             onClick={() => setVincularOpen(true)}
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+            className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
           >
             <Link2 className="h-4 w-4" />
             Vincular Documento
@@ -438,7 +438,7 @@ export default function ProcessoDetail() {
                             alert('Erro ao abrir preview');
                           }
                         }}
-                        className="mr-3 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                        className="mr-3 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                       >
                         Preview
                       </button>
@@ -458,7 +458,7 @@ export default function ProcessoDetail() {
                             alert('Erro ao baixar documento');
                           }
                         }}
-                        className="text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                        className="text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                       >
                         Download
                       </button>

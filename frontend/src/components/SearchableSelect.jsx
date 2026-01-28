@@ -115,7 +115,7 @@ export default function SearchableSelect({
   };
 
   const inputClass =
-    'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+    'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]';
 
   return (
     <div ref={containerRef} className="relative">
@@ -164,7 +164,7 @@ export default function SearchableSelect({
                   setHighlightedIndex(-1);
                 }}
                 onKeyDown={handleKeyDown}
-                className="w-full rounded-md border border-slate-200 py-1.5 pl-8 pr-3 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="w-full rounded-md border border-slate-200 py-1.5 pl-8 pr-3 text-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
               />
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function SearchableSelect({
                     onMouseEnter={() => setHighlightedIndex(idx)}
                     className={`cursor-pointer px-3 py-2 text-sm ${
                       isSelected
-                        ? 'bg-indigo-50 text-indigo-700'
+                        ? 'bg-[var(--color-accent-subtle)] text-[var(--color-accent)]'
                         : isHighlighted
                           ? 'bg-slate-50'
                           : ''

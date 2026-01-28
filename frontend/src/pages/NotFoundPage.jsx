@@ -7,7 +7,7 @@ export default function NotFoundPage() {
       <p className="mt-4 text-lg text-slate-600">Pagina nao encontrada</p>
       <Link
         to="/"
-        className="mt-6 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+        className="mt-6 rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
       >
         Voltar ao inicio
       </Link>

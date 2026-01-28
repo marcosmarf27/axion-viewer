@@ -29,7 +29,7 @@ export default function TourProgressCard() {
       <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm flex items-center justify-between">
         <button
           onClick={resetTour}
-          className="text-sm text-indigo-600 hover:text-indigo-700"
+          className="text-sm text-[var(--color-accent)] hover:text-[var(--color-accent)]"
         >
           Reexibir tour de configuracao
         </button>
@@ -83,7 +83,7 @@ export default function TourProgressCard() {
         </div>
         <div className="h-2 overflow-hidden rounded-full bg-slate-100">
           <div
-            className="h-full rounded-full bg-indigo-600 transition-all duration-500"
+            className="h-full rounded-full bg-[var(--color-accent)] transition-all duration-500"
             style={{ width: `${percent}%` }}
           />
         </div>
@@ -102,8 +102,8 @@ export default function TourProgressCard() {
                   onClick={() => toggleManualStep(step.id)}
                   className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border transition-colors ${
                     done
-                      ? 'border-indigo-600 bg-indigo-600 text-white'
-                      : 'border-slate-300 hover:border-indigo-400'
+                      ? 'border-[var(--color-accent)] bg-[var(--color-accent)] text-white'
+                      : 'border-slate-300 hover:border-[var(--color-accent)]'
                   }`}
                 >
                   {done && (
@@ -132,7 +132,7 @@ export default function TourProgressCard() {
                 className={`text-sm transition-colors ${
                   done
                     ? 'text-slate-400 line-through'
-                    : 'text-slate-700 hover:text-indigo-600'
+                    : 'text-slate-700 hover:text-[var(--color-accent)]'
                 }`}
               >
                 {step.title}
@@ -146,7 +146,7 @@ export default function TourProgressCard() {
       <div className="flex gap-3">
         <button
           onClick={startTour}
-          className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+          className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[var(--color-accent-hover)]"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path

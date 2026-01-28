@@ -80,9 +80,9 @@ export default function Cadastros() {
               </div>
             ))}
           </div>
-          <div className="mt-4 rounded-lg border-l-4 border-indigo-500 bg-indigo-50 p-4">
-            <p className="text-sm font-medium text-indigo-800">Importante</p>
-            <p className="mt-1 text-sm text-indigo-700">
+          <div className="mt-4 rounded-lg border-l-4 border-[var(--color-accent)] bg-[var(--color-accent-subtle)] p-4">
+            <p className="text-sm font-medium text-[var(--color-accent)]">Importante</p>
+            <p className="mt-1 text-sm text-[var(--color-accent)]">
               Todos os endpoints de criacao requerem perfil de <strong>administrador</strong>.
               Endpoints de listagem e leitura sao acessiveis por qualquer usuario autenticado
               (admin ou cliente com acesso).
@@ -106,7 +106,7 @@ export default function Cadastros() {
           <h3 className="text-lg font-semibold text-slate-800">Carteiras</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
             Carteiras agrupam casos de um cliente. Informe o{' '}
-            <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-indigo-600">cliente_id</code> ao criar:
+            <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">cliente_id</code> ao criar:
           </p>
           <div className="mt-4">
             <CodeBlock code={criarCarteira} language="bash" title="Criar Carteira" />
@@ -161,7 +161,7 @@ export default function Cadastros() {
                 ].map(([param, type, def, desc]) => (
                   <tr key={param}>
                     <td className="px-3 py-2">
-                      <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-indigo-600">{param}</code>
+                      <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-[var(--color-accent)]">{param}</code>
                     </td>
                     <td className="px-3 py-2 text-slate-600">{type}</td>
                     <td className="px-3 py-2 text-slate-600">

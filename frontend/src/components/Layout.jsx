@@ -137,7 +137,7 @@ function UserAvatar({ name, email }) {
     .toUpperCase();
 
   return (
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-semibold text-indigo-700">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-accent)] text-xs font-semibold text-white">
       {initials || '?'}
     </div>
   );
@@ -158,7 +158,7 @@ export default function Layout() {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-screen bg-[var(--color-bg)]">
       {/* Overlay mobile */}
       {sidebarOpen && (
         <div
@@ -170,13 +170,13 @@ export default function Layout() {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-slate-900 text-white transition-transform md:static md:translate-x-0',
+          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-[var(--color-border)] bg-white transition-transform md:static md:translate-x-0',
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         {/* Sidebar header */}
-        <div className="flex h-16 items-center gap-3 border-b border-slate-800 px-5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
+        <div className="flex h-16 items-center gap-3 border-b border-[var(--color-border-subtle)] px-5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-accent)]">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -193,14 +193,14 @@ export default function Layout() {
               <path d="M9 21h6" />
             </svg>
           </div>
-          <span className="text-base font-bold tracking-tight text-white">Axion Viewer</span>
+          <span className="text-base font-bold tracking-tight text-[var(--color-text)]">Axion Viewer</span>
         </div>
 
         {/* Navigation groups */}
         <nav className="flex-1 overflow-y-auto px-3 py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {navGroups.map((group, gi) => (
             <div key={group.label} className={cn(gi > 0 && 'mt-6')}>
-              <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
+              <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-[var(--color-text-subtle)]">
                 {group.label}
               </p>
               <ul className="space-y-0.5">
@@ -215,8 +215,8 @@ export default function Layout() {
                         className={cn(
                           'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                           active
-                            ? 'border-r-2 border-indigo-400 bg-indigo-600/10 text-indigo-400'
-                            : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+                            ? 'bg-[var(--color-accent)] text-white'
+                            : 'text-[var(--color-text-muted)] hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-text)]'
                         )}
                       >
                         {iconMap[item.icon]}
@@ -231,30 +231,30 @@ export default function Layout() {
         </nav>
 
         {/* Sidebar footer */}
-        <div className="border-t border-slate-800 px-5 py-3">
+        <div className="border-t border-[var(--color-border-subtle)] px-5 py-3">
           {profile?.role === 'admin' && (
             tourHidden ? (
               <div className="relative mb-2">
                 <button
                   onClick={() => setShowReactivate(!showReactivate)}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-800 hover:text-slate-200"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-[var(--color-text-subtle)] transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-text)]"
                   title="Tour guiado desativado"
                 >
                   <HelpCircle className="h-4 w-4" />
                 </button>
                 {showReactivate && (
-                  <div className="absolute bottom-full left-0 mb-2 w-48 rounded-lg border border-slate-700 bg-slate-800 p-3 shadow-lg">
-                    <p className="mb-2 text-xs text-slate-300">Tour guiado esta desativado.</p>
+                  <div className="absolute bottom-full left-0 mb-2 w-48 rounded-lg border border-[var(--color-border)] bg-white p-3 shadow-lg">
+                    <p className="mb-2 text-xs text-[var(--color-text-muted)]">Tour guiado esta desativado.</p>
                     <div className="flex gap-2">
                       <button
                         onClick={() => { showTour(); setShowReactivate(false); }}
-                        className="rounded bg-indigo-600 px-2 py-1 text-xs text-white hover:bg-indigo-700"
+                        className="rounded bg-[var(--color-accent)] px-2 py-1 text-xs text-white hover:bg-[var(--color-accent-hover)]"
                       >
                         Reativar
                       </button>
                       <button
                         onClick={() => setShowReactivate(false)}
-                        className="rounded px-2 py-1 text-xs text-slate-400 hover:text-slate-200"
+                        className="rounded px-2 py-1 text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
                       >
                         Fechar
                       </button>
@@ -268,14 +268,14 @@ export default function Layout() {
                   setSidebarOpen(false);
                   startTour();
                 }}
-                className="mb-2 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-400 transition-colors hover:bg-slate-800 hover:text-slate-200"
+                className="mb-2 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-text)]"
               >
                 <HelpCircle className="h-4 w-4" />
                 Tour Guiado
               </button>
             )
           )}
-          <div className="text-[11px] text-slate-600">Axion Viewer v3.0</div>
+          <div className="text-[11px] text-[var(--color-text-subtle)]">Axion Viewer v3.0</div>
         </div>
       </aside>
 

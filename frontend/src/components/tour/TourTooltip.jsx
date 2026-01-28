@@ -30,7 +30,7 @@ export default function TourTooltip({
           <span
             key={i}
             className={`h-1.5 w-1.5 rounded-full transition-colors ${
-              i === stepIndex ? 'bg-indigo-400' : 'bg-slate-600'
+              i === stepIndex ? 'bg-[var(--color-accent)]' : 'bg-slate-600'
             }`}
           />
         ))}
@@ -55,7 +55,7 @@ export default function TourTooltip({
           )}
           <button
             onClick={onNext}
-            className="rounded-lg bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700"
+            className="rounded-lg bg-[var(--color-accent)] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[var(--color-accent-hover)]"
           >
             {isLast ? 'Concluir' : 'Proximo'}
           </button>

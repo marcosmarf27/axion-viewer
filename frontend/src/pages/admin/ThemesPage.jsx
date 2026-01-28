@@ -295,7 +295,7 @@ export default function ThemesPage() {
         <p className="text-sm text-red-600">{error}</p>
         <button
           onClick={() => loadThemes()}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
         >
           Tentar novamente
         </button>
@@ -338,7 +338,7 @@ export default function ThemesPage() {
             <h3 className="text-sm font-semibold text-slate-900">Temas</h3>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
+              className="rounded-lg bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:bg-[var(--color-accent-hover)]"
             >
               + Novo Tema
             </button>
@@ -350,7 +350,7 @@ export default function ThemesPage() {
                 onClick={() => setSelectedTheme(theme)}
                 className={`mb-1 flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
                   selectedTheme?.name === theme.name
-                    ? 'bg-indigo-50 ring-1 ring-indigo-200'
+                    ? 'bg-[var(--color-accent-subtle)] ring-1 ring-[rgba(26,54,93,0.2)]'
                     : 'hover:bg-slate-50'
                 }`}
               >
@@ -374,7 +374,7 @@ export default function ThemesPage() {
                       {theme.name}
                     </span>
                     {theme.name === defaultTheme && (
-                      <span className="shrink-0 rounded bg-indigo-100 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-700">
+                      <span className="shrink-0 rounded bg-[rgba(26,54,93,0.08)] px-1.5 py-0.5 text-[10px] font-semibold text-[var(--color-accent)]">
                         Padrao
                       </span>
                     )}
@@ -400,7 +400,7 @@ export default function ThemesPage() {
                       type="text"
                       value={newThemeName}
                       onChange={e => setNewThemeName(e.target.value)}
-                      className="mt-1 block w-48 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                      className="mt-1 block w-48 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                       placeholder="Nome do tema"
                       autoFocus
                       onKeyDown={e => {
@@ -481,7 +481,7 @@ export default function ThemesPage() {
                 <button
                   onClick={handleSave}
                   disabled={!hasChanges() || saving}
-                  className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                  className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
                 >
                   {saving ? 'Salvando...' : 'Salvar'}
                 </button>
@@ -511,7 +511,7 @@ export default function ThemesPage() {
                           type="text"
                           value={value}
                           onChange={e => handleColorChange(key, e.target.value)}
-                          className="block w-full rounded-lg border border-slate-300 px-2 py-1 text-xs shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                          className="block w-full rounded-lg border border-slate-300 px-2 py-1 text-xs shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                         />
                       </div>
                     </div>
@@ -543,7 +543,7 @@ export default function ThemesPage() {
                             max="360"
                             value={numValue}
                             onChange={e => handleGradientChange(key, e.target.value)}
-                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-indigo-600"
+                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-[var(--color-accent)]"
                           />
                           <span className="shrink-0 text-xs font-medium text-slate-500">
                             {value}
@@ -579,7 +579,7 @@ export default function ThemesPage() {
                             max="10"
                             value={numValue}
                             onChange={e => handleBorderChange(key, e.target.value)}
-                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-indigo-600"
+                            className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-[var(--color-accent)]"
                           />
                           <span className="shrink-0 text-xs font-medium text-slate-500">
                             {value}
@@ -721,7 +721,7 @@ export default function ThemesPage() {
                     }))
                   }
                   placeholder="ex: financeiro, medico, imobiliario"
-                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                 />
                 <p className="mt-1 text-xs text-slate-500">
                   Apenas letras, numeros e hifens. Sera convertido para minusculas.
@@ -740,7 +740,7 @@ export default function ThemesPage() {
                     }))
                   }
                   placeholder="ex: Tema para relatorios financeiros"
-                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                 />
               </div>
 
@@ -767,7 +767,7 @@ export default function ThemesPage() {
                         primary_color: e.target.value,
                       }))
                     }
-                    className="block w-32 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="block w-32 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                   />
                 </div>
               </div>
@@ -824,7 +824,7 @@ export default function ThemesPage() {
                     }))
                   }
                   placeholder="https://exemplo.com/logo.png"
-                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                 />
               </div>
             </div>
@@ -841,7 +841,7 @@ export default function ThemesPage() {
               <button
                 onClick={handleCreateTheme}
                 disabled={creating || !newTheme.name.trim()}
-                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
               >
                 {creating ? 'Criando...' : 'Criar Tema'}
               </button>

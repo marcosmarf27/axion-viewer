@@ -157,7 +157,7 @@ export default function SharingPage() {
           <select
             value={selectedCarteiraId}
             onChange={e => setSelectedCarteiraId(e.target.value)}
-            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           >
             <option value="">Selecione uma carteira</option>
             {carteiras.map(c => (
@@ -265,7 +265,7 @@ export default function SharingPage() {
                     <select
                       value={selectedProfileId}
                       onChange={e => setSelectedProfileId(e.target.value)}
-                      className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                      className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
                     >
                       <option value="">Selecione um usuario</option>
                       {profiles.map(p => (
@@ -280,7 +280,7 @@ export default function SharingPage() {
                 <button
                   onClick={handleGrantAccess}
                   disabled={!selectedProfileId || granting}
-                  className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+                  className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
                 >
                   {granting ? 'Concedendo...' : 'Conceder Acesso'}
                 </button>

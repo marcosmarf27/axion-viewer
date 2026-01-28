@@ -12,7 +12,7 @@ const RECUPERABILIDADES = ['Alta', 'Potencial', 'Critica', 'Indefinida', 'Nenhum
 const STATUSES = ['em_andamento', 'concluido', 'arquivado'];
 
 const inputClass =
-  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
+  'mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]';
 
 const emptyForm = {
   nome: '',
@@ -34,7 +34,7 @@ const recuperabilidadeBadge = valor => {
     case 'Alta':
       return 'bg-green-100 text-green-700';
     case 'Potencial':
-      return 'bg-indigo-100 text-indigo-700';
+      return 'bg-[rgba(26,54,93,0.08)] text-[var(--color-accent)]';
     case 'Critica':
       return 'bg-red-100 text-red-700';
     case 'Indefinida':
@@ -315,7 +315,7 @@ function CasoFormModal({ open, editing, carteiras, defaultCarteiraId, onSave, on
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+              className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
             >
               {saving ? 'Salvando...' : editing ? 'Salvar' : 'Criar'}
             </button>
@@ -423,7 +423,7 @@ export default function CasosPage() {
         <h1 className="text-2xl font-bold text-slate-900">{pageTitle}</h1>
         <button
           onClick={openCreate}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
         >
           Novo Caso
         </button>
@@ -440,7 +440,7 @@ export default function CasosPage() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            className="w-full max-w-xs rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full max-w-xs rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           />
         </div>
 
@@ -452,7 +452,7 @@ export default function CasosPage() {
               setFilterCarteira(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           >
             <option value="">Todas</option>
             {carteiras.map(c => (
@@ -471,7 +471,7 @@ export default function CasosPage() {
               setFilterTese(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           >
             <option value="">Todas</option>
             {TESES.map(t => (
@@ -490,7 +490,7 @@ export default function CasosPage() {
               setFilterRecuperabilidade(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           >
             <option value="">Todas</option>
             {RECUPERABILIDADES.map(r => (
@@ -509,7 +509,7 @@ export default function CasosPage() {
               setFilterStatus(e.target.value);
               setPage(1);
             }}
-            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
           >
             <option value="">Todos</option>
             {STATUSES.map(s => (
@@ -541,7 +541,7 @@ export default function CasosPage() {
             !filterStatus && (
               <button
                 onClick={openCreate}
-                className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+                className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--color-accent-hover)]"
               >
                 Novo Caso
               </button>
@@ -580,7 +580,7 @@ export default function CasosPage() {
                     <td className="px-4 py-3 text-sm font-medium">
                       <Link
                         to={`/admin/casos/${caso.id}/processos`}
-                        className="text-indigo-600 hover:text-indigo-800 hover:underline"
+                        className="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] hover:underline"
                       >
                         {caso.nome}
                       </Link>
@@ -624,7 +624,7 @@ export default function CasosPage() {
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => openEdit(caso)}
-                        className="mr-2 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                        className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
                       >
                         Editar
                       </button>
