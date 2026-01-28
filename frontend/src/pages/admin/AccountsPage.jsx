@@ -9,6 +9,7 @@ const emptyAccountForm = {
   email: '',
   password: '',
   full_name: '',
+  role: 'client',
 };
 
 function FeedbackMessage({ message, type, onDismiss }) {
@@ -64,6 +65,7 @@ function CreateAccountModal({ open, onSave, onClose }) {
         email: form.email.trim(),
         password: form.password,
         full_name: form.full_name.trim() || undefined,
+        role: form.role,
       });
       onClose();
     } catch (err) {
@@ -117,6 +119,18 @@ function CreateAccountModal({ open, onSave, onClose }) {
               onChange={e => setForm({ ...form, full_name: e.target.value })}
               className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
             />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700">Perfil *</label>
+            <select
+              value={form.role}
+              onChange={e => setForm({ ...form, role: e.target.value })}
+              className="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)]"
+            >
+              <option value="client">Cliente</option>
+              <option value="admin">Administrador</option>
+            </select>
           </div>
 
           <div className="flex justify-end gap-3 pt-2">
