@@ -145,6 +145,42 @@ body {
   pointer-events: none;
 }
 
+/* Navy panel grid background */
+.navy-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridPulse 8s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Subtle scanline overlay for terminal panel */
+.navy-scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(212, 168, 67, 0.006) 2px,
+    rgba(212, 168, 67, 0.006) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Gold glow pulse */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
 /* ── Tour ── */
 .tour-tooltip-enter {
   animation: fadeIn 0.2s ease-out both;

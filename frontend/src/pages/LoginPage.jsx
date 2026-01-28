@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import TypewriterASCII from '@/components/TypewriterASCII';
 
 export default function LoginPage() {
   const { user, loading, signIn } = useAuth();
@@ -245,148 +246,107 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* ━━━ Right Panel — Branding ━━━ */}
+      {/* ━━━ Right Panel — Terminal Branding ━━━ */}
       <div
-        className="relative hidden overflow-hidden lg:flex lg:w-1/2 lg:flex-col lg:items-center lg:justify-center"
+        className="relative hidden overflow-hidden lg:flex lg:w-1/2 lg:flex-col navy-scanline"
         style={{
-          background: 'linear-gradient(160deg, #1a365d 0%, #234578 50%, #1a365d 100%)',
+          background: 'linear-gradient(160deg, #0f1f36 0%, #1a365d 40%, #162d4d 100%)',
         }}
       >
-        {/* Subtle decorative elements */}
+        {/* Grid background */}
+        <div className="navy-grid absolute inset-0" />
+
+        {/* Ambient glow — gold */}
         <div
           className="absolute"
           style={{
-            right: '-120px',
-            top: '-120px',
+            left: '50%',
+            top: '45%',
+            width: '600px',
+            height: '600px',
+            transform: 'translate(-50%, -50%)',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+            animation: 'pulseGlow 6s ease-in-out infinite',
+          }}
+        />
+
+        {/* Corner accent */}
+        <div
+          className="absolute"
+          style={{
+            right: '-100px',
+            top: '-100px',
             width: '400px',
             height: '400px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)',
+            filter: 'blur(40px)',
           }}
         />
+
+        {/* Top bar — terminal chrome */}
         <div
-          className="absolute"
-          style={{
-            left: '-80px',
-            bottom: '-80px',
-            width: '300px',
-            height: '300px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(139,105,20,0.08) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Branding content */}
-        <div className="relative z-10 text-center login-slide-in" style={{ maxWidth: '360px' }}>
-          {/* Logo mark */}
-          <div
-            className="mx-auto mb-8 flex items-center justify-center"
-            style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '12px',
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: 'rgba(255,255,255,0.06)',
-            }}
-          >
+          className="relative z-10 flex items-center justify-between px-7 pt-6 pb-2 login-fade-in"
+        >
+          <div className="flex items-center gap-2">
+            <span className="block h-2.5 w-2.5 rounded-full" style={{ background: 'rgba(255,255,255,0.08)' }} />
+            <span className="block h-2.5 w-2.5 rounded-full" style={{ background: 'rgba(255,255,255,0.08)' }} />
+            <span className="block h-2.5 w-2.5 rounded-full" style={{ background: 'rgba(255,255,255,0.08)' }} />
             <span
               style={{
-                fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: '28px',
-                fontWeight: 600,
-                color: '#ffffff',
+                marginLeft: '12px',
+                fontFamily: '"IBM Plex Mono", monospace',
+                fontSize: '11px',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.2)',
+                letterSpacing: '0.04em',
               }}
             >
-              A
-            </span>
-            <span
-              style={{
-                fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: '28px',
-                fontWeight: 600,
-                color: '#d4a843',
-              }}
-            >
-              .
+              axioma-terminal
             </span>
           </div>
-
-          {/* Brand name */}
-          <div className="mb-3">
+          <div className="flex items-center gap-2" style={{ animation: 'fadeIn 1.5s ease-out 0.6s both' }}>
+            <span
+              className="block h-1.5 w-1.5 rounded-full"
+              style={{
+                backgroundColor: '#d4a843',
+                boxShadow: '0 0 6px rgba(212, 168, 67, 0.5)',
+                animation: 'pulseGlow 3s ease-in-out infinite',
+              }}
+            />
             <span
               style={{
-                fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: '36px',
-                fontWeight: 600,
-                color: '#ffffff',
-                letterSpacing: '-0.01em',
+                fontFamily: '"IBM Plex Mono", monospace',
+                fontSize: '10px',
+                fontWeight: 400,
+                letterSpacing: '0.08em',
+                color: 'rgba(255,255,255,0.3)',
+                textTransform: 'uppercase',
               }}
             >
-              Axioma
-            </span>
-            <span
-              style={{
-                fontFamily: '"IBM Plex Sans", sans-serif',
-                fontSize: '36px',
-                fontWeight: 600,
-                color: '#d4a843',
-              }}
-            >
-              .
+              Sistema ativo
             </span>
           </div>
-
-          {/* Subtitle */}
-          <p
-            style={{
-              fontFamily: '"IBM Plex Sans", sans-serif',
-              fontSize: '12px',
-              fontWeight: 500,
-              color: 'rgba(255,255,255,0.5)',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              marginBottom: '32px',
-            }}
-          >
-            Intelligence
-          </p>
-
-          {/* Divider */}
-          <div
-            className="mx-auto mb-8"
-            style={{
-              width: '40px',
-              height: '1px',
-              background: 'rgba(255,255,255,0.15)',
-            }}
-          />
-
-          {/* Tagline */}
-          <p
-            style={{
-              fontFamily: '"IBM Plex Sans", sans-serif',
-              fontSize: '15px',
-              fontWeight: 300,
-              color: 'rgba(255,255,255,0.55)',
-              lineHeight: '1.7',
-            }}
-          >
-            Plataforma de Gestao
-            <br />
-            Juridica Inteligente
-          </p>
         </div>
+
+        {/* Divider */}
+        <div className="relative z-10 mx-7" style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }} />
+
+        {/* ASCII typewriter */}
+        <TypewriterASCII className="relative z-[3] flex-1" />
 
         {/* Bottom bar */}
         <div
-          className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-8 pb-6 login-fade-in"
+          className="relative z-10 flex items-center justify-between px-7 pb-6 pt-2 login-fade-in"
         >
           <span
             style={{
               fontFamily: '"IBM Plex Mono", monospace',
               fontSize: '10px',
               fontWeight: 400,
-              color: 'rgba(255,255,255,0.2)',
+              color: 'rgba(255,255,255,0.15)',
               letterSpacing: '0.06em',
             }}
           >
@@ -397,7 +357,7 @@ export default function LoginPage() {
               fontFamily: '"IBM Plex Mono", monospace',
               fontSize: '10px',
               fontWeight: 400,
-              color: 'rgba(255,255,255,0.2)',
+              color: 'rgba(255,255,255,0.15)',
               letterSpacing: '0.06em',
             }}
           >
