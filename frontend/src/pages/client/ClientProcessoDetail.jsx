@@ -58,110 +58,18 @@ function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('pt-BR');
 }
 
-function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
-  const [documentos, setDocumentos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [vinculando, setVinculando] = useState(null);
-
-  useEffect(() => {
-    if (!open) return;
-    setLoading(true);
-    setError(null);
-    api
-      .get('/documentos', { params: { sem_processo: true } })
-      .then(({ data }) => {
-        setDocumentos(data.data || data || []);
-      })
-      .catch(err => {
-        setError(err.response?.data?.error || err.message);
-      })
-      .finally(() => setLoading(false));
-  }, [open]);
-
-  if (!open) return null;
-
-  const handleVincular = async docId => {
-    setVinculando(docId);
-    try {
-      await api.put(`/documentos/${docId}`, { processo_id: processoId });
-      setDocumentos(prev => prev.filter(d => d.id !== docId));
-      onVinculado();
-    } catch (err) {
-      alert('Erro ao vincular: ' + (err.response?.data?.error || err.message));
-    } finally {
-      setVinculando(null);
-    }
-  };
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-      onClick={onClose}
-    >
-      <div
-        className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl"
-        onClick={e => e.stopPropagation()}
-      >
-        <h2 className="mb-4 text-lg font-semibold text-slate-900">Vincular Documento</h2>
-
-        {error && <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</div>}
-
-        {loading ? (
-          <LoadingSpinner className="py-8" />
-        ) : documentos.length === 0 ? (
-          <p className="py-8 text-center text-sm text-slate-500">
-            Nenhum documento disponivel para vincular.
-          </p>
-        ) : (
-          <div className="max-h-80 space-y-2 overflow-y-auto">
-            {documentos.map(doc => (
-              <div
-                key={doc.id}
-                className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-slate-900">
-                    {doc.title || doc.filename}
-                  </p>
-                  <p className="text-xs text-slate-500">
-                    {doc.file_type || 'Documento'} — {formatDate(doc.created_at)}
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleVincular(doc.id)}
-                  disabled={vinculando === doc.id}
-                  className="ml-3 shrink-0 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
-                >
-                  {vinculando === doc.id ? 'Vinculando...' : 'Vincular'}
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="mt-4 flex justify-end">
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
-          >
-            Fechar
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default function ProcessoDetail() {
+export default function ClientProcessoDetail() {
   const { id } = useParams();
   const [processo, setProcesso] = useState(null);
   const [documentos, setDocumentos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [docsLoading, setDocsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [vincularOpen, setVincularOpen] = useState(false);
+
+  useEffect(() => {
+    fetchProcesso();
+    fetchDocumentos();
+  }, [id]);
 
   const fetchProcesso = async () => {
     setLoading(true);
@@ -190,11 +98,6 @@ export default function ProcessoDetail() {
     }
   };
 
-  useEffect(() => {
-    fetchProcesso();
-    fetchDocumentos();
-  }, [id]);
-
   if (loading) {
     return <LoadingSpinner className="py-20" size="lg" />;
   }
@@ -203,10 +106,10 @@ export default function ProcessoDetail() {
     return (
       <div className="space-y-4">
         <Link
-          to="/admin/processos"
+          to="/carteiras"
           className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800"
         >
-          &larr; Voltar para Processos
+          &larr; Voltar
         </Link>
         <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">{error}</div>
       </div>
@@ -216,16 +119,29 @@ export default function ProcessoDetail() {
   if (!processo) return null;
 
   const incidentais = processo.processos_incidentais || [];
+  const casoId = processo.caso_id;
 
   return (
     <div className="space-y-6">
-      {/* Link voltar */}
-      <Link
-        to="/admin/processos"
-        className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800"
-      >
-        &larr; Voltar para Processos
-      </Link>
+      {/* Breadcrumb */}
+      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+        <Link to="/carteiras" className="font-medium text-indigo-600 hover:text-indigo-800">
+          Carteiras
+        </Link>
+        <span>/</span>
+        {casoId && (
+          <>
+            <Link
+              to={`/casos/${casoId}/processos`}
+              className="font-medium text-indigo-600 hover:text-indigo-800"
+            >
+              Processos
+            </Link>
+            <span>/</span>
+          </>
+        )}
+        <span className="text-slate-900">{processo.numero_cnj}</span>
+      </div>
 
       {/* Header */}
       <Card>
@@ -290,7 +206,7 @@ export default function ProcessoDetail() {
           <p className="text-sm text-slate-700">
             Este processo e incidental ao processo principal:{' '}
             <Link
-              to={`/admin/processos/${processo.processo_pai.id}`}
+              to={`/processos/${processo.processo_pai.id}`}
               className="font-medium text-indigo-600 hover:text-indigo-800"
             >
               {processo.processo_pai.numero_cnj || processo.processo_pai.id}
@@ -322,7 +238,7 @@ export default function ProcessoDetail() {
                   <tr key={child.id} className="hover:bg-slate-50 transition-colors">
                     <td className="px-4 py-3 text-sm">
                       <Link
-                        to={`/admin/processos/${child.id}`}
+                        to={`/processos/${child.id}`}
                         className="font-medium text-indigo-600 hover:text-indigo-800"
                       >
                         {child.numero_cnj}
@@ -344,17 +260,8 @@ export default function ProcessoDetail() {
         </Card>
       )}
 
-      {/* Documentos vinculados */}
-      <Card title="Documentos Vinculados">
-        <div className="mb-4 flex justify-end">
-          <button
-            onClick={() => setVincularOpen(true)}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
-          >
-            Vincular Documento
-          </button>
-        </div>
-
+      {/* Documentos */}
+      <Card title="Documentos">
         {docsLoading ? (
           <LoadingSpinner className="py-8" />
         ) : documentos.length === 0 ? (
@@ -415,14 +322,6 @@ export default function ProcessoDetail() {
           </div>
         )}
       </Card>
-
-      {/* Modal vincular documento */}
-      <VincularDocumentoModal
-        open={vincularOpen}
-        processoId={id}
-        onClose={() => setVincularOpen(false)}
-        onVinculado={fetchDocumentos}
-      />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { ProtectedRoute, AdminRoute } from '@/components/ProtectedRoute';
 import Layout from '@/components/Layout';
-import ClientLayout from '@/components/ClientLayout';
 import LoginPage from '@/pages/LoginPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 import DashboardRedirect from '@/pages/DashboardRedirect';
@@ -20,7 +19,10 @@ import SharingPage from '@/pages/admin/SharingPage';
 import DocsPage from '@/pages/admin/DocsPage';
 
 // Client pages
-import ClientPanel from '@/pages/client/ClientPanel';
+import ClientCarteirasPage from '@/pages/client/ClientCarteirasPage';
+import ClientCasosPage from '@/pages/client/ClientCasosPage';
+import ClientProcessosPage from '@/pages/client/ClientProcessosPage';
+import ClientProcessoDetail from '@/pages/client/ClientProcessoDetail';
 
 export default function App() {
   return (
@@ -30,10 +32,10 @@ export default function App() {
 
       {/* Protected (authenticated) */}
       <Route element={<ProtectedRoute />}>
-        {/* Admin routes (Layout dark sidebar) */}
         <Route element={<Layout />}>
           <Route index element={<DashboardRedirect />} />
 
+          {/* Admin routes */}
           <Route element={<AdminRoute />}>
             <Route path="admin/clientes" element={<ClientesPage />} />
             <Route path="admin/carteiras" element={<CarteirasPage />} />
@@ -49,11 +51,12 @@ export default function App() {
             <Route path="admin/sharing" element={<SharingPage />} />
             <Route path="admin/docs" element={<DocsPage />} />
           </Route>
-        </Route>
 
-        {/* Client routes (ClientLayout light sidebar) */}
-        <Route path="portal" element={<ClientLayout />}>
-          <Route index element={<ClientPanel />} />
+          {/* Client routes */}
+          <Route path="carteiras" element={<ClientCarteirasPage />} />
+          <Route path="carteiras/:id/casos" element={<ClientCasosPage />} />
+          <Route path="casos/:id/processos" element={<ClientProcessosPage />} />
+          <Route path="processos/:id" element={<ClientProcessoDetail />} />
         </Route>
       </Route>
 
