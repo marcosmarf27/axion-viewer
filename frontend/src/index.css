@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import 'tailwindcss';
 
 /* ── Keyframes ── */
@@ -34,19 +34,21 @@
   }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-@keyframes gridPulse {
-  0%, 100% { opacity: 0.03; }
-  50% { opacity: 0.06; }
+/* ── Design System Axioma v2 ── */
+:root {
+  --color-accent: #1a365d;
+  --color-accent-hover: #234578;
+  --color-accent-subtle: rgba(26, 54, 93, 0.06);
+  --color-accent-gold: #8b6914;
+  --color-accent-gold-subtle: rgba(139, 105, 20, 0.08);
+  --color-bg: #f5f6f8;
+  --color-bg-elevated: #ffffff;
+  --color-border: #dfe1e5;
+  --color-border-subtle: #e8eaed;
+  --color-text: #1a1d21;
+  --color-text-muted: #5f6368;
+  --color-text-subtle: #80868b;
+  --color-danger: #c5221f;
 }
 
 /* ── Base ── */
@@ -59,10 +61,10 @@ body,
 
 body {
   margin: 0;
-  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0a0a0b;
+  background-color: var(--color-bg);
 }
 
 /* ── Login page utilities ── */
@@ -86,85 +88,51 @@ body {
   animation: slideInLeft 0.8s ease-out 0.2s both;
 }
 
-/* Scanline overlay for terminal panel */
-.terminal-scanline::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(16, 185, 129, 0.008) 2px,
-    rgba(16, 185, 129, 0.008) 4px
-  );
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Animated grid background */
-.terminal-grid {
-  background-image:
-    linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-  animation: gridPulse 8s ease-in-out infinite;
-}
-
-/* Glass form card */
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
+/* Login card — clean elevated surface */
+.login-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
   transition: border-color 0.3s ease;
 }
 
-.glass-card:focus-within {
-  border-color: rgba(16, 185, 129, 0.2);
+.login-card:focus-within {
+  border-color: var(--color-border);
 }
 
-/* Input styling for dark theme */
+/* Input styling — light theme */
 .login-input {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #e2e8f0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 6px;
   transition: all 0.25s ease;
 }
 
 .login-input::placeholder {
-  color: rgba(148, 163, 184, 0.5);
+  color: var(--color-text-subtle);
 }
 
 .login-input:focus {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
+  background: var(--color-bg-elevated);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(26, 54, 93, 0.06);
   outline: none;
 }
 
-/* Submit button */
+/* Submit button — navy blue accent */
 .login-button {
-  background: linear-gradient(135deg, #059669, #10b981);
+  background: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
   transition: all 0.25s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.login-button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.login-button:hover::before {
-  opacity: 1;
 }
 
 .login-button:hover {
-  box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+  background: var(--color-accent-hover);
+  box-shadow: 0 1px 4px rgba(26, 54, 93, 0.2);
   transform: translateY(-1px);
 }
 

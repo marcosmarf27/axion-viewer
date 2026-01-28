@@ -168,7 +168,7 @@ export default function ProcessoDetail() {
     setError(null);
     try {
       const { data } = await api.get(`/processos/${id}`);
-      setProcesso(data);
+      setProcesso(data.data);
     } catch (err) {
       setError(err.response?.data?.error || err.message);
     } finally {
@@ -391,22 +391,39 @@ export default function ProcessoDetail() {
                       {formatDate(doc.created_at)}
                     </td>
                     <td className="px-4 py-3 text-right">
-                      {doc.signed_url && (
-                        <a
-                          href={doc.signed_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mr-3 text-sm font-medium text-indigo-600 hover:text-indigo-800"
-                        >
-                          Preview
-                        </a>
-                      )}
-                      <a
-                        href={`/api/download/${doc.id}`}
+                      <button
+                        onClick={async () => {
+                          try {
+                            const { data: res } = await api.get(`/preview/${doc.id}`);
+                            if (res.signed_url) window.open(res.signed_url, '_blank');
+                          } catch {
+                            alert('Erro ao abrir preview');
+                          }
+                        }}
+                        className="mr-3 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                      >
+                        Preview
+                      </button>
+                      <button
+                        onClick={async () => {
+                          try {
+                            const { data: res } = await api.get(`/preview/${doc.id}`);
+                            if (res.signed_url) {
+                              const link = document.createElement('a');
+                              link.href = res.signed_url;
+                              link.target = '_blank';
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                            }
+                          } catch {
+                            alert('Erro ao baixar documento');
+                          }
+                        }}
                         className="text-sm font-medium text-indigo-600 hover:text-indigo-800"
                       >
                         Download
-                      </a>
+                      </button>
                     </td>
                   </tr>
                 ))}

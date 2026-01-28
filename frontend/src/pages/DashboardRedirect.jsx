@@ -1,8 +1,13 @@
+import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import AdminDashboard from './admin/AdminDashboard';
-import ClientDashboard from './client/ClientDashboard';
 
 export default function DashboardRedirect() {
-  const { isAdmin } = useAuth();
-  return isAdmin ? <AdminDashboard /> : <ClientDashboard />;
+  const { isAdmin, profile } = useAuth();
+
+  // Aguarda o profile carregar antes de decidir a rota
+  if (!profile) return null;
+
+  if (!isAdmin) return <Navigate to="/portal" replace />;
+  return <AdminDashboard />;
 }
