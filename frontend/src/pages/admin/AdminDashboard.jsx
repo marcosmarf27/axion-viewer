@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import api from '@/lib/api';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import TourProgressCard from '@/components/tour/TourProgressCard';
+import { useTour } from '@/hooks/useTour';
 
 const statCards = [
   {
@@ -180,10 +182,29 @@ export default function AdminDashboard() {
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { updateProgressFromStats, shouldAutoStart, startTour } = useTour();
+  const autoStarted = useRef(false);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  // Update tour progress when stats load
+  useEffect(() => {
+    if (stats) {
+      updateProgressFromStats(stats);
+    }
+  }, [stats, updateProgressFromStats]);
+
+  // Auto-start tour on first visit
+  useEffect(() => {
+    if (!loading && shouldAutoStart && !autoStarted.current) {
+      autoStarted.current = true;
+      // Small delay to let the page render
+      const timer = setTimeout(() => startTour(), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [loading, shouldAutoStart, startTour]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -232,6 +253,9 @@ export default function AdminDashboard() {
           Atualizar
         </button>
       </div>
+
+      {/* Tour Progress */}
+      <TourProgressCard />
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">

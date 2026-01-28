@@ -176,3 +176,8 @@ body {
   opacity: 0.5;
   pointer-events: none;
 }
+
+/* ── Tour ── */
+.tour-tooltip-enter {
+  animation: fadeIn 0.2s ease-out both;
+}

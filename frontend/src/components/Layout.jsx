@@ -1,7 +1,20 @@
 import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { useTour } from '@/hooks/useTour';
 import { cn } from '@/lib/utils';
+import TourOverlay from '@/components/tour/TourOverlay';
+
+const tourTargetMap = {
+  '/admin/clientes': 'nav-clientes',
+  '/admin/carteiras': 'nav-carteiras',
+  '/admin/casos': 'nav-casos',
+  '/admin/processos': 'nav-processos',
+  '/admin/documentos': 'nav-documentos',
+  '/admin/convert': 'nav-converter',
+  '/admin/accounts': 'nav-contas',
+  '/admin/sharing': 'nav-compartilhamento',
+};
 
 const adminNavGroups = [
   {
@@ -282,6 +295,7 @@ function UserAvatar({ name, email }) {
 
 export default function Layout() {
   const { profile, signOut } = useAuth();
+  const { startTour, isActive: tourActive } = useTour();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -346,6 +360,7 @@ export default function Layout() {
                       <Link
                         to={item.path}
                         onClick={() => setSidebarOpen(false)}
+                        data-tour={tourTargetMap[item.path]}
                         className={cn(
                           'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                           active
@@ -366,6 +381,30 @@ export default function Layout() {
 
         {/* Sidebar footer */}
         <div className="border-t border-slate-800 px-5 py-3">
+          {profile?.role === 'admin' && (
+            <button
+              onClick={() => {
+                setSidebarOpen(false);
+                startTour();
+              }}
+              className="mb-2 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-400 transition-colors hover:bg-slate-800 hover:text-slate-200"
+            >
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+                />
+              </svg>
+              Tour Guiado
+            </button>
+          )}
           <div className="text-[11px] text-slate-600">Axion Viewer v3.0</div>
         </div>
       </aside>
@@ -377,6 +416,7 @@ export default function Layout() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(true)}
+              data-tour="mobile-menu"
               className="rounded-md p-2 text-slate-500 hover:bg-slate-100 md:hidden"
             >
               <svg
@@ -436,6 +476,8 @@ export default function Layout() {
           <Outlet />
         </main>
       </div>
+
+      {tourActive && <TourOverlay />}
     </div>
   );
 }
