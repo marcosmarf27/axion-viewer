@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { KeyRound, Trash2 } from 'lucide-react';
 import api from '@/lib/api';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import EmptyState from '@/components/EmptyState';
@@ -365,18 +366,24 @@ export default function AccountsPage() {
                     {formatDate(account.created_at)}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <button
-                      onClick={() => setResetTarget(account)}
-                      className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
-                    >
-                      Resetar senha
-                    </button>
-                    <button
-                      onClick={() => setDeleteConfirm(account)}
-                      className="text-sm font-medium text-red-600 hover:text-red-800"
-                    >
-                      Excluir
-                    </button>
+                    <div className="inline-flex items-center gap-1">
+                      <button
+                        onClick={() => setResetTarget(account)}
+                        title="Resetar senha"
+                        aria-label="Resetar senha"
+                        className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                      >
+                        <KeyRound className="h-[18px] w-[18px]" />
+                      </button>
+                      <button
+                        onClick={() => setDeleteConfirm(account)}
+                        title="Excluir"
+                        aria-label="Excluir"
+                        className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
+                      >
+                        <Trash2 className="h-[18px] w-[18px]" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

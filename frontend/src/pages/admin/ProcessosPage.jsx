@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
+import { Eye, Pencil, Trash2 } from 'lucide-react';
 import api from '@/lib/api';
 import { cn } from '@/lib/utils';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -900,24 +901,32 @@ export default function ProcessosPage() {
                       )}
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <Link
-                        to={`/admin/processos/${processo.id}`}
-                        className="mr-2 text-sm font-medium text-slate-600 hover:text-slate-800"
-                      >
-                        Ver
-                      </Link>
-                      <button
-                        onClick={() => openEdit(processo)}
-                        className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
-                      >
-                        Editar
-                      </button>
-                      <button
-                        onClick={() => setDeleteConfirm(processo)}
-                        className="text-sm font-medium text-red-600 hover:text-red-800"
-                      >
-                        Excluir
-                      </button>
+                      <div className="inline-flex items-center gap-1">
+                        <Link
+                          to={`/admin/processos/${processo.id}`}
+                          title="Ver"
+                          aria-label="Ver"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                        >
+                          <Eye className="h-[18px] w-[18px]" />
+                        </Link>
+                        <button
+                          onClick={() => openEdit(processo)}
+                          title="Editar"
+                          aria-label="Editar"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                        >
+                          <Pencil className="h-[18px] w-[18px]" />
+                        </button>
+                        <button
+                          onClick={() => setDeleteConfirm(processo)}
+                          title="Excluir"
+                          aria-label="Excluir"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
+                        >
+                          <Trash2 className="h-[18px] w-[18px]" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

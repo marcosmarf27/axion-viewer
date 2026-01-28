@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { UserX } from 'lucide-react';
 import api from '@/lib/api';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import EmptyState from '@/components/EmptyState';
@@ -240,12 +241,16 @@ export default function SharingPage() {
                           {formatDate(acesso.granted_at || acesso.created_at)}
                         </td>
                         <td className="px-4 py-3 text-right">
-                          <button
-                            onClick={() => setRevokeConfirm(acesso)}
-                            className="text-sm font-medium text-red-600 hover:text-red-800"
-                          >
-                            Revogar
-                          </button>
+                          <div className="inline-flex items-center gap-1">
+                            <button
+                              onClick={() => setRevokeConfirm(acesso)}
+                              title="Revogar acesso"
+                              aria-label="Revogar acesso"
+                              className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
+                            >
+                              <UserX className="h-[18px] w-[18px]" />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}

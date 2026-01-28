@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Pencil, Trash2 } from 'lucide-react';
 import api from '@/lib/api';
 import { cn } from '@/lib/utils';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -323,18 +324,24 @@ export default function ClientesPage() {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <button
-                        onClick={() => openEdit(cliente)}
-                        className="mr-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
-                      >
-                        Editar
-                      </button>
-                      <button
-                        onClick={() => setDeleteConfirm(cliente)}
-                        className="text-sm font-medium text-red-600 hover:text-red-800"
-                      >
-                        Excluir
-                      </button>
+                      <div className="inline-flex items-center gap-1">
+                        <button
+                          onClick={() => openEdit(cliente)}
+                          title="Editar"
+                          aria-label="Editar"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                        >
+                          <Pencil className="h-[18px] w-[18px]" />
+                        </button>
+                        <button
+                          onClick={() => setDeleteConfirm(cliente)}
+                          title="Excluir"
+                          aria-label="Excluir"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600"
+                        >
+                          <Trash2 className="h-[18px] w-[18px]" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

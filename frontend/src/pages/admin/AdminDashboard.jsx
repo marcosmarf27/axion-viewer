@@ -214,7 +214,7 @@ export default function AdminDashboard() {
         api.get('/dashboard/stats'),
         api.get('/dashboard/recent'),
       ]);
-      setStats(statsRes.data);
+      setStats(statsRes.data.data);
       setRecent(recentRes.data.data || []);
     } catch (err) {
       setError(err.response?.data?.error || err.message);
