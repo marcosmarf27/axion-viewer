@@ -20,6 +20,7 @@ def list_documentos():
         processo_id = request.args.get("processo_id")
         file_type = request.args.get("file_type")
         sem_processo = request.args.get("sem_processo")
+        exclude_processo_id = request.args.get("exclude_processo_id")
 
         # Cliente: validar acesso via processo -> caso -> carteira
         if g.user.get("role") != "admin" and processo_id:
@@ -65,8 +66,52 @@ def list_documentos():
                     proc_data.get("numero_cnj") if isinstance(proc_data, dict) else None
                 )
 
+        # Filtro especial: documentos excluindo processo específico (para vincular)
+        if exclude_processo_id:
+            query = (
+                supa_service.client.table("documentos")
+                .select("*, processos(numero_cnj)", count="exact")
+                .neq("processo_id", exclude_processo_id)
+            )
+            if search:
+                conditions = ",".join(
+                    f"{f}.ilike.%{search}%"
+                    for f in ["filename", "title", "original_name"]
+                )
+                query = query.or_(conditions)
+            if file_type:
+                query = query.eq("file_type", file_type)
+
+            desc = sort_order == "desc"
+            query = query.order(sort_field, desc=desc)
+
+            start = (page - 1) * per_page
+            end = start + per_page - 1
+            query = query.range(start, end)
+
+            res = query.execute()
+            total = res.count if res.count is not None else 0
+            total_pages = (total + per_page - 1) // per_page if total > 0 else 1
+
+            # Achatar processo_numero_cnj
+            for doc in res.data:
+                proc_data = doc.pop("processos", None)
+                doc["processo_numero_cnj"] = (
+                    proc_data.get("numero_cnj") if isinstance(proc_data, dict) else None
+                )
+
+            result = {
+                "data": res.data,
+                "pagination": {
+                    "page": page,
+                    "per_page": per_page,
+                    "total": total,
+                    "total_pages": total_pages,
+                },
+            }
+
         # Filtro especial: documentos sem processo (para admin vincular)
-        if sem_processo == "true":
+        elif sem_processo == "true":
             query = (
                 supa_service.client.table("documentos")
                 .select("*", count="exact")

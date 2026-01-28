@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Search, Link2 } from 'lucide-react';
+import { Search, Link2, Eye, Download } from 'lucide-react';
 import api from '@/lib/api';
 import { cn } from '@/lib/utils';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -18,6 +18,12 @@ const recuperabilidadeColors = {
   Critica: 'bg-red-100 text-red-700',
   Indefinida: 'bg-slate-100 text-slate-600',
   Nenhuma: 'bg-slate-200 text-slate-800',
+};
+
+const typeBadgeClass = {
+  html: 'bg-blue-100 text-blue-700',
+  pdf: 'bg-red-100 text-red-700',
+  md: 'bg-slate-100 text-slate-700',
 };
 
 function Badge({ children, colorClass }) {
@@ -72,7 +78,7 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
     setError(null);
     setSearchTerm('');
     api
-      .get('/documentos', { params: { sem_processo: true } })
+      .get('/documentos', { params: { exclude_processo_id: processoId, per_page: 100 } })
       .then(({ data }) => {
         setDocumentos(data.data || data || []);
       })
@@ -80,15 +86,24 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
         setError(err.response?.data?.error || err.message);
       })
       .finally(() => setLoading(false));
-  }, [open]);
+  }, [open, processoId]);
 
   if (!open) return null;
 
-  const handleVincular = async docId => {
-    setVinculando(docId);
+  const handleVincular = async doc => {
+    const hasOtherProcesso = doc.processo_numero_cnj;
+    if (
+      hasOtherProcesso &&
+      !window.confirm(
+        `Este documento ja esta vinculado ao processo "${doc.processo_numero_cnj}". Deseja mover para este processo?`
+      )
+    ) {
+      return;
+    }
+    setVinculando(doc.id);
     try {
-      await api.put(`/documentos/${docId}`, { processo_id: processoId });
-      setDocumentos(prev => prev.filter(d => d.id !== docId));
+      await api.put(`/documentos/${doc.id}`, { processo_id: processoId });
+      setDocumentos(prev => prev.filter(d => d.id !== doc.id));
       onVinculado();
     } catch (err) {
       alert('Erro ao vincular: ' + (err.response?.data?.error || err.message));
@@ -96,6 +111,14 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
       setVinculando(null);
     }
   };
+
+  const filteredDocs = documentos.filter(doc => {
+    if (!searchTerm) return true;
+    const term = searchTerm.toLowerCase();
+    const name = (doc.title || doc.filename || '').toLowerCase();
+    const type = (doc.file_type || '').toLowerCase();
+    return name.includes(term) || type.includes(term);
+  });
 
   return (
     <div
@@ -133,46 +156,39 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
                 />
               </div>
               <p className="mt-1 text-xs text-slate-400">
-                {documentos.filter(doc => {
-                  if (!searchTerm) return true;
-                  const term = searchTerm.toLowerCase();
-                  const name = (doc.title || doc.filename || '').toLowerCase();
-                  const type = (doc.file_type || '').toLowerCase();
-                  return name.includes(term) || type.includes(term);
-                }).length} documento(s) disponivel(is)
+                {filteredDocs.length} documento(s) disponivel(is)
               </p>
             </div>
             <div className="max-h-80 space-y-2 overflow-y-auto">
-              {documentos
-                .filter(doc => {
-                  if (!searchTerm) return true;
-                  const term = searchTerm.toLowerCase();
-                  const name = (doc.title || doc.filename || '').toLowerCase();
-                  const type = (doc.file_type || '').toLowerCase();
-                  return name.includes(term) || type.includes(term);
-                })
-                .map(doc => (
-                  <div
-                    key={doc.id}
-                    className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3"
-                  >
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-medium text-slate-900">
-                        {doc.title || doc.filename}
+              {filteredDocs.map(doc => (
+                <div
+                  key={doc.id}
+                  className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-slate-900">
+                      {doc.title || doc.filename}
+                    </p>
+                    <p className="text-xs text-slate-500">
+                      {doc.file_type || 'Documento'} — {formatDate(doc.created_at)}
+                    </p>
+                    {doc.processo_numero_cnj && (
+                      <p className="mt-0.5 text-xs">
+                        <span className="inline-flex rounded-full bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-700">
+                          Processo: {doc.processo_numero_cnj}
+                        </span>
                       </p>
-                      <p className="text-xs text-slate-500">
-                        {doc.file_type || 'Documento'} — {formatDate(doc.created_at)}
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => handleVincular(doc.id)}
-                      disabled={vinculando === doc.id}
-                      className="ml-3 shrink-0 rounded-lg bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
-                    >
-                      {vinculando === doc.id ? 'Vinculando...' : 'Vincular'}
-                    </button>
+                    )}
                   </div>
-                ))}
+                  <button
+                    onClick={() => handleVincular(doc)}
+                    disabled={vinculando === doc.id}
+                    className="ml-3 shrink-0 rounded-lg bg-[var(--color-accent)] px-3 py-1.5 text-xs font-medium text-white hover:bg-[var(--color-accent-hover)] disabled:opacity-50"
+                  >
+                    {vinculando === doc.id ? 'Vinculando...' : 'Vincular'}
+                  </button>
+                </div>
+              ))}
             </div>
           </>
         )}
@@ -191,6 +207,127 @@ function VincularDocumentoModal({ open, processoId, onClose, onVinculado }) {
   );
 }
 
+function PreviewModal({ doc, url, content, blobUrl, loading, onClose }) {
+  useEffect(() => {
+    if (!doc) return;
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [doc, onClose]);
+
+  if (!doc) return null;
+
+  const isPdf = doc.file_type === 'pdf';
+  const title = doc.title || doc.filename;
+  const openUrl = blobUrl || url;
+
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col bg-black/60" onClick={onClose}>
+      {/* Barra superior */}
+      <div
+        className="flex items-center justify-between bg-white px-4 py-3 shadow-md"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex min-w-0 items-center gap-3">
+          <svg
+            className="h-5 w-5 shrink-0 text-slate-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={1.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+            />
+          </svg>
+          <h3 className="truncate text-sm font-semibold text-slate-900">{title}</h3>
+          <span
+            className={cn(
+              'inline-flex shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold uppercase',
+              typeBadgeClass[doc.file_type] || 'bg-slate-100 text-slate-700'
+            )}
+          >
+            {doc.file_type}
+          </span>
+        </div>
+        <div className="ml-4 flex shrink-0 items-center gap-2">
+          {openUrl && (
+            <a
+              href={openUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
+            >
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                />
+              </svg>
+              Abrir em nova aba
+            </a>
+          )}
+          <button
+            onClick={onClose}
+            className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
+          >
+            <svg
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Conteudo */}
+      <div className="flex-1 overflow-hidden p-2" onClick={e => e.stopPropagation()}>
+        {loading ? (
+          <div className="flex h-full items-center justify-center">
+            <LoadingSpinner size="lg" />
+          </div>
+        ) : content && !isPdf ? (
+          <iframe
+            srcDoc={content}
+            title={title}
+            className="h-full w-full rounded-lg bg-white"
+            sandbox="allow-same-origin"
+          />
+        ) : url ? (
+          <iframe
+            src={url}
+            title={title}
+            className="h-full w-full rounded-lg bg-white"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center">
+            <p className="text-sm text-slate-400">Nao foi possivel carregar o preview.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function ProcessoDetail() {
   const { id } = useParams();
   const [processo, setProcesso] = useState(null);
@@ -199,6 +336,11 @@ export default function ProcessoDetail() {
   const [docsLoading, setDocsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [vincularOpen, setVincularOpen] = useState(false);
+  const [previewDoc, setPreviewDoc] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [previewContent, setPreviewContent] = useState(null);
+  const [previewBlobUrl, setPreviewBlobUrl] = useState(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
 
   const fetchProcesso = async () => {
     setLoading(true);
@@ -225,6 +367,46 @@ export default function ProcessoDetail() {
     } finally {
       setDocsLoading(false);
     }
+  };
+
+  const handlePreview = useCallback(
+    async doc => {
+      setPreviewDoc(doc);
+      setPreviewUrl(null);
+      setPreviewContent(null);
+      if (previewBlobUrl) {
+        URL.revokeObjectURL(previewBlobUrl);
+        setPreviewBlobUrl(null);
+      }
+      setPreviewLoading(true);
+      try {
+        const { data } = await api.get(`/preview/${doc.id}`);
+        if (data.signed_url) {
+          setPreviewUrl(data.signed_url);
+          if (doc.file_type === 'html') {
+            try {
+              const response = await fetch(data.signed_url);
+              const html = await response.text();
+              setPreviewContent(html);
+              const blob = new Blob([html], { type: 'text/html' });
+              setPreviewBlobUrl(URL.createObjectURL(blob));
+            } catch {
+              // fallback: usa URL direta no iframe
+            }
+          }
+        }
+      } catch (err) {
+        alert('Erro ao gerar preview: ' + (err.response?.data?.error || err.message));
+        setPreviewDoc(null);
+      } finally {
+        setPreviewLoading(false);
+      }
+    },
+    [previewBlobUrl]
+  );
+
+  const handleDownload = doc => {
+    window.open(`/api/download/${doc.id}`, '_blank');
   };
 
   useEffect(() => {
@@ -429,39 +611,24 @@ export default function ProcessoDetail() {
                       {formatDate(doc.created_at)}
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <button
-                        onClick={async () => {
-                          try {
-                            const { data: res } = await api.get(`/preview/${doc.id}`);
-                            if (res.signed_url) window.open(res.signed_url, '_blank');
-                          } catch {
-                            alert('Erro ao abrir preview');
-                          }
-                        }}
-                        className="mr-3 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
-                      >
-                        Preview
-                      </button>
-                      <button
-                        onClick={async () => {
-                          try {
-                            const { data: res } = await api.get(`/preview/${doc.id}`);
-                            if (res.signed_url) {
-                              const link = document.createElement('a');
-                              link.href = res.signed_url;
-                              link.target = '_blank';
-                              document.body.appendChild(link);
-                              link.click();
-                              document.body.removeChild(link);
-                            }
-                          } catch {
-                            alert('Erro ao baixar documento');
-                          }
-                        }}
-                        className="text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
-                      >
-                        Download
-                      </button>
+                      <div className="inline-flex items-center gap-1">
+                        <button
+                          onClick={() => handlePreview(doc)}
+                          title="Preview"
+                          aria-label="Preview"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                        >
+                          <Eye className="h-[18px] w-[18px]" />
+                        </button>
+                        <button
+                          onClick={() => handleDownload(doc)}
+                          title="Download"
+                          aria-label="Download"
+                          className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-accent)]"
+                        >
+                          <Download className="h-[18px] w-[18px]" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -477,6 +644,22 @@ export default function ProcessoDetail() {
         processoId={id}
         onClose={() => setVincularOpen(false)}
         onVinculado={fetchDocumentos}
+      />
+
+      {/* Modal preview */}
+      <PreviewModal
+        doc={previewDoc}
+        url={previewUrl}
+        content={previewContent}
+        blobUrl={previewBlobUrl}
+        loading={previewLoading}
+        onClose={() => {
+          setPreviewDoc(null);
+          if (previewBlobUrl) {
+            URL.revokeObjectURL(previewBlobUrl);
+            setPreviewBlobUrl(null);
+          }
+        }}
       />
     </div>
   );
