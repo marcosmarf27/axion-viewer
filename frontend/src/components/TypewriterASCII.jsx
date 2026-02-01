@@ -285,8 +285,8 @@ export default function TypewriterASCII({ className }) {
             </span>
           </div>
 
-          {/* Brand */}
-          <div style={{ animation: 'fadeInUp 0.7s ease-out 0.4s both' }}>
+          {/* Brand text - Título */}
+          <div style={{ animation: 'fadeInUp 0.7s ease-out 0.4s both', display: 'flex', alignItems: 'baseline' }}>
             <span
               style={{
                 fontFamily: '"IBM Plex Sans", sans-serif',
@@ -309,23 +309,33 @@ export default function TypewriterASCII({ className }) {
             >
               Viewer
             </span>
+            <span
+              style={{
+                fontFamily: '"IBM Plex Sans", sans-serif',
+                fontSize: '16px',
+                fontWeight: 600,
+                color: '#d4a843',
+                marginLeft: '8px',
+              }}
+            >
+              2.0
+            </span>
           </div>
 
-          {/* Subtitle */}
-          <p
+          {/* Subtitle - Powered by */}
+          <div
             style={{
-              fontFamily: '"IBM Plex Sans", sans-serif',
-              fontSize: '10px',
-              fontWeight: 500,
-              color: 'rgba(255,255,255,0.4)',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
               marginTop: '8px',
+              fontFamily: '"IBM Plex Mono", monospace',
+              fontSize: '11px',
+              color: '#80868b',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
               animation: 'fadeInUp 0.7s ease-out 0.55s both',
             }}
           >
-            Intelligence
-          </p>
+            Powered by Axioma Intelligence
+          </div>
         </div>
       )}
     </div>

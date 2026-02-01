@@ -14,6 +14,30 @@ function DetailField({ label, value }) {
   );
 }
 
+function formatPoloPassivo(poloPassivo) {
+  if (!poloPassivo) return '-';
+  const partes = poloPassivo.split(';').map(p => p.trim()).filter(Boolean);
+  if (partes.length === 0) return '-';
+  if (partes.length === 1) return partes[0];
+
+  const primeiro = partes[0];
+  const outros = partes.length - 1;
+
+  return (
+    <span className="group relative cursor-help">
+      {primeiro}{' '}
+      <span className="text-[var(--color-text-muted)]">
+        + {outros} outro{outros > 1 ? 's' : ''}
+      </span>
+      <span className="pointer-events-none absolute left-0 top-full z-10 mt-1 hidden w-64 rounded-md border border-[var(--color-border)] bg-white p-2 text-xs shadow-lg group-hover:block">
+        {partes.map((p, i) => (
+          <div key={i} className="py-0.5 text-[var(--color-text)]">{p}</div>
+        ))}
+      </span>
+    </span>
+  );
+}
+
 function DownloadButton({ label, onClick, loading }) {
   return (
     <button
@@ -344,7 +368,7 @@ export default function CaseDetailModal({ casoId, onClose }) {
                     )
                   }
                 />
-                <DetailField label="Valor Total" value={formatCurrency(caso.valor_total)} />
+                <DetailField label="Valor Ajuizado" value={formatCurrency(caso.valor_total)} />
                 <DetailField label="UF" value={caso.uf_principal} />
                 <DetailField
                   label="Data Analise"
@@ -352,13 +376,13 @@ export default function CaseDetailModal({ casoId, onClose }) {
                 />
               </div>
 
-              {/* Documentos do Caso */}
+              {/* Relatorio do Caso */}
               {allDocs.length > 0 && (
-                <div className="mb-6 rounded-md border border-[rgba(139,105,20,0.25)] bg-[rgba(139,105,20,0.08)] p-4">
-                  <div className="flex items-center justify-between">
+                <div className="mb-6 rounded-lg border-2 border-[#d4a843] bg-[rgba(139,105,20,0.06)] p-5">
+                  <div className="flex items-center justify-between flex-wrap gap-3">
                     <div className="flex items-center gap-2">
                       <svg
-                        className="h-5 w-5 text-[var(--color-accent-gold)]"
+                        className="h-6 w-6 text-[#d4a843]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -370,44 +394,135 @@ export default function CaseDetailModal({ casoId, onClose }) {
                           d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                         />
                       </svg>
-                      <span className="text-sm font-semibold text-[var(--color-accent-gold)]">
-                        Documentos do Caso ({allDocs.length})
+                      <span className="text-base font-bold text-[#d4a843]">
+                        Relatorio do Caso
                       </span>
                     </div>
-                    <div className="flex gap-2">
-                      {allDocs.slice(0, 2).map(doc => (
-                        <div key={doc.id} className="flex gap-1">
-                          <button
-                            onClick={() => handlePreview(doc)}
-                            className="inline-flex items-center gap-1 rounded px-2.5 py-1.5 text-xs font-medium border border-[var(--color-accent)] bg-[var(--color-accent)] text-white hover:opacity-90 transition"
-                          >
-                            <svg
-                              className="h-3 w-3"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                            </svg>
-                            Ver
-                          </button>
-                          <DownloadButton
-                            label={doc.file_type?.toUpperCase() || 'DOC'}
-                            onClick={() => handleDownload(doc.id)}
-                            loading={downloadingId === doc.id}
-                          />
-                        </div>
-                      ))}
+                    <div className="flex gap-3">
+                      {(() => {
+                        const htmlDoc = allDocs.find(d => d.file_type === 'html');
+                        const pdfDoc = allDocs.find(d => d.file_type === 'pdf');
+                        return (
+                          <>
+                            {/* Botoes HTML */}
+                            <div className="flex gap-1">
+                              <button
+                                onClick={() => htmlDoc && handlePreview(htmlDoc)}
+                                disabled={!htmlDoc}
+                                title={htmlDoc ? 'Ver HTML' : 'HTML nao disponivel'}
+                                className={`inline-flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-medium transition ${
+                                  htmlDoc
+                                    ? 'bg-[var(--color-accent)] text-white hover:opacity-90'
+                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-50'
+                                }`}
+                              >
+                                <svg
+                                  className="h-3 w-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                                  />
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                  />
+                                </svg>
+                                Ver HTML
+                              </button>
+                              <button
+                                onClick={() => htmlDoc && handleDownload(htmlDoc.id)}
+                                disabled={!htmlDoc || downloadingId === htmlDoc?.id}
+                                title={htmlDoc ? 'Baixar HTML' : 'HTML nao disponivel'}
+                                className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1.5 text-xs font-medium border transition ${
+                                  htmlDoc
+                                    ? 'border-[var(--color-border)] bg-white text-[var(--color-text-muted)] hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)] hover:text-white'
+                                    : 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed opacity-50'
+                                }`}
+                              >
+                                <svg
+                                  className="h-3 w-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                                  />
+                                </svg>
+                                Baixar
+                              </button>
+                            </div>
+                            {/* Botoes PDF */}
+                            <div className="flex gap-1">
+                              <button
+                                onClick={() => pdfDoc && handlePreview(pdfDoc)}
+                                disabled={!pdfDoc}
+                                title={pdfDoc ? 'Ver PDF' : 'PDF nao disponivel'}
+                                className={`inline-flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-medium transition ${
+                                  pdfDoc
+                                    ? 'bg-[#c5221f] text-white hover:opacity-90'
+                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-50'
+                                }`}
+                              >
+                                <svg
+                                  className="h-3 w-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                                  />
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                  />
+                                </svg>
+                                Ver PDF
+                              </button>
+                              <button
+                                onClick={() => pdfDoc && handleDownload(pdfDoc.id)}
+                                disabled={!pdfDoc || downloadingId === pdfDoc?.id}
+                                title={pdfDoc ? 'Baixar PDF' : 'PDF nao disponivel'}
+                                className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1.5 text-xs font-medium border transition ${
+                                  pdfDoc
+                                    ? 'border-[var(--color-border)] bg-white text-[var(--color-text-muted)] hover:bg-[#c5221f] hover:border-[#c5221f] hover:text-white'
+                                    : 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed opacity-50'
+                                }`}
+                              >
+                                <svg
+                                  className="h-3 w-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                                  />
+                                </svg>
+                                Baixar
+                              </button>
+                            </div>
+                          </>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>
@@ -468,7 +583,7 @@ export default function CaseDetailModal({ casoId, onClose }) {
                             Polo Passivo
                           </p>
                           <p className="mt-0.5 text-xs text-[var(--color-text)]">
-                            {proc.polo_passivo || '-'}
+                            {formatPoloPassivo(proc.polo_passivo)}
                           </p>
                         </div>
                         <div>

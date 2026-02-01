@@ -2,17 +2,20 @@ import { useState, useEffect, useCallback } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import api from '@/lib/api';
+import ProfileEditModal from '@/components/ProfileEditModal';
 
-const FILTER_DEFAULTS = { tese: '', recuperabilidade: '', uf: '', periodo: '' };
+const FILTER_DEFAULTS = { tese: '', recuperabilidade: '', uf: '', periodoInicio: '', periodoFim: '' };
 
 export default function ClientLayout() {
   const { profile, signOut } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
 
   // Data
   const [carteiras, setCarteiras] = useState([]);
   const [selectedCarteira, setSelectedCarteira] = useState(null);
+  const [clienteNome, setClienteNome] = useState(null);
   const [filters, setFilters] = useState(FILTER_DEFAULTS);
   const [appliedFilters, setAppliedFilters] = useState(FILTER_DEFAULTS);
   const [searchInput, setSearchInput] = useState('');
@@ -42,6 +45,21 @@ export default function ClientLayout() {
   useEffect(() => {
     fetchCarteiras();
   }, [fetchCarteiras]);
+
+  // Buscar nome do cliente via dashboard
+  useEffect(() => {
+    const fetchClienteNome = async () => {
+      try {
+        const { data } = await api.get('/dashboard/client');
+        if (data?.data?.cliente_nome) {
+          setClienteNome(data.data.cliente_nome);
+        }
+      } catch {
+        // ignore
+      }
+    };
+    fetchClienteNome();
+  }, []);
 
   const handleApplyFilters = () => {
     setAppliedFilters({ ...filters });
@@ -79,23 +97,11 @@ export default function ClientLayout() {
       >
         {/* Logo */}
         <div className="flex items-center gap-3 border-b border-[var(--color-border-subtle)] px-5 py-5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--color-accent)]">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className="h-4.5 w-4.5 text-white"
-              stroke="currentColor"
-              strokeWidth={1.5}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 3v18" />
-              <path d="M5 7l7-4 7 4" />
-              <path d="M5 7l-1 5c0 1.5 1 2 2.5 2S9 13.5 9 12L8 7" />
-              <path d="M19 7l-1 5c0 1.5 1 2 2.5 2S23 13.5 23 12l-1-5" />
-              <path d="M9 21h6" />
-            </svg>
-          </div>
+          <img
+            src="/logo.png"
+            alt="Axion Viewer"
+            className="h-9 w-9 rounded-lg"
+          />
           <div>
             <div className="text-sm font-semibold text-[var(--color-text)]">Axion Viewer</div>
             <div className="text-[11px] font-medium text-[var(--color-text-muted)]">
@@ -199,13 +205,29 @@ export default function ClientLayout() {
                 ))}
               </select>
 
-              <input
-                type="date"
-                value={filters.periodo}
-                onChange={e => setFilters(f => ({ ...f, periodo: e.target.value }))}
-                placeholder="Periodo"
-                className="w-full rounded-md border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text)] focus:border-[var(--color-accent)] focus:outline-none"
-              />
+              <div className="space-y-2">
+                <label className="block text-[10px] font-medium uppercase tracking-wider text-[var(--color-text-subtle)]">
+                  Data Inicial
+                </label>
+                <input
+                  type="date"
+                  value={filters.periodoInicio}
+                  onChange={e => setFilters(f => ({ ...f, periodoInicio: e.target.value }))}
+                  className="w-full rounded-md border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text)] focus:border-[var(--color-accent)] focus:outline-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="block text-[10px] font-medium uppercase tracking-wider text-[var(--color-text-subtle)]">
+                  Data Final
+                </label>
+                <input
+                  type="date"
+                  value={filters.periodoFim}
+                  min={filters.periodoInicio}
+                  onChange={e => setFilters(f => ({ ...f, periodoFim: e.target.value }))}
+                  className="w-full rounded-md border border-[var(--color-border)] bg-white px-3 py-2 text-sm text-[var(--color-text)] focus:border-[var(--color-accent)] focus:outline-none"
+                />
+              </div>
             </div>
 
             <div className="mt-4 space-y-2">
@@ -222,6 +244,83 @@ export default function ClientLayout() {
                 Limpar Filtros
               </button>
             </div>
+
+            {/* Tags de filtros aplicados */}
+            {(appliedFilters.tese || appliedFilters.recuperabilidade || appliedFilters.uf ||
+              appliedFilters.periodoInicio || appliedFilters.periodoFim) && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {appliedFilters.tese && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-subtle)] px-2.5 py-1 text-xs font-medium text-[var(--color-accent)]">
+                    Tese: {appliedFilters.tese}
+                    <button
+                      onClick={() => {
+                        setAppliedFilters(f => ({ ...f, tese: '' }));
+                        setFilters(f => ({ ...f, tese: '' }));
+                      }}
+                      className="ml-1 hover:text-red-500"
+                    >
+                      &times;
+                    </button>
+                  </span>
+                )}
+                {appliedFilters.recuperabilidade && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-subtle)] px-2.5 py-1 text-xs font-medium text-[var(--color-accent)]">
+                    Recup.: {appliedFilters.recuperabilidade}
+                    <button
+                      onClick={() => {
+                        setAppliedFilters(f => ({ ...f, recuperabilidade: '' }));
+                        setFilters(f => ({ ...f, recuperabilidade: '' }));
+                      }}
+                      className="ml-1 hover:text-red-500"
+                    >
+                      &times;
+                    </button>
+                  </span>
+                )}
+                {appliedFilters.uf && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-subtle)] px-2.5 py-1 text-xs font-medium text-[var(--color-accent)]">
+                    UF: {appliedFilters.uf}
+                    <button
+                      onClick={() => {
+                        setAppliedFilters(f => ({ ...f, uf: '' }));
+                        setFilters(f => ({ ...f, uf: '' }));
+                      }}
+                      className="ml-1 hover:text-red-500"
+                    >
+                      &times;
+                    </button>
+                  </span>
+                )}
+                {appliedFilters.periodoInicio && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-subtle)] px-2.5 py-1 text-xs font-medium text-[var(--color-accent)]">
+                    De: {appliedFilters.periodoInicio}
+                    <button
+                      onClick={() => {
+                        setAppliedFilters(f => ({ ...f, periodoInicio: '' }));
+                        setFilters(f => ({ ...f, periodoInicio: '' }));
+                      }}
+                      className="ml-1 hover:text-red-500"
+                    >
+                      &times;
+                    </button>
+                  </span>
+                )}
+                {appliedFilters.periodoFim && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[var(--color-accent-subtle)] px-2.5 py-1 text-xs font-medium text-[var(--color-accent)]">
+                    Ate: {appliedFilters.periodoFim}
+                    <button
+                      onClick={() => {
+                        setAppliedFilters(f => ({ ...f, periodoFim: '' }));
+                        setFilters(f => ({ ...f, periodoFim: '' }));
+                      }}
+                      className="ml-1 hover:text-red-500"
+                    >
+                      &times;
+                    </button>
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
@@ -232,11 +331,37 @@ export default function ClientLayout() {
               {initials || '?'}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-[var(--color-text)]">
+              <p className="truncate text-sm font-semibold text-[var(--color-text)]">
                 {profile?.full_name || profile?.email}
               </p>
-              <p className="text-[11px] text-[var(--color-text-subtle)]">Cliente</p>
+              <p className="text-[11px] text-[var(--color-text-subtle)]">
+                {clienteNome || 'Cliente'}
+              </p>
             </div>
+            <button
+              onClick={() => setShowProfileModal(true)}
+              title="Editar perfil"
+              className="rounded-md p-1.5 text-[var(--color-text-subtle)] transition hover:bg-[var(--color-accent-subtle)] hover:text-[var(--color-text)]"
+            >
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a6.759 6.759 0 010 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 010-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </button>
             <button
               onClick={() => {
                 signOut();
@@ -327,6 +452,9 @@ export default function ClientLayout() {
           />
         </main>
       </div>
+
+      {/* Modal de edição de perfil */}
+      <ProfileEditModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} />
     </div>
   );
 }

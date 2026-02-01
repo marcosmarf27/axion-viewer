@@ -72,7 +72,7 @@ export default function LoginPage() {
                 textTransform: 'uppercase',
               }}
             >
-              Intelligence
+              Painel do Cliente
             </p>
           </div>
 
@@ -207,6 +207,30 @@ export default function LoginPage() {
             >
               {submitting ? 'Autenticando...' : 'Acessar plataforma'}
             </button>
+
+            {/* Footer do formulário */}
+            <div className="mt-6 text-center">
+              <p
+                style={{
+                  fontFamily: '"IBM Plex Sans", sans-serif',
+                  fontSize: '11px',
+                  color: '#80868b',
+                  lineHeight: '1.5',
+                }}
+              >
+                By Axioma Intelligence &copy; 2026 - Todos os direitos reservados.
+              </p>
+              <p
+                style={{
+                  fontFamily: '"IBM Plex Sans", sans-serif',
+                  fontSize: '10px',
+                  color: '#80868b',
+                  marginTop: '2px',
+                }}
+              >
+                CNPJ: 60.328.148/0001-81
+              </p>
+            </div>
           </form>
 
           {/* Footer */}

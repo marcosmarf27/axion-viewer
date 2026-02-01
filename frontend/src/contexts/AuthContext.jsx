@@ -88,8 +88,9 @@ export function AuthProvider({ children }) {
       isClient: profile?.role === 'client',
       signIn,
       signOut,
+      refreshProfile: fetchProfile,
     }),
-    [user, profile, loading, error, signIn, signOut]
+    [user, profile, loading, error, signIn, signOut, fetchProfile]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

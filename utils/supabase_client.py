@@ -25,6 +25,9 @@ ALLOWED_SORT_FIELDS = {
     "file_type",
     "credor_principal",
     "devedor_principal",
+    "data_analise",
+    "valor_total",
+    "recuperabilidade",
 }
 
 
@@ -397,7 +400,21 @@ class SupabaseService:
                 "total_casos": 0,
                 "total_processos": 0,
                 "carteiras": [],
+                "cliente_nome": None,
             }
+
+        # Buscar nome do cliente (da primeira carteira)
+        cliente_nome = None
+        if carteiras and carteiras[0].get("cliente_id"):
+            cliente_result = (
+                self.client.table("clientes")
+                .select("nome")
+                .eq("id", carteiras[0]["cliente_id"])
+                .single()
+                .execute()
+            )
+            if cliente_result.data:
+                cliente_nome = cliente_result.data.get("nome")
 
         # Buscar todos casos com carteira_id e valor_total
         casos_result = (
@@ -451,6 +468,7 @@ class SupabaseService:
             "total_casos": total_casos,
             "total_processos": total_processos,
             "carteiras": enriched_carteiras,
+            "cliente_nome": cliente_nome,
         }
 
 

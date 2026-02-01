@@ -48,6 +48,26 @@ function StatCard({ label, value, highlight, icon }) {
   );
 }
 
+// Componente header ordenável
+function SortableHeader({ field, label, currentSort, currentOrder, onSort }) {
+  const isActive = currentSort === field;
+  return (
+    <th
+      className="cursor-pointer px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)] select-none hover:text-[var(--color-text)]"
+      onClick={() => onSort(field)}
+    >
+      <div className="flex items-center gap-1">
+        {label}
+        {isActive && (
+          <span className="text-[var(--color-accent)]">
+            {currentOrder === 'asc' ? '▲' : '▼'}
+          </span>
+        )}
+      </div>
+    </th>
+  );
+}
+
 export default function ClientPanel() {
   const { selectedCarteira, filters, search } = useOutletContext();
 
@@ -59,6 +79,56 @@ export default function ClientPanel() {
   const [loading, setLoading] = useState(true);
   const [selectedCasoId, setSelectedCasoId] = useState(null);
   const [error, setError] = useState(null);
+  const [sortField, setSortField] = useState('data_analise');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [downloadingCasoId, setDownloadingCasoId] = useState(null);
+
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortOrder('desc');
+    }
+  };
+
+  const handleQuickDownload = async (e, casoId) => {
+    e.stopPropagation();
+    setDownloadingCasoId(casoId);
+    try {
+      // Buscar primeiro processo do caso
+      const { data: procRes } = await api.get('/processos', {
+        params: { caso_id: casoId, per_page: 1 },
+      });
+      const proc = procRes.data?.[0];
+      if (!proc) {
+        alert('Nenhum processo encontrado');
+        return;
+      }
+
+      // Buscar primeiro documento do processo
+      const { data: docsRes } = await api.get('/documentos', {
+        params: { processo_id: proc.id, per_page: 1 },
+      });
+      const doc = docsRes.data?.[0];
+      if (!doc) {
+        alert('Nenhum documento encontrado');
+        return;
+      }
+
+      // Obter URL de download
+      const { data } = await api.get(`/preview/${doc.id}`, {
+        params: { download: 'true' },
+      });
+      if (data.signed_url) {
+        window.open(data.signed_url, '_blank');
+      }
+    } catch {
+      alert('Erro ao baixar documento');
+    } finally {
+      setDownloadingCasoId(null);
+    }
+  };
 
   // Fetch stats
   const fetchStats = useCallback(async () => {
@@ -90,10 +160,13 @@ export default function ClientPanel() {
         page,
         per_page: 20,
         carteira_id: selectedCarteira.id,
+        sort_field: sortField,
+        sort_order: sortOrder,
         ...(teseParam && { tese: teseParam }),
         ...(filters.recuperabilidade && { recuperabilidade: filters.recuperabilidade }),
         ...(filters.uf && { uf_principal: filters.uf }),
-        ...(filters.periodo && { data_analise_desde: filters.periodo }),
+        ...(filters.periodoInicio && { data_analise_desde: filters.periodoInicio }),
+        ...(filters.periodoFim && { data_analise_ate: filters.periodoFim }),
         ...(search && { search }),
       };
       const { data } = await api.get('/casos', { params });
@@ -105,7 +178,7 @@ export default function ClientPanel() {
     } finally {
       setLoading(false);
     }
-  }, [selectedCarteira?.id, page, activeTab, filters, search]);
+  }, [selectedCarteira?.id, page, activeTab, filters, search, sortField, sortOrder]);
 
   useEffect(() => {
     fetchStats();
@@ -228,24 +301,40 @@ export default function ClientPanel() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]">
-                <th className="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
-                  Caso / Devedor
-                </th>
+                <SortableHeader
+                  field="nome"
+                  label="Caso / Devedor"
+                  currentSort={sortField}
+                  currentOrder={sortOrder}
+                  onSort={handleSort}
+                />
                 <th className="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
                   Tese
                 </th>
-                <th className="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
-                  Recuperab.
-                </th>
-                <th className="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
-                  Valor
-                </th>
+                <SortableHeader
+                  field="recuperabilidade"
+                  label="Recuperab."
+                  currentSort={sortField}
+                  currentOrder={sortOrder}
+                  onSort={handleSort}
+                />
+                <SortableHeader
+                  field="valor_total"
+                  label="Valor"
+                  currentSort={sortField}
+                  currentOrder={sortOrder}
+                  onSort={handleSort}
+                />
                 <th className="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
                   Processos
                 </th>
-                <th className="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
-                  Analise
-                </th>
+                <SortableHeader
+                  field="data_analise"
+                  label="Analise"
+                  currentSort={sortField}
+                  currentOrder={sortOrder}
+                  onSort={handleSort}
+                />
                 <th className="px-5 py-3 text-right text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">
                   Acoes
                 </th>
@@ -284,7 +373,11 @@ export default function ClientPanel() {
                 </tr>
               ) : (
                 casos.map(caso => (
-                  <tr key={caso.id} className="transition hover:bg-[var(--color-accent-subtle)]">
+                  <tr
+                    key={caso.id}
+                    className="cursor-pointer transition hover:bg-[var(--color-accent-subtle)]"
+                    onClick={() => setSelectedCasoId(caso.id)}
+                  >
                     <td className="px-5 py-3.5">
                       <div className="text-sm font-medium text-[var(--color-text)]">
                         {caso.nome}
@@ -336,31 +429,63 @@ export default function ClientPanel() {
                     <td className="px-5 py-3.5 text-sm text-[var(--color-text-muted)]">
                       {formatDate(caso.data_analise || caso.updated_at)}
                     </td>
-                    <td className="px-5 py-3.5 text-right">
-                      <button
-                        onClick={() => setSelectedCasoId(caso.id)}
-                        className="inline-flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-medium border border-[var(--color-border)] bg-white text-[var(--color-text-muted)] hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)] hover:text-white transition"
-                      >
-                        <svg
-                          className="h-3.5 w-3.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={1.5}
+                    <td className="px-5 py-3.5 text-right" onClick={e => e.stopPropagation()}>
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedCasoId(caso.id);
+                          }}
+                          className="inline-flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-medium border border-[var(--color-border)] bg-white text-[var(--color-text-muted)] hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)] hover:text-white transition"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                        Ver
-                      </button>
+                          <svg
+                            className="h-3.5 w-3.5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={1.5}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                          </svg>
+                          Ver
+                        </button>
+                        <button
+                          onClick={(e) => handleQuickDownload(e, caso.id)}
+                          disabled={downloadingCasoId === caso.id}
+                          title="Baixar relatório"
+                          className="inline-flex items-center gap-1.5 rounded px-3 py-1.5 text-xs font-medium border border-[var(--color-border)] bg-white text-[var(--color-text-muted)] hover:bg-[var(--color-accent-gold)] hover:border-[var(--color-accent-gold)] hover:text-white transition disabled:opacity-50"
+                        >
+                          {downloadingCasoId === caso.id ? (
+                            <svg className="h-3.5 w-3.5 animate-spin" viewBox="0 0 24 24" fill="none">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                            </svg>
+                          ) : (
+                            <svg
+                              className="h-3.5 w-3.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={1.5}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                              />
+                            </svg>
+                          )}
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))

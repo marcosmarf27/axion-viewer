@@ -22,6 +22,7 @@ def list_casos():
         recuperabilidade = request.args.get("recuperabilidade")
         uf_principal = request.args.get("uf_principal")
         data_analise_desde = request.args.get("data_analise_desde")
+        data_analise_ate = request.args.get("data_analise_ate")
         status = request.args.get("status")
 
         # Cliente: validar acesso a carteira
@@ -52,12 +53,18 @@ def list_casos():
         if status:
             filters["status"] = status
 
-        # data_analise_desde requer tratamento especial (gte, nao eq)
+        # Filtros de data requerem tratamento especial (gte/lte, nao eq)
         extra_query_fn = None
-        if data_analise_desde:
+        if data_analise_desde or data_analise_ate:
 
-            def extra_query_fn(query):
-                return query.gte("data_analise", data_analise_desde)
+            def build_date_filter(query):
+                if data_analise_desde:
+                    query = query.gte("data_analise", data_analise_desde)
+                if data_analise_ate:
+                    query = query.lte("data_analise", data_analise_ate)
+                return query
+
+            extra_query_fn = build_date_filter
 
         result = supa_service.list_casos(
             filters=filters,
