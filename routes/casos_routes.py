@@ -73,7 +73,7 @@ def list_casos():
             sort_field=sort_field,
             sort_order=sort_order,
             search=search,
-            select="*, processos(count)",
+            select="*, processos(id.count())",
             extra_query_fn=extra_query_fn,
         )
 
@@ -81,11 +81,12 @@ def list_casos():
         if result.get("data"):
             for caso in result["data"]:
                 processos_data = caso.pop("processos", [])
-                caso["qtd_processos"] = (
-                    processos_data[0].get("count", 0)
-                    if processos_data and isinstance(processos_data, list)
-                    else 0
-                )
+                if isinstance(processos_data, list) and processos_data:
+                    caso["qtd_processos"] = processos_data[0].get("count", 0)
+                elif isinstance(processos_data, dict):
+                    caso["qtd_processos"] = processos_data.get("count", 0)
+                else:
+                    caso["qtd_processos"] = 0
 
         return jsonify(result)
     except Exception as e:
